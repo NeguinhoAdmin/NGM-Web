@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\File;
 use App\Models\User;
 use Nette\Utils\Json;
@@ -13,7 +14,6 @@ use App\Models\Motorcycle;
 use Illuminate\Support\Js;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
@@ -120,8 +120,8 @@ class UserController extends Controller
         //     $request->session()->put('rental_id', $rental_id);
         // }
 
-        $payments = Payment::all()
-            ->where('user_id', $user_id);
+        // $payments = Payment::all()
+        //     ->where('user_id', $user_id);
 
         $now = Carbon::now();
         $toDate = Carbon::parse("2023-05-29");
@@ -142,7 +142,7 @@ class UserController extends Controller
 
         $address = UserAddress::all()->where('user_id', $user_id);
         // dd($days);
-        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "days", "payments"));
+        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "days"));
     }
 
     /**
