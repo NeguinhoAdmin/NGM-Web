@@ -114,11 +114,11 @@ class UserController extends Controller
             $request->session()->put('motorcycle_id', $motorcycle_id);
         }
 
-        $rentals = Rental::orderBy('id', 'DESC')->where('user_id', $user_id)->get();
-        foreach ($rentals as $rental) {
-            $rental_id = $rental->id;
-            $request->session()->put('rental_id', $rental_id);
-        }
+        // $rentals = Rental::orderBy('id', 'DESC')->where('user_id', $user_id)->get();
+        // foreach ($rentals as $rental) {
+        //     $rental_id = $rental->id;
+        //     $request->session()->put('rental_id', $rental_id);
+        // }
 
         $payments = Payment::all()
             ->where('user_id', $user_id);
