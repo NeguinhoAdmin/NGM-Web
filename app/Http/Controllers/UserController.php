@@ -142,7 +142,7 @@ class UserController extends Controller
 
         $address = UserAddress::all()->where('user_id', $user_id);
         // dd($days);
-        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "rentals", "days", "payments"));
+        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "days", "payments"));
     }
 
     /**
