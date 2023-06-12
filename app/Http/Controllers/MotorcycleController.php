@@ -108,7 +108,7 @@ class MotorcycleController extends Controller
         $motorcycle->tax_status = $motorcycleGov->taxStatus;
         $motorcycle->tax_due_date = $motorcycleGov->taxDueDate;
         $motorcycle->mot_status = $motorcycleGov->motStatus;
-        $motorcycle->mot_expiry_date = $motorcycleGov->motExpiryDate;
+        // $motorcycle->mot_expiry_date = $motorcycleGov->motExpiryDate;
         $motorcycle->co2_emissions = $motorcycleGov->co2Emissions;
         $motorcycle->marked_for_export = $motorcycleGov->markedForExport;
         $motorcycle->type_approval = $request->typeApproval;

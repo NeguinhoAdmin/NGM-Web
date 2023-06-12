@@ -4,8 +4,9 @@
 
 @auth
 <h1>{{$user->first_name}} {{$user->last_name}}</h1>
-<a href="{{  $user->phone_number }}">{{$user->phone_number}}</a><br>
-<a href="{{  $user->email }}">{{$user->email}}</a>
+<p>{{$user->phone_number}}
+    {{$user->email}}
+</p>
 <p>{{$user->street_address}}, {{$user->street_address_plus}}, {{$user->city}} {{$user->post_code}}</p>
 
 <!-- This area is used to dispay errors -->
