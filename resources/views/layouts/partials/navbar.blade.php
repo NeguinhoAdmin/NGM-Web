@@ -17,7 +17,7 @@
                         <a class="nav-link" href="/motorcycles">Motorcycles</a>
                     </li>
                     <li>
-                        <a class="nav-link" href="/payments">Payments Due</a>
+                        <a class="nav-link" href="#">Payments</a>
                     </li>
 
                 </ul>

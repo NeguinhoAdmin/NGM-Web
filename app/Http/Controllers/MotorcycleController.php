@@ -114,7 +114,7 @@ class MotorcycleController extends Controller
         $motorcycle->type_approval = $request->typeApproval;
         $motorcycle->last_v5_issue_date = $motorcycleGov->dateOfLastV5CIssued;
         $motorcycle->month_of_first_registration = $motorcycleGov->monthOfFirstRegistration;
-        $motorcycle->euro_status = $motorcycleGov->euroStatus;
+        // $motorcycle->euro_status = $motorcycleGov->euroStatus;
         $motorcycle->availability = $request->availability;
 
         $motorcycle->save();
