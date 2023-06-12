@@ -6,7 +6,7 @@
 <h1>{{ $motorcycle->registration }}</h1>
 <div class="mt-3">
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-primary" href="{{ url()->previous() }}">Back</a>
+        <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/') }}">Back</a>
     </div>
     <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $motorcycle->id . '/edit') }}">Edit</a>

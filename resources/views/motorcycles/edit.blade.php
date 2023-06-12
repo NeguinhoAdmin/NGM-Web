@@ -103,25 +103,25 @@
                                 <h4 class="text-capitalize">Status: {{ $motorcycle->availability }}</h4>
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="availability" id="is_for_rent" value="for rent" {{ ($motorcycle->is_for_rent=="1")? "checked" : "" }}>
+                                        <input class="form-check-input" type="radio" name="availability" id="availability" value="for rent" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
                                         <label class="form-check-label" for="is_for_rent">
                                             For Rent
                                         </label>
                                     </div>
                                     <div hidden class="form-check">
-                                        <input class="form-check-input" type="radio" name="availability" id="is_rented" value="rented" {{ ($motorcycle->is_rented=="1")? "checked" : "" }}>
+                                        <input class="form-check-input" type="radio" name="availability" id="availability" value="rented" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
                                         <label class="form-check-label" for="is_rented">
                                             Rented
                                         </label>
                                     </div>
                                     <div hidden class="form-check">
-                                        <input class="form-check-input" type="radio" name="availability" id="is_for_sale" value="for sale" {{ ($motorcycle->is_for_sale=="1")? "checked" : "" }}>
+                                        <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
                                         <label class="form-check-label" for="is_for_sale">
                                             For Sale
                                         </label>
                                     </div>
                                     <div hidden class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="availability" id="is_sold" value="sold" {{ ($motorcycle->is_sold=="1")? "checked" : "" }}>
+                                        <input class="form-check-input" type="radio" name="availability" id="availability" value="sold" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
                                         <label class="form-check-label" for="is_sold">
                                             Sold
                                         </label>
