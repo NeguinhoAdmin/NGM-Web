@@ -15,25 +15,25 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->string('registration');
-            $table->string('payment_type');
-            $table->decimal('rental_deposit', 8, 2);
-            $table->decimal('rental_price', 8, 2);
-            $table->text('description');
-            $table->decimal('received', 8, 2);
-            $table->decimal('outstanding', 8, 2);
-            $table->longText('notes');
-            $table->dateTime('payment_due_date');
-            $table->bigInteger('payment_due_count');
-            $table->dateTime('payment_next_date');
-            $table->dateTime('payment_date');
+            $table->bigInteger('user_id')->nullable();
+            $table->string('registration')->nullable();
+            $table->string('payment_type')->nullable();
+            $table->decimal('rental_deposit', 8, 2)->nullable();
+            $table->decimal('rental_price', 8, 2)->nullable();
+            $table->text('description')->nullable();
+            $table->decimal('received', 8, 2)->nullable();
+            $table->decimal('outstanding', 8, 2)->nullable();
+            $table->longText('notes')->nullable();
+            $table->dateTime('payment_due_date')->nullable();
+            $table->bigInteger('payment_due_count')->nullable();
+            $table->dateTime('payment_next_date')->nullable();
+            $table->dateTime('payment_date')->nullable();
             $table->string('paid');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
-            $table->string('auth_user');
-            $table->dateTime('deleted_at');
-            $table->string('deleted_by');
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            $table->string('auth_user')->nullable();
+            $table->dateTime('deleted_at')->nullable();
+            $table->string('deleted_by')->nullable();
             $table->timestamps();
         });
     }
