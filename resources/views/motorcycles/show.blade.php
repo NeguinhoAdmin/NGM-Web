@@ -161,7 +161,7 @@
             <div class="card shadow">
                 <div class="card-header">
                     <div class="card-body">
-                        <h5 class="text-capitalize">Status: {{$motorcycle->availability}}</h5>
+                        <h5 class="text-capitalize">Status: {{$motorcycle->availability}} to {{$user->first_name}} {{$user->last_name}}</h5>
                         <table class="table">
                             <tbody>
                                 <tr>
