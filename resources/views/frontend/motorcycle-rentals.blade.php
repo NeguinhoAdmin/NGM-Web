@@ -29,10 +29,8 @@
                 <div class="product-top-menu margin-bottom-58">
                     <ul class="flat-filter style-2">
                         <li class="active"><a href="#" data-filter="*">ALL MODELS</a></li>
-                        <li><a href="#" data-filter=".hbikes">HONDA MOTORCYCLES</a></li>
-                        <li><a href="#" data-filter=".hscooters">HONDA SCOOTERS</a></li>
-                        <li><a href="#" data-filter=".ybikes">YAMAHA MOTORCYCLES</a></li>
-                        <li><a href="#" data-filter=".yscooters">YAMAHA SCOOTERS</a></li>
+                        <li><a href="#" data-filter=".honda">HONDA MOTORCYCLES</a></li>
+                        <li><a href="#" data-filter=".yamaha">YAMAHA MOTORCYCLES</a></li>
                     </ul>
                 </div>
             </div>
@@ -42,12 +40,12 @@
                 <div class="product-content product-fourcolumn clearfix">
 
                     <ul class="product style2 isotope-product clearfix">
-                        @foreach($motorcycles->chunk(4) as $chunk)
-                        <li class="product-item hscooters">
-                            @foreach($chunk as $motorcycle)
-                            <div class="product-thumb clearfix">
+                        @foreach($motorcycles as $motorcycle)
+                        <li class="product-item {{ $motorcycle->make }}">
+
+                            <div class="product-thumb clearfix mb-3">
                                 <a href="/rentals-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('assets/images/rentals/honda-pcx-125.jpg')}}" alt="image">
+                                    <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image">
                                 </a>
                             </div>
                             <div class="product-info clearfix">
@@ -63,7 +61,7 @@
                                 <a href="/rentals-motorcycle/{{ $motorcycle->id }}">MORE INFORMATION</a>
                             </div>
                             <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                            @endforeach
+
                         </li>
                         @endforeach
                     </ul>

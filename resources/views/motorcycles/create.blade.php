@@ -56,7 +56,11 @@
                                 <input type="text" class="form-control" placeholder="Engine" aria-label="engine" aria-describedby="engine" name="engine" id="engine" value="{{old('engine')}}">
                                 <span class="input-group-text" id="engine_cc">CC</span>
                             </div>
-                            <div class="form-group">
+                            <div class="custom-file mb-3">
+                                <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                                <label class="custom-file-label" for="chooseFile">Select Picture</label>
+                            </div>
+                            <div class="form-group mb-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="availability" id="is_for_rent" value="for rent">
                                     <label class="form-check-label" for="is_for_rent">

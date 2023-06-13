@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
+use App\Models\Filerental;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Relations\Bloodline;
 use system;
@@ -96,9 +97,7 @@ class SalesController extends Controller
     public function RentBike()
     {
         $motorcycles = Motorcycle::all()
-            ->where('availability', '=', 'for rent')
-            ->sortByDesc('id');
-        // $motorcycles = json_decode($m);
+            ->where('availability', '=', 'for rent');
 
         $count = $motorcycles->count();
 
@@ -125,6 +124,8 @@ class SalesController extends Controller
     public function RentalDetails($id)
     {
         $motorcycle = Product::findOrFail($id);
+        dd($motorcycle);
+        $image = Filerental::all()->where('registration', $motorcycle->registration);
 
         return view('frontend.motorcycle-rental', compact('motorcycle'));
         // $image = Media::all()

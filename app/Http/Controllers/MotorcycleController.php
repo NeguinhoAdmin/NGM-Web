@@ -21,6 +21,7 @@ use App\Mail\RentalDue;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
+use App\Models\Filerental;
 
 class MotorcycleController extends Controller
 {
@@ -79,6 +80,8 @@ class MotorcycleController extends Controller
      */
     public function store(Request $request)
     {
+        $registration = $request->registration;
+
         $response = Http::withHeaders([
             'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
             'Content-Type' => 'application/json',
@@ -87,9 +90,10 @@ class MotorcycleController extends Controller
         ]);
 
         $motorcycleGov = json_decode($response->body());
-        // dd($motorcycleGov);
+
         $validated = $request->validate([
             'registration' => 'required | unique:motorcycles',
+            'file' => 'required|mimes:jpg,png|max:2048',
 
         ]);
 
@@ -117,6 +121,12 @@ class MotorcycleController extends Controller
         // $motorcycle->euro_status = $motorcycleGov->euroStatus;
         $motorcycle->availability = $request->availability;
 
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $motorcycle->file_name = time() . '_' . $request->file->getClientOriginalName();
+            $motorcycle->file_path = '/storage/' . $filePath;
+        }
         $motorcycle->save();
 
         return redirect('/motorcycles');

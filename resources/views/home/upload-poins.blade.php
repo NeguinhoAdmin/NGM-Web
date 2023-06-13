@@ -40,7 +40,7 @@
                 @endforeach
 
             </div>
-            <div class="custom-file mt-3">
+            <div class="custom-file mb-3">
                 <input type="file" name="file" class="custom-file-input" id="chooseFile">
                 <label class="custom-file-label" for="chooseFile">Select Document</label>
             </div>

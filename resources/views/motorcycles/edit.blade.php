@@ -106,12 +106,6 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="availability" id="availability" value="rented" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
-                        <label class="form-check-label" for="is_rented">
-                            Rented
-                        </label>
-                    </div>
-                    <div class="form-check">
                         <input class="form-check-input" type="radio" name="availability" id="availability" value="claim in progress" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
                         <label class="form-check-label" for="is_for_sale">
                             Claim In Progress
