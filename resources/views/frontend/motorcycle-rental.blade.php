@@ -31,7 +31,7 @@
                             <ul>
                                 <li><a href="/">Honda & Yamaha Specialists</a></li>
                                 <li><a href="/motorcycle-sales">Motorcycle Rental</a></li>
-                                <li><a href="/new-motorcycle/{{ $motorcycle->slug }}">{{$motorcycle['brand']->name}} {{ $motorcycle->name }}</a></li>
+                                <li><a href="/new-motorcycle/{{ $motorcycle->slug }}">{{$motorcycle->make}} {{ $motorcycle->model }}</a></li>
                             </ul>
                         </div><!-- /.breadcrumbs -->
                     </div><!-- /.col-md-12 -->
@@ -47,7 +47,7 @@
                             <div class="inner padding-top-4">
                                 <ul class="product-list-fix-image">
                                     <li>
-                                        <img src="/{{ $image[8]->id }}/{{ $image[8]->file_name }}" alt="Image">
+                                        <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image">
                                     </li>
                                 </ul>
                             </div>
@@ -61,7 +61,7 @@
                                 <form action="{{ route('store.cart', $motorcycle->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="content-detail form-group">
-                                        <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle['brand']->name}} {{ $motorcycle->name }}</h2>
+                                        <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle->make}} {{ $motorcycle->model }}</h2>
                                         <div class="flat-star style-1">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -72,7 +72,13 @@
                                         </div>
                                         <p>{!! $motorcycle->description !!}</p>
                                         <div class="price margin-top-24">
-                                            <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">£{{$motorcycle->price_amount}} per day</span></ins>
+                                            <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">£{{$motorcycle->rental_price}} per Week</span></ins>
+                                        </div>
+                                        <div hidden class="price margin-top-24">
+                                            <ins><span class="amount" value="20" name="reserve_price" id="reserve_price">Reserve for £20.00</span></ins>
+                                        </div>
+                                        <div class="product-categories margin-top-22">
+                                            <span>£20 RESERVES THIS MOTORCYCLE FOR 24 HOURS</span><a href="#"> </a>
                                         </div>
                                         <div class="product-quantity margin-top-35">
                                             <div class="quantity">
@@ -80,7 +86,7 @@
                                                 <span class="inc quantity-button">+</span>
                                                 <span class="dec quantity-button">-</span>
                                             </div>
-                                            <button type="submit" class="add-to-cart">ADD TO CART</button>
+                                            <button type="submit" class="add-to-cart">RESERVE</button>
                                             <div class="box-like">
                                                 <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
                                             </div>
@@ -124,13 +130,13 @@
                                             <div class="grid-row image-left clearfix">
                                                 <div class="grid-item">
                                                     <div class="thumb text-center">
-                                                        <img src="/{{ $brand_image[1]->id }}/{{ $brand_image[1]->file_name }}" alt="Image" style="width: 50%;">
+                                                        <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image" style="width: 50%;">
                                                     </div>
                                                 </div><!-- /.grid-item -->
                                                 <div class="grid-item">
                                                     <div class="text-wrap">
                                                         <h6 class="title"></h6>
-                                                        <p>{!! $motorcycle['brand']->description !!}</p>
+                                                        <p>{!! $motorcycle->description !!}</p>
                                                     </div>
                                                 </div>
                                             </div><!-- /.grid-row -->

@@ -102,31 +102,12 @@ class SalesController extends Controller
         $count = $motorcycles->count();
 
         return view('frontend.motorcycle-rentals', compact('motorcycles'));
-
-        // $motorcycles = Category::findOrFail(78)->products()->paginate(9);
-        // $motorcycle_id = $motorcycles[0]->id;
-        // $brand_id = $motorcycles[0]->brand_id;
-
-        // $images = Media::all()
-        //     ->where('model_type', 'product')
-        //     ->where('model_id', $motorcycle_id);
-
-        // $brand = Brand::all()
-        //     ->where('id', $brand_id);
-
-        // return view('frontend.motorcycle-rentals', [
-        //     'motorcycles' => $motorcycles,
-        //     'image' => $images,
-        //     'brand' => $brand
-        // ]);
     }
 
     public function RentalDetails($id)
     {
-        $motorcycle = Product::findOrFail($id);
-        dd($motorcycle);
-        $image = Filerental::all()->where('registration', $motorcycle->registration);
-
+        $motorcycle = Motorcycle::findOrFail($id);
+        // dd($motorcycle);
         return view('frontend.motorcycle-rental', compact('motorcycle'));
         // $image = Media::all()
         //     ->where('model_type', 'product')

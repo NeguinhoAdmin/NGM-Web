@@ -52,7 +52,7 @@
                                 <span class="product-title">{{ $motorcycle->make }} {{$motorcycle->model}}</span>
                                 <div class="price">
                                     <ins>
-                                        <span class="amount">£{{ $motorcycle->rental_price }} per day</span>
+                                        <span class="amount">£{{ $motorcycle->rental_price }} per Week</span>
                                     </ins>
                                 </div>
                             </div>
