@@ -53,7 +53,7 @@ Route::controller(SalesController::class)->group(function () {
     Route::get('/used-motorcycles', 'UsedForSale')->name('motorcycles.used');
     Route::get('/used-motorcycle/{id}', 'UsedBikeDetails')->name('detail.used-motorcycle');
     Route::get('/motorcycle-rentals', 'RentBike')->name('motorcycle.rentals');
-    Route::get('/rentals-motorcycle/{id}', 'RentalBikeDetails')->name('rental-motorcycle.detail');
+    Route::get('/rentals-motorcycle/{id}', 'RentalDetails')->name('rental-motorcycle.detail');
 });
 
 // Oxford Product Routes

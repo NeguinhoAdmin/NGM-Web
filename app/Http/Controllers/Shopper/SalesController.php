@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shopper;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Motorcycle;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
@@ -94,46 +95,51 @@ class SalesController extends Controller
 
     public function RentBike()
     {
-        $motorcycles = Category::findOrFail(78)->products()->paginate(9);
-        $motorcycle_id = $motorcycles[0]->id;
-        $brand_id = $motorcycles[0]->brand_id;
+        $motorcycles = Motorcycle::all()
+            ->where('availability', '=', 'for rent')
+            ->sortByDesc('id');
+        // $motorcycles = json_decode($m);
 
-        $images = Media::all()
-            ->where('model_type', 'product')
-            ->where('model_id', $motorcycle_id);
+        $count = $motorcycles->count();
 
-        $brand = Brand::all()
-            ->where('id', $brand_id);
+        return view('frontend.motorcycle-rentals', compact('motorcycles'));
 
-        return view('frontend.motorcycle-rentals', [
-            'motorcycles' => $motorcycles,
-            'image' => $images,
-            'brand' => $brand
-        ]);
+        // $motorcycles = Category::findOrFail(78)->products()->paginate(9);
+        // $motorcycle_id = $motorcycles[0]->id;
+        // $brand_id = $motorcycles[0]->brand_id;
+
+        // $images = Media::all()
+        //     ->where('model_type', 'product')
+        //     ->where('model_id', $motorcycle_id);
+
+        // $brand = Brand::all()
+        //     ->where('id', $brand_id);
+
+        // return view('frontend.motorcycle-rentals', [
+        //     'motorcycles' => $motorcycles,
+        //     'image' => $images,
+        //     'brand' => $brand
+        // ]);
     }
 
     public function RentalDetails($id)
     {
         $motorcycle = Product::findOrFail($id);
 
-        $image = Media::all()
-            ->where('model_type', 'product')
-            ->where('model_id', $id);
+        return view('frontend.motorcycle-rental', compact('motorcycle'));
+        // $image = Media::all()
+        //     ->where('model_type', 'product')
+        //     ->where('model_id', $id);
         // dd($image);
 
-        $brand_image = Media::all()
-            ->where('model_type', 'brand')
-            ->where('model_id', $motorcycle['brand']->id);
+        // $brand_image = Media::all()
+        //     ->where('model_type', 'brand')
+        //     ->where('model_id', $motorcycle['brand']->id);
 
-        return view('frontend.motorcycle-rental', [
-            'motorcycle' => $motorcycle,
-            'image' => $image,
-            'brand_image' => $brand_image
-        ]);
-    }
-
-    public function RentalBikeDetails()
-    {
-        return view('frontend.rentals-hondapcx125');
+        // return view('frontend.motorcycle-rental', [
+        //     'motorcycle' => $motorcycle,
+        //     'image' => $image,
+        //     'brand_image' => $brand_image
+        // ]);
     }
 }

@@ -51,10 +51,10 @@
                                 </a>
                             </div>
                             <div class="product-info clearfix">
-                                <span class="product-title">{{ $brand[0]->name }} {{$motorcycle->name}}</span>
+                                <span class="product-title">{{ $motorcycle->make }} {{$motorcycle->model}}</span>
                                 <div class="price">
                                     <ins>
-                                        <span class="amount">£{{ $motorcycle->price_amount }} per day</span>
+                                        <span class="amount">£{{ $motorcycle->rental_price }} per day</span>
                                     </ins>
                                 </div>
                             </div>
