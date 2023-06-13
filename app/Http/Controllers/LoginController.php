@@ -29,10 +29,16 @@ class LoginController extends Controller
     {
         $credentials = $request->getCredentials();
 
-        if (!Auth::validate($credentials)) :
-            return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
+        // if (!Auth::validate($credentials)) :
+        //     return redirect()->to('login')
+        //         ->withErrors(trans('auth.failed'));
+        // endif;
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 

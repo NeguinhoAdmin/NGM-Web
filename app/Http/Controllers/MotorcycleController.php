@@ -433,7 +433,7 @@ class MotorcycleController extends Controller
         $m = Motorcycle::findOrFail($motorcycle_id);
         $motorcycle = json_decode($m);
 
-        $user = User::findOrFail($motorcycle->user_id);
+        // $user = User::findOrFail($motorcycle->user_id);
 
         $nextPayDate = (new Carbon($motorcycle->next_payment_date))->addDay();
         // dd($nextPayDate);
@@ -465,7 +465,7 @@ class MotorcycleController extends Controller
             ->sortByDesc('id');
 
 
-        return view('motorcycles.show', compact('motorcycle', 'user', 'depositpayments', 'rentalpayments', 'newpayments', 'notes'));
+        return view('motorcycles.show', compact('motorcycle', 'depositpayments', 'rentalpayments', 'newpayments', 'notes'));
     }
 
     /**
