@@ -322,7 +322,7 @@ class MotorcycleController extends Controller
             'marked_for_export' => $request->markedForExport,
             'type_approval' => $request->typeApproval,
             'last_v5_issue_date' => $request->dateOfLastV5CIssued,
-            'mot_expiry_date' => $request->motExpiryDate,
+            // 'mot_expiry_date' => $request->motExpiryDate,
             'month_of_first_registration' => $request->monthOfFirstRegistration,
             'next_payment_date' => $nextPayDate,
         ]);
