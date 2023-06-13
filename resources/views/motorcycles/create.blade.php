@@ -63,24 +63,24 @@
                                         For Rent
                                     </label>
                                 </div>
-                                <div class="form-check">
+                                <!-- <div class="form-check">
                                     <input class="form-check-input" type="radio" name="availability" id="is_rented" value="rented">
                                     <label class="form-check-label" for="is_rented">
                                         Rented
                                     </label>
-                                </div>
+                                </div> -->
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="availability" id="is_for_sale" value="for sale">
                                     <label class="form-check-label" for="is_for_sale">
                                         For Sale
                                     </label>
                                 </div>
-                                <div class="form-check mb-3">
+                                <!-- <div class="form-check mb-3">
                                     <input class="form-check-input" type="radio" name="availability" id="is_sold" value="sold">
                                     <label class="form-check-label" for="is_sold">
                                         Sold
                                     </label>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">£</span>
