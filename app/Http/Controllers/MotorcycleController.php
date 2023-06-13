@@ -379,10 +379,39 @@ class MotorcycleController extends Controller
         return view('motorcycles.index', compact('motorcycles', 'count'));
     }
 
-    public function isUnallocated()
+    public function inForRepairs()
     {
         $m = Motorcycle::all()
-            ->where('availability', null);
+            ->where('availability', '=', 'in for repairs');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+
+    public function catB()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'cat b');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+    public function claimInProgress()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'claim in progress');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+
+    public function isSold()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'sold');
         $motorcycles = json_decode($m);
 
         $count = $m->count();

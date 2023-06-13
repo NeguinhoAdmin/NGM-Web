@@ -136,10 +136,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // MOTORCYCLE
     Route::resource('motorcycles', 'MotorcycleController');
-    Route::get('/is_for_rent', [MotorcycleController::class, 'isForRent'])->name('isForRent');
-    Route::get('/is_rented', [MotorcycleController::class, 'isRented'])->name('isRented');
-    Route::get('/is_for_sale', [MotorcycleController::class, 'isForSale'])->name('isForSale');
-    Route::get('/unallocated', [MotorcycleController::class, 'isUnallocated'])->name('isUnallocated');
+    Route::get('/is-for-rent', [MotorcycleController::class, 'isForRent'])->name('isForRent');
+    Route::get('/is-rented', [MotorcycleController::class, 'isRented'])->name('isRented');
+    Route::get('/is-for-sale', [MotorcycleController::class, 'isForSale'])->name('isForSale');
+    Route::get('/in-for-repairs', [MotorcycleController::class, 'inForRepairs'])->name('inForRepairs');
+    Route::get('/cat-b', [MotorcycleController::class, 'catB'])->name('catB');
+    Route::get('/claim-in-progress', [MotorcycleController::class, 'claimInProgress'])->name('claimInProgress');
+    Route::get('/is-sold', [MotorcycleController::class, 'isSold'])->name('isSold');
     Route::get('/find-motorcycle', [MotorcycleController::class, 'findMotorcycle'])->name('findMotorcycle');
     Route::post('/registration-number', [MotorcycleController::class, 'registrationNumber'])->name('registrationNumber');
     Route::get('/motorcycles-for-rent/{id}', [MotorcycleController::class, 'clientForRent'])->name('clientForRent');
