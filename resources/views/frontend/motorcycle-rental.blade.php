@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-title-heading">
-                            <h1 class="title">{{$motorcycle['brand']->name}} {{ $motorcycle->name }}</h1>
+                            <h1 class="title">{{$motorcycle->make}} {{ $motorcycle->model }}</h1>
                         </div><!-- /.page-title-heading -->
                         <div class="breadcrumbs">
                             <ul>
