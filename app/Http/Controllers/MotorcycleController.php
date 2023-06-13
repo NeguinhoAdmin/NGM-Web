@@ -283,7 +283,7 @@ class MotorcycleController extends Controller
         // Create deposit
         $payment = new Payment();
         $payment->payment_type = 'deposit';
-        $payment->rental_deposit = $motorcycleDeposit;
+        $payment->rental_deposit = 300;
         $payment->registration = $motorcycle->registration;
         $payment->payment_due_date = $todayDate;
         $payment->received = 00.00;
