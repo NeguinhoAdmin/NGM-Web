@@ -45,11 +45,12 @@
 
                             <div class="product-thumb clearfix mb-3">
                                 <a href="/rentals-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image">
+                                    <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 235px;">
                                 </a>
                             </div>
                             <div class="product-info clearfix">
-                                <span class="product-title">{{ $motorcycle->make }} {{$motorcycle->model}}</span>
+                                <div><span class="product-title">{{ $motorcycle->make }}</span></div>
+                                <span class="product-title">{{ $motorcycle->model }}</span>
                                 <div class="price">
                                     <ins>
                                         <span class="amount">£{{ $motorcycle->rental_price }} per Week</span>

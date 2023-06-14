@@ -28,7 +28,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">SKU</th>
+                                <th scope="col">Product ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Price</th>
                                 <th class="text-center" scope="col">Quantity</th>

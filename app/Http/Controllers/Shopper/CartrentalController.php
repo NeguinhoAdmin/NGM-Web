@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Oxford;
 
-class CartController extends Controller
+class CartrentalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -59,6 +59,21 @@ class CartController extends Controller
         $totalQty = 1;
 
         Cart::instance('default')->add($product_id, $product[0]->description, $quantity, $product[0]->price, 0, ['totalQty' => $totalQty, 'product_code' => $product[0]->sku, 'image' => $product[0]->image_url, 'details' => $product[0]->extended_description])->associate('App\Models\Oxford');
+
+        /* Redirect to prevend re-adding on refreshing */
+        return redirect()->route('product.cart')->withSuccess('Product has been successfully added to the Cart.');
+    }
+
+    public function storeRental(Request $request, $motorcycle_id)
+    {
+        // Find the motorcycle details
+        $motorcycle = Motorcycle::where('id', $motorcycle_id)->first();
+
+        $quantity = 1;
+        $reservePrice = 20;
+
+        // Add to the cart instance
+        Cart::instance('default')->add($motorcycle->id, $motorcycle->model, $quantity, $reservePrice, 0);
 
         /* Redirect to prevend re-adding on refreshing */
         return redirect()->route('product.cart')->withSuccess('Product has been successfully added to the Cart.');

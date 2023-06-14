@@ -28,7 +28,7 @@
     @endif
     <!-- This area is used to dispay errors -->
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row align-items-start">
             <div class="col">
                 <h4>Basic Details</h4>
@@ -91,47 +91,56 @@
                     </div>
             </div>
             <div class="col">
-                <h4 class="text-capitalize">Status: {{ $motorcycle->availability }}</h4>
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
-                        <label class="form-check-label" for="availability">
-                            For Sale
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="availability" id="availability" value="sold" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
-                        <label class="form-check-label" for="is_for_rent">
-                            Sold
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="availability" id="availability" value="claim in progress" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
-                        <label class="form-check-label" for="is_for_sale">
-                            Claim In Progress
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="availability" id="availability" value="cat b" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
-                        <label class="form-check-label" for="is_sold">
-                            Cat B
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="availability" id="availability" value="in for repairs" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
-                        <label class="form-check-label" for="is_sold">
-                            In For Repairs
-                        </label>
-                    </div>
+                <div class="row mb-3">
+                    <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image">
                 </div>
-                <h4 class="mt-3">Financials</h4>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Rental Price £</span>
-                    <input type="text" class="form-control" placeholder="00.00" aria-label="Price" name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">
-                </div>
+                <!-- <div class="custom-file mb-3">
+                    <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                    <label class="custom-file-label" for="chooseFile">Select Image - JPG/PNG</label>
+                </div> -->
+                <div class="row mb-3">
+                    <h4 class="text-capitalize">Status: {{ $motorcycle->availability }}</h4>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <label class="form-check-label" for="availability">
+                                For Sale
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="sold" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <label class="form-check-label" for="availability">
+                                Sold
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="claim in progress" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <label class="form-check-label" for="availability">
+                                Claim In Progress
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="cat b" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <label class="form-check-label" for="availability">
+                                Cat B
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="in for repairs" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <label class="form-check-label" for="availability">
+                                In For Repairs
+                            </label>
+                        </div>
+                    </div>
+                    <h4 class="mt-3">Financials</h4>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">£</span>
+                        <input type="text" class="form-control" placeholder="{{ $motorcycle->rental_price }}" aria-label="Price" name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">
+                    </div>
 
-                <button type="submit" class="btn btn-outline-success">Submit</button>
-                </form>
+                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

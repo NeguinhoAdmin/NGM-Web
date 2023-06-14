@@ -58,7 +58,7 @@
                         <div class="divider h0"></div>
                         <div class="product-detail">
                             <div class="inner">
-                                <form action="{{ route('store.cart', $motorcycle->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('storeRental.cart', $motorcycle->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="content-detail form-group">
                                         <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle->make}} {{ $motorcycle->model }}</h2>

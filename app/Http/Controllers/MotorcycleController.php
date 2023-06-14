@@ -110,7 +110,7 @@ class MotorcycleController extends Controller
         $motorcycle->fuel_type = $motorcycleGov->fuelType;
         $motorcycle->wheel_plan = $motorcycleGov->wheelplan;
         $motorcycle->tax_status = $motorcycleGov->taxStatus;
-        $motorcycle->tax_due_date = $motorcycleGov->taxDueDate;
+        // $motorcycle->tax_due_date = $motorcycleGov->taxDueDate;
         $motorcycle->mot_status = $motorcycleGov->motStatus;
         // $motorcycle->mot_expiry_date = $motorcycleGov->motExpiryDate;
         $motorcycle->co2_emissions = $motorcycleGov->co2Emissions;
@@ -486,8 +486,8 @@ class MotorcycleController extends Controller
      */
     public function edit($id)
     {
-        $m = Motorcycle::find($id);
-        $motorcycle = json_decode($m);
+        $motorcycle = Motorcycle::find($id);
+        // $motorcycle = json_decode($m);
 
         return view('motorcycles.edit', compact('motorcycle'));
     }
@@ -537,6 +537,18 @@ class MotorcycleController extends Controller
             'rental_price' => $rentalPrice,
             'availability' => $availability,
         ]);
+
+        // $motorcycle = Motorcycle::find($id);
+
+        // if ($request->file()) {
+        //     $fileName = time() . '_' . $request->file->getClientOriginalName();
+        //     $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+        //     $motorcycle->file_name = time() . '_' . $request->file->getClientOriginalName();
+        //     $motorcycle->file_path = '/storage/' . $filePath;
+
+        //     //for update in table
+        //     $motorcycle->update();
+        // }
 
         return to_route('motorcycles.show', [$id])
             ->with('success', 'Vehicle details have been updated.');
@@ -643,9 +655,9 @@ class MotorcycleController extends Controller
         $motorcycle->fuel_type = $request->fuelType;
         $motorcycle->marked_for_export = $request->markedForExport;
         $motorcycle->colour = $request->colour;
-        $motorcycle->type_approval = $request->typeApproval;
+        // $motorcycle->type_approval = $request->typeApproval;
         $motorcycle->last_v5_issue_date = $request->dateOfLastV5CIssued;
-        $motorcycle->mot_expiry_date = $request->motExpiryDate;
+        // $motorcycle->mot_expiry_date = $request->motExpiryDate;
         $motorcycle->wheel_plan = $request->wheelplan;
         $motorcycle->month_of_first_registration = $request->monthOfFirstRegistration;
 
