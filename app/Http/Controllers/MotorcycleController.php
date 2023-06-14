@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Models\User;
 use App\Models\Rental;
-use App\Models\Payment;
+use App\Models\RentalPayment;
 use Illuminate\View\View;
 use App\Models\Motorcycle;
 use Illuminate\Http\Request;
@@ -141,7 +141,7 @@ class MotorcycleController extends Controller
 
         $motorcycle = Motorcycle::findOrFail($request->motorcycle_id);
 
-        $transaction = Payment::all()
+        $transaction = RentalPayment::all()
             ->where('motorcycle_id', $request->motorcycle_id)
             ->where('payment_type', 'deposit');
 
@@ -152,7 +152,7 @@ class MotorcycleController extends Controller
 
         $authUser = Auth::user();
 
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_due_date = $motorcycle->rental_start_date;
         $payment->payment_type = 'deposit';
         $payment->received = $request->rental_deposit;
@@ -188,7 +188,7 @@ class MotorcycleController extends Controller
         $nextPayDate->addDays(7);
 
         // Create new rental bill using $motorcycle_id
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_type = 'rental';
         $payment->payment_due_date = $nextPayDate;
         $payment->rental_price = $rentalPrice;
@@ -223,7 +223,7 @@ class MotorcycleController extends Controller
         $rentalPrice = $motorcycle->rental_price;
         $registration = $motorcycle->registration;
 
-        $transaction = Payment::all()
+        $transaction = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle->id)
             ->where('payment_type', 'rental')
             ->where('outstanding', '>', 0)
@@ -233,7 +233,7 @@ class MotorcycleController extends Controller
 
         $authUser = Auth::user();
 
-        $payment = Payment::find($request->payment_id);
+        $payment = RentalPayment::find($request->payment_id);
         $payment->received = $request->received;
         $payment->payment_date = $paymentDate;
         $payment->outstanding = $transaction->outstanding - $payment->received;
@@ -275,7 +275,7 @@ class MotorcycleController extends Controller
         // $nextPayDate->addDays(7);
 
         // Create first rental payment
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_type = 'rental';
         $payment->rental_price = $rentalPrice;
         $payment->registration = $motorcycle->registration;
@@ -291,7 +291,7 @@ class MotorcycleController extends Controller
         $payment->save();
 
         // Create deposit
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_type = 'deposit';
         $payment->rental_deposit = 300;
         $payment->registration = $motorcycle->registration;
@@ -456,19 +456,19 @@ class MotorcycleController extends Controller
             ->sortByDesc('id');
 
         // Motorcycle Payment History
-        $depositpayments = Payment::all()
+        $depositpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
             ->where('payment_type', '=', 'deposit')
             ->sortByDesc('id');
 
-        $newpayments = Payment::all()
+        $newpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
             ->where('payment_type', '=', 'rental')
             ->where('outstanding', '>', 1)
             ->where('received', '=', 0)
             ->sortByDesc('id');
 
-        $rentalpayments = Payment::all()
+        $rentalpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
             ->where('payment_type', '=', 'rental')
             // ->where('payment_due_date', '<', $dayAfter)
@@ -673,7 +673,7 @@ class MotorcycleController extends Controller
     // create payment transactions
     public function clientPartPayment($motorcycle_id)
     {
-        $rental = Payment::all()
+        $rental = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id);
         dd($rental);
     }

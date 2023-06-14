@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Payment;
+use App\Models\RentalPayment;
 use App\Models\PaymentTransaction;
 use Illuminate\Support\Carbon;
 use App\Models\User;
@@ -12,7 +12,7 @@ use App\Models\Rental;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-class PaymentsController extends Controller
+class RentalPaymentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +21,7 @@ class PaymentsController extends Controller
      */
     public function index()
     {
-        $p = Payment::all()->where('payment_date', null);
+        $p = RentalPayment::all()->where('payment_date', null);
         // dd($p);
         $payments = json_decode($p);
         $count = $p->count();
@@ -64,7 +64,7 @@ class PaymentsController extends Controller
         $motorcycle_id = $request->session()->get('motorcycle_id', 'default');
 
         // Store the deposit amount along with details
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_type = $request->payment_type;
         $payment->amount = $request->amount;
         $payment->payment_due_date = Carbon::now();
@@ -75,7 +75,7 @@ class PaymentsController extends Controller
         $payment->save();
 
         // Create first rental payment
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_type = 'rental';
         $payment->amount = $request->amount;
         $payment->payment_due_date = Carbon::now();
@@ -93,7 +93,7 @@ class PaymentsController extends Controller
         $user_id = $request->session()->get('user_id');
         $rental = Rental::findOrFail($rental_id);
 
-        $payments = Payment::all()
+        $payments = RentalPayment::all()
             ->where('user_id', $user_id)
             ->sortByDesc('id');
 
@@ -120,7 +120,7 @@ class PaymentsController extends Controller
             'description' => 'max:255',
         ]);
 
-        $payment = new Payment();
+        $payment = new RentalPayment();
         $payment->payment_type = $rental->payment_type;
         $payment->outstanding = $rental->outstanding - $request->received;
         $payment->payment_due_date = $rental->payment_due_date;
@@ -164,7 +164,7 @@ class PaymentsController extends Controller
      */
     public function edit($payment_id)
     {
-        $payment = Payment::findOrFail($payment_id);
+        $payment = RentalPayment::findOrFail($payment_id);
 
         return view('payments.edit', compact('payment'));
     }
@@ -178,13 +178,13 @@ class PaymentsController extends Controller
      */
     public function update(Request $request, $payment_id)
     {
-        $payment = Payment::findOrFail($payment_id);
+        $payment = RentalPayment::findOrFail($payment_id);
         $lastPaymentDate = $payment->payment_due_date;
         Carbon::parse($lastPaymentDate);
         $nextDueDate = Carbon::parse($payment->payment_due_date)->addDays(7);
         // dd($nextDueDate);
 
-        Payment::findOrFail($payment_id)->update([
+        RentalPayment::findOrFail($payment_id)->update([
 
             'received' => $request->amount,
             'outstanding' => $payment->amount - $request->amount,
@@ -205,7 +205,7 @@ class PaymentsController extends Controller
 
     public function voidPayment(Request $request, $id)
     {
-        $payment = Payment::all();
+        $payment = RentalPayment::all();
         // dd($payment);
         $rental_id = $request->session()->get('rental_id');
         // dd($rental_id);
@@ -213,7 +213,7 @@ class PaymentsController extends Controller
 
         $rental = Rental::findOrFail($rental_id);
 
-        Payment::findOrFail($id)->update([
+        RentalPayment::findOrFail($id)->update([
             'deleted_at' => Carbon::now(),
         ]);
 
@@ -240,7 +240,7 @@ class PaymentsController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $payment = Payment::all();
+        $payment = RentalPayment::all();
         dd($payment);
         $rental_id = $request->session()->get('rental_id');
         // dd($rental_id);
@@ -248,7 +248,7 @@ class PaymentsController extends Controller
 
         $rental = Rental::findOrFail($rental_id);
 
-        Payment::findOrFail($id)->update([
+        RentalPayment::findOrFail($id)->update([
             'deleted_at' => Carbon::now(),
         ]);
 

@@ -43,6 +43,9 @@
                                 <td>£{{ $item->price }}</td>
                                 <td class="text-center">{{ $item->qty }}</td>
                                 <td>£{{ $item->total }}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-outline-danger">Remove</button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

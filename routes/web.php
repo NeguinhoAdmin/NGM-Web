@@ -16,7 +16,7 @@ use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\MotorcycleController;
 use App\Http\Controllers\PaymentsController;
 use App\Models\Motorcycle;
-use App\Models\Payment;
+use App\Models\RentalPayment;
 use Laravel\Cashier\Http\Controllers\PaymentController;
 
 /*
@@ -67,7 +67,7 @@ Route::controller(OxfordController::class)->group(function () {
 Route::get('/cart', [CartController::class, 'index'])->name('product.cart');
 Route::get('/add-product', [CartController::class, 'add'])->name('addproduct.cart');
 Route::post('/cart/{id}', [CartController::class, 'store'])->name('store.cart');
-Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->name('storeRental.cart');
+Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->name('storeRental.cartrental');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('product.checkout');
 
 // Route::controller(CartController::class)->group(function () {
