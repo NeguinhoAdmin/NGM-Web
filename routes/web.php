@@ -14,8 +14,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\MotorcycleController;
-use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\RentalPaymentsController;
 use App\Models\Motorcycle;
+use App\Models\Rental;
 use App\Models\RentalPayment;
 use Laravel\Cashier\Http\Controllers\PaymentController;
 
@@ -128,10 +129,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // Payment Resources
     Route::resource('payments', 'PaymentsController');
-    Route::get('/create-payment/{id}', [PaymentsController::class, 'userPayment'])->name('userPayment');
-    Route::get('/create-rental/{id}', [PaymentsController::class, 'createRental'])->name('createRental');
-    Route::post('/store-rental', [PaymentsController::class, 'storeRental'])->name('storeRental');
-    Route::get('/payment/{id}', [PaymentsController::class, 'voidPayment'])->name('voidPayment');
+    Route::get('/create-payment/{id}', [RentalPaymentsController::class, 'userPayment'])->name('userPayment');
+    Route::get('/create-rental/{id}', [RentalPaymentsController::class, 'createRental'])->name('createRental');
+    Route::post('/store-rental', [RentalPaymentsController::class, 'storeRental'])->name('storeRental');
+    Route::get('/payment/{id}', [RentalPaymentsController::class, 'voidPayment'])->name('voidPayment');
 
     // Notes
     Route::resource('/notes', 'NotesController');

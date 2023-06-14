@@ -56,7 +56,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // User Active Now 
+    // User Active Now
     public function UserOnline()
     {
         return Cache::has('user-is-online' . $this->id);

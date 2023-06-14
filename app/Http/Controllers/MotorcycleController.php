@@ -501,10 +501,9 @@ class MotorcycleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
         $availability = $request->availability;
-        $rentalPrice = $request->rentalprice;
-
+        $rentalPrice = $request->rental_price;
+        // dd($request->rental_price);
         $response = Http::withHeaders([
             'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
             'Content-Type' => 'application/json',
@@ -537,18 +536,6 @@ class MotorcycleController extends Controller
             'rental_price' => $rentalPrice,
             'availability' => $availability,
         ]);
-
-        // $motorcycle = Motorcycle::find($id);
-
-        // if ($request->file()) {
-        //     $fileName = time() . '_' . $request->file->getClientOriginalName();
-        //     $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-        //     $motorcycle->file_name = time() . '_' . $request->file->getClientOriginalName();
-        //     $motorcycle->file_path = '/storage/' . $filePath;
-
-        //     //for update in table
-        //     $motorcycle->update();
-        // }
 
         return to_route('motorcycles.show', [$id])
             ->with('success', 'Vehicle details have been updated.');

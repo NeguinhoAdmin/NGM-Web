@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
-
+use Laravel\Cashier;
 
 class UserController extends Controller
 {
@@ -167,7 +167,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // User::findOrFail($id)->update([
+        //     'first_name' => $request->first_name,
+        //     'last_name' => $request->last_name,
+        //     'phone_number' => $request->phone_number,
+        //     'email' => $request->email,
+        //     'nationality' => $request->nationality,
+        //     'driving_licence' => $request->driving_licence,
+        //     'street_address' => $request->street_addtress,
+        //     'street_address' => $request->street_addtress_plus,
+        //     'city' => $request->city,
+        //     'post_code' => $request->post_code,
+        //     'updated_at' => now(),
+        // ]);
     }
 
     /**

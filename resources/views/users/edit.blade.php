@@ -34,8 +34,9 @@
 
 </div>
 <div class="container">
-    <form action="/users" method="post" enctype="multipart/form-data">
+    <form action="/users/{{ $user->id }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div>
             <h4>Details</h4>
         </div>

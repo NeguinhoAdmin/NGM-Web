@@ -6,7 +6,7 @@
     <h1>{{ $motorcycle->registration }}</h1>
     <div class="conatiner-fluid">
         <div class="btn-group pull-right" role="group" aria-label="Basic example">
-            <a class="btn btn-outline-success" href="{{ URL()->previous() }}">Back</a>
+            <a class="btn btn-outline-primary" href="{{ URL()->previous() }}">Back</a>
         </div>
     </div>
     <br>
@@ -31,8 +31,8 @@
     <div class="container-fluid">
         <div class="row align-items-start">
             <div class="col">
-                <h4>Basic Details</h4>
-                <form action={{ route('motorcycles.update',$motorcycle->id) }} method="post" enctype="multipart/form-data">
+                <h4>Basic Detailss</h4>
+                <form action="/motorcycles/{{ $motorcycle->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input hidden class="form-control" type="text" placeholder="Registration" name="registration" id="registration" value="{{ $motorcycle->registration }}">
@@ -135,10 +135,10 @@
                     <h4 class="mt-3">Financials</h4>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">£</span>
-                        <input type="text" class="form-control" placeholder="{{ $motorcycle->rental_price }}" aria-label="Price" name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">
+                        <input type="text" class="form-control" placeholder="{{ $motorcycle->rental_price }}" aria-label="Price" name="rental_price" id="rental_price" value="{{ old('rental_price', $motorcycle->rental_price) }}">
                     </div>
 
-                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                    <button type="submit" class="btn btn-outline-primary">Submit</button>
                     </form>
                 </div>
             </div>
