@@ -13,7 +13,7 @@
         </div>
     </div>
     <br>
-    <h1>Update Payment</h1>
+    <h1>Update User</h1>
 
     <!-- This area is used to dispay errors -->
     @if ($message = Session::get('success'))

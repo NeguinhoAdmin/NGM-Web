@@ -167,19 +167,22 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // User::findOrFail($id)->update([
-        //     'first_name' => $request->first_name,
-        //     'last_name' => $request->last_name,
-        //     'phone_number' => $request->phone_number,
-        //     'email' => $request->email,
-        //     'nationality' => $request->nationality,
-        //     'driving_licence' => $request->driving_licence,
-        //     'street_address' => $request->street_addtress,
-        //     'street_address' => $request->street_addtress_plus,
-        //     'city' => $request->city,
-        //     'post_code' => $request->post_code,
-        //     'updated_at' => now(),
-        // ]);
+        $user = User::find($id);
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->phone_number = $request->phone_number;
+        $user->email = $request->email;
+        $user->nationality = $request->nationality;
+        $user->driving_licence = $request->driving_licence;
+        $user->street_address = $request->street_address;
+        $user->street_address_plus = $request->street_address_plus;
+        $user->city = $request->city;
+        $user->post_code = $request->post_code;
+        $user->updated_at = $request->updated_at;
+        $user->save();
+
+        return to_route('users.show', [$id])
+            ->with('success', 'Client details have been updated.');
     }
 
     /**
