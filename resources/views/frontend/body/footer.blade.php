@@ -4,7 +4,7 @@
             <div class="col-sm-6 col-md-2">
                 <div class="widget widget-link">
                     <ul>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
                         <li><a href="#">My Account</a></li>
                         <li><a href="/cart">My Cart</a></li>
                         <li><a href="#">My Wishlist Items</a></li>
