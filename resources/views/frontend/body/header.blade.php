@@ -37,9 +37,9 @@
     <!-- Close Top Nav -->
 
     <div class="container-fluid container-width-93 clearfix" id="site-header-inner">
-        <div id="logo" class="logo float-left">
-            <a href="/" title="logo">
-                <img src="{{url('img/neguinhomotors3.png')}}" alt="image" width="25%" data-retina="{{url('img/neguinhomotors3.png')}}" data-width="25%">
+        <div id="logo" class="logo float-left image-responsive col-sm-3 col-md-4">
+            <a href="/" title="logo" class="logo">
+                <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="80%" data-retina="{{url('img/neguinhomotors3.png')}}" data-width="80%">
             </a>
         </div><!-- /.logo -->
         <div class="mobile-button"><span></span></div>
