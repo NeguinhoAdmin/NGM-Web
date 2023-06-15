@@ -35,7 +35,7 @@
                             </div><!-- /.grid-item -->
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h3 class="title">Motorcycle Repairs</h3>
+                                <h3 class="title mb-3">Motorcycle Repairs</h3>
                                 <p class="mb-3">
                                     Neguinho Motors specializes in repair, maintenance, MOT and restoration projects for all models of Japanese and European motorcycles, scooters and mopeds.
                                 </p>
@@ -55,7 +55,7 @@
                         <div class="grid-row image-right padding-bottom-48 clearfix">
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h3 class="title">Book Your Motorcycle Service</h3>
+                                <h3 class="title mb-3">Book Your Motorcycle Service</h3>
                                 <p class="mb-3">
                                     Did you know that regular service and maintenance can help keep your motorcycle's running costs low and resale value high?
                                 </p>
@@ -85,7 +85,7 @@
                             </div><!-- /.grid-item -->
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h3 class="title">Book Your MOT</h3>
+                                <h3 class="title mb-3">Book Your MOT</h3>
                                 <p class="mb-3">
                                     Neguinho Motors currently have a specialist motorcycle MOT workshop in south London. So you're sure to find one near you that offers motorcycle and motorbike MOT and service packages at their outlets.
                                 </p>
@@ -102,7 +102,7 @@
                         <div class="grid-row image-right clearfix">
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h3 class="title">Accident Management Services</h3>
+                                <h3 class="title mb-3">Accident Management Services</h3>
                                 <p class="mb-3">
                                     You may be entitled to a motorcycle accident claim if the actionsof another motorist or pedestrian in the automobile accident resulted in injury. In such cases, you may be entitled to compensation for the suffering you have suffered, as well as for the financial loss you have suffered.
                                 </p>

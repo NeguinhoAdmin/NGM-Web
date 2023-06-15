@@ -35,7 +35,7 @@
                             </div><!-- /.grid-item -->
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h2>Incorporated October 2018</h2>
+                                <h2 class="title mb-3">Incorporated October 2018</h2>
                                 <div class="entry-post mb-3">
                                     <p>
                                         Neguinho Motors are proud to be Honda and Yamaha motorcycle specialists. We specialise in scooters and motorcycle sales, parts, servicing, repairs, as-well-as all the motorcycle accessories available in our online and off-line stores.
@@ -51,7 +51,7 @@
                         <div class="grid-row image-right padding-bottom-48 clearfix">
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h2>Motorcycle Servicing, Repairs & Genuine Parts in London</h2>
+                                <h2 class="title mb-3">Motorcycle Servicing, Repairs & Genuine Parts in London</h2>
                                 <div class="entry-post mb-3">
                                     <p class="mb-3">
                                         We are proud to offer a comprehensive motorcycle service that covers both electrical and mechanical aspects of your vehicle. Our services include MOTs, repairs, servicing, and parts for motorbikes, motorcycles, and scooters. Our aim is to ensure that your vehicle is always roadworthy and operating at its best.
@@ -83,7 +83,7 @@
                             </div><!-- /.grid-item -->
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h2>Motorcycle Hire & Rentals</h2>
+                                <h2 class="title mb-3">Motorcycle Hire & Rentals</h2>
                                 <div class="entry-post mb-3">
                                     <p>
                                         Neguinho Motors offers Yamaha and Honda motorcycle hire and rental.
@@ -100,7 +100,7 @@
                         <div class="grid-row image-right clearfix">
                             <div class="grid-item">
                                 <!-- <div class="text-wrap"> -->
-                                <h2>Motorcycle Safety, Clothing & Accessories Shop</h2>
+                                <h2 class="title mb-3">Motorcycle Safety, Clothing & Accessories Shop</h2>
                                 <div class="entry-post mb-3">
                                     <p>
                                         Buying a motorcycle helmet online from us couldn't be easier or safer. All of our products, whether flip-up helmets or children's helmets, go through strict quality controls before they leave our warehouse. After the inspection, your motorcycle helmet is carefully packed and ready for shipment. All our helmets are delivered via DPD or UPS and once on the way you can track the shipment at every step.
