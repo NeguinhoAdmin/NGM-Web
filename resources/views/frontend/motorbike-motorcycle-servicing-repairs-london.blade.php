@@ -45,8 +45,14 @@
                                 <p class="mb-3">
                                     With extensive experience and passion for motorcycles, you can rest assured that your pride and joy at Neguinho Motors is in our hands.
                                 </p>
-                                <div class="elm-btn">
-                                    <a href="#" class="themesflat-button outline ol-accent has-padding-41 margin-top-24">BOOK APPOINTMENT</a>
+                                <div>
+                                    <h4 class="title mb-3" style="color: #C31924;">CALL US ON</h4>
+                                </div>
+                                <div>
+                                    <i class="fa fa-phone mx-2"></i>
+                                    <a class="phone" href="tel:0208314498">0208 314 1498 for Catford Shop or</a>
+                                    <i class="fa fa-phone mx-2"></i>
+                                    <a class="phone" href="tel:02034095478">0203 409 5478 for Tooting Shop</a>
                                 </div>
                                 <!-- </div> -->
                             </div>

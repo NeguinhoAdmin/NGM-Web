@@ -18,11 +18,10 @@
             <div class="col-sm-6 col-md-2">
                 <div class="widget widget-link link-login">
                     <ul>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="/terms-of-use">Terms of Use</a></li>
+                        <li><a href="/cookie-and-privacy-policy">Cookie & Privacy Policy</a></li>
+                        <li><a href="/refund-policy">Refund Policy</a></li>
+                        <li><a href="/shipping-policy">Shipping Policy</a></li>
                     </ul>
                 </div><!-- /.widget -->
             </div><!-- /.col-md-3 -->

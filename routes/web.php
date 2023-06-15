@@ -46,6 +46,10 @@ Route::controller(WelcomeController::class)->group(function () {
     Route::get('/spare-parts', 'SpareParts')->name('spare-parts');
     Route::get('/about', 'AboutMethod')->name('about.page');
     Route::get('/contact', 'ContactMethod')->name('contact.page');
+
+    // Legals
+    Route::get('/cookie-and-privacy-policy', 'CookiePrivacyPolicy')->name('CookiePrivacyPolicy');
+    Route::get('/terms-of-use', 'TermsOfUse')->name('TermsOfUse');
 });
 
 // Motorcycle Sales & Rental Routes

@@ -75,4 +75,15 @@ class WelcomeController extends Controller
     {
         return view('contact');
     }
+
+    // LEGALS
+    public function CookiePrivacyPolicy()
+    {
+        return view('frontend.legals.cookies-and-privacy-policy');
+    }
+
+    public function TermsOfUse()
+    {
+        return view('frontend.legals.terms-of-service');
+    }
 }
