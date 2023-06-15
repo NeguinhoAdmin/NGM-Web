@@ -88,15 +88,6 @@
                         <a href="/services">SERVICES</a>
                         <ul class="submenu">
                             <li>
-                                <a href="/service-repairs">MOTORCYCLE REPAIRS</a>
-                            </li>
-                            <li>
-                                <a href="/service-motorcycle">BOOK A SERVICE</a>
-                            </li>
-                            <li>
-                                <a href="/service-mot">BOOK YOUR MOT</a>
-                            </li>
-                            <li>
                                 <a href="/accident-management-services">ACCIDENT MANAGEMENT</a>
                             </li>
                         </ul>

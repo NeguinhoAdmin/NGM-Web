@@ -25,36 +25,49 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="title-section">
+                <div>
                     <div class="post-wrap detail">
                         <article class="post clearfix">
                             <div class="title-post">
                                 <h2>Make a claim today</h2>
                             </div><!-- /.title-post -->
-
                             <p>We are driven to keeping you moving.</p>
-                            <div class="content-post">
-                                <div class="col">
-                                    <div class="featured-post">
-                                        <img src="{{ url('/img/home/accident-assistance.jpg') }}" alt="image" loading="lazy">
-                                    </div>
+                        </article>
+                        <div class="content-post">
+                            <div class="col">
+                                <div class="featured-post clearfix mb-3">
+                                    <img src="{{ url('/img/home/accident-assistance.jpg') }}" alt="image" loading="lazy">
+                                </div>
 
-                                    <div class="entry-post">
-                                        <p>When you’re involved in a motorcycle accident, the last thing you want is any more hassle.</p>
-                                        <p>Fortunately, our expert advisors are here to help.</p>
-                                        <p>Please complete our simple form and our helpful team will be in touch.</p>
-                                        <p>If you’d prefer to pick up the phone, please call our claims hotline at any time on <a href="tel:02083141498 " class="font-bold">0208 314 1498 </a>.</p>
-                                    </div>
-                                    <div>
-                                        <strong>We are available 24/7 365 days a year</strong>
-                                    </div>
+                                <div class="entry-post">
+                                    <p class="mb-3">
+                                        When you're in a motorcycle accident, the last thing you want is more trouble.
+                                    </p>
+                                    <p class="mb-3">
+                                        Fortunately, our advisors are here for you.
+                                    </p>
+                                    <p class="mb-3">
+                                        Fill out our simple form and our helpful team will be in touch.
+                                    </p>
+                                    <p class="mb-3">
+                                        If you prefer to answer the phone, you can always call our hotline on <a href="tel:02083141498 " class="font-bold">0208 314 1498 </a>.
+                                    </p>
+                                </div>
+                                <div>
+                                    <strong>We are available 24/7 365 days a year</strong>
                                 </div>
                             </div>
-                        </article>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="col">
+                <article class="post clearfix">
+                    <div class="title-post">
+                        <h2>Claim Form</h2>
+                    </div><!-- /.title-post -->
+                </article>
                 <form method="post" enctype="multipart/form-data" target="" id="" action="">
                     <div class="form-text-wrap clearfix">
                         <div class="your-name clearfix">

@@ -28,7 +28,7 @@ class WelcomeController extends Controller
 
     public function GetServices()
     {
-        return view('frontend.services');
+        return view('frontend.motorbike-motorcycle-servicing-repairs-london');
     }
 
     public function Repairs()
