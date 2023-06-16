@@ -72,7 +72,7 @@
                                 <a href="/coming-soon">FINANCE</a>
                             </li>
                             <li>
-                                <a href="#">MOTORCYCLE INSURANCE</a>
+                                <a href="/coming-soon">MOTORCYCLE INSURANCE</a>
                             </li>
                             <li>
                                 <a href="/accident-management-services">ACCIDENT MANAGEMENT</a>

@@ -8,12 +8,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-title-heading">
-                    <h1 class="title">Motorcycle Finance</h1>
+                    <h1 class="title">Motorcycle Insurnance & Finance</h1>
                 </div><!-- /.page-title-heading -->
                 <div class="breadcrumbs">
                     <ul>
                         <li><a href="/">Honda & Yamaha Specialists</a></li>
-                        <li><a href="/coming-soon">Motorcycle Finance</a></li>
+                        <li><a href="/coming-soon">Motorcycle Insurance & Finance</a></li>
                     </ul>
                 </div><!-- /.breadcrumbs -->
             </div><!-- /.col-md-12 -->
@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="wrap-coming-soon text-center">
                     <div class="header-coming-soon">
-                        <h2 class="sup-title">Motorcycle Financing</h2>
+                        <h2 class="sup-title">Motorcycle Insurance & Finance</h2>
                         <div class="title">Coming Soon</div>
                     </div>
                     <div class="wrap-countdown">
