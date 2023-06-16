@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Filerental;
+use Illuminate\Support\Composer;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\Relations\Bloodline;
 use system;
@@ -57,22 +58,12 @@ class SalesController extends Controller
 
     public function UsedForSale()
     {
-        $motorcycles = Category::findOrFail(80)->products()->paginate(9);
-        $motorcycle_id = $motorcycles[0]->id;
-        $brand_id = $motorcycles[0]->brand_id;
+        $motorcycles = Motorcycle::all()
+            ->where('availability', '=', 'for sale');
 
-        $images = Media::all()
-            ->where('model_type', 'product')
-            ->where('model_id', $motorcycle_id);
+        $count = $motorcycles->count();
 
-        $brand = Brand::all()
-            ->where('id', $brand_id);
-
-        return view('frontend.motorcycles-used', [
-            'motorcycles' => $motorcycles,
-            'image' => $images,
-            'brand' => $brand
-        ]);
+        return view('frontend.motorcycles-used', compact('motorcycles'));
     }
 
     public function UsedBikeDetails($id)
@@ -107,21 +98,7 @@ class SalesController extends Controller
     public function RentalDetails($id)
     {
         $motorcycle = Motorcycle::findOrFail($id);
-        // dd($motorcycle);
+
         return view('frontend.motorcycle-rental', compact('motorcycle'));
-        // $image = Media::all()
-        //     ->where('model_type', 'product')
-        //     ->where('model_id', $id);
-        // dd($image);
-
-        // $brand_image = Media::all()
-        //     ->where('model_type', 'brand')
-        //     ->where('model_id', $motorcycle['brand']->id);
-
-        // return view('frontend.motorcycle-rental', [
-        //     'motorcycle' => $motorcycle,
-        //     'image' => $image,
-        //     'brand_image' => $brand_image
-        // ]);
     }
 }

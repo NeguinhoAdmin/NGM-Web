@@ -37,12 +37,10 @@
                     @method('PUT')
                     <input hidden class="form-control" type="text" placeholder="Registration" name="registration" id="registration" value="{{ $motorcycle->registration }}">
                     <div class="mb-3">
-                        {{ $motorcycle->make }}
-                        {{-- <input class="form-control" type="text" placeholder="Make" name="make"
-                                            id="make" value="{{ $motorcycle->make }}"> --}}
+                        <input class="form-control" type="text" placeholder="Make" name="make" id="make" value="{{ $motorcycle->make }}">
                     </div>
                     <div class="mb-3">
-                        <input class="form-control" type="text" placeholder="Model" name="model" id="model" value="{{ $motorcycle->model }}">
+                        <input class="form-control" type="text" placeholder="Model" name="model" id="model" value="{{ old('model', $motorcycle->model) }}">
                     </div>
                     <div class="mb-3">
                         <input class="form-control" type="text" placeholder="Colour" name="colour" id="colour" value="{{ $motorcycle->colour }}">
@@ -102,31 +100,31 @@
                     <h4 class="text-capitalize">Status: {{ $motorcycle->availability }}</h4>
                     <div class="form-group">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability='for sale')? "checked" : "" }}>
                             <label class="form-check-label" for="availability">
                                 For Sale
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="sold" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="sold" {{ ($motorcycle->availability='sold')? "checked" : "" }}>
                             <label class="form-check-label" for="availability">
                                 Sold
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="claim in progress" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="claim in progress" {{ ($motorcycle->availability='claim in progress')? "checked" : "" }}>
                             <label class="form-check-label" for="availability">
                                 Claim In Progress
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="cat b" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="cat b" {{ ($motorcycle->availability='cat b')? "checked" : "" }}>
                             <label class="form-check-label" for="availability">
                                 Cat B
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="in for repairs" {{ ($motorcycle->availability=="1")? "checked" : "" }}>
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="in for repairs" {{ ($motorcycle->availability='in for repairs')? "checked" : "" }}>
                             <label class="form-check-label" for="availability">
                                 In For Repairs
                             </label>
@@ -134,8 +132,12 @@
                     </div>
                     <h4 class="mt-3">Financials</h4>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">£</span>
-                        <input type="text" class="form-control" placeholder="{{ $motorcycle->rental_price }}" aria-label="Price" name="rental_price" id="rental_price" value="{{ old('rental_price', $motorcycle->rental_price) }}">
+                        <span class="input-group-text" id="rental_plrice1">Rental Price £</span>
+                        <input type="text" class="form-control" placeholder="{{ $motorcycle->rental_price }}" aria-label="Rental Price" name="rental_price" id="rental_price" value="{{ old('rental_price', $motorcycle->rental_price) }}">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Sale Price £</span>
+                        <input type="text" class="form-control" placeholder="{{ $motorcycle->sale_used_price }}" aria-label="Sale Price" name="sale_used_price" id="sale_used_price" value="{{ old('sale_used_price', $motorcycle->sale_used_price) }}">
                     </div>
 
                     <button type="submit" class="btn btn-outline-primary">Submit</button>

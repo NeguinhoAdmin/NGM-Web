@@ -86,4 +86,14 @@ class WelcomeController extends Controller
     {
         return view('frontend.legals.terms-of-service');
     }
+
+    public function ShippingPolicy()
+    {
+        return view('frontend.legals.shipping-policy');
+    }
+
+    public function RefundPolicy()
+    {
+        return view('frontend.legals.refund-policy');
+    }
 }

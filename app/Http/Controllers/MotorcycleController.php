@@ -501,9 +501,12 @@ class MotorcycleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
+        $model = $request->model;
         $availability = $request->availability;
         $rentalPrice = $request->rental_price;
-        // dd($request->rental_price);
+        $salePrice = $request->sale_used_price;
+        // dd($request->sale_used_price);
         $response = Http::withHeaders([
             'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
             'Content-Type' => 'application/json',
@@ -532,8 +535,11 @@ class MotorcycleController extends Controller
             'month_of_first_registration' => $request->monthOfFirstRegistration,
 
             // Status information
+            'model' => $model,
             'updated_at' => Carbon::now(),
             'rental_price' => $rentalPrice,
+            'sale_used_price' => $salePrice,
+            // dd($request->sale_used_price),
             'availability' => $availability,
         ]);
 

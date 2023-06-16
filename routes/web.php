@@ -50,6 +50,8 @@ Route::controller(WelcomeController::class)->group(function () {
     // Legals
     Route::get('/cookie-and-privacy-policy', 'CookiePrivacyPolicy')->name('CookiePrivacyPolicy');
     Route::get('/terms-of-use', 'TermsOfUse')->name('TermsOfUse');
+    Route::get('/shipping-policy', 'ShippingPolicy')->name('ShippingPolicy');
+    Route::get('/refund-policy', 'RefundPolicy')->name('RefundPolicy');
 });
 
 // Motorcycle Sales & Rental Routes
