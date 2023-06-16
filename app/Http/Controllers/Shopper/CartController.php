@@ -84,6 +84,11 @@ class CartController extends Controller
         return redirect()->route('product.cart')->withSuccess('Product has been successfully added to the Cart.');
     }
 
+    public function storeRental()
+    {
+        echo 'Store rental to cart';
+    }
+
     public function checkout()
     {
         Cart::count();
