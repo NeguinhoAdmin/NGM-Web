@@ -68,21 +68,26 @@ class SalesController extends Controller
 
     public function UsedBikeDetails($id)
     {
-        $motorcycle = Product::findOrFail($id);
+        $motorcycle = Motorcycle::findOrFail($id);
+        // dd($motorcycle);
 
-        $image = Media::all()
-            ->where('model_type', 'product')
-            ->where('model_id', $id);
+        return view('frontend.motorcycle-used', compact('motorcycle'));
 
-        $brand_image = Media::all()
-            ->where('model_type', 'brand')
-            ->where('model_id', $motorcycle['brand']->id);
+        // $motorcycle = Product::findOrFail($id);
 
-        return view('frontend.motorcycle-used', [
-            'motorcycle' => $motorcycle,
-            'image' => $image,
-            'brand_image' => $brand_image
-        ]);
+        // $image = Media::all()
+        //     ->where('model_type', 'product')
+        //     ->where('model_id', $id);
+
+        // $brand_image = Media::all()
+        //     ->where('model_type', 'brand')
+        //     ->where('model_id', $motorcycle['brand']->id);
+
+        // return view('frontend.motorcycle-used', [
+        //     'motorcycle' => $motorcycle,
+        //     'image' => $image,
+        //     'brand_image' => $brand_image
+        // ]);
     }
 
     public function RentBike()

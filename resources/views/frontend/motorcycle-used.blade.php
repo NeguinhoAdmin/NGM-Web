@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-title-heading">
-                            <h1 class="title">{{$motorcycle['brand']->name}} {{ $motorcycle->name }}</h1>
+                            <h1 class="title">{{$motorcycle->make}} {{ $motorcycle->model }}</h1>
                         </div><!-- /.page-title-heading -->
                         <div class="breadcrumbs">
                             <ul>
                                 <li><a href="/">Honda & Yamaha Specialists</a></li>
                                 <li><a href="/motorcycle-sales">Motorcycle Sales</a></li>
-                                <li><a href="/new-motorcycle/{{ $motorcycle->slug }}">{{$motorcycle['brand']->name}} {{ $motorcycle->name }}</a></li>
+                                <li><a href="/new-motorcycle/{{ $motorcycle->slug }}">{{$motorcycle->make}} {{ $motorcycle->model }}</a></li>
                             </ul>
                         </div><!-- /.breadcrumbs -->
                     </div><!-- /.col-md-12 -->
@@ -47,7 +47,7 @@
                             <div class="inner padding-top-4">
                                 <ul class="motorcycle-list-fix-image">
                                     <li>
-                                        <img src="/{{ $image[7]->id }}/{{ $image[7]->file_name }}" alt="Image">
+                                        <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image">
                                     </li>
                                 </ul>
                             </div>
@@ -61,7 +61,7 @@
                                 <form action="{{ route('store.cart', $motorcycle->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="content-detail form-group">
-                                        <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle['brand']->name}} {{ $motorcycle->name }}</h2>
+                                        <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle->make}} {{ $motorcycle->model }}</h2>
                                         <h3 class="product-title" value="" name="name"></h3>
                                         <div class="flat-star style-1">
                                             <i class="fa fa-star"></i>
@@ -80,7 +80,7 @@
                                             <li><span>Fuel Type: </span></li>
                                         </ul>
                                         <div class="price margin-top-24">
-                                            <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">£{{$motorcycle->price_amount}}</span></ins>
+                                            <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">£{{$motorcycle->sale_used_price}}</span></ins>
                                         </div>
                                         <div class="product-quantity margin-top-35">
                                             <div class="quantity">
@@ -132,13 +132,14 @@
                                             <div class="grid-row image-left clearfix">
                                                 <div class="grid-item">
                                                     <div class="thumb text-center">
-                                                        <img src="/{{ $brand_image[0]->id }}/{{ $brand_image[0]->file_name }}" alt="Image" style="width: 50%;">
+                                                        <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image">
+
                                                     </div>
                                                 </div><!-- /.grid-item -->
                                                 <div class="grid-item">
                                                     <div class="text-wrap">
                                                         <h6 class="title"></h6>
-                                                        <p> {!! $motorcycle['brand']->description !!}</p>
+                                                        <p> {!! $motorcycle->description !!}</p>
                                                     </div>
                                                 </div>
                                             </div><!-- /.grid-row -->
