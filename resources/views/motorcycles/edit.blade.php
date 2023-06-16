@@ -100,6 +100,12 @@
                     <h4 class="text-capitalize">Status: {{ $motorcycle->availability }}</h4>
                     <div class="form-group">
                         <div class="form-check">
+                            <input class="form-check-input" type="radio" name="availability" id="availability" value="used for sale" {{ ($motorcycle->availability='used for sale')? "checked" : "" }}>
+                            <label class="form-check-label" for="availability">
+                                Used For Sale
+                            </label>
+                        </div>
+                        <div class="form-check">
                             <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability='for sale')? "checked" : "" }}>
                             <label class="form-check-label" for="availability">
                                 For Sale

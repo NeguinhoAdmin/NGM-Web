@@ -79,6 +79,12 @@
                                         For Sale
                                     </label>
                                 </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="availability" id="used_for_sale" value="used for sale">
+                                    <label class="form-check-label" for="is_for_sale">
+                                        Used For Sale
+                                    </label>
+                                </div>
                                 <!-- <div class="form-check mb-3">
                                     <input class="form-check-input" type="radio" name="availability" id="is_sold" value="sold">
                                     <label class="form-check-label" for="is_sold">

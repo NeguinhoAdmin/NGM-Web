@@ -25,13 +25,13 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-title-heading">
-                            <h1 class="title">{{$product['brand']->name}} {{ $product->name }}</h1>
+                            <h1 class="title">{{$motorcycle->make}} {{ $motorcycle->model }}</h1>
                         </div><!-- /.page-title-heading -->
                         <div class="breadcrumbs">
                             <ul>
                                 <li><a href="/">Honda & Yamaha Specialists</a></li>
                                 <li><a href="/motorcycle-sales">Motorcycle Sales</a></li>
-                                <li><a href="/new-motorcycle/{{ $product->slug }}">{{$product['brand']->name}} {{ $product->name }}</a></li>
+                                <li><a href="/new-motorcycle/{{ $motorcycle->slug }}">{{$motorcycle->make}} {{ $motorcycle->model }}</a></li>
                             </ul>
                         </div><!-- /.breadcrumbs -->
                     </div><!-- /.col-md-12 -->
@@ -47,7 +47,7 @@
                             <div class="inner padding-top-4">
                                 <ul class="product-list-fix-image">
                                     <li>
-                                        <img src="/{{ $image[6]->id }}/{{ $image[6]->file_name }}" alt="Image">
+                                        <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image">
                                     </li>
                                 </ul>
                             </div>
@@ -61,7 +61,8 @@
                                 <form action="#" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="content-detail form-group">
-                                        <h2 class="product-title" value="" name="name">{{$product['brand']->name}} {{ $product->name }}</h2>
+                                        <h2 class="product-title" value="" name="name">{{$motorcycle->make}} {{ $motorcycle->model }}</h2>
+                                        <h4 class="title">{{ $a }} People are currently viewing this motorcycle</h4>
                                         <div class="flat-star style-1">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -70,27 +71,22 @@
                                             <i class="fa fa-star-half-o"></i>
                                             <span>(1)</span>
                                         </div>
-                                        <p>{!! $product->description !!}</p>
+                                        <p>{!! $motorcycle->description !!}</p>
                                         <div class="product-categories margin-top-22">
-                                            <span>SKU: </span><a href="#">{{ $product->sku }}</a>
+                                            <span>SKU: </span><a href="#"></a>
                                         </div>
                                         <div class="product-categories margin-top-22">
                                             <span>Category: </span><a href="#"></a>
                                         </div>
                                         <div class="product-tags">
-                                            <span>Tags: </span><a href="#"></a>{{ $product->slug }}<a href="#"></a> <a href="#"></a> <a href="#"></a>
+                                            <span>Tags: </span><a href="#"></a>{{ $motorcycle->slug }}<a href="#"></a> <a href="#"></a> <a href="#"></a>
                                         </div>
                                         <div class="price margin-top-24">
                                             <ins><span class="amount" value="" name="price" id="price">Tel: <a href="tel:02083141498">0208 314 1498</a></span></ins>
                                         </div>
                                         <div class="product-quantity margin-top-35">
-                                            <!--div class="quantity">
-                                                <input type="text" value="1" name="quantity" class="quantity-number">
-                                                <span class="inc quantity-button">+</span>
-                                                <span class="dec quantity-button">-</span>
-                                            </div-->
                                             <div class="add-to-cart text-center">
-                                                <a href="/contact/new-motorcycle/{{ $product->id }}">CONTACT SALES TEAM</a>
+                                                <a href="/contact/new-motorcycle/{{ $motorcycle->id }}">CONTACT SALES TEAM</a>
                                             </div>
                                             <div class="box-like">
                                                 <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
@@ -129,13 +125,13 @@
                                             <div class="grid-row image-left clearfix">
                                                 <div class="grid-item">
                                                     <div class="thumb text-center">
-                                                        <img src="/{{ $brand_image[1]->id }}/{{ $brand_image[1]->file_name }}" alt="Image" style="width: 50%;">
+                                                        <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image">
                                                     </div>
                                                 </div><!-- /.grid-item -->
                                                 <div class="grid-item">
                                                     <div class="text-wrap">
                                                         <h6 class="title"></h6>
-                                                        <p>{!! $product['brand']->description !!}</p>
+                                                        <p>{!! $motorcycle->description !!}</p>
                                                     </div>
                                                 </div>
                                             </div><!-- /.grid-row -->

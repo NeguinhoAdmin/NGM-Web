@@ -58,20 +58,21 @@
                     </p>
                 </div><!-- /.filte-shop -->
                 <div class="product-content product-threecolumn product-slidebar clearfix">
-                    @foreach($motorcycles->chunk(3) as $chunk)
+
                     <ul class="product style2 sd1">
-                        @foreach($chunk as $motorcycle)
+                        @foreach($motorcycles as $motorcycle)
                         <li class="product-item new">
                             <div class="product-thumb clearfix">
                                 <a href="/new-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('assets/images/rentals/2022-Yamaha-YZF1000R1-EU-Yamaha_Black-Studio-001-03.jpg')}}" alt="image">
+                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 235px;">
                                 </a>
                                 <span class="new">New</span>
                             </div>
                             <div class="product-info clearfix">
-                                <span class="product-title">{{ $brand[0]->name }} {{ $motorcycle->name }}</span>
+                                <div><span class="product-title">{{ $motorcycle->make }}</span></div>
+                                <span class="product-title">{{ $motorcycle->model }}</span>
                             </div>
-                            <span class="regular">Super Sport</span>
+                            <!-- <span class="regular">Super Sport</span> -->
                             <div class="add-to-cart text-center">
                                 <a href="/new-motorcycle/{{ $motorcycle->id }}">MORE INFORMATION</a>
                             </div>
@@ -79,12 +80,12 @@
                         </li>
                         @endforeach
                     </ul><!-- /.product -->
-                    @endforeach
+
                 </div><!-- /.product-content -->
                 <div class="product-pagination text-center clearfix">
                     <ul class="flat-pagination">
                         <li>
-                            {{ $motorcycles->links() }}
+
                         </li>
                     </ul><!-- /.flat-pagination -->
                 </div>

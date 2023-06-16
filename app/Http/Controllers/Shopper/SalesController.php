@@ -17,63 +17,49 @@ use system;
 
 class SalesController extends Controller
 {
+    // Display all new bikes
     public function NewForSale()
-    {
-        $motorcycles = Category::findOrFail(77)->products()->paginate(9);
-        $motorcycle_id = $motorcycles[0]->id;
-        $brand_id = $motorcycles[0]->brand_id;
-
-        $images = Media::all()
-            ->where('model_type', 'product')
-            ->where('model_id', $motorcycle_id);
-
-        $brand = Brand::all()
-            ->where('id', $brand_id);
-
-        return view('frontend.motorcycles-new', [
-            'motorcycles' => $motorcycles,
-            'image' => $images,
-            'brand' => $brand
-        ]);
-    }
-
-    public function NewBikeDetails($id)
-    {
-        $product = Product::findOrFail($id);
-
-        $image = Media::all()
-            ->where('model_type', 'product')
-            ->where('model_id', $id);
-
-        $brand_image = Media::all()
-            ->where('model_type', 'brand')
-            ->where('model_id', $product['brand']->id);
-
-        return view('frontend.motorcycle-new', [
-            'product' => $product,
-            'image' => $image,
-            'brand_image' => $brand_image
-        ]);
-    }
-
-    public function UsedForSale()
     {
         $motorcycles = Motorcycle::all()
             ->where('availability', '=', 'for sale');
+
+        return view('frontend.motorcycles-new', compact('motorcycles'));
+    }
+
+    // Show details of a particular used bike
+    public function NewBikeDetails($id)
+    {
+        $motorcycle = Motorcycle::findOrFail($id);
+
+        // Generating random 9 figure number - used to generate unique UserName
+        $a = 0;
+        for ($i = 0; $i < 1; $i++) {
+            $a .= mt_rand(0, 9);
+        }
+
+        return view('frontend.motorcycle-new', compact('motorcycle', 'a'));
+    }
+
+    // Display all used bikes
+    public function UsedForSale()
+    {
+        $motorcycles = Motorcycle::all()
+            ->where('availability', '=', 'used for sale');
 
         $count = $motorcycles->count();
 
         return view('frontend.motorcycles-used', compact('motorcycles'));
     }
 
+    // Show details of a particular used bike
     public function UsedBikeDetails($id)
     {
         $motorcycle = Motorcycle::findOrFail($id);
-        // dd($motorcycle);
 
         return view('frontend.motorcycle-used', compact('motorcycle'));
     }
 
+    // Display all rental bikes
     public function RentBike()
     {
         $motorcycles = Motorcycle::all()
@@ -84,6 +70,7 @@ class SalesController extends Controller
         return view('frontend.motorcycle-rentals', compact('motorcycles'));
     }
 
+    // Show details of a particular rental bike
     public function RentalDetails($id)
     {
         $motorcycle = Motorcycle::findOrFail($id);
