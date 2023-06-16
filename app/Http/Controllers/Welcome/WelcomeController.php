@@ -96,4 +96,9 @@ class WelcomeController extends Controller
     {
         return view('frontend.legals.refund-policy');
     }
+
+    public function SoonCome()
+    {
+        return view('coming-soon.soon-come');
+    }
 }

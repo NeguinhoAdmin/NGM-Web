@@ -52,6 +52,9 @@ Route::controller(WelcomeController::class)->group(function () {
     Route::get('/terms-of-use', 'TermsOfUse')->name('TermsOfUse');
     Route::get('/shipping-policy', 'ShippingPolicy')->name('ShippingPolicy');
     Route::get('/refund-policy', 'RefundPolicy')->name('RefundPolicy');
+
+    // Soon Come...lol
+    Route::get('/coming-soon', 'SoonCome');
 });
 
 // Motorcycle Sales & Rental Routes

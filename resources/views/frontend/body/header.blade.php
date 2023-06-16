@@ -39,7 +39,7 @@
     <div class="container-fluid container-width-93 clearfix" id="site-header-inner">
         <div id="logo" class="logo float-left image-responsive col-sm-3 col-md-4">
             <a href="/" title="logo" class="logo">
-                <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="80%" data-retina="{{url('img/neguinhomotors3.png')}}" data-width="80%">
+                <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="70%" height="24" data-retina="{{url('img/neguinhomotors3.png')}}" data-width="70%" data-height="24">
             </a>
         </div><!-- /.logo -->
         <div class="mobile-button"><span></span></div>
@@ -47,7 +47,7 @@
             <li class="box-search">
                 <a class="icon_search header-search-icon" href="#"></a>
                 <form role="search" method="get" class="header-search-form" action="#">
-                    <input type="text" value="" name="s" class="header-search-field" placeholder="Search...">
+                    <input type="text" value="" name="search" class="header-search-field" placeholder="Search...">
                     <button type="submit" class="header-search-submit" title="Search">Search</button>
                 </form>
             </li>
@@ -71,7 +71,7 @@
                                 <a href="/used-motorcycles">SECOND HAND BIKES</a>
                             </li>
                             <li>
-                                <a href="#">FINANCE</a>
+                                <a href="/coming-soon">FINANCE</a>
                             </li>
                             <li>
                                 <a href="#">MOTORCYCLE INSURANCE</a>
