@@ -18,6 +18,7 @@
 
                 @auth
                 <div>
+                    <i class="fa fa-user mx-2" style="color:white;"></i>
                     <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/dashboard" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
                 </div>
                 <div>
@@ -50,9 +51,6 @@
                     <input type="text" value="" name="search" class="header-search-field" placeholder="Search...">
                     <button type="submit" class="header-search-submit" title="Search">Search</button>
                 </form>
-            </li>
-            <li class="box-login">
-                <a class="icon_login" href="/shopper/login"></a>
             </li>
             <li class="box-cart nav-top-cart-wrapper">
                 <a class="icon_cart nav-cart-trigger " href="/cart"><span> {{ Cart::instance('default')->count() }}</span></a>
