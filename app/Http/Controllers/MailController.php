@@ -9,15 +9,17 @@ use App\Mail\ContactUs;
 use App\Mail\RentalDue;
 use Illuminate\Support\Carbon;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 
 class MailController extends Controller
 {
-    public function sendMail($name)
+    public function sendMail($name): RedirectResponse
     {
         // $name = $request->name;
 
-        Mail::to('fake@mail.com')->send(new ContactUs($name));
+        Mail::to('info@neguinhomotors.co.uk')->send(new ContactUs($name));
 
         // return view('thank-you');
+        return redirect('contacts.thank-you');
     }
 }
