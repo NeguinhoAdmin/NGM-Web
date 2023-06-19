@@ -63,6 +63,7 @@ class CartController extends Controller
 
         $quantity = 1;
         $totalQty = 1;
+        $vat = 20;
 
         Cart::instance('default')->add($product_id, $product[0]->description, $quantity, $product[0]->price, 0, ['totalQty' => $totalQty, 'product_code' => $product[0]->sku, 'image' => $product[0]->image_url, 'details' => $product[0]->extended_description])->associate('App\Models\Oxford');
 
@@ -72,19 +73,38 @@ class CartController extends Controller
 
     public function store(Request $request, $id)
     {
-        // dd($request);
-        $product = Oxford::select('id', 'sku', 'description', 'price', 'image_url', 'extended_description')
+        $item = Oxford::select('id', 'sku', 'description', 'price', 'image_url', 'extended_description', 'category_id')
             ->where('id', $id)
             ->get();
 
-        // $product = json_decode($prod);
-
         $quantity = $request->quantity;
 
-        // dd($product);
-        Cart::instance('default')->add($product[0]->sku, $product[0]->description, $quantity, $product[0]->price, 0, ['totalQty' => $quantity, 'product_code' => $product[0]->sku, 'image' => $product[0]->image_url, 'details' => $product[0]->extended_description])->associate('App\Models\Oxford');
+        foreach ($item as $product) {
+            // Determine whether the product is taxed
+            if ($product->category_id == 1) {
+                // If helmets category then no tax
+                Cart::instance('default')->add($product->sku, $product->description, $quantity, $product->price, 0, ['totalQty' => $quantity, 'product_code' => $product->sku, 'image' => $product->image_url, 'details' => $product->extended_description])->associate('App\Models\Oxford');
+            } else {
+                // All other categories require the addition of VAT
+                $vat = 20;
 
-        // dd($cart);
+                // Price excluding VAT
+                $priceExVat = $product->price;
+
+                // Calculate how much VAT to be added to the price
+                $vatToPay = ($priceExVat / 100) * $vat;
+
+                $productPrice = $priceExVat + $vatToPay;
+
+                Cart::instance('default')->add($product->sku, $product->description, $quantity, $productPrice, 0, ['totalQty' => $quantity, 'product_code' => $product->sku, 'image' => $product->image_url, 'details' => $product->extended_description])->associate('App\Models\Oxford');
+            }
+        }
+        // // Determine whether the product is taxed
+        // if ($product->category_id == 1) {
+        //     Cart::instance('default')->add($product[0]->sku, $product[0]->description, $quantity, $product[0]->price, 0, ['totalQty' => $quantity, 'product_code' => $product[0]->sku, 'image' => $product[0]->image_url, 'details' => $product[0]->extended_description])->associate('App\Models\Oxford');
+        // } else {
+        //     echo "This product is taxed";
+        // }
 
         /* Redirect to prevend re-adding on refreshing */
         return redirect()->route('product.cart')->withSuccess('Product has been successfully added to the Cart.');
