@@ -162,7 +162,7 @@
                         <div class="sub-title" style="color: white;"><span>Save Money on Everything</span></div>
                     </div>
                     <div class="elm-btn text-center">
-                        <a href="#" class="themesflat-button bg-accent has-padding-36">Start Now</a>
+                        <a href="/register" class="themesflat-button bg-accent has-padding-36">Start Now</a>
                     </div>
                     <div class="divider h102"></div>
                 </div><!-- /.flat-animation-block -->

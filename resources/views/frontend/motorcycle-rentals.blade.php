@@ -45,7 +45,7 @@
 
                             <div class="product-thumb clearfix mb-3">
                                 <a href="/rentals-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 235px;">
+                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image">
                                 </a>
                             </div>
                             <div class="product-info clearfix">

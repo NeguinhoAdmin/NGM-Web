@@ -62,9 +62,9 @@
                     <ul class="product style2 sd1">
                         @foreach($motorcycles as $motorcycle)
                         <li class="product-item new">
-                            <div class="product-thumb clearfix">
+                            <div class="product-thumb clearfix mb-3">
                                 <a href="/used-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 235px;">
+                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image">
                                 </a>
                                 <span class="new">Used</span>
                             </div>

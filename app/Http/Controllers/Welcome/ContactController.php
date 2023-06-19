@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\MailController;
+use App\Models\Motorcycle;
 use App\Models\Product;
 
 class ContactController extends Controller
@@ -30,7 +31,7 @@ class ContactController extends Controller
 
     public function ContactNewSales($id)
     {
-        $motorcycle = Product::findOrFail($id);
+        $motorcycle = Motorcycle::findOrFail($id);
 
         return view('contacts.contactNewSales', compact('motorcycle'));
     }

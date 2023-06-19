@@ -5,10 +5,9 @@
     @foreach($products->chunk(3) as $chunk)
     <ul class="product style2 sd1">
         @foreach($chunk as $item)
-
         <li class="product-item">
-            <a href="/detail/{{ $item->id }}" class="product-thumb">
-                <div class="product-thumb clearfix">
+            <a href="/item/{{ $item->id }}" class="product-thumb">
+                <div class="product-thumb clearfix mb-3">
                     <img src="{{ $item->image_url }}" alt="image">
                     <!-- span class="new sale">Sale</span -->
                 </div>
@@ -29,7 +28,6 @@
                 </div>
             </a>
         </li>
-
         @endforeach
     </ul><!-- /.product -->
     @endforeach

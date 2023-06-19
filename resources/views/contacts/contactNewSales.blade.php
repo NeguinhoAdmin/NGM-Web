@@ -54,12 +54,12 @@
                         </div>
                         <div class="contact-subject">
                             <label></label>
-                            <input type="text" placeholder="Subject" aria-required="true" size="30" value="{{ $motorcycle['brand']->name }} {{ $motorcycle->name }}" name="subject" id="subject">
+                            <input type="text" placeholder="Subject" aria-required="true" size="30" value="FOR SALE: {{ $motorcycle->make }} {{ $motorcycle->model }}" name="subject" id="subject">
                         </div>
                     </div>
                     <div class="contact-message clearfix">
                         <label></label>
-                        <textarea class="" tabindex="4" placeholder="Message" name="message" required>I'm interested in your {{ $motorcycle['brand']->name }} {{ $motorcycle->name }}.</textarea>
+                        <textarea class="" tabindex="4" placeholder="Message" name="message" required>I'm interested in your {{ $motorcycle->make }} {{ $motorcycle->model }}.</textarea>
                     </div>
                     <div class="form-submit">
                         <button class="contact-submit">SEND</button>
