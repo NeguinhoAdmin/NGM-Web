@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers\Shopper;
 
-use App\Http\Controllers\Controller;
+use App\Models\Oxford;
 use App\Models\Motorcycle;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Models\Oxford;
 
 class CartController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -94,5 +100,9 @@ class CartController extends Controller
         Cart::count();
 
         return view('frontend.checkout');
+    }
+    public function delete(Request $request)
+    {
+        // return redirect()->back();
     }
 }

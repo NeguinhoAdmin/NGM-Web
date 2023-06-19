@@ -931,6 +931,7 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'App\\Http\\Controllers\\MailController' => __DIR__ . '/../..' . '/app/Http/Controllers/MailController.php',
         'App\\Http\\Controllers\\MotorcycleController' => __DIR__ . '/../..' . '/app/Http/Controllers/MotorcycleController.php',
         'App\\Http\\Controllers\\NotesController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotesController.php',
+        'App\\Http\\Controllers\\PaymentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentsController.php',
         'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
         'App\\Http\\Controllers\\RentalController' => __DIR__ . '/../..' . '/app/Http/Controllers/RentalController.php',
         'App\\Http\\Controllers\\RentalPaymentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/RentalPaymentsController.php',

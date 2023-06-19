@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Shopper;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Oxford;
-use App\Models\OxfordCategory;
-use Illuminate\Database\Eloquent\Collection;
 use View;
+use App\Models\Oxford;
+use Illuminate\Http\Request;
+use App\Models\OxfordCategory;
+use App\Http\Controllers\Controller;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Database\Eloquent\Collection;
 
 class OxfordController extends Controller
 {
@@ -83,13 +84,18 @@ class OxfordController extends Controller
 
     public function deleteProduct(Request $request)
     {
-        if ($request->id) {
-            $cart = session()->get('cart');
-            if (isset($cart[$request->id])) {
-                unset($cart[$request->id]);
-                session()->put('cart', $cart);
-            }
-            session()->flash('success', 'Product removed from your shopping cart.');
-        }
+        Cart::destroy();
+        // if ($request->id) {
+        //     $cart = session()->get('cart');
+        //     if (isset($cart[$request->id])) {
+        //         unset($cart[$request->id]);
+        //         session()->put('cart', $cart);
+        //     }
+        //     session()->flash('success', 'Item removed from your shopping cart.');
+        // }
+
+        return redirect('/cart');
+        // return to_route('/cart', [$request->id])
+        //     ->with('success', 'Rental deposit updated.');
     }
 }

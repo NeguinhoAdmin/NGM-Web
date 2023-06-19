@@ -71,6 +71,7 @@ Route::controller(SalesController::class)->group(function () {
 Route::controller(OxfordController::class)->group(function () {
     Route::get('/category/{category_id}', 'getProductCategory')->name('product.category');
     Route::get('/item/{id}', 'getOxfordProduct')->name('item.details');
+    Route::get('/oxford/remove/{id}', 'deleteProduct');
 });
 
 // Cart Routes

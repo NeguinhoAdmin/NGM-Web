@@ -44,7 +44,7 @@
                                 <td class="text-center">{{ $item->qty }}</td>
                                 <td>£{{ $item->total }}</td>
                                 <td>
-                                    <button type="submit" class="btn btn-outline-danger">Remove</button>
+                                    <a href="/oxford/remove/{{$item->id}}" type="button" class="btn btn-outline-danger">Remove</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -79,8 +79,8 @@
                         <div class="title text-center">
                             Shipping <strong>TBD</strong>
                         </div>
-                        <div class="title text-center">
-                            Discount Code (CODE) <strong>-$ AMOUNT</strong>
+                        <div class="title text-center" placeholder="00.00">
+                            <input class="form-control text-center" type="text" placeholder="Enter Discount Code">
                         </div>
                         <div class="title text-center">
                             VAT Tax Rate <strong>{{ $cartTaxRate }}%</strong>
