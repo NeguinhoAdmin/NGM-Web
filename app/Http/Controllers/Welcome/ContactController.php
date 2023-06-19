@@ -15,24 +15,24 @@ class ContactController extends Controller
 {
     public function Contact()
     {
-        return view('frontend.contact');
+        return view('contacts.contact');
     }
 
     public function CallMeBack()
     {
-        return view('frontend.contactCallBack');
+        return view('contacts.contactCallBack');
     }
 
     public function TradeAccount()
     {
-        return view('frontend.contactTradeAccount');
+        return view('contacts.contactTradeAccount');
     }
 
     public function ContactNewSales($id)
     {
         $motorcycle = Product::findOrFail($id);
 
-        return view('frontend.contactNewSales', compact('motorcycle'));
+        return view('contacts.contactNewSales', compact('motorcycle'));
     }
 
     public function StoreMessage(Request $request)
