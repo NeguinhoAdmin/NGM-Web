@@ -30,8 +30,9 @@
                             <tr>
                                 <th scope="col">Product ID</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Price</th>
                                 <th class="text-center" scope="col">Quantity</th>
-                                <th scope="col">Total inc. VAT</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,8 +40,8 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td class="text-center">{{ $item->qty }}</td>
                                 <td>£{{ $item->total }}</td>
+                                <td class="text-center">{{ $item->qty }}</td>
                                 <td>
                                     <a href="/oxford/remove/{{$item->id}}" type="button" class="btn btn-outline-danger">Remove</a>
                                 </td>
@@ -71,13 +72,12 @@
                             <div class="title text-center mb-3">
                                 Shipping <strong>TBD</strong>
                             </div>
-                            <div class="title text-center mb-3" placeholder="00.00">
+                            <!-- <div class="title text-center mb-3" placeholder="00.00">
                                 <input class="form-control text-center" type="text" placeholder="Enter Discount Code">
-                            </div>
+                            </div> -->
                             <div class="title text-center mb-3">
                                 Order Total <strong>£{{ $newTotal }}</strong>
                             </div>
-                            <!-- <div class="divider h10"></div> -->
                             <div class="button text-center" style="padding-bottom: 20px;">
                                 <button type="submit" class="btn" type="button">SECURE CHECKOUT</button>
                             </div>
