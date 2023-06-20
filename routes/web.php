@@ -100,6 +100,7 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('/store/message', 'StoreMessage')->name('store.message');
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');
+    Route::get('/accident/management', 'AccidentManagement')->name('AccidentManagement');
 });
 
 Route::post('/mail', [MailController::class, 'sendMail']);

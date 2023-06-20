@@ -36,6 +36,17 @@ class ContactController extends Controller
         return view('contacts.contactNewSales', compact('motorcycle'));
     }
 
+    public function AccidentManagement(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'phone' => 'required',
+            'language' => 'required',
+            'vehicle_type' => 'required',
+            'privacy_policy' => 'required'
+        ]);
+    }
+
     public function StoreMessage(Request $request)
     {
         // dd($request->message);
@@ -43,7 +54,7 @@ class ContactController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'message' => 'required',
+            'message' => 'required'
         ]);
 
         $contact = new Contact;

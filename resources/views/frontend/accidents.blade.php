@@ -68,25 +68,26 @@
                         <h2>Claim Form</h2>
                     </div><!-- /.title-post -->
                 </article>
-                <form method="post" enctype="multipart/form-data" target="" id="" action="">
+                <form action="/accident/management" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-text-wrap clearfix">
-                        <div class="your-name clearfix">
+                        <div class="your-name clearfix mb-3">
                             <label>Your Name</label>
-                            <input type="text" aria-required="true" size="30" value="" name="author" id="author">
+                            <input type="text" aria-required="true" size="30" value="" name="name" id="name">
                         </div>
-                        <div class="your-phone-number clearfix">
+                        <div class="your-phone-number clearfix mb-3">
                             <label>Your Phone Number</label>
-                            <input type="text" aria-required="true" size="30" value="" name="author" id="author">
+                            <input type="text" aria-required="true" size="30" value="" name="phone" id="phone">
                         </div>
-                        <div class="phone-email clearfix">
-                            <label>Your Email (optional)</label>
-                            <input type="text" aria-required="true" size="30" value="" name="author" id="author">
+                        <div class="phone-email clearfix mb-3">
+                            <label>Your Email</label>
+                            <input type="text" aria-required="true" size="30" value="" name="email" id="email">
                         </div>
                     </div>
 
-                    <div>
-                        <label>Language Preference<span><span>(Required)</span></span></label>
-                        <div><select name='input_6' id='input_6_6' class='' aria-required="true" aria-invalid="false">
+                    <div class="mb-3">
+                        <label>Language Preference<span><span>*</span></span></label>
+                        <div><select name='language' id='language' class='' aria-required="true" aria-invalid="false">
                                 <option value='English'>English</option>
                                 <option value='Arabic'>Arabic</option>
                                 <option value='Bengali'>Bengali</option>
@@ -97,27 +98,27 @@
                                 <option value='Spanish'>Spanish</option>
                             </select></div>
                     </div>
-                    <div><label>Relevant Vehicle Type<span><span>(Required)</span></span></label>
+                    <div class="mb-3"><label>Relevant Vehicle Type<span><span>*</span></span></label>
                         <div>
-                            <option value='Van'>Van</option>
-                            <option value='Car'>Car</option>
-                            <option value='Bicycle'>Bicycle</option>
-                            <option value='Motorcycle' selected='selected'>Motorcycle</option>
+                            <select name="vehicle_type" id="vehicle_type" aria-required="true" aria-invalid="false">
+                                <option value='Van'>Van</option>
+                                <option value='Car'>Car</option>
+                                <option value='Bicycle'>Bicycle</option>
+                                <option value='Motorcycle' selected='selected'>Motorcycle</option>
                             </select>
                         </div>
                     </div>
-                    <div><label>Where did you hear about us?<span><span>(Required)</span></span></label>
-                        <div class='ginput_container ginput_container_text'><input name='input_8' id='input_6_8' type='text' value='' class='large' aria-required="true" aria-invalid="false" /> </div>
+                    <div class="form-group mb-3"><label>Where did you hear about us?<span><span>*</span></span></label>
+                        <div class='mb-3'><input name='referal' id='referal' type='text' value='' aria-required="true" aria-invalid="false" /> </div>
                     </div>
-                    <fieldset id="field_6_9" class="gfield gfield--type-consent gfield--type-choice gfield--width-full gfield_contains_required field_sublabel_above gfield--no-description field_description_below gfield_visibility_visible" data-js-reload="field_6_9">
-                        <legend class='gfield_label gform-field-label gfield_label_before_complex'>Consent<span class="gfield_required"><span class="gfield_required gfield_required_text">(Required)</span></span></legend>
-                        <div class='ginput_container ginput_container_consent'><input name='input_9.1' id='input_6_9_1' type='checkbox' value='1' aria-required="true" aria-invalid="false" /> <label class="gform-field-label gform-field-label--type-inline gfield_consent_label" for='input_6_9_1'>By submitting this form you agree to our <a href="/privacy-policy/">privacy policy</a>.</label><input type='hidden' name='input_9.2' value='By submitting this form you agree to our &lt;a href=&quot;/privacy-policy/&quot;&gt;privacy policy&lt;/a&gt;.' class='gform_hidden' /><input type='hidden' name='input_9.3' value='6' class='gform_hidden' /></div>
-                    </fieldset>
-                    <p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="13" />
-                        <script>
-                            document.getElementById("ak_js_1").setAttribute("value", (new Date()).getTime());
-                        </script>
-                    </p>
+                    <div class="mb-3"><label>By submiting the form you agree to our <a href="/cookie-and-privacy-policy">Privacy Policy </a><span><span>*</span></span></label>
+                        <div>
+                            <select name="privacy_policy" id="privacy_policy">
+                                <option value=''>Select</option>
+                                <option value='agreed to privacy policy'>I Agree</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-submit margin-top-32 ">
                         <button class="contact-submit">SEND</button>
                     </div>
