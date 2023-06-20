@@ -99,7 +99,7 @@
                             <div class="thumb">
                                 <img src="{{ url('/img/home/motorcycle-accessories-shop.jpg') }}" alt="Image" style="width: 100%">
                                 <div class="text-wrap text-center">
-                                    <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;"><a class="text-white" href="/shop">SHOP</a></h2>
+                                    <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;"><a class="text-white" href="/coming-soon">SHOP</a></h2>
                                 </div>
                                 <div class="overlay-effect bg-overlay-black"></div>
                             </div>

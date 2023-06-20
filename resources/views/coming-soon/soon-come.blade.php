@@ -28,7 +28,7 @@
             <div class="col-md-12">
                 <div class="wrap-coming-soon text-center">
                     <div class="header-coming-soon">
-                        <h2 class="sup-title">Motorcycle Insurance & Finance</h2>
+                        <h2 class="sup-title">Motorcycle Shop, Insurance & Finance</h2>
                         <div class="title">Coming Soon</div>
                     </div>
                     <div class="wrap-countdown">
