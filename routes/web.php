@@ -82,6 +82,8 @@ Route::post('/cart/{id}', [CartController::class, 'store'])->name('store.cart');
 Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->name('storeRental.cart');
 // StripeController
 Route::get('/checkout', [StripeController::class, 'checkout'])->name('product.checkout');
+Route::post('/session', [StripeController::class, 'session'])->name('session');
+Route::get('/success', [StripeController::class, 'success'])->name('success');
 
 // Route::controller(CartController::class)->group(function () {
 //     Route::get('/cart', 'index')->name('product.cart');

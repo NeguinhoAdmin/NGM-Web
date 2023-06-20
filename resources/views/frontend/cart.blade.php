@@ -43,7 +43,7 @@
                                 <td>£{{ $item->total }}</td>
                                 <td class="text-center">{{ $item->qty }}</td>
                                 <td>
-                                    <a href="/oxford/remove/{{$item->id}}" type="button" class="btn btn-outline-danger">Remove</a>
+                                    <!-- <a href="/oxford/remove/{{$item->id}}" type="button" class="btn btn-outline-danger">Remove</a> -->
                                 </td>
                             </tr>
                             @endforeach
@@ -58,49 +58,53 @@
             </div>
             <div class="col-md-3">
                 <div class="parallax parallax1">
-                    <form action="{{ route('product.checkout') }}">
-                        <div class="title text-center" style="padding-top: 10px;">
-                            <div class="title text-center">
-                                <strong>ORDER SUMMARY</strong>
+
+                    <div class="title text-center" style="padding-top: 10px;">
+                        <div class="title text-center">
+                            <strong>ORDER SUMMARY</strong>
+                        </div>
+                        <div class="title text-center mb-3">
+                            Items <strong>{{ $cartCount }}</strong>
+                        </div>
+                        <div class="title text-center mb-3">
+                            Total <strong>{{ $cartSubtotal }}</strong>
+                        </div>
+                        <div class="title text-center mb-3">
+                            Shipping <strong>TBD</strong>
+                        </div>
+                        <div class="title text-center mb-3">
+                            Order Total <strong>£{{ $newTotal }}</strong>
+                        </div>
+                        <form action="/session" method="POST">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="total" value="{{ $item->totoal }}">
+                            <input type="hidden" name="productname" value="{{ $item->name }}">
+                            <div class="button text-center">
+                                <button type=" submit" class="btn" type="button">CHECKOUT</button>
                             </div>
-                            <div class="title text-center mb-3">
-                                Items <strong>{{ $cartCount }}</strong>
-                            </div>
-                            <div class="title text-center mb-3">
-                                Total <strong>{{ $cartSubtotal }}</strong>
-                            </div>
-                            <div class="title text-center mb-3">
-                                Shipping <strong>TBD</strong>
-                            </div>
-                            <!-- <div class="title text-center mb-3" placeholder="00.00">
-                                <input class="form-control text-center" type="text" placeholder="Enter Discount Code">
-                            </div> -->
-                            <div class="title text-center mb-3">
-                                Order Total <strong>£{{ $newTotal }}</strong>
-                            </div>
-                            <div class="button text-center" style="padding-bottom: 20px;">
-                                <button type="submit" class="btn" type="button">SECURE CHECKOUT</button>
-                            </div>
-                            <div>
+                            <div class="mb-3">
                                 <p>
                                     All prices are subject to VAT.
                                 </p>
                             </div>
-                    </form>
+                            <div class="title mb-3">
+                                <a href="{{ URL()->previous() }}" class="btn btn-outline-danger mb-3"><i class="fa fa-arrow-left"></i> Continue Shopping</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <p>
-                The price and availability of items at NeguinhoMotors.co.uk are subject to change.
-            </p>
-            <p>
-                The shopping basket is a temporary place to store a list of your items and reflects each item's most recent price.
-            </p>
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    The price and availability of items at NeguinhoMotors.co.uk are subject to change.
+                </p>
+                <p>
+                    The shopping basket is a temporary place to store a list of your items and reflects each item's most recent price.
+                </p>
+            </div>
         </div>
-    </div>
     </div>
 </section><!-- /.shop-detail-content -->
 @endsection

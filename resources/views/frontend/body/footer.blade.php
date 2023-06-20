@@ -79,12 +79,6 @@
                 <p class="copyright text-center">Copyright @ 2023 <a href="/">Neguinho Motors Limited - All Rights Reserved</a>
                 </p>
             </div>
-            <div class="col-md-12">
-                <span id="siteseal" class="text-center">
-                    <script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=GRuOHCbo0pPONwUxARDe70EsaDiGcn7zuDjjzJ1pDS7tmTw0FB7wBqNTW0ug"></script>
-                </span>
-                </p>
-            </div>
         </div>
     </div>
 </div>

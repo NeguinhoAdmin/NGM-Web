@@ -46,7 +46,7 @@
                                     With extensive experience and passion for motorcycles, you can rest assured that your pride and joy at Neguinho Motors is in our hands.
                                 </p>
                                 <div>
-                                    <h4 class="title mb-3" style="color: #C31924;">CALL US ON</h4>
+                                    <h4 class="title text-center mb-3" style="color: #C31924;">CALL US ON</h4>
                                 </div>
                                 <div>
                                     <i class="fa fa-phone mx-2"></i>
@@ -71,9 +71,18 @@
                                 <p class="mb-3">
                                     Regular maintenance of your motorcycle not only prolongs its life and your safety, it also keeps it performing at its best. Have your motorcycle serviced regularly for peace of mind, to ensure full rider confidence and to ensure your motorcycle is running at its best. We have experienced technicians for motorcycle manufacturers. Book Yamaha Motorcycle Service or Honda Motorcycle Service today at Neguinho Motors Motorcycle Service Center.
                                 </p>
-                                <div class="elm-btn">
-                                    <a href="#" class="themesflat-button outline ol-accent has-padding-41 margin-top-24">BOOK YOUR SERVICE</a>
+                                <div class="text-center">
+                                    <h4 class="title mb-3" style="color: #C31924;">CALL US ON</h4>
                                 </div>
+                                <div>
+                                    <i class="fa fa-phone mx-2"></i>
+                                    <a class="phone" href="tel:0208314498">0208 314 1498 for Catford Shop or</a>
+                                    <i class="fa fa-phone mx-2"></i>
+                                    <a class="phone" href="tel:02034095478">0203 409 5478 for Tooting Shop</a>
+                                </div>
+                                <!-- <div class="elm-btn">
+                                    <a href="#" class="themesflat-button outline ol-accent has-padding-41 margin-top-24">BOOK YOUR SERVICE</a>
+                                </div> -->
                                 <!-- </div> -->
                             </div>
                             <div class="grid-item">
@@ -98,9 +107,18 @@
                                 <p class="mb-3">
                                     Our test riders and mechanics are fully qualified and receive regular training, so they are fully familiar with the ever-changing demands of motorcycle technical inspection. This means you can book a bike test knowing you're getting quality service from trusted local experts. Book your technical motorcycle test with us today.
                                 </p>
-                                <div class="elm-btn">
-                                    <a href="#" class="themesflat-button outline ol-accent has-padding-41 margin-top-24">BOOK YOUR MOT</a>
+                                <div>
+                                    <h4 class="title text-center mb-3" style="color: #C31924;">CALL US ON</h4>
                                 </div>
+                                <div>
+                                    <i class="fa fa-phone mx-2"></i>
+                                    <a class="phone" href="tel:0208314498">0208 314 1498 for Catford Shop or</a>
+                                    <i class="fa fa-phone mx-2"></i>
+                                    <a class="phone" href="tel:02034095478">0203 409 5478 for Tooting Shop</a>
+                                </div>
+                                <!-- <div class="elm-btn">
+                                    <a href="#" class="themesflat-button outline ol-accent has-padding-41 margin-top-24">BOOK YOUR MOT</a>
+                                </div> -->
                                 <!-- </div> -->
                             </div>
                         </div><!-- /.grid-row -->

@@ -10,4 +10,9 @@ class StripeController extends Controller
     {
         return view('frontend.checkout');
     }
+
+    public function session(Request $request)
+    {
+        //
+    }
 }
