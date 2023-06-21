@@ -63,10 +63,10 @@
                         <a href="/motorcycle-sales">SALES</a>
                         <ul class="submenu">
                             <li>
-                                <a href="/new-motorcycles">BRAND NEW MOTORCYCLES</a>
+                                <a href="/new-motorcycles">NEW MOTORCYCLES</a>
                             </li>
                             <li>
-                                <a href="/used-motorcycles">SECOND HAND MOTORCYCLES</a>
+                                <a href="/used-motorcycles">USED MOTORCYCLES</a>
                             </li>
                             <li>
                                 <a href="/coming-soon">FINANCE</a>
