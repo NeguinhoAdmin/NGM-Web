@@ -8,11 +8,15 @@
         <div class="row mb-3">
             <div class="container">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a class="btn btn-primary" href="{{ URL::to('/motorcycles/create') }}">Add Motorcycle</a>
+                    <a class="btn btn-primary" href="{{ URL::to('/motorcycles/create') }}">Add Used Motorcycle</a>
                     <!-- <a class="btn btn-outline-primary" href="{{ URL::to('find-motorcycle/') }}">Add Motorcycle</a> -->
                 </div>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <a class="btn btn-primary" href="{{ URL::to('check-vehicle-reg/') }}">Check Reg</a>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('/create-new-motorcycle') }}">Add New Motorcycle</a>
+                    <!-- <a class="btn btn-outline-primary" href="{{ URL::to('find-motorcycle/') }}">Add Motorcycle</a> -->
                 </div>
             </div>
         </div>
@@ -83,11 +87,11 @@
             @foreach ($motorcycles as $motorcycle)
             <tr>
                 <th class="text-uppercase" scope="row">{{$motorcycle->registration}}</th>
-                <td>{{$motorcycle->make}}</td>
-                <td>{{$motorcycle->model}}</td>
-                <td>{{$motorcycle->engine}}CC</td>
-                <td>{{$motorcycle->year}}</td>
-                <td>{{$motorcycle->colour}}</td>
+                <td class="text-uppercase">{{$motorcycle->make}}</td>
+                <td class="text-uppercase">{{$motorcycle->model}}</td>
+                <td class="text-uppercase">{{$motorcycle->engine}}CC</td>
+                <td class="text-uppercase">{{$motorcycle->year}}</td>
+                <td class="text-uppercase">{{$motorcycle->colour}}</td>
                 <td></td>
                 <td>
                     <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $motorcycle->id) }}">Details</a>

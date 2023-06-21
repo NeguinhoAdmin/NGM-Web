@@ -72,6 +72,40 @@ class MotorcycleController extends Controller
         return view('motorcycles.create');
     }
 
+    public function createNewMotorcycle()
+    {
+        return view('motorcycles.create-new');
+    }
+
+    public function storeNewMotorcycle(Request $request)
+    {
+        $validated = $request->validate([
+            'make' => 'required',
+            'model' => 'required',
+            'engine' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'file' => 'required',
+        ]);
+
+        $motorcycle = new Motorcycle();
+        $motorcycle->make = $request->make;
+        $motorcycle->model = $request->model;
+        $motorcycle->engine = $request->engine;
+        $motorcycle->description = $request->description;
+        $motorcycle->sale_new_price = $request->price;
+        $motorcycle->availability = 'for sale';
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
+            $motorcycle->file_name = time() . '_' . $request->file->getClientOriginalName();
+            $motorcycle->file_path = '/storage/' . $filePath;
+        }
+        $motorcycle->save();
+
+        return redirect('/motorcycles');
+    }
+
     /**
      * Adds newly created motorcycles to the Motorcycles database table
      *

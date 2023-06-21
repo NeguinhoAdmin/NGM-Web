@@ -171,6 +171,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/remove-rental/{motorcycle_id}', [MotorcycleController::class, 'removeFromClient'])->name('removeFromClient');
     Route::get('/check-vehicle-reg', [MotorcycleController::class, 'vehicleCheckForm'])->name('vehicleCheckForm');
     Route::post('/vehicle-check', [MotorcycleController::class, 'vehicleCheck'])->name('vehicleCheck');
+    Route::get('/create-new-motorcycle', [MotorcycleController::class, 'createNewMotorcycle'])->name('createNewMotorcycle');
+    Route::post('/brand-new-motorcycle', [MotorcycleController::class, 'storeNewMotorcycle'])->name('storeNewMotorcycle');
 
     // User Resources
     Route::resource('users', 'UserController');
