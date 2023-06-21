@@ -26,7 +26,7 @@ class ContactUs extends Mailable
 
     public function build()
     {
-        return $this->from('admin@neguinhomotors.co.uk')->markdown('emails.ContactUsView');
+        return $this->from('customerservice@neguinhomotors.co.uk')->markdown('emails.ContactUsView');
     }
 
     /**

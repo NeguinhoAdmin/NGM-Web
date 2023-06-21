@@ -7,7 +7,7 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2" style="color:white;"></i>
-                    <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@neguinhomotors.co.uk" target="_newtab" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">info@neguinhomotors.co.uk</a>
+                    <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="mailto:customerservice@neguinhomotors.co.uk" target="_newtab" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Customer Service</a>
                     <i class="fa fa-phone mx-2" style="color:white;"></i>
                     <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="tel:02083141498" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Catford: 0208 314 1498</a>
                     <i class="fa fa-phone mx-2" style="color:white;"></i>
@@ -63,10 +63,10 @@
                         <a href="/motorcycle-sales">SALES</a>
                         <ul class="submenu">
                             <li>
-                                <a href="/new-motorcycles">BRAND NEW BIKES</a>
+                                <a href="/new-motorcycles">BRAND NEW MOTORCYCLES</a>
                             </li>
                             <li>
-                                <a href="/used-motorcycles">SECOND HAND BIKES</a>
+                                <a href="/used-motorcycles">SECOND HAND MOTORCYCLES</a>
                             </li>
                             <li>
                                 <a href="/coming-soon">FINANCE</a>

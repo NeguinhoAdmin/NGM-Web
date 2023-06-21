@@ -26,7 +26,7 @@ class RentalDue extends Mailable
 
     public function build()
     {
-        return $this->from('no-reply@neguinhomotors.co.uk')->markdown('emails.RentalDueView');
+        return $this->from('customerservice@neguinhomotors.co.uk')->markdown('emails.RentalDueView');
     }
 
     /**

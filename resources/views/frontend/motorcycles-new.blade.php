@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-title-heading">
-                    <h1 class="title">New Bikes For Sale</h1>
+                    <h1 class="title">New Motorcycles For Sale</h1>
                 </div><!-- /.page-title-heading -->
                 <div class="breadcrumbs">
                     <ul>
