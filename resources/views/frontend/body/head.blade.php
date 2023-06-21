@@ -21,4 +21,44 @@
         <script src="javascript/html5shiv.js"></script>
         <script src="javascript/respond.min.js"></script>
     <![endif]-->
+
+    <script src="//widget.simplybook.it/v2/widget/widget.js"></script>
+    <script>
+        var widget = new SimplybookWidget({
+            "widget_type": "button",
+            "url": "https:\/\/neguinhomotorslimited.simplybook.it",
+            "theme": "simple_beauty_theme",
+            "theme_settings": {
+                "sb_base_color": "#c31924",
+                "header_color": "#ffffff",
+                "timeline_hide_unavailable": "1",
+                "hide_past_days": "0",
+                "timeline_show_end_time": "0",
+                "timeline_modern_display": "as_slots",
+                "display_item_mode": "list",
+                "body_bg_color": "#ffffff",
+                "sb_review_image": "",
+                "dark_font_color": "#474747",
+                "light_font_color": "#ffffff",
+                "sb_company_label_color": "#333333",
+                "hide_img_mode": "1",
+                "show_sidebar": "1",
+                "sb_busy": "#dad2ce",
+                "sb_available": "#d3e0f1"
+            },
+            "timeline": "modern",
+            "datepicker": "top_calendar",
+            "is_rtl": false,
+            "app_config": {
+                "clear_session": 0,
+                "allow_switch_to_ada": 0,
+                "predefined": []
+            },
+            "button_title": "BOOK SERVICE OR MOT",
+            "button_background_color": "#c31924",
+            "button_text_color": "#ffffff",
+            "button_position": "right",
+            "button_position_offset": "55%"
+        });
+    </script>
 </head>
