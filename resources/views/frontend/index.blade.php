@@ -45,7 +45,7 @@
                     <div class="item data-effect-item">
                         <div class="inner">
                             <div class="thumb">
-                                <a href="/rentals-motorcycle">
+                                <a href="/motorcycle-rentals">
                                     <img src="{{ url('/img/home/motorcycle-rentals.jpg') }}" alt="Image" style="width: 100%">
                                     <div class="text-wrap text-center">
                                         <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;">RENTALS</h2>
@@ -158,7 +158,7 @@
                     <div class="divider h99"></div>
                     <div class="title-section width-before-17 bg-before-white margin-bottom-14">
                         <!-- <div class="sup-title"><span>WANT TO SAVE MONEY?</span></div> -->
-                        <h2 class="title font-size-52 line-height-76" style="color: white;">Discount Collection</h2>
+                        <h2 class="title font-size-52 line-height-76" style="color: white;">Discount Centre</h2>
                         <div class="sub-title" style="color: white;"><span>Save Money on Everything</span></div>
                     </div>
                     <div class="elm-btn text-center">
