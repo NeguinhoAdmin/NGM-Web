@@ -80,6 +80,7 @@ class MotorcycleController extends Controller
     public function storeNewMotorcycle(Request $request)
     {
         $validated = $request->validate([
+            'type' => 'required',
             'make' => 'required',
             'model' => 'required',
             'engine' => 'required',
@@ -89,6 +90,7 @@ class MotorcycleController extends Controller
         ]);
 
         $motorcycle = new Motorcycle();
+        $motorcycle->type = $request->type;
         $motorcycle->make = $request->make;
         $motorcycle->model = $request->model;
         $motorcycle->engine = $request->engine;

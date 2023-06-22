@@ -36,12 +36,18 @@
 
                     <legend>New Motorcycle Setup</legend>
 
-                    <div hidden class="mb-3">
-                        <input class="form-control" type="text" placeholder="Registration" name="registration" id="registration" value="{{old('registration')}}">
-                    </div>
+                    <select class="form-select mb-3" aria-label="Select Type" name="type" id="type" value="{{old('type')}}">
+                        <option selected>Select Type</option>
+                        <option>Standard</option>
+                        <option>Super Sport</option>
+                        <option>Touring</option>
+                        <option>Scooter</option>
+                        <option>Off-Road</option>
+                    </select>
+
                     <select class="form-select mb-3" aria-label="Select Make" name="make" id="make" value="{{old('make')}}">
                         <option selected>Select Make</option>
-                        <!-- <option value="honda">Honda</option>
+                        <!-- <option value="honda"> </option>
                         <option value="yamaha">Yamaha</option> -->
                     </select>
                     <div class="mb-3">
@@ -58,8 +64,7 @@
                         <span class="input-group-text" id="engine_cc">CC</span>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Brief Description</span>
-                        <textarea class="form-control" name="description" id="description" aria-label="With textarea"></textarea>
+                        <textarea class="form-control" placeholder="Description" name="description" id="description" aria-label="With textarea"></textarea>
                     </div>
                     <div class="custom-file mb-3">
                         <input type="file" name="file" class="custom-file-input" id="chooseFile">

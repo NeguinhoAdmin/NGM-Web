@@ -58,21 +58,30 @@
                     </p>
                 </div><!-- /.filte-shop -->
                 <div class="product-content product-threecolumn product-slidebar clearfix">
-
+                    @foreach ($motorcycles->chunk(3) as $chunk)
                     <ul class="product style2 sd1">
-                        @foreach($motorcycles as $motorcycle)
+                        @foreach($chunk as $motorcycle)
                         <li class="product-item new">
                             <div class="product-thumb clearfix">
                                 <a href="/new-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 235px;">
+                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image">
                                 </a>
                                 <span class="new">New</span>
                             </div>
                             <div class="product-info clearfix">
-                                <div><span class="product-title">{{ $motorcycle->make }}</span></div>
-                                <span class="product-title">{{ $motorcycle->model }}</span>
+                                <div><span class="product-title">{{ $motorcycle->make }} {{ $motorcycle->model }}</span></div>
+                                <ul class="product-infor style-1">
+                                    <li><span>{{ $motorcycle->type }}</span></li>
+                                    <li><span>{{ $motorcycle->engine }}CC</span></li>
+                                    <!-- <li><span>Engine Power: </span></li>
+                                    <li><span>Gearbox: </span></li>
+                                    <li><span>Fuel Type: </span></li> -->
+                                </ul>
+                                <div class="price">
+                                    <i class="fa fa-gbp" aria-hidden="true"></i>
+                                    <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">{{$motorcycle->sale_new_price}}</span></ins>
+                                </div>
                             </div>
-                            <!-- <span class="regular">Super Sport</span> -->
                             <div class="add-to-cart text-center">
                                 <a href="/new-motorcycle/{{ $motorcycle->id }}">MORE INFORMATION</a>
                             </div>
@@ -80,7 +89,7 @@
                         </li>
                         @endforeach
                     </ul><!-- /.product -->
-
+                    @endforeach
                 </div><!-- /.product-content -->
                 <div class="product-pagination text-center clearfix">
                     <ul class="flat-pagination">

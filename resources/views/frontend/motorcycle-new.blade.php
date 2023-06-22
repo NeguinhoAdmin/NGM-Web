@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="product-quantity margin-top-35">
                                             <div class="add-to-cart text-center">
-                                                <a href="/contact/new-motorcycle/{{ $motorcycle->id }}">CONTACT SALES TEAM</a>
+                                                <a href="/contact/new-motorcycle/{{ $motorcycle->id }}">FIND OUT MORE</a>
                                             </div>
                                             <div class="box-like">
                                                 <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
