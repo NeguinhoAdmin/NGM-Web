@@ -95,12 +95,14 @@ class MotorcycleController extends Controller
         $motorcycle->description = $request->description;
         $motorcycle->sale_new_price = $request->price;
         $motorcycle->availability = 'for sale';
+
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
             $motorcycle->file_name = time() . '_' . $request->file->getClientOriginalName();
             $motorcycle->file_path = '/storage/' . $filePath;
         }
+
         $motorcycle->save();
 
         return redirect('/motorcycles');

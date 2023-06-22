@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <div class="title-section margin_bottom_17">
                     <h2 class="title">
-                        Send Us Email
+                        Email Us
                     </h2>
                 </div><!-- /.title-section -->
             </div><!-- /.col-md-12 -->
