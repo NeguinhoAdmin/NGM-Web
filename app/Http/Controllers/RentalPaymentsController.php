@@ -21,14 +21,13 @@ class RentalPaymentsController extends Controller
      */
     public function index()
     {
-        $p = RentalPayment::all()->where('payment_date', null);
-        // dd($p);
-        $payments = json_decode($p);
-        $count = $p->count();
+        $rentalpayments = RentalPayment::all()
+            ->where('outstanding', '>', 0)
+            ->sortBy('payment_due_date');
 
-        // $users = User::all()->where('user_id', $payments->user_id);
-        // dd($users);
-        return view('payments.index', compact('payments', 'count'));
+        $count = $rentalpayments->count();
+
+        return view('payments.index', compact('rentalpayments', 'count'));
     }
 
     /**

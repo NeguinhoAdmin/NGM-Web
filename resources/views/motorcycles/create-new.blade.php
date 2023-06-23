@@ -47,8 +47,8 @@
 
                     <select class="form-select mb-3" aria-label="Select Make" name="make" id="make" value="{{old('make')}}">
                         <option selected>Select Make</option>
-                        <!-- <option value="honda"> </option>
-                        <option value="yamaha">Yamaha</option> -->
+                        <option>Hondaß</option>
+                        <option>Yamaha</option>
                     </select>
                     <div class="mb-3">
                         <input class="form-control" type="text" placeholder="Motorcycle Model" name="model" id="model" value="{{old('model')}}">
