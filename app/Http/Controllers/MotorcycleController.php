@@ -480,7 +480,7 @@ class MotorcycleController extends Controller
         // Motorcycle Details
         $m = Motorcycle::findOrFail($motorcycle_id);
         $motorcycle = json_decode($m);
-
+        // dd($m);
         // $user = User::findOrFail($motorcycle->user_id);
 
         $nextPayDate = (new Carbon($motorcycle->next_payment_date))->addDay();

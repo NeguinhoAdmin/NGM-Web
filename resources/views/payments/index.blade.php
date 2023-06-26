@@ -47,12 +47,13 @@
         <tbody>
             @foreach ($rentalpayments as $payment)
             <tr>
-                <th scope="row">{{ $payment->registration }}</th>
-                <th class="text-capitalize">{{ $payment->payment_type }}</th>
+                <td scope="row">{{ $payment->registration }}</td>
+                <td class="text-capitalize">{{ $payment->payment_type }}</td>
                 <td>{{ $payment->outstanding }}</td>
                 <td>{{ $payment->payment_due_date }}</td>
                 <td>
-                    <a class="btn btn-outline-primary" href="{{ URL::to('users/' . $payment ->user_id) }}">Client Record</a>
+                    <a class="btn btn-outline-success" href="{{ URL::to('users/' . $payment ->user_id) }}">Client</a>
+                    <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $payment ->motorcycle_id) }}">Motorcycle</a>
                 </td>
             </tr>
             @endforeach
