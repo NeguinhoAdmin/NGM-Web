@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @auth
-    <h1>Clients</h1>
+    <h1>{{ $count }} Clients</h1>
     <!-- Page Button Group -->
     <div class="container-fluid">
         <div class="btn-group" role="group" aria-label="Basic example">

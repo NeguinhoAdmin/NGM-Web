@@ -29,7 +29,6 @@ class everyDay extends Command
     public function handle()
     {
         return (new MotorcycleController)->nextRentalPayment();
-        return (new MotorcycleController)->createBill(59);
 
         return Command::SUCCESS;
     }

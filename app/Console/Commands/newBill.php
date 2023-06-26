@@ -28,7 +28,6 @@ class newBill extends Command
      */
     public function handle()
     {
-        return (new MotorcycleController)->createBill(59);
         return Command::SUCCESS;
     }
 }

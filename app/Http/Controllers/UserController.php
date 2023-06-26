@@ -33,7 +33,10 @@ class UserController extends Controller
     {
         $users = User::all()->where('is_client', 1);
         // dd($users);
-        return view('users.index', compact('users'));
+
+        $count = $users->count();
+
+        return view('users.index', compact('users', 'count'));
     }
 
     /**

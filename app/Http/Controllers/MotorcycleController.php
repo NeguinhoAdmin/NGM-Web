@@ -28,24 +28,47 @@ class MotorcycleController extends Controller
     // Calculate next payment days
     public function nextRentalPayment()
     {
-        // Find motocycle rental next payment date
-        $motorcycles = Motorcycle::where('npd_test', '<=', Carbon::now()->addDay()->toDateTimeString())->first();
-        // $motorcycles = Motorcycle::where('next_payment_date', '<=', Carbon::now()->addDay()->toDateTimeString())->first();
-        $motorcycle = json_decode($motorcycles);
+        // Date calculations
+        $today = Carbon::now('Europe/London');
+        $tomorrow = $today->addDay();
 
-        // Locate user details
-        $users = User::where('id', $motorcycle->user_id)->get();
+        // Find motocycles due for rental payment next day
+        $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
+        // $motorcycle = json_decode($motorcycles);
 
-        // Send reminder email
-        foreach ($users as $key => $user) {
-            Mail::to($user->email)->send(new RentalDue($user));
+        // Count the number of motorcycles to be processed
+        $count = $motorcycles->count();
+
+        while ($count > 0) {
+            foreach ($motorcycles as $motorcycle) {
+                // Set next payment date
+                $motorcycle = Motorcycle::find($motorcycle->id);
+                $motorcycle->next_payment_date = Carbon::now()->addDays(8);
+                $motorcycle->save();
+
+                // Send renter email reminder for next day payment
+                $user = User::where('id', $motorcycle->user_id)->first();
+                Mail::to($user->email)->send(new RentalDue($user));
+
+                // Create following weeks bill
+                $rentalPrice = $motorcycle->rental_price;
+                // $nextPayDate = $motorcycle->next_payment_date;
+
+                $payment = new RentalPayment();
+                $payment->payment_type = 'rental';
+                $payment->payment_due_date = $motorcycle->next_payment_date;
+                $payment->rental_price = $rentalPrice;
+                $payment->registration = $motorcycle->registration;
+                $payment->received = 0.00;
+                $payment->outstanding = $rentalPrice;
+                $payment->user_id = $motorcycle->user_id;
+                $payment->created_at = $today;
+                $payment->motorcycle_id = $motorcycle->id;
+                $payment->save();
+
+                $count--;
+            }
         }
-
-        // Set motorcycle next payment date
-        $motorcycle = Motorcycle::find($motorcycle->id);
-        $today = Carbon::now();
-        $motorcycle->next_payment_date = $today->addDays(7);
-        $motorcycle->save();
     }
 
     /**
@@ -204,45 +227,6 @@ class MotorcycleController extends Controller
 
         return to_route('motorcycles.show', [$request->motorcycle_id])
             ->with('success', 'Rental deposit updated.');
-    }
-
-    public function createBill($motorcycle_id)
-    {
-        // Get todays date
-        $today = Carbon::now('Europe/London');
-
-        // Find the motorcycle the bill will go against
-        $motorcycle = Motorcycle::findOrFail($motorcycle_id);
-
-        // Get the motorcycle rental price and next payment date
-        $rentalPrice = $motorcycle->rental_price;
-        $rentalStartDate = $motorcycle->rental_start_date;
-        // (new Carbon($request->tgl_mulai))->addDays(3);
-        $nextPayDate = new Carbon($motorcycle->next_payment_date);
-
-        // Determine the difference between the motorcycle rental start date & next payment date
-        $rentalStartDateDiff = $today->diffInDays($rentalStartDate);
-        $nextPayDateDiffInDays = $today->diffInDays($nextPayDate);
-        $nextPayDate->addDays(7);
-
-        // Create new rental bill using $motorcycle_id
-        $payment = new RentalPayment();
-        $payment->payment_type = 'rental';
-        $payment->payment_due_date = $nextPayDate;
-        $payment->rental_price = $rentalPrice;
-        $payment->registration = $motorcycle->registration;
-        $payment->received = null;
-        $payment->outstanding = $rentalPrice;
-        $payment->user_id = $motorcycle->user_id;
-        $payment->created_at = $today;
-        $payment->motorcycle_id = $motorcycle->id;
-        $payment->save();
-
-        // Set motorcycle next payment date
-        $motorcycle = Motorcycle::find($motorcycle->id);
-        $today = Carbon::now();
-        $motorcycle->next_payment_date = $nextPayDate;
-        $motorcycle->save();
     }
 
     // Manually take the rental payment

@@ -11,6 +11,8 @@ class Motorcycle extends Model
     protected $guarded = [];
     protected $dates = [
         'payment_due_date',
+        'next_payment_date',
+        'rental_start_date',
         'payment_date',
         'created_at',
         'updated_at',

@@ -166,11 +166,11 @@
                             <tbody>
                                 <tr>
                                     <td>Rental Start Date</td>
-                                    <td class="text-end">{{$motorcycle->rental_start_date}}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->rental_start_date)->format('d-m-Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Next Payment Date</td>
-                                    <td class="text-end">{{$motorcycle->next_payment_date}}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->next_payment_date)->format('d-m-Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Weekly Rental Price</td>
@@ -253,7 +253,7 @@
                                 @foreach ($rentalpayments as $payment)
                                 <tr>
                                     <td>{{$payment->id}}</td>
-                                    <td>{{$payment->payment_due_date}}</td>
+                                    <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d-m-Y') }}</td>
                                     <td>{{$payment->payment_date}}</td>
                                     <td>£{{$payment->received}}</td>
                                     <td class="text-danger">£{{$payment->outstanding}}</td>

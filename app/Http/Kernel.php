@@ -2,10 +2,22 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Support\Facades\DB;
+use App\Console\Commands;
+use App\Console\Commands\everyDay;
 
 class Kernel extends HttpKernel
 {
+    /**
+     * Define the application's command schedule.
+     */
+    protected function schedule(Schedule $schedule): void
+    {
+        $schedule->call(new EveryDay)->everyMinute();
+    }
+
     /**
      * The application's global HTTP middleware stack.
      *
