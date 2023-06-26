@@ -13,9 +13,9 @@
 
     <!-- This area is used to dispay errors -->
 
-    <div class="row align-items-start">
+    <div class="row align-items-start mb-3">
         <div class="col">
-            <h4>{{ $count }} Payments</h4>
+            <h4>{{ $count }} Rental Payments</h4>
             <table class="table-striped">
                 <td>Outstanding: £{{ $rpayments }} </td>
             </table>
@@ -24,6 +24,39 @@
             </table>
             <table class="table-striped">
                 <td>{{ $dcount }} Deposits £{{ $ddpayments }}</td>
+            </table>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+
+    <div class="row align-items-start mb-3">
+        <div class="col">
+            <h4>Fleet Stats</h4>
+            <table class="table-striped">
+                <td>For Rent: {{ $forRentCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Rented: {{ $rentedCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>For Sale: {{ $forSaleCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Sold: {{ $soldCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Repairs: {{ $repairsCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Cat B: {{ $catBCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Claim in Progress: {{ $claimInProgressCount }}</td>
             </table>
         </div>
         <div class="col">

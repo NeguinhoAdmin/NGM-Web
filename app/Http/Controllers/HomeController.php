@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Motorcycle;
 use Illuminate\Http\Request;
 use App\Models\RentalPayment;
 use Illuminate\Support\Carbon;
@@ -45,6 +46,42 @@ class HomeController extends Controller
             ->where('payment_type', 'deposit')
             ->sum('outstanding');
 
-        return view('home.dashboard', compact('toDay', 'count', 'rcount', 'dcount', 'rpayments', 'rrpayments', 'ddpayments'));
+        $forRent = Motorcycle::where('availability', 'for rent');
+        $forRentCount = $forRent->count();
+
+        $rented = Motorcycle::where('availability', 'rented');
+        $rentedCount = $rented->count();
+
+        $forSale = Motorcycle::where('availability', 'for sale');
+        $forSaleCount = $forSale->count();
+
+        $sold = Motorcycle::where('availability', 'sold');
+        $soldCount = $sold->count();
+
+        $repairs = Motorcycle::where('availability', 'repairs');
+        $repairsCount = $repairs->count();
+
+        $catB = Motorcycle::where('availability', 'cat b');
+        $catBCount = $catB->count();
+
+        $claimInProgress = Motorcycle::where('availability', 'claim in progress');
+        $claimInProgressCount = $claimInProgress->count();
+
+        return view('home.dashboard', compact(
+            'claimInProgressCount',
+            'catBCount',
+            'repairsCount',
+            'soldCount',
+            'forSaleCount',
+            'rentedCount',
+            'forRentCount',
+            'toDay',
+            'count',
+            'rcount',
+            'dcount',
+            'rpayments',
+            'rrpayments',
+            'ddpayments'
+        ));
     }
 }
