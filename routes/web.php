@@ -20,6 +20,7 @@ use App\Models\Rental;
 use App\Models\RentalPayment;
 use Laravel\Cashier\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\RentalSignupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,9 @@ Route::controller(SalesController::class)->group(function () {
     Route::get('/used-motorcycle/{id}', 'UsedBikeDetails')->name('detail.used-motorcycle');
     Route::get('/motorcycle-rentals', 'RentBike')->name('motorcycle.rentals');
     Route::get('/rentals-motorcycle/{id}', 'RentalDetails')->name('rental-motorcycle.detail');
+});
+Route::controller(RentalSignupController::class)->group(function () {
+    Route::get('/rental-signup/{id}', 'RentalSignUp')->name('rental.signup');
 });
 
 // Oxford Product Routes

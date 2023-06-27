@@ -40,7 +40,7 @@
         </div><!-- /.page-title -->
 
         <section class="flat-row main-shop shop-detail style-1">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="flat-image-box clearfix">
@@ -58,54 +58,46 @@
                         <div class="divider h0"></div>
                         <div class="product-detail">
                             <div class="inner">
-                                <form action="{{ route('storeRental.cart', $motorcycle->id) }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="content-detail form-group">
-                                        <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle->make}} {{ $motorcycle->model }}</h2>
-                                        <div class="flat-star style-1">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <i class="fa fa-star-half-o"></i>
-                                            <span>(1)</span>
-                                        </div>
-                                        <p>{!! $motorcycle->description !!}</p>
-                                        <div class="price margin-top-24">
-                                            <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">£{{$motorcycle->rental_price}} per Week</span></ins>
-                                        </div>
-                                        <div hidden class="price margin-top-24">
-                                            <ins><span class="amount" value="20" name="reserve_price" id="reserve_price">Reserve for £20.00</span></ins>
-                                        </div>
-                                        <div class="product-categories margin-top-22">
-                                            <span>£20 RESERVES THIS MOTORCYCLE FOR 24 HOURS</span><a href="#"> </a>
-                                        </div>
-                                        <div class="product-quantity margin-top-35">
-                                            <div class="quantity">
-                                                <input type="text" value="1" name="quantity" class="quantity-number">
-                                                <span class="inc quantity-button">+</span>
-                                                <span class="dec quantity-button">-</span>
-                                            </div>
-                                            <button type="submit" class="add-to-cart">RESERVE</button>
-                                            <div class="box-like">
-                                                <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-categories margin-top-22 text-capitalize">
-                                            <span>Category: </span><a href="#">{{ $motorcycle->category }}</a>
-                                        </div>
-                                        <div class="product-tags">
-                                            <span>Tags: </span><a href="#"></a> <a href="#"></a> <a href="#"></a> <a href="#"></a>
-                                        </div>
-                                        <ul class="flat-socials margin-top-46">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
+                                <div class="content-detail form-group">
+                                    <h2 class="product-title" value="{{$motorcycle->description}}" name="name">{{$motorcycle->make}} {{ $motorcycle->model }}</h2>
+                                    <div class="flat-star style-1">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                        <span>(1)</span>
                                     </div>
-                                </form>
+                                    <p>{!! $motorcycle->description !!}</p>
+                                    <div class="price margin-top-24">
+                                        <ins><span class="amount" value="{{$motorcycle->price}}" name="price" id="price">£{{$motorcycle->rental_price}} per Week</span></ins>
+                                    </div>
+                                    <div hidden class="price margin-top-24">
+                                        <ins><span class="amount" value="20" name="reserve_price" id="reserve_price">Reserve for £20.00</span></ins>
+                                    </div>
+                                    <div class="product-categories margin-top-22">
+                                        <span>£20 RESERVES THIS MOTORCYCLE FOR 24 HOURS</span><a href="#"> </a>
+                                    </div>
+                                    <div class="product-quantity margin-top-35">
+                                        <div class="add-to-cart text-center">
+                                            <a href="/rental-signup/{{ $motorcycle->id }}">RESERVE</a>
+                                        </div>
+                                    </div>
+                                    <div class="product-categories margin-top-22 text-capitalize">
+                                        <span>Category: </span><a href="#">{{ $motorcycle->category }}</a>
+                                    </div>
+                                    <div class="product-tags">
+                                        <span>Tags: </span><a href="#"></a> <a href="#"></a> <a href="#"></a> <a href="#"></a>
+                                    </div>
+                                    <ul class="flat-socials margin-top-46">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+
                             </div>
                         </div><!-- /.product-detail -->
                     </div>
@@ -137,12 +129,13 @@
                                                     <div class="text-wrap">
                                                         <h6 class="title">Requirements for Rental</h6>
                                                         <ul class="list-unstyled mb-3">
-                                                            <li>Proof of address</li>
-                                                            <li>Proof of identification</li>
-                                                            <li>Insurance certification</li>
-                                                            <li>CBT certification</li>
-                                                            <li>£300 deposit</li>
-                                                            <li>1 week rent</li>
+                                                            <li>- Driving licence</li>
+                                                            <li>- Proof of address</li>
+                                                            <li>- Proof of identification</li>
+                                                            <li>- Insurance certification</li>
+                                                            <li>- CBT certification</li>
+                                                            <li>- £300 deposit</li>
+                                                            <li>- 1 week rent</li>
                                                         </ul>
                                                         <p class="mb-3">
                                                             You need to bring a lock and chain before collecting the motorcycle. If you don't have one you can always purchase from our shop along with lot's of other motorcycle accessories.
@@ -154,10 +147,10 @@
                                                             Any damage must be paid by you or a claim must be made under your insurance.
                                                         </p>
                                                         <p class="mb-3">
-                                                            You must give one week notice before returning the motorcycle.
+                                                            You must give one week notice before returning the motorcycle or deposit will be lost.
                                                         </p>
                                                         <p class="mb-3">
-                                                            Deposit will be refunded provided there is no damage on the motorcycle and no accessorioes are missing.
+                                                            Deposit will be refunded provided there is no damage to the motorcycle and no accessorioes are missing.
                                                         </p>
                                                         <p>
                                                             We have a 6 weeks minimum rental period.
@@ -237,6 +230,7 @@
                                         </div>
                                     </div><!-- /.content-inner -->
                                 </div>
+
                             </div>
                         </div>
                     </div>
