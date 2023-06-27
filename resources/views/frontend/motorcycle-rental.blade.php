@@ -91,8 +91,8 @@
                                                 <a href="#" class="like"><i class="fa fa-heart-o"></i></a>
                                             </div>
                                         </div>
-                                        <div class="product-categories margin-top-22">
-                                            <span>Category: </span><a href="#"> </a>
+                                        <div class="product-categories margin-top-22 text-capitalize">
+                                            <span>Category: </span><a href="#">{{ $motorcycle->category }}</a>
                                         </div>
                                         <div class="product-tags">
                                             <span>Tags: </span><a href="#"></a> <a href="#"></a> <a href="#"></a> <a href="#"></a>
@@ -120,7 +120,7 @@
                         <div class="flat-tabs style-1 has-border">
                             <div class="inner">
                                 <ul class="menu-tab">
-                                    <li class="active">Description</li>
+                                    <li class="active">Requirements</li>
                                     <li>Specifications</li>
                                     <li>Reviews</li>
                                 </ul>
@@ -135,8 +135,33 @@
                                                 </div><!-- /.grid-item -->
                                                 <div class="grid-item">
                                                     <div class="text-wrap">
-                                                        <h6 class="title"></h6>
-                                                        <p>{!! $motorcycle->description !!}</p>
+                                                        <h6 class="title">Requirements for Rental</h6>
+                                                        <ul class="list-unstyled mb-3">
+                                                            <li>Proof of address</li>
+                                                            <li>Proof of identification</li>
+                                                            <li>Insurance certification</li>
+                                                            <li>CBT certification</li>
+                                                            <li>£300 deposit</li>
+                                                            <li>1 week rent</li>
+                                                        </ul>
+                                                        <p class="mb-3">
+                                                            You need to bring a lock and chain before collecting the motorcycle. If you don't have one you can always purchase from our shop along with lot's of other motorcycle accessories.
+                                                        </p>
+                                                        <p class="mb-3">
+                                                            Insurance fire and theft is the minimum cover we accept. The motorcycle must be locked at all times.
+                                                        </p>
+                                                        <p class="mb-3">
+                                                            Any damage must be paid by you or a claim must be made under your insurance.
+                                                        </p>
+                                                        <p class="mb-3">
+                                                            You must give one week notice before returning the motorcycle.
+                                                        </p>
+                                                        <p class="mb-3">
+                                                            Deposit will be refunded provided there is no damage on the motorcycle and no accessorioes are missing.
+                                                        </p>
+                                                        <p>
+                                                            We have a 6 weeks minimum rental period.
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div><!-- /.grid-row -->
@@ -218,8 +243,6 @@
                 </div>
             </div>
         </section><!-- /.shop-detail-content -->
-
-        @include('frontend.body.newsletter')
 
         @include('frontend.body.footer')
 
