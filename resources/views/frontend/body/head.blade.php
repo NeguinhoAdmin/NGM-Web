@@ -74,4 +74,5 @@
             "button_position_offset": "55%"
         });
     </script>
+    @vite('resources/js/app.js')
 </head>
