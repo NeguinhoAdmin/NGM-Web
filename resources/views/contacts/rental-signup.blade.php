@@ -115,22 +115,17 @@
         </div>
         <div class="row align-items-start mb-3">
             <div class="col mb-3">
-
+                <p>Default signature:</p>
+                <div style="text-align: center">
+                    <x-creagia-signature-pad />
+                </div>
             </div>
             <div class="col mb-3">
 
             </div>
         </div>
-
-        <div class="col-md-12">
-            <label class="" for="">Signature:</label>
-            <br />
-            <div id="sig"></div>
-            <br />
-            <button id="clear">Clear Signature</button>
-            <textarea id="signature64" name="signed" style="display: none"></textarea>
-        </div>
     </form>
+    <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
 </div>
 
 @stop

@@ -55,46 +55,10 @@
 
     <!-- Boxed -->
     <div class="boxed">
-        <div id="site-header-wrap">
+        <div id="site-header-wrap mb-3">
 
             <!-- Header -->
             <header id="header" class="header clearfix">
-
-                <!-- Start Top Nav -->
-                <nav class="navbar navbar-expand navbar-dark bg-dark d-none d-lg-block" style="background-color: #101111;">
-                    <div class="container">
-                        <div class="w-100 d-flex justify-content-between">
-                            <div>
-                                <i class="fa fa-envelope mx-2" style="color:white;"></i>
-                                <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="mailto:customerservice@neguinhomotors.co.uk" target="_newtab" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Customer Service</a>
-                                <i class="fa fa-phone mx-2" style="color:white;"></i>
-                                <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="tel:02083141498" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Catford: 0208 314 1498</a>
-                                <i class="fa fa-phone mx-2" style="color:white;"></i>
-                                <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="tel:02034095478" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Tooting: 0203 409 5478</a>
-                                <i class="fa fa-bell mx-2" style="color:white;"></i>
-                                <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="/contact/call-back" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Request Callback</a>
-                            </div>
-
-                            @auth
-                            <div>
-                                <i class="fa fa-user mx-2" style="color:white;"></i>
-                                <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/dashboard" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
-                            </div>
-                            <div>
-                                <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('logout.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Logout</a>
-                            </div>
-                            @endauth
-
-                            @guest
-                            <div>
-                                <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('login.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Login </a> /
-                                <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('register.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Register</a>
-                            </div>
-                            @endguest
-                        </div>
-                    </div>
-                </nav>
-                <!-- Close Top Nav -->
 
                 <div class="container-fluid container-width-93 clearfix" id="site-header-inner">
                     <div id="logo" class="logo float-left image-responsive col-sm-3 col-md-4">
@@ -115,109 +79,8 @@
                             <a class="icon_cart nav-cart-trigger " href="/cart"><span> {{ Cart::instance('default')->count() }}</span></a>
                         </li>
                     </ul>
-                    <div class="nav-wrap">
-                        <nav id="mainnav" class="mainnav">
-                            <ul class="menu">
-                                <li>
-                                    <a href="/motorcycle-sales">SALES</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a href="/new-motorcycles">NEW MOTORCYCLES</a>
-                                        </li>
-                                        <li>
-                                            <a href="/used-motorcycles">USED MOTORCYCLES</a>
-                                        </li>
-                                        <li>
-                                            <a href="/coming-soon">FINANCE</a>
-                                        </li>
-                                        <li>
-                                            <a href="/coming-soon">MOTORCYCLE INSURANCE</a>
-                                        </li>
-                                        <li>
-                                            <a href="/accident-management-services">ACCIDENT MANAGEMENT</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="/motorcycle-rentals">RENTALS</a>
-                                </li>
-                                <li>
-                                    <a href="/services">SERVICES</a>
-                                    <ul class="submenu">
-                                        <li>
-                                            <a href="/accident-management-services">ACCIDENT MANAGEMENT</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- <li>
-                    <a href="/category/1">SHOP</a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="/category/1">HELMETS</a>
-                        </li>
-                        <li>
-                            <a href="/category/14">HELMET ACCESSORIES</a>
-                        </li>
-                        <li>
-                            <a href="/category/2">ESSENTIALS</a>
-                        </li>
-                        <li>
-                            <a href="/category/11">CLOTHING</a>
-                            <ul class="submenu">
-                                <li>
-                                    <a href="/category/10">HEADWEAR</a>
-                                </li>
-                                <li>
-                                    <a href="/category/3">HEATED CLOTHING</a>
-                                </li>
-                                <li>
-                                    <a href="/category/26">OXFORD CLOTHING</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/category/6">LOCKS</a>
-                        </li>
-                        <li>
-                            <a href="/category/7">PAINT PROTECTION</a>
-                        </li>
-                        <li>
-                            <a href="/category/8">HANDLEBAR ACCESSORIES</a>
-                        </li>
-                        <li>
-                            <a href="/category/9">REFLECTIVES</a>
-                        </li>
-                        <li>
-                            <a href="/category/12">LIGHTING</a>
-                        </li>
-                        <li>
-                            <a href="/category/13">LUGGAGE</a>
-                        </li>
-                        <li>
-                            <a href="/category/15">BATTERY CARE</a>
-                        </li>
-                        <li>
-                            <a href="/category/16">CYCLE ACCESSORIES</a>
-                        </li>
-                        <li>
-                            <a href="/category/25">INTERCOMS</a>
-                        </li>
-                        <li>
-                            <a href="/category/35">MINT</a>
-                        </li>
-                    </ul>
-                </li> -->
-                                <li>
-                                    <a href="/about">ABOUT</a>
-                                </li>
-                                <li>
-                                    <a href="/contact">CONTACT</a>
-                                </li>
-                            </ul>
-                        </nav><!-- /.mainnav -->
-                    </div><!-- /.nav-wrap -->
                 </div><!-- /.container-fluid -->
-            </header><!-- /header -->
+            </header>
 
         </div>
 
@@ -225,7 +88,7 @@
 
         <!-- Page Content -->
 
-
+        <br><br>
         <div class="row">
             <div class="col-md-7 col-md-offset-3">
                 <div class="panel panel-default credit-card-box">
@@ -292,7 +155,16 @@
 
     </div>
 
-
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright text-center">Copyright @ 2023 <a href="/">Neguinho Motors Limited - All Rights Reserved</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
@@ -367,24 +239,6 @@
 
     <!-- End Page Content -->
 
-    <!-- Newsletter -->
-
-
-
-    <!-- End Newsletter -->
-
-    <!-- Footer -->
-
-    @include('frontend.body.footer')
-
-    <!-- End Footer -->
-
-    <!-- Go Top -->
-    <a class="go-top">
-        <i class="fa fa-chevron-up"></i>
-    </a>
-
-    </div>
     <!-- Javascript -->
     @include('frontend.body.footer-scripts')
 </body>

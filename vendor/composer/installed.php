@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '05389794edee67fe93055fa14eb0cbc990f5eaff',
+        'reference' => 'd337ff875a8f15948cca838610ff8765bc2d34b4',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -87,6 +87,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'creagia/laravel-sign-pad' => array(
+            'pretty_version' => '2.0.2',
+            'version' => '2.0.2.0',
+            'reference' => 'ef419fed95b721043135fbc1120b7a87133df12f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../creagia/laravel-sign-pad',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'danharrin/date-format-converter' => array(
             'pretty_version' => 'v0.3.0',
@@ -592,7 +601,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '05389794edee67fe93055fa14eb0cbc990f5eaff',
+            'reference' => 'd337ff875a8f15948cca838610ff8765bc2d34b4',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1394,6 +1403,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'setasign/fpdi' => array(
+            'pretty_version' => 'v2.3.7',
+            'version' => '2.3.7.0',
+            'reference' => 'bccc892d5fa1f48c43f8ba7db5ed4ba6f30c8c05',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../setasign/fpdi',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'shopper/framework' => array(
             'pretty_version' => 'v1.1.2',
             'version' => '1.1.2.0',
@@ -1861,6 +1879,15 @@
             'install_path' => __DIR__ . '/../symfony/yaml',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'tecnickcom/tcpdf' => array(
+            'pretty_version' => '6.6.2',
+            'version' => '6.6.2.0',
+            'reference' => 'e3cffc9bcbc76e89e167e9eb0bbda0cab7518459',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../tecnickcom/tcpdf',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'tgalopin/html-sanitizer' => array(
             'pretty_version' => '1.5.0',

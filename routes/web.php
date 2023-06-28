@@ -91,10 +91,6 @@ Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->
 // });
 
 // StripeController
-Route::get('/checkout', [StripeController::class, 'checkout'])->name('product.checkout');
-Route::post('/session', [StripeController::class, 'session'])->name('session');
-Route::get('/success', [StripeController::class, 'success'])->name('success');
-
 Route::controller(StripePaymentController::class)->group(function () {
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
@@ -219,3 +215,5 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 // ], function () {
 //     Route::resource('products', 'ProductController');
 // });
+
+// EXPERIMENTAL AREA
