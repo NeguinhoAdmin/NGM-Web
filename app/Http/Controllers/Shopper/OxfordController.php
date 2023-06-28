@@ -84,6 +84,7 @@ class OxfordController extends Controller
 
     public function deleteProduct(Request $request)
     {
+        dd($request);
         Cart::destroy();
         // if ($request->id) {
         //     $cart = session()->get('cart');

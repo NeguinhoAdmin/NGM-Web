@@ -215,5 +215,3 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 // ], function () {
 //     Route::resource('products', 'ProductController');
 // });
-
-// EXPERIMENTAL AREA

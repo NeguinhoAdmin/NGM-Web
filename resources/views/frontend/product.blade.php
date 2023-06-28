@@ -132,13 +132,13 @@
                                             <div class="grid-row image-left clearfix">
                                                 <div class="grid-item">
                                                     <div class="thumb text-center">
-                                                        <img src="" alt="Image">
+                                                        <img src="{{$item->image_url}}" alt="Image" width="50%">
                                                     </div>
                                                 </div><!-- /.grid-item -->
                                                 <div class="grid-item">
                                                     <div class="text-wrap">
-                                                        <h6 class="title"></h6>
-                                                        <p> </p>
+                                                        <h6 class="title">{{$item->description}}</h6>
+                                                        <p>{{ html_entity_decode($item->extended_description) }}</p>
                                                     </div>
                                                 </div>
                                             </div><!-- /.grid-row -->
