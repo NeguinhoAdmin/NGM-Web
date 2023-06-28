@@ -90,7 +90,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a href="/category/1">SHOP</a>
                         <ul class="submenu">
                             <li>
@@ -147,7 +147,7 @@
                                 <a href="/category/35">MINT</a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
                     <li>
                         <a href="/about">ABOUT</a>
                     </li>

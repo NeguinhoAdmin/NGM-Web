@@ -21,27 +21,24 @@
     </div><!-- /.container -->
 </div><!-- /.page-title -->
 
-<div class="container">
+<div class="container-fluid">
     <form>
         @csrf
         <div class="row align-items-start mb-3">
-            <div class="col mb-3">
+            <div class="col-xs-12 col-sm-6 mb-3">
                 <h2 class="mb-3">Renter Information</h2>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" id="first_name" placeholder="First name" aria-label="First name">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" id="last_name" placeholder="Last name" aria-label="Last name">
-                    </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="first_name" placeholder="First name" aria-label="First name">
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <input type="text" class="form-control" id="phone" placeholder="Phone" aria-label="Phone">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" id="email" placeholder="Email" aria-label="Email">
-                    </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="last_name" placeholder="Last name" aria-label="Last name">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="phone" placeholder="Phone" aria-label="Phone">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="email" placeholder="Email" aria-label="Email">
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" id="address" placeholder="Address" aria-label="Address">
