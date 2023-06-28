@@ -78,7 +78,7 @@
 
             <div class="col mb-3">
                 <h2 class="mb-3">Vehicle Information</h2>
-                <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image" style="width: 100%;">
+
                 <ul class="list-group list-group-flush mb-3">
                     <li class="list-group-item" id="make" value="{{ $motorcycle->make }}">{{ $motorcycle->make }}</li>
                     <li class="list-group-item" id="model" value="{{ $motorcycle->model }}">{{ $motorcycle->model }}</li>
@@ -87,6 +87,9 @@
                     <li class="list-group-item" id="year" value="{{ $motorcycle->year }}">{{ $motorcycle->year }}</li>
                     <li class="list-group-item text-uppercase" id="category" value="{{ $motorcycle->category }}">{{ $motorcycle->category }}</li>
                 </ul>
+
+                <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image" style="width: 100%;">
+
                 <h2 class="mb-3">Charge Information</h2>
                 <table class="table">
                     <thead>
