@@ -115,13 +115,16 @@
         </div>
         <div class="row align-items-start mb-3">
             <div class="col mb-3">
+
+            </div>
+            <div class="col mb-3">
+
+            </div>
+            <div>
                 <p>Default signature:</p>
                 <div style="text-align: center">
                     <x-creagia-signature-pad />
                 </div>
-            </div>
-            <div class="col mb-3">
-
             </div>
         </div>
     </form>

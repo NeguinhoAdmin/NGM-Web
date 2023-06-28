@@ -26,7 +26,7 @@ return [
      * Width and height of the signature rectangle.
      */
     'width' => 600,
-    'height' => 200,
+    'height' => 300,
 
     /**
      * Should certify the document signature with certificate
