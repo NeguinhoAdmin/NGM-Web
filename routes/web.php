@@ -19,7 +19,7 @@ use App\Models\Motorcycle;
 use App\Models\Rental;
 use App\Models\RentalPayment;
 use Laravel\Cashier\Http\Controllers\PaymentController;
-use App\Http\Controllers\StripeController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\RentalSignupController;
 
 /*
@@ -84,16 +84,21 @@ Route::get('/cart', [CartController::class, 'index'])->name('product.cart');
 Route::get('/add-product', [CartController::class, 'add'])->name('addproduct.cart');
 Route::post('/cart/{id}', [CartController::class, 'store'])->name('store.cart');
 Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->name('storeRental.cart');
-// StripeController
-Route::get('/checkout', [StripeController::class, 'checkout'])->name('product.checkout');
-Route::post('/session', [StripeController::class, 'session'])->name('session');
-Route::get('/success', [StripeController::class, 'success'])->name('success');
-
 // Route::controller(CartController::class)->group(function () {
 //     Route::get('/cart', 'index')->name('product.cart');
 //     Route::get('/add-product/{id}', 'add')->name('addproduct.cart');
 //     Route::post('/cart', 'store')->name('cart.store');
 // });
+
+// StripeController
+Route::get('/checkout', [StripeController::class, 'checkout'])->name('product.checkout');
+Route::post('/session', [StripeController::class, 'session'])->name('session');
+Route::get('/success', [StripeController::class, 'success'])->name('success');
+
+Route::controller(StripePaymentController::class)->group(function () {
+    Route::get('stripe', 'stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
 // Contact All Routes
 Route::controller(ContactController::class)->group(function () {
@@ -107,6 +112,7 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/accident/management', 'AccidentManagement')->name('AccidentManagement');
 });
 
+// Email
 Route::post('/mail', [MailController::class, 'sendMail']);
 
 // Subscriber Route
@@ -206,10 +212,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 });
 
 // Admin Route Grouping
-Route::group([
-    'prefix' => 'admin',
-    'namespace' => 'Admin',
-    'middleware' => 'admin'
-], function () {
-    Route::resource('products', 'ProductController');
-});
+// Route::group([
+//     'prefix' => 'admin',
+//     'namespace' => 'Admin',
+//     'middleware' => 'admin'
+// ], function () {
+//     Route::resource('products', 'ProductController');
+// });
