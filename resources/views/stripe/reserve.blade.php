@@ -104,13 +104,13 @@
                         </div>
                         @endif
 
-                        <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+                        <form role="form" action="{{ route('stripe.reserve') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
                             @csrf
 
                             <div class='form-row row'>
                                 <div class='col-xs-12 form-group required'>
                                     <label class='control-label'>Name on Card</label>
-                                    <input class='form-control' size='4' type='text'>
+                                    <input class='form-control' id="name_on_card" size='4' type='text'>
                                 </div>
                             </div>
 
@@ -143,7 +143,7 @@
 
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now (£100)</button>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Pay £{{ $stripePay }} Now</button>
                                 </div>
                             </div>
 

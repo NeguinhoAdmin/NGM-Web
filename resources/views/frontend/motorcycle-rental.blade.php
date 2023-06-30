@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="product-quantity margin-top-35">
                                         <div class="add-to-cart text-center">
-                                            <a href="/rental-signup/{{ $motorcycle->id }}">RESERVE</a>
+                                            <a href="/stripe/{{ $motorcycle->id }}">RESERVE FOR £20</a>
                                         </div>
                                     </div>
                                     <div class="product-categories margin-top-22 text-capitalize">

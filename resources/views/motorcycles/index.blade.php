@@ -92,7 +92,11 @@
                 <td class="text-uppercase">{{$motorcycle->engine}}CC</td>
                 <td class="text-uppercase">{{$motorcycle->year}}</td>
                 <td class="text-uppercase">{{$motorcycle->colour}}</td>
-                <td></td>
+                <td>
+                    @if ($motorcycle->availability === 'for rent')
+                    <a class="btn btn-outline-primary" href="{{ URL::to('rental-signup/' . $motorcycle->id) }}" target="_blank">Book</a>
+                    @endif
+                </td>
                 <td>
                     <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $motorcycle->id) }}">Details</a>
                 </td>

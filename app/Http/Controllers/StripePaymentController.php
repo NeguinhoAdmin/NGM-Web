@@ -7,6 +7,7 @@ use Stripe\Stripe;
 use Stripe\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Motorcycle;
 
 class StripePaymentController extends Controller
 {
@@ -33,7 +34,41 @@ class StripePaymentController extends Controller
             "amount" => 100 * 100,
             "currency" => "gbp",
             "source" => $request->stripeToken,
-            "description" => "Test payment from LaravelTus.com."
+            "description" => "Test payment from NeguinhoMotors.co.uk"
+        ]);
+
+        Session::flash('success', 'Payment successful!');
+
+        return back();
+    }
+
+    /** MOTORCYCLE RENTAL RESERVATION VIEW
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function stripeReserve($motorcycle_id)
+    {
+        $motorcycle = Motorcycle::where('id', $motorcycle_id)->first();
+        $stripePay = 20;
+
+        return view('stripe.reserve', compact('stripePay'));
+    }
+
+    /** MOTOTCYCLE RENTAL RESERVATION PROCESSOR
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function rentalReserve(Request $request)
+    {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        Charge::create([
+            "amount" => 20 * 100,
+            "currency" => "gbp",
+            "source" => $request->stripeToken,
+            "description" => "NGM Motorcycle Reservation"
         ]);
 
         Session::flash('success', 'Payment successful!');
@@ -65,7 +100,7 @@ class StripePaymentController extends Controller
             "amount" => 100 * 100,
             "currency" => "gbp",
             "customer" => $customer->id,
-            "description" => "Test payment from LaravelTus.com.",
+            "description" => "Test payment from NeguinhoMotors.co.uk",
             "shipping" => [
                 "name" => "Jenny Rosen",
                 "address" => [

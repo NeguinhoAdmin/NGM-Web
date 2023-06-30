@@ -52,9 +52,9 @@
                     <button type="submit" class="header-search-submit" title="Search">Search</button>
                 </form>
             </li>
-            <li class="box-cart nav-top-cart-wrapper">
+            <!-- <li class="box-cart nav-top-cart-wrapper">
                 <a class="icon_cart nav-cart-trigger " href="/cart"><span> {{ Cart::instance('default')->count() }}</span></a>
-            </li>
+            </li> -->
         </ul>
         <div class="nav-wrap">
             <nav id="mainnav" class="mainnav">

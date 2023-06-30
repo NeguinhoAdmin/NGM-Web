@@ -11,12 +11,19 @@ use Creagia\LaravelSignPad\Templates\BladeDocumentTemplate;
 use Creagia\LaravelSignPad\Templates\PdfDocumentTemplate;
 use Creagia\LaravelSignPad\SignatureDocumentTemplate;
 use Creagia\LaravelSignPad\SignaturePosition;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Documents extends Model implements CanBeSigned, ShouldGenerateSignatureDocument
 {
     use HasFactory, RequiresSignature;
 
-    protected $fillable = ['path'];
+    protected $fillable = [
+        'path',
+        'name',
+        'file_path',
+        'user_id'
+    ];
 
     public function getSignatureDocumentTemplate(): SignatureDocumentTemplate
     {
@@ -37,5 +44,32 @@ class Documents extends Model implements CanBeSigned, ShouldGenerateSignatureDoc
                 ),
             ]
         );
+    }
+
+    public function DlFront(Request $req)
+    {
+        $previousUrl = URL()->previous();
+        if (preg_match("/\/(\d+)$/", $previousUrl, $matches)) {
+            $user_id = $matches[1];
+        } else {
+            //Your URL didn't match.  This may or may not be a bad thing.
+        }
+
+        $req->validate([
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+        ]);
+        $fileModel = new File;
+        if ($req->file()) {
+            $fileName = time() . '_' . $req->file->getClientOriginalName();
+            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+            $fileModel->user_id = $user_id;
+            $fileModel->document_type = "Driving Licence Front";
+            $fileModel->name = time() . '_' . $req->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->save();
+
+            return to_route('users.show', [$user_id])
+                ->with('success', 'The front of the driving licence has been uploaded.');
+        }
     }
 }

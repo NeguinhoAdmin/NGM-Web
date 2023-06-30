@@ -59,19 +59,6 @@ Route::controller(WelcomeController::class)->group(function () {
     Route::get('/coming-soon', 'SoonCome');
 });
 
-// Motorcycle Sales & Rental Routes
-Route::controller(SalesController::class)->group(function () {
-    Route::get('/new-motorcycles', 'NewForSale')->name('motorcycles.new');
-    Route::get('/new-motorcycle/{id}', 'NewBikeDetails')->name('new-motorcycle.detail');
-    Route::get('/used-motorcycles', 'UsedForSale')->name('motorcycles.used');
-    Route::get('/used-motorcycle/{id}', 'UsedBikeDetails')->name('detail.used-motorcycle');
-    Route::get('/motorcycle-rentals', 'RentBike')->name('motorcycle.rentals');
-    Route::get('/rentals-motorcycle/{id}', 'RentalDetails')->name('rental-motorcycle.detail');
-});
-Route::controller(RentalSignupController::class)->group(function () {
-    Route::get('/rental-signup/{id}', 'RentalSignUp')->name('rental.signup');
-});
-
 // Oxford Product Routes
 Route::controller(OxfordController::class)->group(function () {
     Route::get('/category/{category_id}', 'getProductCategory')->name('product.category');
@@ -94,6 +81,9 @@ Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->
 Route::controller(StripePaymentController::class)->group(function () {
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
+
+    Route::get('stripe/{id}', 'stripeReserve');
+    Route::post('stripe', 'rentalReserve')->name('stripe.reserve');
 });
 
 // Contact All Routes
@@ -114,7 +104,23 @@ Route::post('/mail', [MailController::class, 'sendMail']);
 // Subscriber Route
 Route::post('/subscribe', [SubscriberController::class, 'subscribe']);
 
-// DOCUMENTS ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Motorcycle Sales & Rental Routes ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::controller(SalesController::class)->group(function () {
+    Route::get('/new-motorcycles', 'NewForSale')->name('motorcycles.new');
+    Route::get('/new-motorcycle/{id}', 'NewBikeDetails')->name('new-motorcycle.detail');
+    Route::get('/used-motorcycles', 'UsedForSale')->name('motorcycles.used');
+    Route::get('/used-motorcycle/{id}', 'UsedBikeDetails')->name('detail.used-motorcycle');
+    Route::get('/motorcycle-rentals', 'RentBike')->name('motorcycle.rentals');
+    Route::get('/rentals-motorcycle/{id}', 'RentalDetails')->name('rental-motorcycle.detail');
+});
+Route::controller(RentalSignupController::class)->group(function () {
+    // Route::get('rental-reserve/{id}', 'rentalReserve');
+    Route::get('/rental-signup/{id}', 'rentalSignUp')->name('rental.signup');
+    Route::post('/rentalsignup', 'storeSignUp')->name('store.signup');
+    Route::get('/rental-agreement', 'showAgreement')->name('show.agreement');
+});
+
+// DOCUMENTS
 Route::get('file-upload', [DocumentController::class, 'index']);
 Route::post('file-upload', [DocumentController::class, 'store'])->name('file.store');
 

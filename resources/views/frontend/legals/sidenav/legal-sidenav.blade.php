@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="widget widget_categories">
-        <h5 class="widget-title">Legals</h5>
+        <h5 class="widget-title">LEGALS</h5>
         <ul>
             <li><a href="/terms-of-use">Terms of Use</a></li>
             <li><a href="/cookie-and-privacy-policy">Cookie & Privacy Policy</a></li>
