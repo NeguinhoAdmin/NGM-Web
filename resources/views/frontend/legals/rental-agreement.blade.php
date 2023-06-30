@@ -24,7 +24,7 @@
 <section class="blog-posts style1">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <div class="post-wrap style1">
 
                     <article class="post clearfix">
@@ -476,7 +476,7 @@
 
                                 <p class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 
-                                <p class="mb-3">Name: <strong>{{ old('$userName') }}</strong></p>
+                                <p class="mb-3">Name: <strong>{{ $user->first_name }} {{ $user->last_name }}</strong></p>
                                 <p class="mb-3">​​Date signed: <strong>{{ Carbon\Carbon::parse(old('$toDay'))->format('d/m/Y') }}</strong>​</p>
                                 <p>Signature:</p>
                                 <form>
@@ -493,12 +493,63 @@
 
                 </div><!-- /.post-wrap -->
             </div><!-- /.col-md-9 -->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="mb-3">
                     <h2>Renter Information</h2>
+                    <dl class="row mb-3">
+                        <dt class="col-sm-4">Name:</dt>
+                        <dd class="col-sm-8">{{ $user->first_name }} {{ $user->last_name }}</dd>
+
+                        <dt class="col-sm-4">Address:</dt>
+                        <dd class="col-sm-8">{{ $user->street_address }}</dd>
+
+                        <dt class="col-sm-4"></dt>
+                        <dd class="col-sm-8">{{ $user->street_address_plus }}</dd>
+
+                        <dt class="col-sm-4">City:</dt>
+                        <dd class="col-sm-8">{{ $user->city }}</dd>
+
+                        <dt class="col-sm-4">Post Code:</dt>
+                        <dd class="col-sm-8">{{ $user->post_code }}</dd>
+
+                        <dt class="col-sm-4">Phone:</dt>
+                        <dd class="col-sm-8">{{ $user->phone_number }}</dd>
+
+                        <dt class="col-sm-4">Email:</dt>
+                        <dd class="col-sm-8">{{ $user->email }}</dd>
+
+                        <dt class="col-sm-4">Nationality:</dt>
+                        <dd class="col-sm-8">{{ $user->nationality }}</dd>
+                    </dl>
                 </div>
                 <div class="mb-3">
                     <h2>Vehicle Information</h2>
+                    <dl class="row mb-3">
+                        <dt class="col-sm-4">Make:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->make }}</dd>
+
+                        <dt class="col-sm-4">Model:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->model }}</dd>
+
+                        <dt class="col-sm-4">Engine:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->engine }}</dd>
+
+                        <dt class="col-sm-4">Year:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->year }}</dd>
+
+                        <dt class="col-sm-4">Colour:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->colour }}</dd>
+                    </dl>
+                </div>
+                <div class="mb-3">
+                    <h2>Vehicle Information</h2>
+                    <dl class="row mb-3">
+                        <dt class="col-sm-4">Deposit:</dt>
+                        <dd class="col-sm-8">£{{ $deposit }}.00</dd>
+
+                        <dt class="col-sm-4">Weekly Rental:</dt>
+                        <dd class="col-sm-8">£{{ $motorcycle->rental_price }}</dd>
+                    </dl>
                 </div>
             </div><!-- /.col-md-3 -->
         </div><!-- /.row -->

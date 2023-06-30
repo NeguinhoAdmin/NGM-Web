@@ -39,7 +39,7 @@ class RentalSignupController extends Controller
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->gender = $request->gender;
-        $user->phone_number = $request->phone_number;
+        $user->phone_number = $request->phone;
         $user->email = $request->email;
         $user->nationality = $request->nationality;
         $user->driving_licence = $request->driving_licence;
@@ -64,16 +64,11 @@ class RentalSignupController extends Controller
             $motorcycle->file_path = '/storage/' . $filePath;
         }
         $motorcycle->save();
-
-        $make = $motorcycle->make;
-        $model = $motorcycle->model;
-        $engine = $motorcycle->engine;
-        $colour = $motorcycle->colour;
-        $year = $motorcycle->year;
+        $deposit = 300;
 
         $toDay = Carbon::now();
 
-        return view('frontend.legals.rental-agreement', compact('toDay', 'userName'));
+        return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
     }
 
     // Show rental rental agreement
