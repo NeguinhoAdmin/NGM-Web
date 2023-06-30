@@ -525,6 +525,9 @@
                 <div class="mb-3">
                     <h2>Vehicle Information</h2>
                     <dl class="row mb-3">
+                        <dt class="col-sm-4">Registration:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->registration }}</dd>
+
                         <dt class="col-sm-4">Make:</dt>
                         <dd class="col-sm-8">{{ $motorcycle->make }}</dd>
 
@@ -542,7 +545,7 @@
                     </dl>
                 </div>
                 <div class="mb-3">
-                    <h2>Vehicle Information</h2>
+                    <h2>Charge Information</h2>
                     <dl class="row mb-3">
                         <dt class="col-sm-4">Deposit:</dt>
                         <dd class="col-sm-8">£{{ $deposit }}.00</dd>

@@ -109,6 +109,7 @@
                 <h2 class="mb-3">Vehicle Information</h2>
 
                 <ul class="list-group list-group-flush mb-3">
+                    <li class="form-control list-group-item" type="text" name="registration" id="registration" value="{{ $motorcycle->registration }}">{{ $motorcycle->registration }}</li>
                     <li class="form-control list-group-item" type="text" name="make" id="make" value="{{ $motorcycle->make }}">{{ $motorcycle->make }}</li>
                     <li class="list-group-item" name="model" id="model" value="{{ $motorcycle->model }}">{{ $motorcycle->model }}</li>
                     <li class="list-group-item" name="engine" id="engine" value="{{ $motorcycle->engine }}">{{ $motorcycle->engine }}CC</li>
