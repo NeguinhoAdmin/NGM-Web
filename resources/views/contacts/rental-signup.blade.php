@@ -58,9 +58,6 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email" aria-label="Email">
                 </div>
                 <div class="mb-3">
-                    <input hidden type="password" class="form-control" name="password" id="inputPassword" placeholder="Rental3789">
-                </div>
-                <div class="mb-3">
                     <input type="text" class="form-control" name="address1" id="address1" placeholder="Address 1" aria-label="Address Line 1">
                 </div>
                 <div class="mb-3">

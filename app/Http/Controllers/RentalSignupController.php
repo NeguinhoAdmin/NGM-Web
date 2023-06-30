@@ -35,12 +35,15 @@ class RentalSignupController extends Controller
             'post_code' => 'required',
         ]);
 
+        $password = "Rental3786";
+
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->gender = $request->gender;
         $user->phone_number = $request->phone;
         $user->email = $request->email;
+        $user->password = bcrypt($password);
         $user->nationality = $request->nationality;
         $user->driving_licence = $request->driving_licence;
         $user->username = $request->email;
