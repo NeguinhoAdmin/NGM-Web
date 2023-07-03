@@ -9,10 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Rental extends Model
 {
-    use HasFactory;
-    protected $guarded = [];
-
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
+    // protected $guarded = [];
+    protected $fillable = ['signature'];
 
     /**
      * Get the user that owns this contract.

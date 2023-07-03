@@ -58,13 +58,13 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email" aria-label="Email">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="address1" id="address1" placeholder="Address 1" aria-label="Address Line 1">
+                    <input type="text" class="form-control" name="address1" id="address1" placeholder="Address" aria-label="Address">
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="address2" id="address2" placeholder="" aria-label="Address Line 2">
                 </div>
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="city" id="city" placeholder="" aria-label="City">
+                    <input type="text" class="form-control" name="city" id="city" placeholder="City" aria-label="City">
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" name="post_code" id="post_code" placeholder="Post Code" aria-label="Post Code">

@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Motorcycle;
+use App\Models\Rental;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class RentalSignupController extends Controller
 {
@@ -67,8 +70,8 @@ class RentalSignupController extends Controller
             $motorcycle->file_path = '/storage/' . $filePath;
         }
         $motorcycle->save();
-        $deposit = 300;
 
+        $deposit = 300;
         $toDay = Carbon::now();
 
         return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
@@ -77,13 +80,34 @@ class RentalSignupController extends Controller
     // Show rental rental agreement
     public function showAgreement(Request $request)
     {
+        dd($request);
         $toDay = Carbon::now();
         return view('frontend.legals.rental-agreement', compact('toDay'));
     }
 
-    // Process rental agreement
+    // Process rental agreement - Save new client signature function
     public function signedAgreement(Request $request)
     {
-        //
+        $base64_image = $request->input('sign'); // your base64 encoded
+        @list($type, $file_data) = explode(';', $base64_image);
+        @list(, $file_data) = explode(',', $file_data);
+        $fileName = str_random(10) . '.' . 'png';
+        Storage::put($fileName, base64_decode($file_data));
+
+        $authUser = Auth::user();
+        $rental = new Rental();
+        $rental->user_id = $request->user_id;
+        $rental->signature = $fileName;
+        $rental->motorcycle_id = $request->motorcycle_id;
+        $rental->registration = $request->registration;
+        $rental->deposit = $request->deposit;
+        $rental->price = $request->rental_price;
+        $rental->auth_user = $authUser->first_name . " " . $authUser->last_name;
+        $rental->save();
+
+        return redirect()->route('motorcycle.rentals')->with('success', 'Agreement has been saved');
     }
+
+    // View Rental Agreements
+
 }

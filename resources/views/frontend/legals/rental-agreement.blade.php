@@ -2,6 +2,20 @@
 
 @section('content')
 
+<!-- jQuery Signature Plugin CSS -->
+<link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
+<style>
+    .kbw-signature {
+        width: 100%;
+        height: 200px;
+    }
+
+    #sigpad canvas {
+        width: 100% !important;
+        height: auto;
+    }
+</style>
+
 <!-- Page title -->
 <div class="page-title parallax parallax1">
     <div class="container">
@@ -479,8 +493,15 @@
                                 <p class="mb-3">Name: <strong>{{ $user->first_name }} {{ $user->last_name }}</strong></p>
                                 <p class="mb-3">​​Date signed: <strong>{{ Carbon\Carbon::parse(old('$toDay'))->format('d/m/Y') }}</strong>​</p>
                                 <p>Signature:</p>
-                                <form>
-                                    <div style="text-align: center">
+
+                                <form action="/signature-post" method="POST">
+                                    @csrf
+                                    <input hidden class="form-control list-group-item" type="text" name="user_id" id="user->id" value="{{ $user->id }}">
+                                    <input hidden class="form-control list-group-item" type="text" name="motorcycle_id" id="motorcycle->id" value="{{ $motorcycle->id }}">
+                                    <input hidden class="form-control list-group-item" type="text" name="registration" id="registration" value="{{ $motorcycle->registration }}">
+                                    <input hidden class="form-control list-group-item" type="text" name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">
+                                    <input hidden class="form-control list-group-item" type="text" name="deposit" id="deposit" value="{{ $deposit }}">
+                                    <div style="text-align: center" id="sigpad">
                                         <x-creagia-signature-pad />
                                     </div>
                                 </form>
@@ -558,4 +579,5 @@
         </div><!-- /.row -->
     </div><!-- /.container -->
 </section><!-- /.blog posts -->
+
 @stop

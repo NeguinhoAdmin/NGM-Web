@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^7.6",
         "laravel/cashier": "^13.17",
         "laravel/framework": "^9.19",
+        "laravel/helpers": "^1.6",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "laravelcollective/html": "^6.4",

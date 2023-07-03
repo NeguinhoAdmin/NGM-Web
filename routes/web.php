@@ -115,9 +115,10 @@ Route::controller(SalesController::class)->group(function () {
 });
 Route::controller(RentalSignupController::class)->group(function () {
     // Route::get('rental-reserve/{id}', 'rentalReserve');
-    Route::get('/rental-signup/{id}', 'rentalSignUp')->name('rental.signup');
+    Route::get('/rental-signup/{id}', 'rentalSignUp');
     Route::post('/rentalsignup', 'storeSignUp')->name('store.signup');
-    Route::get('/rental-agreement', 'showAgreement')->name('show.agreement');
+    Route::get('/rental-agreement', 'showAgreement');
+    Route::post('/signature-post', 'signedAgreement')->name('sign.agreement');
 });
 
 // DOCUMENTS
