@@ -119,7 +119,6 @@
                 <input hidden class="form-control list-group-item" type="text" name="registration" id="registration" value="{{ $motorcycle->registration }}">
                 <input hidden class="form-control list-group-item" type="text" name="make" id="make" value="{{ $motorcycle->make }}">
                 <input hidden class="form-control list-group-item" type="text" name="model" id="model" value="{{ $motorcycle->model }}">
-                <input hidden class="form-control list-group-item" type="text" name="make" id="make" value="{{ $motorcycle->make }}">
                 <input hidden class="form-control list-group-item" type="text" name="engine" id="engine" value="{{ $motorcycle->engine }}">
                 <input hidden class="form-control list-group-item" type="text" name="year" id="year" value="{{ $motorcycle->year }}">
                 <input hidden class="form-control list-group-item" type="text" name="deposit" id="deposit" value="{{ $deposit }}">

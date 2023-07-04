@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Motorcycle;
 use App\Models\Rental;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class RentalSignupController extends Controller
 {
@@ -101,22 +104,55 @@ class RentalSignupController extends Controller
         $rental->signature = $fileName;
         $rental->motorcycle_id = $request->motorcycle_id;
         $rental->registration = $request->registration;
+        $rental->make = $request->make;
+        $rental->model = $request->model;
+        $rental->engine = $request->engine;
+        $rental->year = $request->year;
+        $rental->colour = $request->colour;
         $rental->deposit = $request->deposit;
         $rental->price = $request->rental_price;
         $rental->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $rental->save();
 
-        $toDay = Carbon::now();
         $user = User::where('id', $rental->user_id)->first();
 
-        $motorcycle = Motorcycle::where('id', $rental->motorcycle_id)->first();
-        // Show the signed PDF document
-        return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
+        // Call the PDF create and email function
+        // $this->PdfAgreement($user, $rental);
+
+        // return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
 
-    // Show the signed PDF document
-    public function PdfAgreement($rental)
+    // Send the signed PDF document
+    public function PdfAgreement($user, $rental)
     {
-        dd($rental);
+        // $original = new Collection(['foo']);
+        // $latest = new Collection(['bar']);
+        // $merged = $original->merge($latest);
+        //--------------------------------------
+
+        // Send email with PDF to client
+        $data["email"] = $user->email;
+        $data["title"] = "Rental Agreement";
+        $data["body"] = "This is Demo";
+
+        $u = User::where('id', $user->id)->first();
+        $r = Rental::where('signature', $rental->signature)->first();
+
+        $user = collect($u);
+        $rental = collect($r);
+        $agree = $rental->merge($user);
+        $agreement = json_decode($agree);
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadHtml('<h1>Test</h1>');
+        // $pdf = PDF::loadView('pdf.rentalAgreement', compact('agreement'));
+
+        // Mail::send('pdf.rental-agreement', $data, function ($message) use ($data, $pdf) {
+        //     $message->to($data["email"])
+        //         ->subject($data["title"])
+        //         ->attachData($pdf->output(), "rental-agreement.pdf");
+        // });
+
+        return $pdf->stream();
     }
 }

@@ -71,22 +71,22 @@
                     <h2>Vehicle Information</h2>
                     <dl class="row mb-3">
                         <dt class="col-sm-4">Registration:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->registration }}</dd>
+                        <dd class="col-sm-8">{{ $rental->registration }}</dd>
 
                         <dt class="col-sm-4">Make:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->make }}</dd>
+                        <dd class="col-sm-8">{{ $rental->make }}</dd>
 
                         <dt class="col-sm-4">Model:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->model }}</dd>
+                        <dd class="col-sm-8">{{ $rental->model }}</dd>
 
                         <dt class="col-sm-4">Engine:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->engine }}</dd>
+                        <dd class="col-sm-8">{{ $rental->engine }}</dd>
 
                         <dt class="col-sm-4">Year:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->year }}</dd>
+                        <dd class="col-sm-8">{{ $rental->year }}</dd>
 
                         <dt class="col-sm-4">Colour:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->colour }}</dd>
+                        <dd class="col-sm-8">{{ $rental->colour }}</dd>
                     </dl>
                 </div>
                 <div class="mb-3">
@@ -96,7 +96,7 @@
                         <dd class="col-sm-8">£{{ $rental->deposit }}.00</dd>
 
                         <dt class="col-sm-4">Weekly Rental:</dt>
-                        <dd class="col-sm-8">£{{ $motorcycle->rental_price }}</dd>
+                        <dd class="col-sm-8">£{{ $rental->rental_price }}</dd>
                     </dl>
                 </div>
             </div><!-- /.col-md-3 -->
@@ -552,7 +552,7 @@
                                 <p class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 
                                 <p class="mb-3">Name: <strong>{{ $user->first_name }} {{ $user->last_name }}</strong></p>
-                                <p class="mb-3">​​Date signed: <strong>{{ Carbon\Carbon::parse($toDay)->format('d/m/Y') }}</strong>​</p>
+                                <p class="mb-3">​​Date signed: <strong>{{ Carbon\Carbon::parse($rental->created_at)->format('d/m/Y') }}</strong>​</p>
                                 <p>Signature:</p>
 
                                 <img src="{{ Vite::asset('storage/uploads/' . $rental->signature) }}" alt="Image" style="width: 50%;">

@@ -10,6 +10,7 @@ use App\Http\Controllers\Shopper\SalesController;
 use App\Http\Controllers\Shopper\OxfordController;
 use App\Http\Controllers\Welcome\ContactController;
 use App\Http\Controllers\Welcome\WelcomeController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\FileUploadController;
@@ -21,6 +22,7 @@ use App\Models\RentalPayment;
 use Laravel\Cashier\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\RentalSignupController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +99,9 @@ Route::controller(ContactController::class)->group(function () {
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');
     Route::get('/accident/management', 'AccidentManagement')->name('AccidentManagement');
 });
+
+// PDFs
+Route::get('generate-pdf', [PdfController::class, 'generatePdf'])->name('generate-pdf');
 
 // Email
 Route::post('/mail', [MailController::class, 'sendMail']);

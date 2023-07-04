@@ -12,6 +12,7 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "bumbummen99/shoppingcart": "^4.2",
         "creagia/laravel-sign-pad": "^2.0",
+        "dompdf/dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.6",
         "laravel/cashier": "^13.17",
         "laravel/framework": "^9.19",
