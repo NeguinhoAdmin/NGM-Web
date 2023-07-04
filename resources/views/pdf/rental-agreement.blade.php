@@ -38,9 +38,70 @@
 <section class="blog-posts style1">
     <div class="container">
         <div class="row">
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <h2>Renter Information</h2>
+                    <dl class="row mb-3">
+                        <dt class="col-sm-4">Name:</dt>
+                        <dd class="col-sm-8">{{ $user->first_name }} {{ $user->last_name }}</dd>
+
+                        <dt class="col-sm-4">Address:</dt>
+                        <dd class="col-sm-8">{{ $user->street_address }}</dd>
+
+                        <dt class="col-sm-4"></dt>
+                        <dd class="col-sm-8">{{ $user->street_address_plus }}</dd>
+
+                        <dt class="col-sm-4">City:</dt>
+                        <dd class="col-sm-8">{{ $user->city }}</dd>
+
+                        <dt class="col-sm-4">Post Code:</dt>
+                        <dd class="col-sm-8">{{ $user->post_code }}</dd>
+
+                        <dt class="col-sm-4">Phone:</dt>
+                        <dd class="col-sm-8">{{ $user->phone_number }}</dd>
+
+                        <dt class="col-sm-4">Email:</dt>
+                        <dd class="col-sm-8">{{ $user->email }}</dd>
+
+                        <dt class="col-sm-4">Nationality:</dt>
+                        <dd class="col-sm-8">{{ $user->nationality }}</dd>
+                    </dl>
+                </div>
+                <div class="mb-3">
+                    <h2>Vehicle Information</h2>
+                    <dl class="row mb-3">
+                        <dt class="col-sm-4">Registration:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->registration }}</dd>
+
+                        <dt class="col-sm-4">Make:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->make }}</dd>
+
+                        <dt class="col-sm-4">Model:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->model }}</dd>
+
+                        <dt class="col-sm-4">Engine:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->engine }}</dd>
+
+                        <dt class="col-sm-4">Year:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->year }}</dd>
+
+                        <dt class="col-sm-4">Colour:</dt>
+                        <dd class="col-sm-8">{{ $motorcycle->colour }}</dd>
+                    </dl>
+                </div>
+                <div class="mb-3">
+                    <h2>Charge Information</h2>
+                    <dl class="row mb-3">
+                        <dt class="col-sm-4">Deposit:</dt>
+                        <dd class="col-sm-8">£{{ $rental->deposit }}.00</dd>
+
+                        <dt class="col-sm-4">Weekly Rental:</dt>
+                        <dd class="col-sm-8">£{{ $motorcycle->rental_price }}</dd>
+                    </dl>
+                </div>
+            </div><!-- /.col-md-3 -->
             <div class="col-md-8">
                 <div class="post-wrap style1">
-
                     <article class="post clearfix">
                         <div class="content-post">
                             <div class="entry-post">
@@ -491,100 +552,20 @@
                                 <p class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 
                                 <p class="mb-3">Name: <strong>{{ $user->first_name }} {{ $user->last_name }}</strong></p>
-                                <p class="mb-3">​​Date signed: <strong>{{ Carbon\Carbon::parse(old('$toDay'))->format('d/m/Y') }}</strong>​</p>
+                                <p class="mb-3">​​Date signed: <strong>{{ Carbon\Carbon::parse($toDay)->format('d/m/Y') }}</strong>​</p>
                                 <p>Signature:</p>
 
-                                <form action="/signature-post" method="POST">
-                                    @csrf
-                                    <input hidden class="form-control list-group-item" type="text" name="user_id" id="user->id" value="{{ $user->id }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="first_name" id="first_name" value="{{ $user->first_name }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="last_name" id="last_name" value="{{ $user->last_name }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="address1" id="addresss1" value="{{ $user->street_address }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="address2" id="addresss2" value="{{ $user->street_address_plus }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="city" id="city" value="{{ $user->city }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="post_code" id="post_code" value="{{ $user->post_code }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="motorcycle_id" id="motorcycle->id" value="{{ $motorcycle->id }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="registration" id="registration" value="{{ $motorcycle->registration }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="make" id="make" value="{{ $motorcycle->make }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="model" id="model" value="{{ $motorcycle->model }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">
-                                    <input hidden class="form-control list-group-item" type="text" name="deposit" id="deposit" value="{{ $deposit }}">
-                                    <div style="text-align: center" id="sigpad">
-                                        <x-creagia-signature-pad />
-                                    </div>
-                                </form>
-                                <script src="{{ asset('vendor/sign-pad/sign-pad.min.js') }}"></script>
+                                <img src="{{ Vite::asset('storage/uploads/' . $rental->signature) }}" alt="Image" style="width: 50%;">
+
                             </div>
-                        </div><!-- /.content-post -->
-                    </article><!-- /.post -->
+                        </div>
+                </div><!-- /.content-post -->
+                </article><!-- /.post -->
 
-                    <article class="post clearfix">
+                <article class="post clearfix">
 
-                </div><!-- /.post-wrap -->
-            </div><!-- /.col-md-9 -->
-            <div class="col-md-4">
-                <div class="mb-3">
-                    <h2>Renter Information</h2>
-                    <dl class="row mb-3">
-                        <dt class="col-sm-4">Name:</dt>
-                        <dd class="col-sm-8">{{ $user->first_name }} {{ $user->last_name }}</dd>
-
-                        <dt class="col-sm-4">Address:</dt>
-                        <dd class="col-sm-8">{{ $user->street_address }}</dd>
-
-                        <dt class="col-sm-4"></dt>
-                        <dd class="col-sm-8">{{ $user->street_address_plus }}</dd>
-
-                        <dt class="col-sm-4">City:</dt>
-                        <dd class="col-sm-8">{{ $user->city }}</dd>
-
-                        <dt class="col-sm-4">Post Code:</dt>
-                        <dd class="col-sm-8">{{ $user->post_code }}</dd>
-
-                        <dt class="col-sm-4">Phone:</dt>
-                        <dd class="col-sm-8">{{ $user->phone_number }}</dd>
-
-                        <dt class="col-sm-4">Email:</dt>
-                        <dd class="col-sm-8">{{ $user->email }}</dd>
-
-                        <dt class="col-sm-4">Nationality:</dt>
-                        <dd class="col-sm-8">{{ $user->nationality }}</dd>
-                    </dl>
-                </div>
-                <div class="mb-3">
-                    <h2>Vehicle Information</h2>
-                    <dl class="row mb-3">
-                        <dt class="col-sm-4">Registration:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->registration }}</dd>
-
-                        <dt class="col-sm-4">Make:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->make }}</dd>
-
-                        <dt class="col-sm-4">Model:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->model }}</dd>
-
-                        <dt class="col-sm-4">Engine:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->engine }}</dd>
-
-                        <dt class="col-sm-4">Year:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->year }}</dd>
-
-                        <dt class="col-sm-4">Colour:</dt>
-                        <dd class="col-sm-8">{{ $motorcycle->colour }}</dd>
-                    </dl>
-                </div>
-                <div class="mb-3">
-                    <h2>Charge Information</h2>
-                    <dl class="row mb-3">
-                        <dt class="col-sm-4">Deposit:</dt>
-                        <dd class="col-sm-8">£{{ $deposit }}.00</dd>
-
-                        <dt class="col-sm-4">Weekly Rental:</dt>
-                        <dd class="col-sm-8">£{{ $motorcycle->rental_price }}</dd>
-                    </dl>
-                </div>
-            </div><!-- /.col-md-3 -->
-        </div><!-- /.row -->
+            </div><!-- /.post-wrap -->
+        </div><!-- /.col-md-9 -->
     </div><!-- /.container -->
 </section><!-- /.blog posts -->
 

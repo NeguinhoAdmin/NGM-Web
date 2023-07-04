@@ -31,7 +31,7 @@
     <div class="container-fluid">
         <div class="row align-items-start">
             <div class="col">
-                <h4>Basic Detailss</h4>
+                <h4>Basic Details</h4>
                 <form action="/motorcycles/{{ $motorcycle->id }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -76,8 +76,8 @@
                         <input class="form-control" type="text" placeholder="Marked for Export" name="marked_for_export" id="marked_for_export" value="{{ $motorcycle->marked_for_export }}">
                     </div>
                     <div class="mb-3">
-                        <label for="basic-url" class="form-label">Last V5 Issue Date/label>
-                            <input class="form-control" type="text" placeholder="Last V5C Issue Date" name="last_v5_issue_date" id="last_v5_issue_date" value="{{ $motorcycle->last_v5_issue_date }}">
+                        <label for="basic-url" class="form-label">Last V5 Issue Date</label>
+                        <input class="form-control" type="text" placeholder="Last V5C Issue Date" name="last_v5_issue_date" id="last_v5_issue_date" value="{{ $motorcycle->last_v5_issue_date }}">
                     </div>
                     <div class="mb-3">
                         <label for="basic-url" class="form-label">Wheel Plan</label>

@@ -119,6 +119,7 @@ Route::controller(RentalSignupController::class)->group(function () {
     Route::post('/rentalsignup', 'storeSignUp')->name('store.signup');
     Route::get('/rental-agreement', 'showAgreement');
     Route::post('/signature-post', 'signedAgreement')->name('sign.agreement');
+    Route::get('/pdf-agreement', 'PdfAgreement')->name('pdf.agreement');
 });
 
 // DOCUMENTS

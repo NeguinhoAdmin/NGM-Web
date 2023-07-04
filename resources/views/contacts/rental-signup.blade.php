@@ -125,7 +125,7 @@
                 <input hidden class="form-control list-group-item" type="text" name="deposit" id="deposit" value="{{ $deposit }}">
                 <input hidden class="form-control list-group-item" type="text" name="price" id="price" value="{{ $motorcycle->rental_price }}">
 
-                <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="Image" style="width: 100%;">
+                <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="width: 100%;">
 
                 <h2 class="mb-3">Charge Information</h2>
                 <table class="table mb-3">

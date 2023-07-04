@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Motorcycle;
 use App\Models\Rental;
-use Illuminate\Http\RedirectResponse;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,8 +91,9 @@ class RentalSignupController extends Controller
         $base64_image = $request->input('sign'); // your base64 encoded
         @list($type, $file_data) = explode(';', $base64_image);
         @list(, $file_data) = explode(',', $file_data);
-        $fileName = str_random(10) . '.' . 'png';
-        Storage::put($fileName, base64_decode($file_data));
+        $fileName = $request->first_name . '-' . $request->last_name . '-' . str_random(10) . '.' . 'jpg';
+        Storage::disk('uploads')->put($fileName, base64_decode($file_data));
+        // Storage::put($fileName, base64_decode($file_data));
 
         $authUser = Auth::user();
         $rental = new Rental();
@@ -105,9 +106,17 @@ class RentalSignupController extends Controller
         $rental->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $rental->save();
 
-        return redirect()->route('motorcycle.rentals')->with('success', 'Agreement has been saved');
+        $toDay = Carbon::now();
+        $user = User::where('id', $rental->user_id)->first();
+
+        $motorcycle = Motorcycle::where('id', $rental->motorcycle_id)->first();
+        // Show the signed PDF document
+        return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
 
-    // View Rental Agreements
-
+    // Show the signed PDF document
+    public function PdfAgreement($rental)
+    {
+        dd($rental);
+    }
 }
