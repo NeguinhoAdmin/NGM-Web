@@ -9,9 +9,11 @@ use App\Models\User;
 use App\Models\Motorcycle;
 use App\Models\Rental;
 use Barryvdh\DomPDF\Facade\Pdf;
+use DateTime;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
 
 class RentalSignupController extends Controller
@@ -75,7 +77,7 @@ class RentalSignupController extends Controller
         $motorcycle->save();
 
         $deposit = 300;
-        $toDay = Carbon::now();
+        $toDay = new DateTime();
 
         return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
     }
@@ -84,7 +86,7 @@ class RentalSignupController extends Controller
     public function showAgreement(Request $request)
     {
         dd($request);
-        $toDay = Carbon::now();
+        $toDay = new DateTime();
         return view('frontend.legals.rental-agreement', compact('toDay'));
     }
 

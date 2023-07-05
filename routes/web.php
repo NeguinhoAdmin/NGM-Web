@@ -146,8 +146,9 @@ Route::post('/upload-poins/{id}', [FileUploadController::class, 'InsuranceCertif
 Route::get('/file-pocbt/{id}', [FileUploadController::class, 'createCbt'])->name('createCbt');
 Route::post('/upload-pocbt/{id}', [FileUploadController::class, 'CbtProof'])->name('CbtProof');
 Route::get('/remove-upload/{id}', [FileUploadController::class, 'delete']);
+
 //  PDFs
-Route::get('generate-pdf', [FileUploadController::class, 'generatePDF'])->name('generatePDF');
+Route::get('generate-pdf', [PdfController::class, 'generatePDF'])->name('generatePDF');
 
 // Home Routes
 Route::group(['namespace' => 'App\Http\Controllers'], function () {

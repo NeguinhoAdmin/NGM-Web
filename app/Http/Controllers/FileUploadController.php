@@ -284,12 +284,4 @@ class FileUploadController extends Controller
         return redirect($previousUrl)
             ->with('success', 'File has been deleted.');
     }
-
-    public function generatePDF()
-    {
-        // $data = ['title' => 'Welcome to ItSolutionStuff.com'];
-        // $pdf = PDF::loadView('myPDF', $data);
-
-        // return $pdf->download('itsolutionstuff.pdf');
-    }
 }

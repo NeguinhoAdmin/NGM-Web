@@ -46,7 +46,7 @@
         }
 
         #ag-title {
-            font-size: medium;
+            font-size: xx-large;
         }
     </style>
     @vite('resources/js/app.js')
@@ -62,9 +62,9 @@
         <!-- Page Content -->
         <section class="blog-posts style1">
             <div class="container">
-                <div>
+                <div class="logo float-left image-responsive col-sm-3 col-md-4">
                     <a href="/" title="logo" class="logo">
-                        <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="25%">
+                        <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="70%">
                     </a>
                 </div><!-- /.logo -->
                 <h1 id="ag-title" class="title mb-3">MOTORCYCLE RENTAL AGREEMENT</h1><br>
@@ -72,27 +72,38 @@
                     <div class="row align-items-start mb-3">
                         <div class="col">
                             <h2>Renter Information</h2>
-                            <p>{{ $name }}</p>
+
+                            <p> $name </p>
+
                             <p>123 Abcccccc Road<br>
                                 London LN1 2WE
                             </p>
                             <p>123456789</p>
-                            <p>{{ $email }}</p>
+                            <p> $email </p>
                             <p>Nationality: British</p>
                         </div>
                         <div class="col">
                             <h2>Charge Information</h2>
+
                             <p>Deposit: £300.00</p>
+
                             <p>Weekly Rental: £80.00</p>
                         </div>
                         <div class="col">
                             <h2>Vehicle Information</h2>
+
                             <p>Registration: WWWWWWWW</p>
+
                             <p>Make: WWWWWWWW</p>
+
                             <p>Model: WWWWWWWWW</p>
+
                             <p>Engine: WWWWWWW</p>
+
                             <p>Year: WWWWWWWW</p>
+
                             <p>Colour: WWWWWWWWWWWWWW</p>
+
                         </div>
                     </div>
                 </div>
@@ -492,7 +503,7 @@
 
                     <p class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 
-                    <p>Name: <strong>{{ $name }}</strong></p>
+                    <p>Name: <strong>Emmanuel Nwokedi</strong></p>
 
 
                     <p>​​Date signed: <strong>05/07/2023</strong>​</p>
@@ -500,7 +511,7 @@
 
                     <p>Signature:</p>
 
-                    <img style="width: 35%;" src="/storage/app/public/signatures/Genevieve-Morrison-6gg0lXyTxF.png">
+                    <img style="width: 35%;" src="./signatures/Genevieve-Morrison-6gg0lXyTxF.png">
 
 
                 </div>
