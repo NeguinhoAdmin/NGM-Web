@@ -122,6 +122,7 @@ class RentalSignupController extends Controller
 
         // Call the PDF create and email function
         $this->PdfAgreement($user, $rental);
+        return redirect()->route('home');
 
         // return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
@@ -156,6 +157,8 @@ class RentalSignupController extends Controller
 
         Mail::to($data["email"])->send(new RentalAgreement($data));
 
-        return $pdf->stream();
+        // return $pdf->stream();
+        // return route('isRented');
+        return redirect()->route('isRented');
     }
 }

@@ -491,9 +491,7 @@
 
                     <p>Name: <strong>{{ $u->first_name }} {{ $u->last_name }}</strong></p>
 
-
-                    <p>​​Date signed: {{ $toDay }}​</p>
-
+                    Date Signed: {{ $toDay }}
 
                     <p>Signature:</p>
 
