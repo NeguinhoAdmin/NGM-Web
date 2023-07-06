@@ -45,6 +45,16 @@ return [
             'root' => storage_path('avatars'),
         ],
 
+        'signatures' => [
+            'driver' => 'local',
+            'root' => storage_path('signatures'),
+        ],
+
+        'documents' => [
+            'driver' => 'local',
+            'root' => storage_path('documents'),
+        ],
+
         'ftp' => [
             'driver' => 'ftp',
             'host' => env('FTP_HOST'),

@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Rental;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\App;
+use DateTime;
 
 class PdfController extends Controller
 {
     public function generatePdf()
     {
-        return view('pdf.rentalAgreement-test2');
+        $today = new DateTime();
+        $user = User::where('id', 117)->first();
+        $rental = Rental::where('user_id', 117)->first();
+        // dd($rental->signature);
+        return view('pdf.rentalAgreement-test', ['user' => $user, 'rental' => $rental, 'today' => $today]);
 
         // $name = 'Emmanuel Nwokedi';
         // $email = 'emmanuel.nwokedi@gmail.com';

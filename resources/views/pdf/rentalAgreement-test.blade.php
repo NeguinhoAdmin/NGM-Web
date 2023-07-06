@@ -73,7 +73,7 @@
                         <div class="col">
                             <h2>Renter Information</h2>
 
-                            <p> $name </p>
+                            <p> {{ $user->first_name }} </p>
 
                             <p>123 Abcccccc Road<br>
                                 London LN1 2WE
@@ -503,16 +503,21 @@
 
                     <p class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 
-                    <p>Name: <strong>Emmanuel Nwokedi</strong></p>
+                    <p>Name: <strong>{{ $user->first_name }} {{ $user->last_name }}</strong></p>
 
 
-                    <p>​​Date signed: <strong>05/07/2023</strong>​</p>
+                    <p>​​Date signed: <strong>{{ Carbon\Carbon::parse($today) }}</strong>​</p>
 
 
                     <p>Signature:</p>
 
-                    <img style="width: 35%;" src="./signatures/Genevieve-Morrison-6gg0lXyTxF.png">
-
+                    <img style="width: 35%;" src="Sandra-Reyes-DvsNypcHzs.jpg">
+                    <br>
+                    <img src="{{url('/storage/signatures/' . $rental->signature)}}" alt="Image">
+                    <br>
+                    <img src="./signatures/Sandra-Reyes-DvsNypcHzs.jpg">
+                    <br>
+                    <img src="{{url('/storage/signatures/Leigh-Gilliam-feLeHPSsV8.jpg')}}" alt="Image">
 
                 </div>
             </div>

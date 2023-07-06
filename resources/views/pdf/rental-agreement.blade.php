@@ -63,42 +63,41 @@
         <section class="blog-posts style1">
             <div class="container">
                 <div>
-                    <a href="/" title="logo" class="logo">
-                        <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="25%">
-                    </a>
-                </div><!-- /.logo -->
+                    <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="25%">
+                </div>
                 <h1 id="ag-title" class="title mb-3">MOTORCYCLE RENTAL AGREEMENT</h1><br>
                 <div class="container">
                     <div class="row align-items-start mb-3">
                         <div class="col">
                             <h2>Renter Information</h2>
-                            <p>{{ $name }}</p>
-                            <p>123 Abcccccc Road<br>
-                                London LN1 2WE
+                            <p>{{ $u->first_name }} {{ $u->last_name }}</p>
+                            <p>1{{ $u->street_address }}, {{ $u->street_address_plus }}<br>
+                                {{ $u->city }} {{ $u->post_code }}
                             </p>
-                            <p>123456789</p>
-                            <p>{{ $email }}</p>
-                            <p>Nationality: British</p>
+                            <p>{{ $u->phone }}</p>
+                            <p>{{ $u->email }}</p>
+                            <p>Nationality: {{ $u->nationality }}</p>
                         </div>
                         <div class="col">
                             <h2>Charge Information</h2>
-                            <p>Deposit: £300.00</p>
-                            <p>Weekly Rental: £80.00</p>
+                            <p>Deposit: {{ $agreement->deposit }}</p>
+                            <p>Weekly Rental: {{ $agreement->price }}</p>
                         </div>
                         <div class="col">
                             <h2>Vehicle Information</h2>
-                            <p>Registration: WWWWWWWW</p>
-                            <p>Make: WWWWWWWW</p>
-                            <p>Model: WWWWWWWWW</p>
-                            <p>Engine: WWWWWWW</p>
-                            <p>Year: WWWWWWWW</p>
-                            <p>Colour: WWWWWWWWWWWWWW</p>
+                            <p>Registration: {{ $agreement->registration }}</p>
+                            <p>Make: {{ $agreement->make }}</p>
+                            <p>Model: {{ $agreement->model }}</p>
+                            <p>Engine: {{ $agreement->engine }}</p>
+                            <p>Year: {{ $agreement->year }}</p>
+                            <p>Colour: {{ $agreement->colour }}</p>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <br>
+
+            <div class="page-break"></div>
 
             <div class="container">
                 <div class="col">
@@ -132,8 +131,6 @@
                     <p class="mb-3">A description of the condition of the Vehicle has been shown as a Checklist along with this Agreement and has been confirmed by you to be as is explained. You confirm that you have checked the condition of the Vehicle and confirm that the condition matches the description of the Vehicle as per the Checklist video.</p>
 
                     <p class="mb-3">You undertake to return the Vehicle in the same condition as it was provided at the start of this Agreement save for normal wear and tear allowed. You are responsible for any repair or refurbishment costs that were no authorised to NEGUINHO MOTORS LTD OR HI-BIKE4U LTD by you in writing at such times which results in NEGUINHO MOTORS LTD OR HI-BIKE4U LTD having to suffer additional repair costs, charges, administration fees for which NEGUINHO MOTORS LTD OR HI-BIKE4U LTD is entitled to retain your deposit or to invoice you for any additional amounts and payment must be made within 7 days to avoid enforcement actions.</p>
-
-                    <div class="page-break"></div>
 
                     <h3>Use of the Vehicle</h3>
 
@@ -492,15 +489,15 @@
 
                     <p class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 
-                    <p>Name: <strong>{{ $name }}</strong></p>
+                    <p>Name: <strong>{{ $u->first_name }} {{ $u->last_name }}</strong></p>
 
 
-                    <p>​​Date signed: <strong>05/07/2023</strong>​</p>
+                    <p>​​Date signed: {{ $toDay }}​</p>
 
 
                     <p>Signature:</p>
 
-                    <img style="width: 35%;" src="/storage/app/public/signatures/Genevieve-Morrison-6gg0lXyTxF.png">
+                    <img src="{{ storage_path('app/public/' . $agreement->signature) }}" style="width: 200px; height: 200px">
 
 
                 </div>

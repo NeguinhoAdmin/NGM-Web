@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RentalAgreement;
 use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -97,7 +98,8 @@ class RentalSignupController extends Controller
         @list($type, $file_data) = explode(';', $base64_image);
         @list(, $file_data) = explode(',', $file_data);
         $fileName = $request->first_name . '-' . $request->last_name . '-' . str_random(10) . '.' . 'jpg';
-        Storage::disk('uploads')->put($fileName, base64_decode($file_data));
+        Storage::disk('public')->put($fileName, base64_decode($file_data));
+        // Storage::disk('uploads')->put($fileName, base64_decode($file_data));
         // Storage::put($fileName, base64_decode($file_data));
 
         $authUser = Auth::user();
@@ -119,7 +121,7 @@ class RentalSignupController extends Controller
         $user = User::where('id', $rental->user_id)->first();
 
         // Call the PDF create and email function
-        // $this->PdfAgreement($user, $rental);
+        $this->PdfAgreement($user, $rental);
 
         // return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
@@ -127,16 +129,10 @@ class RentalSignupController extends Controller
     // Send the signed PDF document
     public function PdfAgreement($user, $rental)
     {
-        // $original = new Collection(['foo']);
-        // $latest = new Collection(['bar']);
-        // $merged = $original->merge($latest);
-        //--------------------------------------
+        $toDay = new DateTime();
+        $toDay = Carbon::parse($toDay)->format('d/m/Y');
 
-        // Send email with PDF to client
-        $data["email"] = $user->email;
-        $data["title"] = "Rental Agreement";
-        $data["body"] = "This is Demo";
-
+        // Collect and merge agreement data
         $u = User::where('id', $user->id)->first();
         $r = Rental::where('signature', $rental->signature)->first();
 
@@ -145,15 +141,20 @@ class RentalSignupController extends Controller
         $agree = $rental->merge($user);
         $agreement = json_decode($agree);
 
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHtml('<h1>Test</h1>');
-        // $pdf = PDF::loadView('pdf.rentalAgreement', compact('agreement'));
+        // Save PDF to file
+        $pdf = Pdf::loadView('pdf.rental-agreement', ['agreement' => $agreement, 'u' => $u, 'toDay' => $toDay])
+            ->setPaper('a4', 'portrait')
+            ->save(public_path('rental-agreement-' . time() . rand(1, 99999) . '.pdf'));
 
-        // Mail::send('pdf.rental-agreement', $data, function ($message) use ($data, $pdf) {
-        //     $message->to($data["email"])
-        //         ->subject($data["title"])
-        //         ->attachData($pdf->output(), "rental-agreement.pdf");
-        // });
+        // Send email with PDF to client
+        $data["email"] = $u->email;
+        $data["title"] = "Rental Agreement";
+        $data["body"] = "This is Demo";
+
+        $pdf = PDF::loadView('pdf.rental-agreement', ['agreement' => $agreement, 'u' => $u, 'toDay' => $toDay]);
+        $data["pdf"] = $pdf;
+
+        Mail::to($data["email"])->send(new RentalAgreement($data));
 
         return $pdf->stream();
     }
