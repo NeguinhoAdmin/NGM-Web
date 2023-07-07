@@ -75,29 +75,38 @@
                 <div class="mb-3">
                     <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" aria-label="Nationality">
                 </div>
+
+                <input name="fileAndDocumentTypeCount" type="hidden" value="6">
+
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Driving Licence Front</label>
-                    <input class="form-control" type="file" name="dlFront" id="dlFront">
+                    <input class="form-control" type="file" name="file[]" class="custom-file-input" id="chooseFile">
+                    <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="Driving Licence Front">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Driving Licence Back</label>
-                    <input class="form-control" type="file" name="dlBack" id="dlBack">
+                    <input class="form-control" type="file" name="file[]">
+                    <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="Driving Licence Back">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">CBT</label>
-                    <input class="form-control" type="file" name="cbt" id="cbt">
+                    <input class="form-control" type="file" name="file[]">
+                    <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="CBT">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Proof of ID (UK Driving Licence or Passport)</label>
-                    <input class="form-control" type="file" name="proofId" id="proofId">
+                    <input class="form-control" type="file" name="file[]">
+                    <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="Proof of ID">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Proof of Address</label>
-                    <input class="form-control" type="file" name="proofAddress" id="proofAddress">
+                    <input class="form-control" type="file" name="file[]">
+                    <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="Proof of Address">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Insurance Certificate</label>
-                    <input class="form-control" type="file" name="insurance" id="insurance">
+                    <input class="form-control" type="file" name="file[]">
+                    <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="Insurance Certificate">
                 </div>
 
             </div>

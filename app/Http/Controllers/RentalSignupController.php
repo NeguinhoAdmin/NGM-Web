@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\RentalAgreement;
-use App\Models\Collection;
-use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
-use App\Models\User;
-use App\Models\Motorcycle;
-use App\Models\Rental;
-use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
+use App\Models\File;
+use App\Models\User;
+use App\Models\Rental;
+use App\Models\Collection;
+use App\Models\Motorcycle;
+use Illuminate\Http\Request;
+use App\Mail\RentalAgreement;
+use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class RentalSignupController extends Controller
 {
@@ -46,6 +47,7 @@ class RentalSignupController extends Controller
 
         $password = "Rental3786";
 
+        // Create the new client
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -66,16 +68,43 @@ class RentalSignupController extends Controller
         $userId = $user->id;
         $userName = $user->first_name . " " . $user->last_name;
 
+        // Update motorcycle data
         $motorcycle = Motorcycle::find($request->motorcycle_id);
         $motorcycle->user_id = $userId;
         $motorcycle->availability = 'rented';
-        if ($request->file()) {
-            $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('uploads', $fileName, 'public');
-            $motorcycle->file_name = time() . '_' . $request->file->getClientOriginalName();
-            $motorcycle->file_path = '/storage/' . $filePath;
-        }
         $motorcycle->save();
+
+        $motorcycleId = $motorcycle->id;
+
+        // Upload documents
+
+        // assign array of document type
+        // $documentType = $request->get('document_type');
+
+        // // assign array of files
+        // $images = $request->file('file');
+
+        // // make sure 'storage/uploads' exists first
+        // $destinationPath = 'storage' . '/uploads';
+        // dd($images);
+        // // loop through the descriptions array
+        // foreach ($images as $key => $val) {
+
+        //     echo $images[$key];
+        // }
+
+
+        // $fileModel = new File;
+        // foreach ($request->file() as $imagefile) {
+        //     $fileName = time() . '_' . $request->file->getClientOriginalName();
+        //     $filePath = $imagefile->file('file')->storeAs('uploads', $fileName, 'public');
+        //     $fileModel->user_id = $userId;
+        //     $fileModel->motorcycle_id = $motorcycleId;
+        //     $fileModel->document_type = $request->document_type;
+        //     $fileModel->name = time() . '_' . $request->file->getClientOriginalName();
+        //     $fileModel->file_path = '/storage/' . $filePath;
+        //     $fileModel->save();
+        // }
 
         $deposit = 300;
         $toDay = new DateTime();
@@ -99,8 +128,6 @@ class RentalSignupController extends Controller
         @list(, $file_data) = explode(',', $file_data);
         $fileName = $request->first_name . '-' . $request->last_name . '-' . str_random(10) . '.' . 'jpg';
         Storage::disk('public')->put($fileName, base64_decode($file_data));
-        // Storage::disk('uploads')->put($fileName, base64_decode($file_data));
-        // Storage::put($fileName, base64_decode($file_data));
 
         $authUser = Auth::user();
         $rental = new Rental();
