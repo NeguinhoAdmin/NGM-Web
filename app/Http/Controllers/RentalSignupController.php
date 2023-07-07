@@ -63,6 +63,7 @@ class RentalSignupController extends Controller
         $user->city = $request->city;
         $user->post_code = $request->post_code;
         $user->is_client = 1;
+        $user->role = 0;
         $user->save();
 
         $userId = $user->id;
@@ -75,36 +76,6 @@ class RentalSignupController extends Controller
         $motorcycle->save();
 
         $motorcycleId = $motorcycle->id;
-
-        // Upload documents
-
-        // assign array of document type
-        // $documentType = $request->get('document_type');
-
-        // // assign array of files
-        // $images = $request->file('file');
-
-        // // make sure 'storage/uploads' exists first
-        // $destinationPath = 'storage' . '/uploads';
-        // dd($images);
-        // // loop through the descriptions array
-        // foreach ($images as $key => $val) {
-
-        //     echo $images[$key];
-        // }
-
-
-        // $fileModel = new File;
-        // foreach ($request->file() as $imagefile) {
-        //     $fileName = time() . '_' . $request->file->getClientOriginalName();
-        //     $filePath = $imagefile->file('file')->storeAs('uploads', $fileName, 'public');
-        //     $fileModel->user_id = $userId;
-        //     $fileModel->motorcycle_id = $motorcycleId;
-        //     $fileModel->document_type = $request->document_type;
-        //     $fileModel->name = time() . '_' . $request->file->getClientOriginalName();
-        //     $fileModel->file_path = '/storage/' . $filePath;
-        //     $fileModel->save();
-        // }
 
         $deposit = 300;
         $toDay = new DateTime();
@@ -142,14 +113,14 @@ class RentalSignupController extends Controller
         $rental->colour = $request->colour;
         $rental->deposit = $request->deposit;
         $rental->price = $request->rental_price;
-        $rental->auth_user = $authUser->first_name . " " . $authUser->last_name;
+        // $rental->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $rental->save();
 
         $user = User::where('id', $rental->user_id)->first();
 
         // Call the PDF create and email function
         $this->PdfAgreement($user, $rental);
-        return redirect()->route('home');
+        return redirect()->route('login.show');
 
         // return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
@@ -177,7 +148,7 @@ class RentalSignupController extends Controller
         // Send email with PDF to client
         $data["email"] = $u->email;
         $data["title"] = "Rental Agreement";
-        $data["body"] = "This is Demo";
+        $data["body"] = "Thank you for renting your motorcycle with Neguinho Motors.";
 
         $pdf = PDF::loadView('pdf.rental-agreement', ['agreement' => $agreement, 'u' => $u, 'toDay' => $toDay]);
         $data["pdf"] = $pdf;

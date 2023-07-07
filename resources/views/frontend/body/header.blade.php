@@ -19,7 +19,7 @@
                 @auth
                 <div>
                     <i class="fa fa-user mx-2" style="color:white;"></i>
-                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/dashboard" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
+                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/dashboard-index" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
                 </div>
                 <div>
                     <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('logout.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Logout</a>
