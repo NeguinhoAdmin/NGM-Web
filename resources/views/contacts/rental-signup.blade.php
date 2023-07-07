@@ -76,7 +76,26 @@
                     <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" aria-label="Nationality">
                 </div>
 
-                <input name="fileAndDocumentTypeCount" type="hidden" value="6">
+                <h2 class="mb-3">Charge Information</h2>
+                <table class="table mb-3">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Deposit - Payment taken on collection</th>
+                            <td name="deposit" name="deposit" id="deposit" value="{{ $deposit }}">£{{ $deposit }}.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Weekly Rental - Payment taken on collection</th>
+                            <td name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">£{{ $motorcycle->rental_price }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="product-quantity margin-top-35">
+                    <div class="add-to-cart">
+                        <button action="submit">Rent this {{ $motorcycle->make    }} {{ $motorcycle->model }}</button>
+                    </div>
+                </div>
+
+                <!-- <input name="fileAndDocumentTypeCount" type="hidden" value="6">
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Driving Licence Front</label>
@@ -107,11 +126,13 @@
                     <label for="formFile" class="form-label">Insurance Certificate</label>
                     <input class="form-control" type="file" name="file[]">
                     <input hidden class="form-control list-group-item" type="text" name="document_type[]" value="Insurance Certificate">
-                </div>
+                </div>-->
 
             </div>
 
             <div class="col mb-3">
+                <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="width: 100%;">
+
                 <h2 class="mb-3">Vehicle Information</h2>
 
                 <ul class="list-group list-group-flush mb-3">
@@ -132,27 +153,6 @@
                 <input hidden class="form-control list-group-item" type="text" name="year" id="year" value="{{ $motorcycle->year }}">
                 <input hidden class="form-control list-group-item" type="text" name="deposit" id="deposit" value="{{ $deposit }}">
                 <input hidden class="form-control list-group-item" type="text" name="price" id="price" value="{{ $motorcycle->rental_price }}">
-
-                <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="width: 100%;">
-
-                <h2 class="mb-3">Charge Information</h2>
-                <table class="table mb-3">
-                    <tbody>
-                        <tr>
-                            <th scope="row">Deposit - Payment taken on collection</th>
-                            <td name="deposit" name="deposit" id="deposit" value="{{ $deposit }}">£{{ $deposit }}.00</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Weekly Rental - Payment taken on collection</th>
-                            <td name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">£{{ $motorcycle->rental_price }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="product-quantity margin-top-35">
-                    <div class="add-to-cart">
-                        <button action="submit">Rent this {{ $motorcycle->make    }} {{ $motorcycle->model }}</button>
-                    </div>
-                </div>
             </div>
         </div>
     </form>
