@@ -1,4 +1,4 @@
-@extends('layouts.app-master')
+@extends('home_client.layouts.client-master')
 
 @section('content')
 <div class="container">
@@ -12,7 +12,7 @@
     <br>
 
     <div class="container mt-5">
-        <form action="/upload-poins/' . $user_id" method="post" enctype="multipart/form-data">
+        <form action="/client-upload-poins/' . $user_id" method="post" enctype="multipart/form-data">
             <h3 class="text-center mb-5">Upload Insurance Certificate</h3>
             @csrf
             @if ($message = Session::get('success'))
@@ -41,7 +41,7 @@
 
             </div>
             <div class="custom-file mb-3">
-                <input type="file" name="file" class="custom-file-input" id="chooseFile">
+                <input type="file" name="file" class="input" id="chooseFile">
                 <label class="custom-file-label" for="chooseFile">Select Document</label>
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">

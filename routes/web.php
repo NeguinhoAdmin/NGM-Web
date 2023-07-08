@@ -22,6 +22,7 @@ use App\Models\RentalPayment;
 use Laravel\Cashier\Http\Controllers\PaymentController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\RentalSignupController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -198,6 +199,26 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     // User Resources
     Route::resource('users', 'UserController');
     // Route::get('/users/show/{user_id}', 'UserController@show')->name('users.show');
+
+    // CLIENT DASHBOARD RESOURCES
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/client-motorcycle/{id}', [DashboardController::class, 'ClientMotorcycle'])->name('client.motorcycles');
+    // Client Documents Resources
+    Route::get('/client-upload-files/{id}', [DashboardController::class, 'createForm']);
+    Route::post('/client-upload-file/{id}', [DashboardController::class, 'fileUpload'])->name('client.fileUpload');
+    Route::get('/client-file-dl-back/{id}', [DashboardController::class, 'createDlBack'])->name('client. createDlBack');
+    Route::post('/client-upload-back/{id}', [DashboardController::class, 'DlBack'])->name('client. DlBack');
+    Route::get('/client-file-dl-front/{id}', [DashboardController::class, 'createDlFront'])->name('client. frontUpload');
+    Route::post('/client-upload-front/{id}', [DashboardController::class, 'DlFront'])->name('client.DlFront');
+    Route::get('/client-file-poid/{id}', [DashboardController::class, 'createIdProof'])->name('client.createIdProof');
+    Route::post('/client-upload-poid/{id}', [DashboardController::class, 'IdProof'])->name('client.IdProof');
+    Route::get('/client-file-poadd/{id}', [DashboardController::class, 'createAddProof'])->name('client.createAddProof');
+    Route::post('/client-upload-poadd/{id}', [DashboardController::class, 'AddressProof'])->name('client.AddressProof');
+    Route::get('/client-file-poins/{id}', [DashboardController::class, 'createInsProof'])->name('client.createInsProof');
+    Route::post('/client-upload-poins/{id}', [DashboardController::class, 'InsuranceCertificate'])->name('client.InsuranceCertificate');
+    Route::get('/client-file-pocbt/{id}', [DashboardController::class, 'createCbt'])->name('client.createCbt');
+    Route::post('/client-upload-pocbt/{id}', [DashboardController::class, 'CbtProof'])->name('client.CbtProof');
+    Route::get('/client-remove-upload/{id}', [DashboardController::class, 'delete']);
 
     Route::group(['middleware' => ['guest']], function () {
         /**

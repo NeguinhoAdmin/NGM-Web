@@ -37,7 +37,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard-index');
+            return redirect()->intended('dashboard');
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
@@ -57,7 +57,8 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
+        return redirect()->route('dashboard');
         // return view('home.dashboard');
-        return redirect()->intended();
+        // return redirect()->intended();
     }
 }

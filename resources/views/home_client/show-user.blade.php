@@ -1,17 +1,17 @@
-@extends('home_client.layouts.app-master')
+@extends('home_client.layouts.client-master')
 
 @section('content')
 <div class="container">
     @auth
-    <h1 style="font-size: larger;">{{$user->first_name}} {{$user->last_name}}</h1>
+    <h1>{{$user->first_name}} {{$user->last_name}}</h1>
     <p>
-        Phone: {{$user->phone_number}}<br>
-        Email: {{$user->email}}<br><br>
-        Address:<br>
+        <strong>Phone:</strong> {{$user->phone_number}}<br>
+        <strong>Email:</strong> {{$user->email}}<br>
+        <strong>Address:</strong><br>
         {{$user->street_address}}
         {{$user->street_address_plus}}<br>{{$user->city}} {{$user->post_code}}
     </p>
-
+    <strong>Nationality:</strong> {{ $user->nationality }}
     <hr>
 
     <!-- This area is used to dispay errors -->
@@ -31,45 +31,29 @@
     @endif
     <!-- This area is used to dispay errors -->
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL()->previous() }}">Back</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <!-- <a class="btn btn-outline-success" href="{{ URL::to('users/' . $user->id . '/edit') }}">Edit Client</a> -->
-    </div>
-    <br>
-
     <h2 class="mt-3">Documents</h2>
 
     <div class="row align-items-start">
         <div class="col">
-            <p>
-                <strong>Nationality: </strong>{{ $user->nationality }}<br>
-                <!-- <strong>Driving Licence: </strong>{{ $user->driving_licence }}<br> -->
-            </p>
+
         </div>
         <div class="col">
-            <!-- <a class="btn btn-outline-dark" href="{{ URL::to('/upload-files/' . $user->id) }}">Add Documents</a> -->
+
         </div>
     </div>
 
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-dl-front/' . $user->id) }}">Licence Front</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-dl-back/' . $user->id) }}">Licence Back</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-pocbt/' . $user->id) }}">CBT</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-poid/' . $user->id) }}">ID</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-poadd/' . $user->id) }}">Proof of Address</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-poins/' . $user->id) }}">Insurance</a>
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-dl-front/' . $user->id) }}">Licence Front</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-dl-back/' . $user->id) }}">Licence Back</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-pocbt/' . $user->id) }}">CBT</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-poid/' . $user->id) }}">ID</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-poadd/' . $user->id) }}">Proof of Address</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-poins/' . $user->id) }}">Insurance</a>
     </div>
 
     <div class="row align-items-start mt-3">
@@ -93,7 +77,7 @@
                         <td><a href="{{ url('/storage/uploads', $document->name) }}" target="_blank">View</a></td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a class="btn btn-outline-danger" href="/remove-upload/{{$document->id}}">Delete</a>
+                                <a class="btn btn-outline-danger" href="/client-remove-upload/{{$document->id}}">Delete</a>
                             </div>
                         </td>
                     </tr>
@@ -104,62 +88,46 @@
         </div>
     </div>
 
+    <h2>Motorcycles</h2>
     <div class="row mt-3">
-        <h2>Motorcycles</h2>
-        <!-- <div class="btn-group" role="group" aria-label="Basic example">
-            <a class="btn btn-outline-success" href="{{ URL::to('/motorcycles-for-rent/' . $user->id) }}">Add Motorcycle</a>
-        </div> -->
-        <br>
-
         <!-- List of vehicles rented should go here with link to each vehicles details -->
-        <table class="table table-striped mt-3">
-            <thead>
-                <tr>
-                    <th scope="col">Registration</th>
-                    <th scope="col">Make</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">CC</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Colour</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($motorcycles as $motorcycle)
-                <tr>
-                    <td>{{$motorcycle->registration}}</td>
-                    <td>{{$motorcycle->make}}</td>
-                    <td>{{$motorcycle->model}}</td>
-                    <td>{{$motorcycle->engine}}</td>
-                    <td>{{$motorcycle->year}}</td>
-                    <td>{{$motorcycle->colour}}</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-outline-success" href="{{ URL::to('motorcycles/' . $motorcycle->id) }}">Details</a>
-                        </div>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-outline-success" href="{{ URL::to('remove-rental/' . $motorcycle->id) }}">Remove</a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="panel-body">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Registration</th>
+                        <th scope="col">Make</th>
+                        <th scope="col">Model</th>
+                        <th scope="col">CC</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Colour</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($motorcycles as $motorcycle)
+                    <tr>
+                        <td>{{$motorcycle->registration}}</td>
+                        <td>{{$motorcycle->make}}</td>
+                        <td>{{$motorcycle->model}}</td>
+                        <td>{{$motorcycle->engine}}</td>
+                        <td>{{$motorcycle->year}}</td>
+                        <td>{{$motorcycle->colour}}</td>
+                        <td></td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <a class="btn btn-outline-success" href="{{ URL::to('client-motorcycle/' . $motorcycle->id) }}">Details</a>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <!-- <a class="btn btn-outline-success" href="{{ URL::to('remove-rental/' . $motorcycle->id) }}">Remove</a> -->
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
+            </table>
+        </div>
     </div>
 </div>
 @endauth

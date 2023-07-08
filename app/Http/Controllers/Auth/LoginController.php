@@ -20,6 +20,29 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    // /**
+    //  * Handle account login request
+    //  *
+    //  * @param LoginRequest $request
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function login(LoginRequest $request)
+    // {
+    //     $credentials = $request->getCredentials();
+
+    //     if (!Auth::validate($credentials)) :
+    //         return redirect()->to('login')
+    //             ->withErrors(trans('auth.failed'));
+    //     endif;
+
+    //     $user = Auth::getProvider()->retrieveByCredentials($credentials);
+
+    //     Auth::login($user);
+
+    //     return $this->authenticated($request, $user);
+    // }
+
     /**
      * Handle account login request
      *
@@ -31,10 +54,16 @@ class LoginController extends Controller
     {
         $credentials = $request->getCredentials();
 
-        if (!Auth::validate($credentials)) :
-            return redirect()->to('login')
-                ->withErrors(trans('auth.failed'));
-        endif;
+        // if (!Auth::validate($credentials)) :
+        //     return redirect()->to('login')
+        //         ->withErrors(trans('auth.failed'));
+        // endif;
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
 
@@ -53,7 +82,8 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        // return view('home.dashboard');
-        return redirect()->intended();
+        return redirect()->route('dashboard');
+        // return view('home.dashboard-index');
+        // return redirect()->intended();
     }
 }

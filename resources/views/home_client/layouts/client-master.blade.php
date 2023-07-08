@@ -1,4 +1,85 @@
-<!-- Header -->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1RE49QH35E"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-1RE49QH35E');
+    </script>
+
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>NGM</title>
+
+    <meta name="author" content="Emmanuel Nwokedi">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/colors/color1.css">
+
+    <!-- Favicon and touch icons  -->
+    <link href="{{url('/img/logo-4.png')}}" rel="shortcut icon">
+
+    <!--[if lt IE 9]>
+        <script src="javascript/html5shiv.js"></script>
+        <script src="javascript/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="//widget.simplybook.it/v2/widget/widget.js"></script>
+    <script>
+        var widget = new SimplybookWidget({
+            "widget_type": "button",
+            "url": "https:\/\/neguinhomotorslimited.simplybook.it",
+            "theme": "simple_beauty_theme",
+            "theme_settings": {
+                "sb_base_color": "#c31924",
+                "header_color": "#ffffff",
+                "timeline_hide_unavailable": "1",
+                "hide_past_days": "0",
+                "timeline_show_end_time": "0",
+                "timeline_modern_display": "as_slots",
+                "display_item_mode": "list",
+                "body_bg_color": "#ffffff",
+                "sb_review_image": "",
+                "dark_font_color": "#474747",
+                "light_font_color": "#ffffff",
+                "sb_company_label_color": "#333333",
+                "hide_img_mode": "1",
+                "show_sidebar": "1",
+                "sb_busy": "#dad2ce",
+                "sb_available": "#d3e0f1"
+            },
+            "timeline": "modern",
+            "datepicker": "top_calendar",
+            "is_rtl": false,
+            "app_config": {
+                "clear_session": 0,
+                "allow_switch_to_ada": 0,
+                "predefined": []
+            },
+            "button_title": "BOOK SERVICE OR MOT",
+            "button_background_color": "#c31924",
+            "button_text_color": "#ffffff",
+            "button_position": "right",
+            "button_position_offset": "55%"
+        });
+    </script>
+    @vite('resources/js/app.js')
+</head>
+
 <header id="header" class="header clearfix">
 
     <!-- Start Top Nav -->
@@ -19,7 +100,7 @@
                 @auth
                 <div>
                     <i class="fa fa-user mx-2" style="color:white;"></i>
-                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/client-dashboard" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
+                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/dashboard" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
                 </div>
                 <div>
                     <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('logout.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Logout</a>
@@ -38,7 +119,7 @@
     <!-- Close Top Nav -->
 
     <div class="container-fluid container-width-93 clearfix" id="site-header-inner">
-        <div id="logo" class="logo float-left image-responsive col-sm-3 col-md-4">
+        <div id="logo" class="logo float-right image-responsive col-sm-3 col-md-4">
             <a href="/" title="logo" class="logo">
                 <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="70%" height="24" data-retina="{{url('img/neguinhomotors3.png')}}" data-width="70%" data-height="24">
             </a>
@@ -59,7 +140,7 @@
         <div class="nav-wrap">
             <nav id="mainnav" class="mainnav">
                 <ul class="menu">
-                    <li>
+                    <!-- <li>
                         <a href="/motorcycle-sales">SALES</a>
                         <ul class="submenu">
                             <li>
@@ -90,7 +171,7 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a href="/category/1">SHOP</a>
                         <ul class="submenu">
                             <li>
@@ -147,15 +228,82 @@
                                 <a href="/category/35">MINT</a>
                             </li>
                         </ul>
-                    </li> -->
+                    </li>
                     <li>
                         <a href="/about">ABOUT</a>
                     </li>
                     <li>
                         <a href="/contact">CONTACT</a>
-                    </li>
+                    </li>-->
                 </ul>
             </nav><!-- /.mainnav -->
         </div><!-- /.nav-wrap -->
     </div><!-- /.container-fluid -->
 </header><!-- /header -->
+
+<body>
+
+    <main class="container">
+        @yield('content')
+    </main>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright">Copyright @ 2023 <a href="/">Neguinho Motors Limited - All Rights Reserved</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/tether.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/jquery.easing.js"></script>
+    <script src="/assets/js/parallax.js"></script>
+    <script src="/assets/js/jquery-waypoints.js"></script>
+    <script src="/assets/js/jquery-countTo.js"></script>
+    <script src="/assets/js/jquery.countdown.js"></script>
+    <script src="/assets/js/jquery.flexslider-min.js"></script>
+    <script src="/assets/js/images-loaded.js"></script>
+    <script src="/assets/js/jquery.isotope.min.js"></script>
+    <script src="/assets/js/magnific.popup.min.js"></script>
+    <script src="/assets/js/jquery.hoverdir.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/equalize.min.js"></script>
+    <script src="/assets/js/gmap3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIEU6OT3xqCksCetQeNLIPps6-AYrhq-s&region=GB"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
+
+    <script src="/assets/js/jquery.cookie.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <!-- Revolution Slider -->
+    <script src="/assets/rev-slider/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/assets/rev-slider/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="/assets/js/rev-slider.js"></script>
+
+    <!-- Load Extensions only on Local File Systems ! The following part can be removed on Server for On Demand Loading -->
+    <script src="assets/rev-slider/js/extensions/revolution.extension.actions.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.migration.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="assets/rev-slider/js/extensions/revolution.extension.video.min.js"></script>
+
+    <!-- <script>
+        const x = document.getElementById("amount");
+        // let x = 5;
+        let y = 3;
+        let z = x * y;
+        document.getElementById("rentalDeposit").innerHTML = z;
+    </script> -->
+
+</body>
+
+</html>

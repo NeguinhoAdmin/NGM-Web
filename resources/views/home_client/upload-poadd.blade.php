@@ -1,4 +1,4 @@
-@extends('layouts.app-master')
+@extends('home_client.layouts.client-master')
 
 @section('content')
 <div class="container">
@@ -30,8 +30,8 @@
             </div>
             @endif
             <div class="custom-file">
-                <input type="file" name="file" class="custom-file-input" id="chooseFile">
-                <label class="custom-file-label" for="chooseFile">Select file</label>
+                <input type="file" name="file" class="input" id="chooseFile">
+                <!-- <label class="custom-file-label" for="chooseFile">Select file</label> -->
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block mt-4">
                 Upload Files
