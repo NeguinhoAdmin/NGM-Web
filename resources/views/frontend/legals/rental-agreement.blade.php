@@ -306,7 +306,7 @@
 
                                 <h2 class="mb-3">MISSING PAYMENTS</h2>
 
-                                <p class="mb-3">In the event of non-payment by you on the due date, the vehicle may be blocked until payment is made, furthermore, after two days of outstanding balance the vehicle may be repossessed, and this Agreement will be terminated. The deposit, in case of rentals, will be used to cover recovery costs, outstanding charging fees and any charges imposed to NEGUINHO MOTORS LTD OR HI-BIKE4U LTD including fines or charges payable to third party.</p>
+                                <p class="mb-3">In the event of non-payment by the customer on the rental due date, the vehicle may be emobilised until payment is made, furthermore, the vehicle maybe repocessed within two days if the outstanding balance has not been cleared in full and this Agreement will be terminated. The deposit, in case of rentals, will be used to cover recovery costs, outstanding charging fees and any charges imposed to NEGUINHO MOTORS LTD OR HI-BIKE4U LTD including fines or charges payable to third party.</p>
 
                                 <p class="mb-3">You acknowledge and confirm that any delay in the payment of such, rental charges, or non-payment by you will render this Agreement terminated by NEGUINHO MOTORS LTD OR HI-BIKE4U LTD and you will be required to return the Vehicle immediately to NEGUINHO MOTORS LTD OR HI-BIKE4U LTD.</p>
 

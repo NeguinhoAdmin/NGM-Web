@@ -2,23 +2,6 @@
 
 @section('content')
 
-<!-- This area is used to dispay errors -->
-@if ($message = Session::get('success'))
-<div class="alert alert-success">
-    <strong>{{ $message }}</strong>
-</div>
-@endif
-@if (count($errors) > 0)
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-<!-- This area is used to dispay errors -->
-
 <form method="post" action="{{ route('login.perform') }}">
 
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />

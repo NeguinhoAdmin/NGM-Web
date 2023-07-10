@@ -76,7 +76,7 @@
                                         <ins><span class="amount" value="20" name="reserve_price" id="reserve_price">Reserve for £20.00</span></ins>
                                     </div>
                                     <div class="product-categories margin-top-22">
-                                        <span>£20 RESERVES THIS MOTORCYCLE FOR 24 HOURS</span><a href="#"> </a>
+                                        <span>£20 RESERVES THIS MOTORCYCLE FOR 48 HOURS</span><a href="#"> </a>
                                     </div>
                                     <div class="product-quantity margin-top-35">
                                         <div class="add-to-cart text-center">

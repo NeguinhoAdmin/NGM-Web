@@ -279,7 +279,7 @@ class DashboardController extends Controller
     public function createAddProof($id)
     {
         $user_id = $id;
-        // dd($user_id);
+
         return view('home_client.upload-poadd')->with('user_id', $user_id);
     }
 

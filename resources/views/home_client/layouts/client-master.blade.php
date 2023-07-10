@@ -119,7 +119,7 @@
     <!-- Close Top Nav -->
 
     <div class="container-fluid container-width-93 clearfix" id="site-header-inner">
-        <div id="logo" class="logo float-right image-responsive col-sm-3 col-md-4">
+        <div id="logo" class="logo float-left image-responsive col-sm-3 col-md-4">
             <a href="/" title="logo" class="logo">
                 <img src="{{url('img/neguinhomotors3.png')}}" alt="Neguinho Motors" width="70%" height="24" data-retina="{{url('img/neguinhomotors3.png')}}" data-width="70%" data-height="24">
             </a>

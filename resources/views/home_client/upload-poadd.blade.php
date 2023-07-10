@@ -12,7 +12,7 @@
     <br>
 
     <div class="container mt-5">
-        <form action="/upload-poadd/' . $user_id" method="post" enctype="multipart/form-data">
+        <form action="/client-upload-poadd/' . $user_id" method="post" enctype="multipart/form-data">
             <h3 class="text-center mb-5">Upload Proof of Address</h3>
             @csrf
             @if ($message = Session::get('success'))
