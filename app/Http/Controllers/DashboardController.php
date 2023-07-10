@@ -146,6 +146,7 @@ class DashboardController extends Controller
         // Motorcycle Payment History
         $depositpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
+            ->where('user_id', $motorcycle->user_id)
             ->where('payment_type', '=', 'deposit')
             ->sortByDesc('id');
 
@@ -158,6 +159,7 @@ class DashboardController extends Controller
 
         $rentalpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
+            ->where('user_id', $motorcycle->user_id)
             ->where('payment_type', '=', 'rental')
             // ->where('payment_due_date', '<', $dayAfter)
             ->sortByDesc('id');

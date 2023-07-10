@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all()->where('is_client', 1);
+        $users = User::all()->where('is_client', 1)->sortByDesc('id');
         // dd($users);
 
         $count = $users->count();

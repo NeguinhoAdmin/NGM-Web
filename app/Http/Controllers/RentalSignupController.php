@@ -10,6 +10,7 @@ use App\Models\Collection;
 use App\Models\Motorcycle;
 use Illuminate\Http\Request;
 use App\Mail\RentalAgreement;
+use App\Models\RentalPayment;
 use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\App;
@@ -75,6 +76,39 @@ class RentalSignupController extends Controller
         $motorcycle->availability = 'rented';
         $motorcycle->save();
 
+        // Create rental deposit payment data
+        $todayDate = Carbon::now();
+        $nextPayDate = Carbon::now();
+
+        $payment = new RentalPayment();
+        $payment->payment_type = 'deposit';
+        $payment->rental_deposit = 300;
+        $payment->registration = $motorcycle->registration;
+        $payment->payment_due_date = $todayDate;
+        $payment->received = 00.00;
+        $payment->outstanding = $payment->rental_deposit;
+        $payment->user_id = $user->id;
+        $payment->created_at = $todayDate;
+        $payment->auth_user = $user->first_name . " " . $user->last_name;
+        $payment->motorcycle_id = $motorcycle->id;
+        $payment->save();
+
+        // Create rental first payment data
+        $payment = new RentalPayment();
+        $payment->payment_type = 'rental';
+        $payment->rental_price = $motorcycle->rental_price;
+        $payment->registration = $motorcycle->registration;
+        $payment->payment_due_date = $todayDate;
+        $payment->payment_next_date = $nextPayDate->addDays(7);
+        $payment->received = null;
+        $payment->outstanding = $payment->rental_price;
+        $payment->user_id = $user->id;
+        $payment->payment_due_count = 7;
+        $payment->created_at = $todayDate;
+        $payment->auth_user = $user->first_name . " " . $user->last_name;
+        $payment->motorcycle_id = $motorcycle->id;
+        $payment->save();
+
         $motorcycleId = $motorcycle->id;
 
         $deposit = 300;
@@ -100,7 +134,6 @@ class RentalSignupController extends Controller
         $fileName = $request->first_name . '-' . $request->last_name . '-' . str_random(10) . '.' . 'jpg';
         Storage::disk('public')->put($fileName, base64_decode($file_data));
 
-        $authUser = Auth::user();
         $rental = new Rental();
         $rental->user_id = $request->user_id;
         $rental->signature = $fileName;
@@ -120,7 +153,8 @@ class RentalSignupController extends Controller
 
         // Call the PDF create and email function
         $this->PdfAgreement($user, $rental);
-        return redirect()->route('login.show');
+        return redirect()->route('login.show')
+            ->with('success', 'To complete this process, please upload your documents with the link we have sent to your email. Thank you.');
 
         // return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
