@@ -70,16 +70,17 @@ class RentalSignupController extends Controller
         $userId = $user->id;
         $userName = $user->first_name . " " . $user->last_name;
 
+        $todayDate = Carbon::now();
+        $nextPayDate = Carbon::now();
+
         // Update motorcycle data
         $motorcycle = Motorcycle::find($request->motorcycle_id);
         $motorcycle->user_id = $userId;
         $motorcycle->availability = 'rented';
+        $motorcycle->rental_start_date = $todayDate;
         $motorcycle->save();
 
         // Create rental deposit payment data
-        $todayDate = Carbon::now();
-        $nextPayDate = Carbon::now();
-
         $payment = new RentalPayment();
         $payment->payment_type = 'deposit';
         $payment->rental_deposit = 300;

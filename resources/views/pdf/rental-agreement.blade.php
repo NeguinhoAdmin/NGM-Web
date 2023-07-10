@@ -480,9 +480,7 @@
 
                     <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">THE SECURITY DEPOSIT WILL BE HELD BY THE COMPANY FOR 20 DAYS AFTER THE VEHICLE RETURN</p>
 
-                    <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">WE DO RECOMMEND OUR CUSTOMERS TO TAKE PICTURES OF THE VEHICLE UPON COLLECTION</p>
-
-                    ***************************************************************************************************************************
+                    <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;">WE DO RECOMMEND OUR CUSTOMERS TO TAKE PICTURES OF THE VEHICLE UPON COLLECTION</p><br>
 
                     <p style="font-size: 16px; font-weight: 400; line-height: 24px; color: #777777;" class="mb-3">I accept the Terms and Conditions applicable to this Rental Agreement without any exception or reservation.</p>
 

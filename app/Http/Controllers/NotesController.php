@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Motorcycle;
 use App\Models\Note;
 use Illuminate\Http\Request;
-use App\Models\Payment;
+use App\Models\RentalPayment;
 
 class NotesController extends Controller
 {
@@ -16,7 +16,7 @@ class NotesController extends Controller
      */
     public function index($motorcycle_id)
     {
-        $paymentNotes = Payment::find($motorcycle_id)->notes();
+        $paymentNotes = RentalPayment::find($motorcycle_id)->notes();
 
         // Using this section to test modal functionaility with Laravel
         return view('motorcycles.notemodal');
@@ -42,7 +42,7 @@ class NotesController extends Controller
     {
         $motorcycle_id = $request->motorcycle_id;
 
-        $payment = Payment::findOrFail($request->payment_id);
+        $payment = RentalPayment::findOrFail($request->payment_id);
 
         $validated = $request->validate([
             'note' => 'required',
