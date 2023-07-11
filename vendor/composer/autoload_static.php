@@ -119,6 +119,7 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'Staudenmeir\\LaravelAdjacencyList\\' => 33,
             'Staudenmeir\\EloquentHasManyDeepContracts\\' => 41,
             'Spatie\\TemporaryDirectory\\' => 26,
+            'Spatie\\Sun\\' => 11,
             'Spatie\\Permission\\' => 18,
             'Spatie\\MediaLibrary\\' => 20,
             'Spatie\\LaravelPackageTools\\' => 27,
@@ -129,6 +130,7 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'Spatie\\Ignition\\' => 16,
             'Spatie\\Html\\' => 12,
             'Spatie\\FlareClient\\' => 19,
+            'Spatie\\Dashboard\\' => 17,
             'Spatie\\Backtrace\\' => 17,
             'Shopper\\Framework\\' => 18,
             'Sabberworm\\CSS\\' => 15,
@@ -227,6 +229,8 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'Filament\\Support\\' => 17,
             'Filament\\Notifications\\' => 23,
             'Filament\\Forms\\' => 15,
+            'Fidum\\ChartTile\\Examples\\' => 25,
+            'Fidum\\ChartTile\\' => 16,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -255,6 +259,7 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         array (
             'Cron\\' => 5,
             'Creagia\\LaravelSignPad\\' => 23,
+            'ConsoleTVs\\Charts\\' => 18,
             'Composer\\Semver\\' => 16,
             'Composer\\CaBundle\\' => 18,
             'Complex\\' => 8,
@@ -267,6 +272,7 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'BladeUI\\Icons\\' => 14,
             'BladeUI\\Heroicons\\' => 18,
             'Barryvdh\\DomPDF\\' => 16,
+            'Balping\\JsonRaw\\' => 16,
             'BaconQrCode\\' => 12,
         ),
         'A' => 
@@ -472,6 +478,10 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         array (
             0 => __DIR__ . '/..' . '/spatie/temporary-directory/src',
         ),
+        'Spatie\\Sun\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/sun/src',
+        ),
         'Spatie\\Permission\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-permission/src',
@@ -511,6 +521,10 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Spatie\\FlareClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/flare-client-php/src',
+        ),
+        'Spatie\\Dashboard\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-dashboard/src',
         ),
         'Spatie\\Backtrace\\' => 
         array (
@@ -789,6 +803,14 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         array (
             0 => __DIR__ . '/..' . '/filament/forms/src',
         ),
+        'Fidum\\ChartTile\\Examples\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples',
+        ),
+        'Fidum\\ChartTile\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
@@ -868,6 +890,10 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         array (
             0 => __DIR__ . '/..' . '/creagia/laravel-sign-pad/src',
         ),
+        'ConsoleTVs\\Charts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/consoletvs/charts/src',
+        ),
         'Composer\\Semver\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/semver/src',
@@ -903,6 +929,10 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Barryvdh\\DomPDF\\' => 
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src',
+        ),
+        'Balping\\JsonRaw\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/balping/json-raw-encoder/src',
         ),
         'BaconQrCode\\' => 
         array (
@@ -1080,6 +1110,9 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'BaconQrCode\\Renderer\\RendererStyle\\GradientType' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Renderer/RendererStyle/GradientType.php',
         'BaconQrCode\\Renderer\\RendererStyle\\RendererStyle' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Renderer/RendererStyle/RendererStyle.php',
         'BaconQrCode\\Writer' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Writer.php',
+        'Balping\\JsonRaw\\Encoder' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Encoder.php',
+        'Balping\\JsonRaw\\Raw' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Raw.php',
+        'Balping\\JsonRaw\\Replacer' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Replacer.php',
         'Barryvdh\\DomPDF\\Facade\\Pdf' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/Facade/Pdf.php',
         'Barryvdh\\DomPDF\\PDF' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/PDF.php',
         'Barryvdh\\DomPDF\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/ServiceProvider.php',
@@ -1220,6 +1253,34 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Composer\\Semver\\Intervals' => __DIR__ . '/..' . '/composer/semver/src/Intervals.php',
         'Composer\\Semver\\Semver' => __DIR__ . '/..' . '/composer/semver/src/Semver.php',
         'Composer\\Semver\\VersionParser' => __DIR__ . '/..' . '/composer/semver/src/VersionParser.php',
+        'ConsoleTVs\\Charts\\ChartsServiceProvider' => __DIR__ . '/..' . '/consoletvs/charts/src/ChartsServiceProvider.php',
+        'ConsoleTVs\\Charts\\Classes\\BaseChart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/BaseChart.php',
+        'ConsoleTVs\\Charts\\Classes\\C3\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/C3/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\C3\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/C3/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Chartjs\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Chartjs/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Chartjs\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Chartjs/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\DatasetClass' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/DatasetClass.php',
+        'ConsoleTVs\\Charts\\Classes\\Echarts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Echarts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Echarts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Echarts/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Frappe\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Frappe/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Frappe\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Frappe/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Fusioncharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Fusioncharts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Fusioncharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Fusioncharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Classes\\Highcharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Highcharts/Chart.php',
+        'ConsoleTVs\\Charts\\Classes\\Highcharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Classes/Highcharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Commands\\ChartsCommand' => __DIR__ . '/..' . '/consoletvs/charts/src/Commands/ChartsCommand.php',
+        'ConsoleTVs\\Charts\\Features\\C3\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/C3/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\C3\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/C3/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Chartjs\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Chartjs/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Chartjs\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Chartjs/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Echarts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Echarts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Echarts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Echarts/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Frappe\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Frappe/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Frappe\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Frappe/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Fusioncharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Fusioncharts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Fusioncharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Fusioncharts/Dataset.php',
+        'ConsoleTVs\\Charts\\Features\\Highcharts\\Chart' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Highcharts/Chart.php',
+        'ConsoleTVs\\Charts\\Features\\Highcharts\\Dataset' => __DIR__ . '/..' . '/consoletvs/charts/src/Features/Highcharts/Dataset.php',
         'Creagia\\LaravelSignPad\\Actions\\AppendSignatureDocumentAction' => __DIR__ . '/..' . '/creagia/laravel-sign-pad/src/Actions/AppendSignatureDocumentAction.php',
         'Creagia\\LaravelSignPad\\Actions\\CertifyDocumentAction' => __DIR__ . '/..' . '/creagia/laravel-sign-pad/src/Actions/CertifyDocumentAction.php',
         'Creagia\\LaravelSignPad\\Actions\\GenerateSignatureDocumentAction' => __DIR__ . '/..' . '/creagia/laravel-sign-pad/src/Actions/GenerateSignatureDocumentAction.php',
@@ -2395,6 +2456,16 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/ValidGenerator.php',
+        'Fidum\\ChartTile\\ChartTileServiceProvider' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/ChartTileServiceProvider.php',
+        'Fidum\\ChartTile\\Charts\\Chart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Charts/Chart.php',
+        'Fidum\\ChartTile\\Components\\ChartComponent' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Components/ChartComponent.php',
+        'Fidum\\ChartTile\\Components\\ChartRefreshComponent' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Components/ChartRefreshComponent.php',
+        'Fidum\\ChartTile\\Contracts\\ChartFactory' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Contracts/ChartFactory.php',
+        'Fidum\\ChartTile\\Examples\\ExampleBarChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExampleBarChart.php',
+        'Fidum\\ChartTile\\Examples\\ExampleDoughnutChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExampleDoughnutChart.php',
+        'Fidum\\ChartTile\\Examples\\ExampleLineChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExampleLineChart.php',
+        'Fidum\\ChartTile\\Examples\\ExamplePieChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExamplePieChart.php',
+        'Fidum\\ChartTile\\Factories\\DefaultChartFactory' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Factories/DefaultChartFactory.php',
         'Filament\\Forms\\Commands\\Aliases\\MakeFieldCommand' => __DIR__ . '/..' . '/filament/forms/src/Commands/Aliases/MakeFieldCommand.php',
         'Filament\\Forms\\Commands\\Aliases\\MakeLayoutComponentCommand' => __DIR__ . '/..' . '/filament/forms/src/Commands/Aliases/MakeLayoutComponentCommand.php',
         'Filament\\Forms\\Commands\\Concerns\\CanGenerateForms' => __DIR__ . '/..' . '/filament/forms/src/Commands/Concerns/CanGenerateForms.php',
@@ -7975,6 +8046,13 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Spatie\\Backtrace\\CodeSnippet' => __DIR__ . '/..' . '/spatie/backtrace/src/CodeSnippet.php',
         'Spatie\\Backtrace\\File' => __DIR__ . '/..' . '/spatie/backtrace/src/File.php',
         'Spatie\\Backtrace\\Frame' => __DIR__ . '/..' . '/spatie/backtrace/src/Frame.php',
+        'Spatie\\Dashboard\\Dashboard' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Dashboard.php',
+        'Spatie\\Dashboard\\DashboardServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/DashboardServiceProvider.php',
+        'Spatie\\Dashboard\\Facades\\Dashboard' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Facades/Dashboard.php',
+        'Spatie\\Dashboard\\Http\\Components\\DashboardComponent' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Http/Components/DashboardComponent.php',
+        'Spatie\\Dashboard\\Http\\Components\\DashboardTileComponent' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Http/Components/DashboardTileComponent.php',
+        'Spatie\\Dashboard\\Http\\Components\\UpdateModeComponent' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Http/Components/UpdateModeComponent.php',
+        'Spatie\\Dashboard\\Models\\Tile' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Models/Tile.php',
         'Spatie\\FlareClient\\Api' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Api.php',
         'Spatie\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/HasContext.php',
         'Spatie\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/UsesTime.php',
@@ -8303,6 +8381,7 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Spatie\\Permission\\Traits\\HasRoles' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Traits/HasRoles.php',
         'Spatie\\Permission\\Traits\\RefreshesPermissionCache' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Traits/RefreshesPermissionCache.php',
         'Spatie\\Permission\\WildcardPermission' => __DIR__ . '/..' . '/spatie/laravel-permission/src/WildcardPermission.php',
+        'Spatie\\Sun\\Sun' => __DIR__ . '/..' . '/spatie/sun/src/Sun.php',
         'Spatie\\TemporaryDirectory\\Exceptions\\InvalidDirectoryName' => __DIR__ . '/..' . '/spatie/temporary-directory/src/Exceptions/InvalidDirectoryName.php',
         'Spatie\\TemporaryDirectory\\Exceptions\\PathAlreadyExists' => __DIR__ . '/..' . '/spatie/temporary-directory/src/Exceptions/PathAlreadyExists.php',
         'Spatie\\TemporaryDirectory\\TemporaryDirectory' => __DIR__ . '/..' . '/spatie/temporary-directory/src/TemporaryDirectory.php',
