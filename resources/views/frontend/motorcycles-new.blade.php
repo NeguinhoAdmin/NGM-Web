@@ -62,7 +62,7 @@
                     <ul class="product style2 sd1">
                         @foreach($chunk as $motorcycle)
                         <li class="product-item new">
-                            <div class="product-thumb clearfix">
+                            <div class="product-thumb clearfix mb-3">
                                 <a href="/new-motorcycle/{{ $motorcycle->id }}">
                                     <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 163px;">
                                 </a>
