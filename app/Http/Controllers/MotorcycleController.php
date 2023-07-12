@@ -76,12 +76,17 @@ class MotorcycleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $m = Motorcycle::orderBy('id', 'DESC')->get();
-        $motorcycles = json_decode($m);
+        if ($request->filled('search')) {
+            $motorcycles = Motorcycle::search($request->search)->get();
+        } else {
+            $motorcycles = Motorcycle::get();
+        }
+        // $m = Motorcycle::orderBy('id', 'DESC')->get();
+        // $motorcycles = json_decode($m);
 
-        $count = $m->count();
+        $count = $motorcycles->count();
         return view('motorcycles.index', compact('motorcycles', 'count'));
     }
 

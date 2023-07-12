@@ -4,19 +4,25 @@
 <div class="container">
     @auth
     <h1>{{ $count }} Motorcycle(s)</h1>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mb-3">
             <div class="container">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <a class="btn btn-primary" href="{{ URL::to('/motorcycles/create') }}">Add Used Motorcycle</a>
-                    <!-- <a class="btn btn-outline-primary" href="{{ URL::to('find-motorcycle/') }}">Add Motorcycle</a> -->
-                </div>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <a class="btn btn-primary" href="{{ URL::to('check-vehicle-reg/') }}">Check Reg</a>
-                </div>
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <a class="btn btn-outline-primary" href="{{ URL::to('/create-new-motorcycle') }}">Add New Motorcycle</a>
-                    <!-- <a class="btn btn-outline-primary" href="{{ URL::to('find-motorcycle/') }}">Add Motorcycle</a> -->
+                <div class="btn-group">
+                    <div class="btn">
+                        <form method="GET" class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" name="search" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                        </form>
+                    </div>
+                    <div class="btn">
+                        <a class="btn btn-outline-primary" href="{{ URL::to('/motorcycles/create') }}">Add Used Motorcycle</a>
+                    </div>
+                    <div class="btn">
+                        <a class="btn btn-primary" href="{{ URL::to('check-vehicle-reg/') }}">Check Reg</a>
+                    </div>
+                    <div class="btn">
+                        <a class="btn btn-outline-primary" href="{{ URL::to('/create-new-motorcycle') }}">Add New Motorcycle</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -24,29 +30,31 @@
     <div class="row">
         <div class="container">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/') }}">All</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('is-for-rent/') }}">For Rent</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('is-rented/') }}">Rented</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('is-for-sale/') }}">For Sale</a>
-            </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/') }}">All</a>
+                </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('is-for-rent/') }}">For Rent</a>
+                </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('is-rented/') }}">Rented</a>
+                </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('is-for-sale/') }}">For Sale</a>
+                </div>
 
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('is-sold/') }}">Sold</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('in-for-repairs/') }}">Repairs</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('cat-b/') }}">Cat B</a>
-            </div>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <a class="btn btn-outline-primary" href="{{ URL::to('claim-in-progress/') }}">Claim In Progress</a>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('is-sold/') }}">Sold</a>
+                </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('in-for-repairs/') }}">Repairs</a>
+                </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('cat-b/') }}">Cat B</a>
+                </div>
+                <div class="btn">
+                    <a class="btn btn-outline-primary" href="{{ URL::to('claim-in-progress/') }}">Claim In Progress</a>
+                </div>
             </div>
         </div>
     </div>
