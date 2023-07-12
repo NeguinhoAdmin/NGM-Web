@@ -4,6 +4,7 @@
 
 @auth
 <h1>{{ $motorcycle->registration }}</h1>
+<h5 class="text-capitalize">{{$motorcycle->availability}}</h5>
 <div class="mt-3">
     <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/') }}">Back</a>
@@ -92,7 +93,7 @@
                                 </tr>
                                 <tr>
                                     <td>Tax Due Date </td>
-                                    <td class="text-end">{{$motorcycle->tax_due_date}}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->tax_due_date)->format('d-m-Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>MOT Status </td>
@@ -101,7 +102,7 @@
 
                                 <tr>
                                     <td>MOT Expiry Date </td>
-                                    <td class="text-end">{{$motorcycle->mot_expiry_date}}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d-m-Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>C02 Emmissions </td>
@@ -161,7 +162,7 @@
             <div class="card shadow">
                 <div class="card-header">
                     <div class="card-body">
-                        <h5 class="text-capitalize">Status: {{$motorcycle->availability}}</h5>
+                        <a href="{{ url('/users/'.$user->id.'') }}">&#9650; Click here to view client information</a>
                         <table class="table">
                             <tbody>
                                 <tr>

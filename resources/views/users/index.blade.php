@@ -7,8 +7,21 @@
     <!-- Page Button Group -->
     <div class="container-fluid">
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a class="btn btn-outline-success" href="{{ URL::to('users/create') }}">Create New User</a>
+            <div class="btn">
+                <a class="btn btn-outline-success" href="{{ URL::to('users/create') }}">Create New User</a>
+            </div>
+            <div class="btn">
+                <form method="GET" class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" name="search" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-success" type="submit" id="button-addon2">Search</button>
+                </form>
+            </div>
         </div>
+
+        <!-- <form method="GET" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" name="search" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+            <button class="btn btn-outline-success" type="submit" id="button-addon2">Search</button>
+        </form> -->
     </div>
     <br>
 
@@ -30,6 +43,9 @@
     <!-- This area is used to dispay errors -->
 
     <div class="container">
+
+
+
         <table class="table table-striped">
             <thead>
                 <tr>

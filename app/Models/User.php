@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Cache;
 use Spatie\Permission\Traits\HasRoles;
 use DB;
 use Laravel\Cashier\Billable;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Billable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Billable, Searchable;
     /**
      * The attributes that are mass assignable.
      *
@@ -76,5 +77,20 @@ class User extends Authenticatable
     public function documents()
     {
         return $this->hasMany(Document::class, 'user_id', 'id');
+    }
+
+    /**
+     *  Get the indexable data array for the model.
+     *
+     *  @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'phone_number' => $this->phone_number
+        ];
     }
 }

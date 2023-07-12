@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\File;
 use App\Models\User;
+use Laravel\Cashier;
 use Nette\Utils\Json;
 use App\Models\Rental;
 use App\Mail\UserEmail;
 use App\Models\Address;
 use App\models\Payment;
+use Illuminate\View\View;
 use App\Models\Motorcycle;
 use Illuminate\Support\Js;
 use App\Models\UserAddress;
@@ -20,19 +22,42 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Validator;
-use Laravel\Cashier;
 
 class UserController extends Controller
 {
+    /**
+     *  Display a listing of the resource.
+     *
+     *  @return \Illuminate\Http\Response
+     */
+    public function userSearch(Request $request): View
+    {
+        if ($request->filled('search')) {
+            $users = User::search($request->search)->get();
+        } else {
+            $users = User::get();
+        }
+
+        $count = $users->count();
+
+        return view('users.index', compact('users', 'count'));
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request): View
     {
-        $users = User::all()->where('is_client', 1)->sortByDesc('id');
+        // $users = User::all()->where('is_client', 1)->sortByDesc('id');
         // dd($users);
+
+        if ($request->filled('search')) {
+            $users = User::search($request->search)->get();
+        } else {
+            $users = User::get();
+        }
 
         $count = $users->count();
 
