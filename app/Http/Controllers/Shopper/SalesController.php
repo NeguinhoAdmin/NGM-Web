@@ -70,6 +70,17 @@ class SalesController extends Controller
         return view('frontend.motorcycle-rentals', compact('motorcycles'));
     }
 
+    // Display all rental bikes
+    public function RentHire()
+    {
+        $motorcycles = Motorcycle::all()
+            ->where('availability', '=', 'for rent');
+
+        $count = $motorcycles->count();
+
+        return view('frontend.motorcycle-rental-hire', compact('motorcycles'));
+    }
+
     // Show details of a particular rental bike
     public function RentalDetails($id)
     {

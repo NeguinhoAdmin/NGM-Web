@@ -43,7 +43,9 @@ class Motorcycle extends Model
             'make' => $this->make,
             'model' => $this->model,
             'year' => $this->year,
-            'availability' => $this->availability
+            'availability' => $this->availability,
+            'rental_price' => $this->rental_price,
+            'engine' => $this->engine,
         ];
     }
 }

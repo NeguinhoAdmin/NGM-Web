@@ -117,6 +117,7 @@ Route::controller(SalesController::class)->group(function () {
     Route::get('/used-motorcycles', 'UsedForSale')->name('motorcycles.used');
     Route::get('/used-motorcycle/{id}', 'UsedBikeDetails')->name('detail.used-motorcycle');
     Route::get('/motorcycle-rentals', 'RentBike')->name('motorcycle.rentals');
+    Route::get('/motorcycle-rental-hire', 'RentHire')->name('motorcycle.rental-hire');
     Route::get('/rentals-motorcycle/{id}', 'RentalDetails')->name('rental-motorcycle.detail');
 });
 Route::controller(RentalSignupController::class)->group(function () {
