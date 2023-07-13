@@ -153,7 +153,6 @@ return array(
     'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
     'Creagia\\LaravelSignPad\\' => array($vendorDir . '/creagia/laravel-sign-pad/src'),
-    'ConsoleTVs\\Charts\\' => array($vendorDir . '/consoletvs/charts/src'),
     'Composer\\Semver\\' => array($vendorDir . '/composer/semver/src'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
     'Complex\\' => array($vendorDir . '/markbaker/complex/classes/src'),
@@ -163,7 +162,6 @@ return array(
     'BladeUI\\Icons\\' => array($vendorDir . '/blade-ui-kit/blade-icons/src'),
     'BladeUI\\Heroicons\\' => array($vendorDir . '/blade-ui-kit/blade-heroicons/src'),
     'Barryvdh\\DomPDF\\' => array($vendorDir . '/barryvdh/laravel-dompdf/src'),
-    'Balping\\JsonRaw\\' => array($vendorDir . '/balping/json-raw-encoder/src'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
 );
