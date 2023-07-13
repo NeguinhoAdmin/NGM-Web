@@ -26,7 +26,7 @@
     <div class="container">
         <div class="text-center">
             <div style="font-size: 34px;"><span class="product-title clearfix"></span>Prices Start From £70/Week</div>
-            <div style="font-size: 18px;"><span class="product-title clearfix"></span>Depends on motorcycle model</div>
+            <div style="font-size: 18px;"><span class="product-title clearfix"></span>All models come with free TAX, MOT & Weekly Maintenance</div>
         </div>
         <div class="container text-center">
             <div class="row align-items-start">
