@@ -81,6 +81,41 @@ class SalesController extends Controller
         return view('frontend.motorcycle-rental-hire', compact('motorcycles'));
     }
 
+    // Show details of a particular rental bike - frontend
+    public function Forza125()
+    {
+        return view('frontend.motorcycle-rental-forza-125');
+    }
+
+    // Show details of a particular rental bike - frontend
+    public function Pcx125()
+    {
+        return view('frontend.motorcycle-rental-pcx-125');
+    }
+
+    // Show details of a particular rental bike - frontend
+    public function Sh125()
+    {
+        return view('frontend.motorcycle-rental-sh-125');
+    }
+
+    // Show details of a particular rental bike - frontend
+    public function Vision125()
+    {
+        return view('frontend.motorcycle-rental-vision-125');
+    }
+
+    // Show details of a particular rental bike - frontend
+    public function Nmax125()
+    {
+        return view('frontend.motorcycle-rental-nmax-125');
+    }
+    // Show details of a particular rental bike - frontend
+    public function Xmax125()
+    {
+        return view('frontend.motorcycle-rental-xmax-125');
+    }
+
     // Show details of a particular rental bike
     public function RentalDetails($id)
     {

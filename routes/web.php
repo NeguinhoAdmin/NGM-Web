@@ -85,6 +85,7 @@ Route::controller(StripePaymentController::class)->group(function () {
     Route::get('stripe', 'stripe');
     Route::post('stripe', 'stripePost')->name('stripe.post');
 
+    Route::get('stripe-hire-reserve', 'stripeHireDeposit');
     Route::get('stripe/{id}', 'stripeReserve');
     Route::post('stripe', 'rentalReserve')->name('stripe.reserve');
 });
@@ -117,9 +118,17 @@ Route::controller(SalesController::class)->group(function () {
     Route::get('/used-motorcycles', 'UsedForSale')->name('motorcycles.used');
     Route::get('/used-motorcycle/{id}', 'UsedBikeDetails')->name('detail.used-motorcycle');
     Route::get('/motorcycle-rentals', 'RentBike')->name('motorcycle.rentals');
-    Route::get('/motorcycle-rental-hire', 'RentHire')->name('motorcycle.rental-hire');
+    Route::get('/motorcycle-rental-hire', 'RentHire')->name('rental-hire');
+    Route::get('/motorcycle-rental-detail', 'RentalHireDetail')->name('rental-hire-detail');
     Route::get('/rentals-motorcycle/{id}', 'RentalDetails')->name('rental-motorcycle.detail');
+    Route::get('/honda-forza-125', 'Forza125')->name('forza-125');
+    Route::get('/honda-pcx-125', 'Pcx125')->name('pcx-125');
+    Route::get('/honda-sh-125', 'Sh125')->name('sh-125');
+    Route::get('/honda-vision-125', 'Vision125')->name('vision-125');
+    Route::get('/yamaha-nmax-125', 'Nmax125')->name('nmax-125');
+    Route::get('/yamaha-xmax-125', 'Xmax125')->name('xmax-125');
 });
+
 Route::controller(RentalSignupController::class)->group(function () {
     // Route::get('rental-reserve/{id}', 'rentalReserve');
     Route::get('/rental-signup/{id}', 'rentalSignUp');

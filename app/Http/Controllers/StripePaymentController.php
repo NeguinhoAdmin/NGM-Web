@@ -26,6 +26,17 @@ class StripePaymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function stripeHireDeposit()
+    {
+        $stripePay = 20;
+        return view('stripe.reserve', compact('stripePay'));
+    }
+
+    /**
+     * success response method.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function stripePost(Request $request)
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));

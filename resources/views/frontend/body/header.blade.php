@@ -80,7 +80,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/motorcycle-rentals">RENTALS</a>
+                        <a href="/motorcycle-rental-hire">RENTALS</a>
                     </li>
                     <li>
                         <a href="/services">SERVICES</a>
