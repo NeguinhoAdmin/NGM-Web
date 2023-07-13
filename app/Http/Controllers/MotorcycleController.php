@@ -469,10 +469,12 @@ class MotorcycleController extends Controller
         // Motorcycle Details
         $m = Motorcycle::findOrFail($motorcycle_id);
         $motorcycle = json_decode($m);
-        // dd($m);
-        $user = User::where('id', $motorcycle->user_id)->first();
-        // dd($u);
-        // $user = json_decode($u);
+
+        if (User::where('id', '=', $motorcycle->user_id)->exists()) {
+            $user = User::where('id', $motorcycle->user_id)->first();
+        } else {
+            $user = "No user";
+        }
 
         $nextPayDate = (new Carbon($motorcycle->next_payment_date))->addDay();
         // dd($nextPayDate);

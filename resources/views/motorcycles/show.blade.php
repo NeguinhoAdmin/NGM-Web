@@ -162,7 +162,14 @@
             <div class="card shadow">
                 <div class="card-header">
                     <div class="card-body">
-                        <a href="{{ url('/users/'.$user->id.'') }}">&#9650; Click here to view client information</a>
+
+                        @if(empty($user->id))
+                        <p><strong>No rider for this motorcycle</strong></p>
+                        @else
+                        <a href="{{ url('/users/'.$user->id.'' ?? '') }}">&#9650; Click here to view client information</a>
+                        @endif
+
+
                         <table class="table">
                             <tbody>
                                 <tr>
