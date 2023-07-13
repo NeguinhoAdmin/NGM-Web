@@ -119,7 +119,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'Staudenmeir\\LaravelAdjacencyList\\' => 33,
             'Staudenmeir\\EloquentHasManyDeepContracts\\' => 41,
             'Spatie\\TemporaryDirectory\\' => 26,
-            'Spatie\\Sun\\' => 11,
             'Spatie\\Permission\\' => 18,
             'Spatie\\MediaLibrary\\' => 20,
             'Spatie\\LaravelPackageTools\\' => 27,
@@ -130,7 +129,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'Spatie\\Ignition\\' => 16,
             'Spatie\\Html\\' => 12,
             'Spatie\\FlareClient\\' => 19,
-            'Spatie\\Dashboard\\' => 17,
             'Spatie\\Backtrace\\' => 17,
             'Shopper\\Framework\\' => 18,
             'Sabberworm\\CSS\\' => 15,
@@ -230,8 +228,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
             'Filament\\Support\\' => 17,
             'Filament\\Notifications\\' => 23,
             'Filament\\Forms\\' => 15,
-            'Fidum\\ChartTile\\Examples\\' => 25,
-            'Fidum\\ChartTile\\' => 16,
             'Faker\\' => 6,
         ),
         'E' => 
@@ -479,10 +475,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         array (
             0 => __DIR__ . '/..' . '/spatie/temporary-directory/src',
         ),
-        'Spatie\\Sun\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/sun/src',
-        ),
         'Spatie\\Permission\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-permission/src',
@@ -522,10 +514,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Spatie\\FlareClient\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/flare-client-php/src',
-        ),
-        'Spatie\\Dashboard\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/laravel-dashboard/src',
         ),
         'Spatie\\Backtrace\\' => 
         array (
@@ -807,14 +795,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Filament\\Forms\\' => 
         array (
             0 => __DIR__ . '/..' . '/filament/forms/src',
-        ),
-        'Fidum\\ChartTile\\Examples\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples',
-        ),
-        'Fidum\\ChartTile\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src',
         ),
         'Faker\\' => 
         array (
@@ -2461,16 +2441,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Faker\\Provider\\zh_TW\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/zh_TW/Text.php',
         'Faker\\UniqueGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/UniqueGenerator.php',
         'Faker\\ValidGenerator' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/ValidGenerator.php',
-        'Fidum\\ChartTile\\ChartTileServiceProvider' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/ChartTileServiceProvider.php',
-        'Fidum\\ChartTile\\Charts\\Chart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Charts/Chart.php',
-        'Fidum\\ChartTile\\Components\\ChartComponent' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Components/ChartComponent.php',
-        'Fidum\\ChartTile\\Components\\ChartRefreshComponent' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Components/ChartRefreshComponent.php',
-        'Fidum\\ChartTile\\Contracts\\ChartFactory' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Contracts/ChartFactory.php',
-        'Fidum\\ChartTile\\Examples\\ExampleBarChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExampleBarChart.php',
-        'Fidum\\ChartTile\\Examples\\ExampleDoughnutChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExampleDoughnutChart.php',
-        'Fidum\\ChartTile\\Examples\\ExampleLineChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExampleLineChart.php',
-        'Fidum\\ChartTile\\Examples\\ExamplePieChart' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/examples/ExamplePieChart.php',
-        'Fidum\\ChartTile\\Factories\\DefaultChartFactory' => __DIR__ . '/..' . '/fidum/laravel-dashboard-chart-tile/src/Factories/DefaultChartFactory.php',
         'Filament\\Forms\\Commands\\Aliases\\MakeFieldCommand' => __DIR__ . '/..' . '/filament/forms/src/Commands/Aliases/MakeFieldCommand.php',
         'Filament\\Forms\\Commands\\Aliases\\MakeLayoutComponentCommand' => __DIR__ . '/..' . '/filament/forms/src/Commands/Aliases/MakeLayoutComponentCommand.php',
         'Filament\\Forms\\Commands\\Concerns\\CanGenerateForms' => __DIR__ . '/..' . '/filament/forms/src/Commands/Concerns/CanGenerateForms.php',
@@ -8079,13 +8049,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Spatie\\Backtrace\\CodeSnippet' => __DIR__ . '/..' . '/spatie/backtrace/src/CodeSnippet.php',
         'Spatie\\Backtrace\\File' => __DIR__ . '/..' . '/spatie/backtrace/src/File.php',
         'Spatie\\Backtrace\\Frame' => __DIR__ . '/..' . '/spatie/backtrace/src/Frame.php',
-        'Spatie\\Dashboard\\Dashboard' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Dashboard.php',
-        'Spatie\\Dashboard\\DashboardServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/DashboardServiceProvider.php',
-        'Spatie\\Dashboard\\Facades\\Dashboard' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Facades/Dashboard.php',
-        'Spatie\\Dashboard\\Http\\Components\\DashboardComponent' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Http/Components/DashboardComponent.php',
-        'Spatie\\Dashboard\\Http\\Components\\DashboardTileComponent' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Http/Components/DashboardTileComponent.php',
-        'Spatie\\Dashboard\\Http\\Components\\UpdateModeComponent' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Http/Components/UpdateModeComponent.php',
-        'Spatie\\Dashboard\\Models\\Tile' => __DIR__ . '/..' . '/spatie/laravel-dashboard/src/Models/Tile.php',
         'Spatie\\FlareClient\\Api' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Api.php',
         'Spatie\\FlareClient\\Concerns\\HasContext' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/HasContext.php',
         'Spatie\\FlareClient\\Concerns\\UsesTime' => __DIR__ . '/..' . '/spatie/flare-client-php/src/Concerns/UsesTime.php',
@@ -8414,7 +8377,6 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Spatie\\Permission\\Traits\\HasRoles' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Traits/HasRoles.php',
         'Spatie\\Permission\\Traits\\RefreshesPermissionCache' => __DIR__ . '/..' . '/spatie/laravel-permission/src/Traits/RefreshesPermissionCache.php',
         'Spatie\\Permission\\WildcardPermission' => __DIR__ . '/..' . '/spatie/laravel-permission/src/WildcardPermission.php',
-        'Spatie\\Sun\\Sun' => __DIR__ . '/..' . '/spatie/sun/src/Sun.php',
         'Spatie\\TemporaryDirectory\\Exceptions\\InvalidDirectoryName' => __DIR__ . '/..' . '/spatie/temporary-directory/src/Exceptions/InvalidDirectoryName.php',
         'Spatie\\TemporaryDirectory\\Exceptions\\PathAlreadyExists' => __DIR__ . '/..' . '/spatie/temporary-directory/src/Exceptions/PathAlreadyExists.php',
         'Spatie\\TemporaryDirectory\\TemporaryDirectory' => __DIR__ . '/..' . '/spatie/temporary-directory/src/TemporaryDirectory.php',

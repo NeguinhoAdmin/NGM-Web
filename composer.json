@@ -13,7 +13,6 @@
         "bumbummen99/shoppingcart": "^4.2",
         "consoletvs/charts": "^6.6",
         "creagia/laravel-sign-pad": "^2.0",
-        "fidum/laravel-dashboard-chart-tile": "^5.0",
         "guzzlehttp/guzzle": "^7.6",
         "laravel/cashier": "^13.17",
         "laravel/framework": "^9.19",
