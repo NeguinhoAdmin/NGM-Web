@@ -3,9 +3,10 @@
         <div class="row">
             <div class="col-sm-6 col-md-2">
                 <div class="widget widget-link">
+                    @auth
                     <ul>
                         <li><a href="/contact">Contact Us</a></li>
-                        <li><a href="#">My Account</a></li>
+                        <li><a href="/dashboard">My Account</a></li>
                         <li><a href="/cart">My Cart</a></li>
                         <li><a href="#">My Wishlist Items</a></li>
                         <li><a href="#">My Checkout</a></li>
@@ -13,6 +14,19 @@
                         <li><a href="#">Returns</a></li>
                         <li><a href="#">Help & FAQs</a></li>
                     </ul>
+                    @endauth
+
+                    @guest
+                    <ul>
+                        <li>
+                            <a href="{{ route('login.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Login </a>
+                        </li>
+                        <li>
+                            <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('register.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Register</a>
+                        </li>
+                    </ul>
+                    @endguest
+
                 </div><!-- /.widget -->
             </div><!-- /.col-md-3 -->
             <div class="col-sm-6 col-md-2">
