@@ -100,6 +100,7 @@
                         <div class="mb-3">
                             <select class="form-select text-capitalize" aria-label="Availability" name="availability" id="avalability" value="{{old('avalability')}}">
                                 <option selected>{{$motorcycle->availability}}</option>
+                                <option value="for rent">For Rent</option>
                                 <option value="for sale">For Sale</option>
                                 <option value="used for sale">Used For Sale</option>
                                 <option value="sold">Sold</option>
