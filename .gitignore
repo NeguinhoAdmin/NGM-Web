@@ -19,3 +19,4 @@ yarn-error.log
 .vscode
 vite.config.js
 public/uploads
+config/scout.php
