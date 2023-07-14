@@ -41,13 +41,22 @@
             <h4>Details</h4>
         </div>
         <div class="mb-3">
+            <p>CLIENT RATING</p>
+            <select class="form-select text-capitalize" aria-label="Rating" name="rating" id="rating" value="{{old('rating')}}">
+                <option selected>{{$user->rating}}</option>
+                <option value="good">Good</option>
+                <option value="warn">Warning</option>
+                <option value="bad">Bad</option>
+            </select>
+        </div>
+        <div class="mb-3">
             <input class="form-control" type="text" placeholder="First Name*" aria-label="default input example" name="first_name" id="first_name" value="{{$user->first_name}}">
         </div>
         <div class="mb-3">
             <input class="form-control" type="text" placeholder="Last Name*" aria-label="default input example" name="last_name" id="last_name" value="{{$user->last_name}}">
         </div>
         <div class="mb-3">
-            <select class="form-select" aria-label="Select Gender" name="gender" id="gender" value="{{old('gender')}}">
+            <select class="form-select text-capitalize" aria-label="Select Gender" name="gender" id="gender" value="{{old('gender')}}">
                 <option selected>{{$user->gender}}</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>

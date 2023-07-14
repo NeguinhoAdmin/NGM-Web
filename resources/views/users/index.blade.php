@@ -59,6 +59,16 @@
             <tbody>
                 @foreach ($users as $user)
                 <tr>
+                    <td class="text-center">
+                        @if ($user->rating == 'good')
+                        <!-- <span style="color:green">OK</span> -->
+                        <i class="fa fa-motorcycle" style="color:green;"></i>
+                        @elseif ($user->rating == 'warn')
+                        <i class="fa fa-motorcycle" style="color:orange;"></i>
+                        @elseif ($user->rating == 'bad')
+                        <i class="fa fa-motorcycle" style="color:red;"></i>
+                        @endif
+                    </td>
                     <td>{{$user->first_name}} {{$user->last_name}}</th>
                     <td>{{$user->phone_number}}</td>
                     <td>{{$user->email}}</td>

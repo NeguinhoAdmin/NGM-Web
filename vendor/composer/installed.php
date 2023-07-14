@@ -3,13 +3,22 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9a2bf817ce9c67318362d76fa8f1ae2a8b8cb2cc',
+        'reference' => 'bd3fe909be504f9de6c023e2343b558d20a26b45',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'algolia/algoliasearch-client-php' => array(
+            'pretty_version' => '3.3.2',
+            'version' => '3.3.2.0',
+            'reference' => 'cbd07bc0bb7303ff71e238d2d6284ef8469e1d5a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../algolia/algoliasearch-client-php',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'bacon/bacon-qr-code' => array(
             'pretty_version' => '2.0.8',
             'version' => '2.0.8.0',
@@ -601,7 +610,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9a2bf817ce9c67318362d76fa8f1ae2a8b8cb2cc',
+            'reference' => 'bd3fe909be504f9de6c023e2343b558d20a26b45',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -3,7 +3,17 @@
 @section('content')
 <div class="container">
     @auth
+
     <h1>{{$user->first_name}} {{$user->last_name}}</h1>
+    @if ($user->rating == 'good')
+    <!-- <span style="color:green">OK</span> -->
+    <i class="fa fa-motorcycle fa-xl" style="color:green;"></i>
+    @elseif ($user->rating == 'warn')
+    <i class="fa fa-motorcycle fa-xl" style="color:orange;"></i>
+    @elseif ($user->rating == 'bad')
+    <i class="fa fa-motorcycle fa-xl" style="color:red;"></i>
+    @endif
+
     <p>{{$user->phone_number}}
         {{$user->email}}
     </p>
@@ -27,7 +37,7 @@
     <!-- This area is used to dispay errors -->
 
     <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL()->previous() }}">Back</a>
+        <a class="btn btn-outline-success" href="{{ URL::to('users/') }}">Back</a>
     </div>
     <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-success" href="{{ URL::to('users/' . $user->id . '/edit') }}">Edit Client</a>

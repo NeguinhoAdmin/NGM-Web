@@ -164,4 +164,5 @@ return array(
     'Barryvdh\\DomPDF\\' => array($vendorDir . '/barryvdh/laravel-dompdf/src'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
+    'Algolia\\AlgoliaSearch\\' => array($vendorDir . '/algolia/algoliasearch-client-php/src'),
 );
