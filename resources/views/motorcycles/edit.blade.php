@@ -92,48 +92,22 @@
                 <div class="row mb-3">
                     <img src="{{url('/storage/uploads/' . $motorcycle->file_name)}}" alt="image">
                 </div>
-                <!-- <div class="custom-file mb-3">
-                    <input type="file" name="file" class="custom-file-input" id="chooseFile">
-                    <label class="custom-file-label" for="chooseFile">Select Image - JPG/PNG</label>
-                </div> -->
+
                 <div class="row mb-3">
-                    <h4 class="text-capitalize">Status: {{ $motorcycle->availability }}</h4>
+                    <h4 class="text-capitalize">Status:</h4>
                     <div class="form-group">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="used for sale" {{ ($motorcycle->availability='used for sale')? "checked" : "" }}>
-                            <label class="form-check-label" for="availability">
-                                Used For Sale
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="for sale" {{ ($motorcycle->availability='for sale')? "checked" : "" }}>
-                            <label class="form-check-label" for="availability">
-                                For Sale
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="sold" {{ ($motorcycle->availability='sold')? "checked" : "" }}>
-                            <label class="form-check-label" for="availability">
-                                Sold
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="claim in progress" {{ ($motorcycle->availability='claim in progress')? "checked" : "" }}>
-                            <label class="form-check-label" for="availability">
-                                Claim In Progress
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="cat b" {{ ($motorcycle->availability='cat b')? "checked" : "" }}>
-                            <label class="form-check-label" for="availability">
-                                Cat B
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="availability" id="availability" value="in for repairs" {{ ($motorcycle->availability='in for repairs')? "checked" : "" }}>
-                            <label class="form-check-label" for="availability">
-                                In For Repairs
-                            </label>
+                        <!-- Change Status to Dropdown -->
+                        <div class="mb-3">
+                            <select class="form-select text-capitalize" aria-label="Availability" name="availability" id="avalability" value="{{old('avalability')}}">
+                                <option selected>{{$motorcycle->availability}}</option>
+                                <option value="for sale">For Sale</option>
+                                <option value="used for sale">Used For Sale</option>
+                                <option value="sold">Sold</option>
+                                <option value="claim in progress">Claim In Progress</option>
+                                <option value="cat b">Cat B</option>
+                                <option value="in for repairs">In For Repairs</option>
+                                <option value="rental accident">Rental Accident</option>
+                            </select>
                         </div>
                     </div>
                     <h4 class="mt-3">Financials</h4>
