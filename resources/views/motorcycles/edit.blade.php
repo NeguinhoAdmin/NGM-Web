@@ -68,7 +68,7 @@
                         <input class="form-control" type="text" placeholder="MOT Expiry Date" name="mot_expiry_date" id="mot_expiry_date" value="{{$motorcycle->mot_expiry_date}}">
                     </div>
                     <div class="mb-3">
-                        <label for="basic-url" class="form-label">CO2 Emissions</label>
+                        <label for="co2_emissions" class="form-label">CO2 Emissions</label>
                         <input class="form-control" type="text" placeholder="C02 Emissions" name="co2_emissions" id="co2_emissions" value="{{ $motorcycle->co2_emissions }}">
                     </div>
                     <div class="mb-3">
