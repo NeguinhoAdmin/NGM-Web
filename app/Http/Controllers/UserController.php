@@ -94,6 +94,7 @@ class UserController extends Controller
         $user->city = $request->city;
         $user->post_code = $request->post_code;
         $user->is_client = 1;
+        $user->role_id = 4;
         $user->save();
 
         return redirect('/users')
