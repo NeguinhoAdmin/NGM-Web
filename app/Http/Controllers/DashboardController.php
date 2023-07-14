@@ -87,7 +87,7 @@ class DashboardController extends Controller
                 'rrpayments',
                 'ddpayments'
             ));
-        } elseif ($role == 4) {
+        } elseif ($role = 4) {
             $user = Auth::user();
             $u = User::find($user->id);
             $user = json_decode($u);
