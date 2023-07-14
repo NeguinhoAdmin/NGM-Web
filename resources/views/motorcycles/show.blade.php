@@ -4,7 +4,7 @@
 
 @auth
 <h1>{{ $motorcycle->registration }}</h1>
-<h5 class="text-capitalize">{{$motorcycle->availability}}</h5>
+<h5 class="text-uppercase">{{$motorcycle->availability}}</h5>
 <div class="mt-3">
     <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/') }}">Back</a>
