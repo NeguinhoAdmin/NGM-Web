@@ -28,7 +28,7 @@ class DashboardController extends Controller
                 ->where('outstanding', '>', 0);
             $count = $rentalpayments->count();
 
-            // Get the total amount owed
+            // Get the total amount of rental payments owed
             $rpayments = DB::table('rental_payments')->sum('outstanding');
 
             $rentals = RentalPayment::all()
@@ -47,6 +47,7 @@ class DashboardController extends Controller
 
             $ddpayments = DB::table('rental_payments')
                 ->where('payment_type', 'deposit')
+                ->where('outstanding', '>', 0)
                 ->sum('outstanding');
 
             $forRent = Motorcycle::where('availability', 'for rent');
@@ -86,7 +87,7 @@ class DashboardController extends Controller
                 'rrpayments',
                 'ddpayments'
             ));
-        } else {
+        } elseif ($role == 4) {
             $user = Auth::user();
             $u = User::find($user->id);
             $user = json_decode($u);
