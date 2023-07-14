@@ -25,7 +25,7 @@
 <section class="flat-row main-shop shop-slidebar">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <div class="sidebar slidebar-shop">
                     <div class="widget widget-search">
                         <form role="search" method="get" class="search-form" action="#">
@@ -34,29 +34,29 @@
                             </label>
                             <input type="submit" class="search-submit" value="Search">
                         </form>
-                    </div><!-- /.widget-search -->
-                    <div class="widget widget-sort-by">
+                    </div> /.widget-search -->
+            <!-- <div class="widget widget-sort-by">
                         <h5 class="widget-title">
                             SORT BY
                         </h5>
                         <ul>
                             <li class="active"><a href="#" data-filter="*">ALL MAKES</a></li>
                             <li><a href="#" data-filter=".new">NEW MOTORCYCLES</a></li>
-                            <li><a href="#">USED MOTORCYCLES</a></li>
-                            <!-- li><a href="#">Average rating</a></li>
+                            <li><a href="#">USED MOTORCYCLES</a></li> -->
+            <!-- li><a href="#">Average rating</a></li>
                             <li><a href="#">Newness</a></li>
                             <li><a href="#">Price: low to high</a></li>
                             <li><a href="#">Price: high to low</a></li -->
-                        </ul>
-                    </div><!-- /.widget-sort-by -->
-                </div><!-- /.sidebar -->
-            </div><!-- /.col-md-3 -->
-            <div class="col-md-9">
-                <div class="filter-shop clearfix">
+            <!-- </ul> -->
+            <!-- </div>/.widget-sort-by -->
+            <!-- </div>/.sidebar -->
+            <!-- </div>/.col-md-3 -->
+            <div class="col-md-12">
+                <!-- <div class="filter-shop clearfix">
                     <p class="showing-product float-right">
                         Showing 1–12 of 56 Products
                     </p>
-                </div><!-- /.filte-shop -->
+                </div>/.filte-shop -->
                 <div class="product-content product-threecolumn product-slidebar clearfix">
                     @foreach ($motorcycles->chunk(3) as $chunk)
                     <ul class="product style2 sd1">
@@ -64,7 +64,7 @@
                         <li class="product-item new">
                             <div class="product-thumb clearfix mb-3">
                                 <a href="/new-motorcycle/{{ $motorcycle->id }}">
-                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 163px;">
+                                    <img src="{{url('storage/uploads/' . $motorcycle->file_name)}}" alt="image" style="height: 100%;">
                                 </a>
                                 <span class="new">New</span>
                             </div>

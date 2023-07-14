@@ -19,10 +19,10 @@
                     @guest
                     <ul>
                         <li>
-                            <a href="{{ route('login.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Login </a>
+                            <a href="{{ route('login.perform') }}">Login </a>
                         </li>
                         <li>
-                            <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('register.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Register</a>
+                            <a href="{{ route('register.perform') }}">Register</a>
                         </li>
                     </ul>
                     @endguest

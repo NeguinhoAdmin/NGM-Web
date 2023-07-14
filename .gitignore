@@ -20,3 +20,4 @@ yarn-error.log
 vite.config.js
 public/uploads
 config/scout.php
+views/emails
