@@ -13,7 +13,7 @@
                             <div class="inner">
                                 <div class="thumb">
                                     <a href="/motorcycle-sales">
-                                        <img src="{{ url('/img/home/for-sale-new.jpg') }}" alt="Image" style="width: 100%">
+                                        <img src="{{ url('/img/home/motorcycles-new.jpg') }}" alt="Image" style="width: 100%">
                                         <div class="text-wrap text-center">
                                             <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;">MOTORCYCLES FOR SALE</h2>
                                         </div>
@@ -32,7 +32,7 @@
                         <div class="inner">
                             <div class="thumb">
                                 <a href="/shop-tyres">
-                                    <img src="{{ url('/img/home/tyres.jpg') }}" alt="Image" style="width: 100%">
+                                    <img src="{{ url('/img/home/motorcycle-tyres.jpg') }}" alt="Image" style="width: 100%">
                                     <div class="text-wrap text-center">
                                         <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;">TYRES</h2>
                                     </div>
@@ -64,7 +64,7 @@
                         <div class="inner">
                             <div class="thumb">
                                 <a href="/accident-management-services">
-                                    <img src="{{ url('/img/home/accident.jpg') }}" alt="Image" style="width: 100%">
+                                    <img src="{{ url('/img/home/motorcycle-accidents.jpg') }}" alt="Image" style="width: 100%">
                                     <div class="text-wrap text-center">
                                         <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;">ACCIDENT MANAGEMENT SERVICES</h2>
                                     </div>
