@@ -3,7 +3,14 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\MotorcycleController;
+use App\Models\User;
+use App\Mail\RentalDue;
+use App\Models\Motorcycle;
+use App\Models\RentalPayment;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class everyDay extends Command
 {
@@ -26,10 +33,49 @@ class everyDay extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): void
     {
-        return (new MotorcycleController)->nextRentalPayment();
+        info("Cron Job running at " . now());
 
-        return Command::SUCCESS;
+        /**
+         * Find and create all nextRentalPayments
+         */
+        // Date calculations
+        $today = Carbon::now('Europe/London');
+        $tomorrow = $today->addDay();
+        $nextPayDate = Carbon::now()->addDays(8);
+
+        // Find motocycles due for rental payment next day
+        $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
+        // $motorcycles = json_decode($response);
+
+        // if (!empty($motorcycles)) {
+        foreach ($motorcycles as $key => $motorcycle) {
+            // Set next payment date
+            Motorcycle::findOrFail($motorcycle->id)->update([
+                'next_payment_date' => Carbon::now()->addDays(8),
+            ]);
+
+            // Send renter email reminder for next day payment
+            $user = User::where('id', $motorcycle->user_id)->first();
+            Mail::to($user->email)->send(new RentalDue($user));
+
+            // Create following weeks bill
+            $rentalPrice = $motorcycle->rental_price;
+            // $nextPayDate = $motorcycle->next_payment_date;
+
+            $payment = new RentalPayment();
+            $payment->payment_type = 'rental';
+            $payment->payment_due_date = $nextPayDate;
+            $payment->rental_price = $rentalPrice;
+            $payment->registration = $motorcycle->registration;
+            $payment->received = 0.00;
+            $payment->outstanding = $rentalPrice;
+            $payment->user_id = $motorcycle->user_id;
+            $payment->created_at = $today;
+            $payment->motorcycle_id = $motorcycle->id;
+            $payment->save();
+        }
+        // }
     }
 }
