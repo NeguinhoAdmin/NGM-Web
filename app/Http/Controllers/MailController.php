@@ -17,7 +17,7 @@ class MailController extends Controller
     {
         // $name = $request->name;
 
-        Mail::to('admin@neguinhomotors.co.uk')->send(new ContactUs($name));
+        Mail::to('customerservice@neguinhomotors.co.uk')->send(new ContactUs($name));
 
         // return view('thank-you');
         return redirect('contacts.thank-you');
