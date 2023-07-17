@@ -93,7 +93,7 @@
                                 </tr>
                                 <tr>
                                     <td>Tax Due Date </td>
-                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->tax_due_date)->format('d-m-Y') }}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->tax_due_date)->format('d/m/Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>MOT Status </td>
@@ -102,7 +102,7 @@
 
                                 <tr>
                                     <td>MOT Expiry Date </td>
-                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d-m-Y') }}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>C02 Emmissions </td>
@@ -118,7 +118,7 @@
                                 </tr>
                                 <tr>
                                     <td>Last V5 Issue Date </td>
-                                    <td class="text-end">{{$motorcycle->last_v5_issue_date}}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->last_v5_issue_date)->format('d/m/Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Wheel Plan </td>
@@ -174,19 +174,19 @@
                             <tbody>
                                 <tr>
                                     <td>Rental Start Date</td>
-                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->rental_start_date)->format('d-m-Y') }}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->rental_start_date)->format('d/m/Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Next Payment Date</td>
-                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->next_payment_date)->format('d-m-Y') }}</td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->next_payment_date)->format('d/m/Y') }}</td>
                                 </tr>
                                 <tr>
                                     <td>Weekly Rental Price</td>
-                                    <td class="text-end" id="rental_price"><span class="input-group-text" id="rental_price">£{{$motorcycle->rental_price}}</span></td>
+                                    <td class="text-end" id="rental_price"><span class="input-group-text" id="rental_price">£{{ $motorcycle->rental_price }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Default Deposit </td>
-                                    <td class="text-end"><span class="input-group-text" id="rental_deposit2">£{{$motorcycle->rental_deposit}}</span></td>
+                                    <td class="text-end"><span class="input-group-text" id="rental_deposit2">£{{ $motorcycle->rental_deposit }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Tax Status </td>
@@ -261,7 +261,7 @@
                                 @foreach ($rentalpayments as $payment)
                                 <tr>
                                     <td>{{$payment->id}}</td>
-                                    <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d-m-Y') }}</td>
+                                    <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d/m/Y') }}</td>
                                     <td>{{$payment->payment_date}}</td>
                                     <td>£{{$payment->received}}</td>
                                     <td class="text-danger">£{{$payment->outstanding}}</td>
@@ -304,11 +304,11 @@
                             <tbody>
                                 @foreach ($depositpayments as $payment)
                                 <tr>
-                                    <td>{{$payment->id}}</td>
-                                    <td>{{$payment->payment_due_date}}</td>
-                                    <td>{{$payment->payment_date}}</td>
-                                    <td>£{{$payment->received}}</td>
-                                    <td class="text-danger">£{{$payment->outstanding}}</td>
+                                    <td>{{ $payment->id }}</td>
+                                    <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d/m/Y') }}</td>
+                                    <td>{{ Carbon\Carbon::parse($payment->payment_date)->format('d/m/Y') }}</td>
+                                    <td>£{{ $payment->received }}</td>
+                                    <td class="text-danger">£{{ $payment->outstanding }}</td>
                                     <form action="/notes" method="POST" enctype="multipart/form-data">
                                         <td>
                                             @csrf
