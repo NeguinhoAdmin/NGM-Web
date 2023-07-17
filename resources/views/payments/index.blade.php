@@ -50,7 +50,7 @@
                 <td scope="row">{{ $payment->registration }}</td>
                 <td class="text-capitalize">{{ $payment->payment_type }}</td>
                 <td>{{ $payment->outstanding }}</td>
-                <td>{{ $payment->payment_due_date }}</td>
+                <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d/m/Y') }}</td>
                 <td>
                     <a class="btn btn-outline-success" href="{{ URL::to('users/' . $payment ->user_id) }}">Client</a>
                     <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $payment ->motorcycle_id) }}">Motorcycle</a>
