@@ -384,6 +384,28 @@ class MotorcycleController extends Controller
     }
 
     // Motorcycle Availability
+    public function accident()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'rental accident')
+            ->sortByDesc('id');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+
+    public function impounded()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'impounded')
+            ->sortByDesc('id');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+
     public function isForRent()
     {
         $m = Motorcycle::all()

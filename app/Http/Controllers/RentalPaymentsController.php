@@ -19,11 +19,15 @@ class RentalPaymentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $rentalpayments = RentalPayment::all()
-            ->where('outstanding', '>', 0)
-            ->sortBy('payment_due_date');
+        if ($request->filled('search')) {
+            $rentalpayments = RentalPayment::search($request->search)->get();
+        } else {
+            $rentalpayments = RentalPayment::all()
+                ->where('outstanding', '>', 0)
+                ->sortBy('payment_due_date');
+        }
 
         $count = $rentalpayments->count();
 

@@ -108,6 +108,7 @@
                                 <option value="cat b">Cat B</option>
                                 <option value="in for repairs">In For Repairs</option>
                                 <option value="rental accident">Rental Accident</option>
+                                <option value="impounded">Impounded</option>
                             </select>
                         </div>
                     </div>

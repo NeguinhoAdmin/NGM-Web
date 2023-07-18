@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Searchable;
 
 class RentalPayment extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Searchable;
+
     protected $guarded = [];
     protected $dates = [
         'payment_due_date',
@@ -40,5 +42,17 @@ class RentalPayment extends Model
     public function paymenttransaction(): HasMany
     {
         return $this->hasMany(PaymentTransaction::class, 'payment_transaction_id', 'id');
+    }
+
+    /**
+     *  Get the indexable data array for the model.
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'registration' => $this->registration,
+            'payment_type' => $this->type,
+            'rental_price' => $this->amount,
+        ];
     }
 }

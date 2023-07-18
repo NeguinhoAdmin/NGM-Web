@@ -186,7 +186,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('/user-notes/{id}', [NotesController::class, 'UserNote'])->name('user-note');
 
     // MOTORCYCLE
+    Route::get('/accident', [MotorcycleController::class, 'accident'])->name('accident');
     Route::resource('motorcycles', 'MotorcycleController');
+    Route::get('/impounded', [MotorcycleController::class, 'impounded'])->name('impounded');
     Route::get('/is-for-rent', [MotorcycleController::class, 'isForRent'])->name('isForRent');
     Route::get('/is-rented', [MotorcycleController::class, 'isRented'])->name('isRented');
     Route::get('/is-for-sale', [MotorcycleController::class, 'isForSale'])->name('isForSale');
