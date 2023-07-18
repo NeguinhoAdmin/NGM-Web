@@ -16,6 +16,7 @@ class Motorcycle extends Model
         'next_payment_date',
         'rental_start_date',
         'payment_date',
+        'tax_due_date',
         'created_at',
         'updated_at',
     ];

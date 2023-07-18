@@ -591,7 +591,7 @@ class MotorcycleController extends Controller
             'fuel_type' => $request->fuelType,
             'wheel_plan' => $request->wheelplan,
             'tax_status' => $request->taxStatus,
-            'tax_due_date' => $request->taxDueDate,
+            // 'tax_due_date' => $request->taxDueDate,
             'mot_status' => $request->motStatus,
             'co2_emissions' => $request->co2Emissions,
             'marked_for_export' => $request->markedForExport,
