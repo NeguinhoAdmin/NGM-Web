@@ -81,7 +81,9 @@ class MotorcycleController extends Controller
         if ($request->filled('search')) {
             $motorcycles = Motorcycle::search($request->search)->get();
         } else {
-            $motorcycles = Motorcycle::get();
+            // $motorcycles = Motorcycle::get();
+            $motorcycles = Motorcycle::all()
+                ->where('availability', '!=', 'missing');
         }
         // $m = Motorcycle::orderBy('id', 'DESC')->get();
         // $motorcycles = json_decode($m);
@@ -384,6 +386,17 @@ class MotorcycleController extends Controller
     }
 
     // Motorcycle Availability
+    public function missing()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'missing')
+            ->sortByDesc('id');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+
     public function accident()
     {
         $m = Motorcycle::all()

@@ -109,6 +109,7 @@
                                 <option value="in for repairs">In For Repairs</option>
                                 <option value="rental accident">Rental Accident</option>
                                 <option value="impounded">Impounded</option>
+                                <option value="missing">Missing</option>
                             </select>
                         </div>
                     </div>

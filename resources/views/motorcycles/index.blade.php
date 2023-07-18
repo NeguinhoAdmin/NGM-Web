@@ -58,6 +58,8 @@
                     <a class="btn btn-outline-primary" href="{{ URL::to('impounded/') }}">Impounded</a>
 
                     <a class="btn btn-outline-primary" href="{{ URL::to('accident/') }}">Accident</a>
+
+                    <a class="btn btn-outline-primary" href="{{ URL::to('missing/') }}">Missing</a>
                 </div>
             </div>
         </div>
