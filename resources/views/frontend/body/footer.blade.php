@@ -2,7 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-2">
-                <div class="widget widget-link">
+                <div class="widget widget-link link-login">
+                    <h3 class="">Account</h3>
                     @auth
                     <ul>
                         <li><a href="/contact">Contact Us</a></li>
@@ -31,6 +32,7 @@
             </div><!-- /.col-md-3 -->
             <div class="col-sm-6 col-md-2">
                 <div class="widget widget-link link-login">
+                    <h3 class="">Legals</h3>
                     <ul>
                         <li><a href="/terms-of-use">Terms of Use</a></li>
                         <li><a href="/cookie-and-privacy-policy">Cookies & Privacy</a></li>
@@ -40,8 +42,9 @@
                 </div><!-- /.widget -->
             </div><!-- /.col-md-3 -->
             <div class="col-sm-6 col-md-4">
-                <div class="widget widget-brand">
-                    <h3 class="">Got one? Get one...</h3>
+                <!-- <div class="widget widget-brand"> -->
+                <div class="widget widget-link link-login">
+                    <h3 class="">Got one? Get one!</h3>
                     <A href="/contact/trade-account">
                         <img src="{{url('img/home/trade_account_card.jpg')}}" alt="image" width="100%">
                     </a>
