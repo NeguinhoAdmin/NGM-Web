@@ -22,7 +22,8 @@ class RentalPaymentsController extends Controller
     public function index(Request $request)
     {
         if ($request->filled('search')) {
-            $rentalpayments = RentalPayment::search($request->search)->get();
+            $rentalpayments = RentalPayment::search($request->search)->get()
+                ->where('outstanding', '>', 0);
         } else {
             $rentalpayments = RentalPayment::all()
                 ->where('outstanding', '>', 0)
