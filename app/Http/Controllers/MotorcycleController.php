@@ -703,6 +703,7 @@ class MotorcycleController extends Controller
         $motorcycle->colour = $request->colour;
         // $motorcycle->type_approval = $request->typeApproval;
         $motorcycle->last_v5_issue_date = $request->dateOfLastV5CIssued;
+        // if(isset($request->motExpiryDate))
         // $motorcycle->mot_expiry_date = $request->motExpiryDate;
         $motorcycle->wheel_plan = $request->wheelplan;
         $motorcycle->month_of_first_registration = $request->monthOfFirstRegistration;

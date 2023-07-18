@@ -179,10 +179,12 @@ class UserController extends Controller
         $user->updated_at = $request->updated_at;
         $user->save();
 
-        $note = new Note();
-        $note->user_id = $id;
-        $note->note = $request->note;
-        $note->save();
+        if (isset($request->note)) {
+            $note = new Note();
+            $note->user_id = $id;
+            $note->note = $request->note;
+            $note->save();
+        }
 
         return to_route('users.show', [$id])
             ->with('success', 'Client details have been updated.');
