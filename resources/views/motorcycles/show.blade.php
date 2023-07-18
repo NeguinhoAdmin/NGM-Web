@@ -262,7 +262,7 @@
                                 <tr>
                                     <td>{{$payment->id}}</td>
                                     <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d/m/Y') }}</td>
-                                    <td>{{$payment->payment_date}}</td>
+                                    <td>{{ Carbon\Carbon::parse($payment->payment_date)->format('d/m/Y') }}</td>
                                     <td>£{{$payment->received}}</td>
                                     <td class="text-danger">£{{$payment->outstanding}}</td>
                                     <form action="/notes" method="POST" enctype="multipart/form-data">

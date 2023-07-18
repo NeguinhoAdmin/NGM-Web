@@ -191,13 +191,6 @@ class RentalPaymentsController extends Controller
 
         ]);
 
-        // $payment = new Payment();
-        // $payment->payment_type = 'rental';
-        // $payment->amount = $request->amount;
-        // $payment->payment_due_date = $nextDueDate;
-        // $payment->user_id = $request->user_id;
-        // $payment->save();
-
         return to_route('users.show', [$request->user_id])
             ->with('success', 'Payment has been recorded.');
     }

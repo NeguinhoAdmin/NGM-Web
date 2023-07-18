@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\File;
 use App\Models\User;
+use App\Models\Note;
 use Laravel\Cashier;
 use Nette\Utils\Json;
 use App\Models\Rental;
@@ -122,15 +123,6 @@ class UserController extends Controller
             $request->session()->put('motorcycle_id', $motorcycle_id);
         }
 
-        // $rentals = Rental::orderBy('id', 'DESC')->where('user_id', $user_id)->get();
-        // foreach ($rentals as $rental) {
-        //     $rental_id = $rental->id;
-        //     $request->session()->put('rental_id', $rental_id);
-        // }
-
-        // $payments = Payment::all()
-        //     ->where('user_id', $user_id);
-
         $now = Carbon::now();
         $toDate = Carbon::parse("2023-05-29");
         $fromDate = Carbon::parse("2022-08-20");
@@ -143,14 +135,11 @@ class UserController extends Controller
         $documents = json_decode($d);
         $dlFront = "Driving Licence Front";
 
-        // dd($documents);
-        // print_r("In Days: " . $days . "<br>");
-        // print_r("In Months: " . $months . "<br>");
-        // print_r("In Years: " . $years);
+        $notes = Note::all()->where('user_id', $user_id);
 
         $address = UserAddress::all()->where('user_id', $user_id);
-        // dd($days);
-        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "days"));
+
+        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "days", "notes"));
     }
 
     /**
@@ -189,6 +178,11 @@ class UserController extends Controller
         $user->post_code = $request->post_code;
         $user->updated_at = $request->updated_at;
         $user->save();
+
+        $note = new Note();
+        $note->user_id = $id;
+        $note->note = $request->note;
+        $note->save();
 
         return to_route('users.show', [$id])
             ->with('success', 'Client details have been updated.');

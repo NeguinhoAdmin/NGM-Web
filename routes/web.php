@@ -183,6 +183,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
 
     // Notes
     Route::resource('/notes', 'NotesController');
+    Route::post('/user-notes/{id}', [NotesController::class, 'UserNote'])->name('user-note');
 
     // MOTORCYCLE
     Route::resource('motorcycles', 'MotorcycleController');

@@ -49,6 +49,14 @@
                 <option value="bad">Bad</option>
             </select>
         </div>
+
+        <p>NOTES</p>
+        <div class="input-group mb-3">
+            <textarea class="form-control" type="text" aria-label="User Notes" name="note" id="note" value="{{ old('note') }}"></textarea>
+        </div>
+
+        <hr>
+
         <div class="mb-3">
             <input class="form-control" type="text" placeholder="First Name*" aria-label="default input example" name="first_name" id="first_name" value="{{$user->first_name}}">
         </div>
@@ -89,15 +97,6 @@
         <div class="mb-3">
             <input class="form-control" type="text" placeholder="Post Code" aria-label="default input example" name="post_code" id="post_code" value="{{$user->post_code}}">
         </div>
-
-        <!-- <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div> -->
-        <!-- <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div> -->
         <button type="submit" class="btn btn-success">Submit</button>
     </form>
 </div>

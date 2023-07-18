@@ -1,23 +1,81 @@
 @extends('layouts.app-master')
 
 @section('content')
+
 <div class="container">
     @auth
 
-    <h1>{{$user->first_name}} {{$user->last_name}}</h1>
-    @if ($user->rating == 'good')
-    <!-- <span style="color:green">OK</span> -->
-    <i class="fa fa-motorcycle fa-xl" style="color:green;"></i>
-    @elseif ($user->rating == 'warn')
-    <i class="fa fa-motorcycle fa-xl" style="color:orange;"></i>
-    @elseif ($user->rating == 'bad')
-    <i class="fa fa-motorcycle fa-xl" style="color:red;"></i>
-    @endif
+    <div class="btn-group mb-3" role="group" aria-label="Basic example">
+        <a class="btn btn-outline-success" href="{{ URL::to('users/') }}">Back</a>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-outline-success" href="{{ URL::to('users/' . $user->id . '/edit') }}">Edit Client</a>
+        </div>
 
-    <p>{{$user->phone_number}}
-        {{$user->email}}
-    </p>
-    <p>{{$user->street_address}}, {{$user->street_address_plus}}, {{$user->city}} {{$user->post_code}}</p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Customer Notes
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Customer Notes</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <table>
+                            <thead>
+                                <th scope="col">Date</th>
+                                <th></th>
+                                <th scope="col">Note</th>
+                            </thead> -->
+                        <!-- <tbody> -->
+                        @foreach ($notes as $note)
+                        {{ Carbon\Carbon::parse($note->created_at)->format('d/m/Y') }} <br />
+                        {{ $note->note }} <br />
+                        <br>
+                        @endforeach
+                        <!-- </tbody>
+                        </table> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col">
+                <h1>
+                    <span>{{$user->first_name}} {{$user->last_name}}</span>
+
+                    @if ($user->rating == 'good')
+                    <!-- <span style="color:green">OK</span> -->
+                    <i class="fa fa-motorcycle" style="color:green;"></i>
+                    @elseif ($user->rating == 'warn')
+                    <i class="fa fa-motorcycle" style="color:orange;"></i>
+                    @elseif ($user->rating == 'bad')
+                    <i class="fa fa-motorcycle" style="color:red;"></i>
+                    @endif
+                </h1>
+                {{$user->phone_number}}<br />
+                {{$user->email}} <br />
+                {{$user->street_address}} <br />
+                {{$user->street_address_plus}} <br />
+                {{$user->city}} {{$user->post_code}}
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
 
     <!-- This area is used to dispay errors -->
     @if ($message = Session::get('success'))
@@ -36,14 +94,6 @@
     @endif
     <!-- This area is used to dispay errors -->
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('users/') }}">Back</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('users/' . $user->id . '/edit') }}">Edit Client</a>
-    </div>
-    <br>
-
     <h2 class="mt-3">Documents</h2>
 
     <div class="row align-items-start">
@@ -60,20 +110,15 @@
 
     <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn btn-outline-success" href="{{ URL::to('/file-dl-front/' . $user->id) }}">Licence Front</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
+
         <a class="btn btn-outline-success" href="{{ URL::to('/file-dl-back/' . $user->id) }}">Licence Back</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-pocbt/' . $user->id) }}">CBT</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-outline-success" href="{{ URL::to('/file-poid/' . $user->id) }}">ID</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
+
+        <a class="btn btn-outline-success" href="{{ URL::to('/file-pocbt/' . $user->id) }}">CBT Certificate</a>
+
+        <a class="btn btn-outline-success" href="{{ URL::to('/file-poid/' . $user->id) }}">Proof of ID</a>
+
         <a class="btn btn-outline-success" href="{{ URL::to('/file-poadd/' . $user->id) }}">Proof of Address</a>
-    </div>
-    <div class="btn-group" role="group" aria-label="Basic example">
+
         <a class="btn btn-outline-success" href="{{ URL::to('/file-poins/' . $user->id) }}">Insurance</a>
     </div>
 
@@ -82,9 +127,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
+                        <th scope="col">File</th>
                         <th scope="col">Document Type</th>
-                        <th scope="col">Registration</th>
+                        <th scope="col"></th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
@@ -94,7 +139,7 @@
                     <tr>
                         <td>{{ $document->name }}</td>
                         <td>{{ $document->document_type }}</td>
-                        <td>{{ $document->registration }}</td>
+                        <th scope="col">{{ $document->registration }}</th>
                         <td><a href="{{ url('/storage/uploads', $document->name) }}" target="_blank">View</a></td>
                         <td>
                             <div class="btn-group" role="group">
