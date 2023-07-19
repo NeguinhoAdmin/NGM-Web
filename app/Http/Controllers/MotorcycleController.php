@@ -386,6 +386,17 @@ class MotorcycleController extends Controller
     }
 
     // Motorcycle Availability
+    public function stolen()
+    {
+        $m = Motorcycle::all()
+            ->where('availability', '=', 'stolen')
+            ->sortByDesc('id');
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('motorcycles.index', compact('motorcycles', 'count'));
+    }
+
     public function missing()
     {
         $m = Motorcycle::all()

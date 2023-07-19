@@ -111,6 +111,7 @@
                                 <option value="rental accident">Rental Accident</option>
                                 <option value="impounded">Impounded</option>
                                 <option value="missing">Missing</option>
+                                <option value="stolen">Stolen</option>
                             </select>
                         </div>
                     </div>

@@ -60,6 +60,8 @@
                     <a class="btn btn-outline-primary" href="{{ URL::to('accident/') }}">Accident</a>
 
                     <a class="btn btn-outline-primary" href="{{ URL::to('missing/') }}">Missing</a>
+
+                    <a class="btn btn-outline-primary" href="{{ URL::to('stolen/') }}">Stolen</a>
                 </div>
             </div>
         </div>
