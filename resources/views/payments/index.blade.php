@@ -10,10 +10,10 @@
                 <div class="container-fluid">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <div class="btn">
-                            <a class="btn btn-outline-danger" href="{{ URL::to('rentalpayments') }}">Outstanding Rentals</a>
+                            <a class="btn btn-outline-danger" href="{{ URL::to('rentalpayments') }}">Rentals</a>
                         </div>
                         <div class="btn">
-                            <a class="btn btn-outline-danger" href="{{ URL::to('/outstanding-deposits') }}">Outstanding Deposits</a>
+                            <a class="btn btn-outline-danger" href="{{ URL::to('/outstanding-deposits') }}">Deposits</a>
                         </div>
                         <div class="btn">
                             <form method="GET" class="d-flex" role="search">
