@@ -27,11 +27,24 @@ class RentalPaymentsController extends Controller
         } else {
             $rentalpayments = RentalPayment::all()
                 ->where('outstanding', '>', 0)
+                ->where('payment_type', '=', 'rental')
                 ->sortBy('payment_due_date');
         }
 
         $count = $rentalpayments->count();
 
+        return view('payments.index', compact('rentalpayments', 'count'));
+    }
+
+    // View deposit payment types
+    public function outstandingDeposits()
+    {
+        $dp = RentalPayment::all()
+            ->where('payment_type', '=', 'deposit')
+            ->sortBy('payment_next_date');
+        $rentalpayments = json_decode($dp);
+
+        $count = $dp->count();
         return view('payments.index', compact('rentalpayments', 'count'));
     }
 

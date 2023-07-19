@@ -180,6 +180,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/create-rental/{id}', [RentalPaymentsController::class, 'createRental'])->name('createRental');
     Route::post('/store-rental', [RentalPaymentsController::class, 'storeRental'])->name('storeRental');
     Route::get('/payment/{id}', [RentalPaymentsController::class, 'voidPayment'])->name('voidPayment');
+    Route::get('/outstanding-deposits', [RentalPaymentsController::class, 'outstandingDeposits'])->name('outstandingDeposits');
 
     // Notes
     Route::resource('/notes', 'NotesController');
