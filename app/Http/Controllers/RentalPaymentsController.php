@@ -82,7 +82,7 @@ class RentalPaymentsController extends Controller
         $payment = new RentalPayment();
         $payment->payment_type = 'rental';
         $payment->amount = $request->amount;
-        $payment->payment_due_date = Carbon::now();
+        $payment->payment_due_date = Carbon::now()->addDays(7);
         $payment->user_id = $user_id;
         $payment->payment_due_count = 7;
         $payment->save();
