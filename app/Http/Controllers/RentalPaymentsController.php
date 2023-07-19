@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RentalPayment;
+use App\Models\RentalPaymentVoid;
 use App\Models\PaymentTransaction;
 use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Motorcycle;
 use App\Models\Rental;
+use Illuminate\Contracts\View\View as ViewView;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use RuntimeException;
 
 class RentalPaymentsController extends Controller
 {
@@ -104,6 +109,27 @@ class RentalPaymentsController extends Controller
             ->with('success', 'Deposit has been recorded. Now record first week rental.');
     }
 
+    /**
+     *  Manually add and create payment types
+     *
+     */
+    public function manualPayment(Request $request)
+    {
+        // dd($request);
+        $payment = new RentalPayment();
+        $payment->payment_type = $request->payment_type;
+        $payment->outstanding = $request->payment;
+        $payment->payment_due_date = null;
+        $payment->received = $request->received;
+        $payment->user_id = $request->user_id;
+        $payment->motorcycle_id = $request->motorcycle_id;
+        $payment->registration = $request->registration;
+        $payment->auth_user = auth::user()->first_name . " " . auth::user()->last_name;
+        $payment->save();
+
+        return to_route('manually.paid', [$request->motorcycle_id])
+            ->with('success', 'Payment created');
+    }
 
     public function userPayment(Request $request, $rental_id)
     {
@@ -213,32 +239,18 @@ class RentalPaymentsController extends Controller
             ->with('success', 'Payment has been recorded.');
     }
 
-    public function voidPayment(Request $request, $id)
+    public function voidPayment(Request $request)
     {
-        $payment = RentalPayment::all();
-        // dd($payment);
-        $rental_id = $request->session()->get('rental_id');
-        // dd($rental_id);
-        $authUser = Auth::user();
+        // $payment = RentalPayment::find($request->payment_id);
 
-        $rental = Rental::findOrFail($rental_id);
+        // $payment = RentalPayment::findOrFail($request->playment_id)->update([
+        //     'deleted_by' => auth::user()->first_name . " " . auth::user()->last_name,
+        // ]);
 
-        RentalPayment::findOrFail($id)->update([
-            'deleted_at' => Carbon::now(),
-        ]);
+        $payment = RentalPayment::find($request->payment_id);
+        $payment->delete($payment);
 
-        Rental::findOrFail($rental_id)->update([
-
-            // 'received' => $payment->received - $payment->received,
-            'outstanding' => $rental->outstanding + $payment->received,
-            'deleted_at' => Carbon::now(),
-            'deleted_by' => $authUser,
-
-        ]);
-
-        $payment->delete();
-
-        return redirect('/create-payment/$rental_id')
+        return redirect('/rentalpayments')
             ->with('success', 'Payment voided.');
     }
 

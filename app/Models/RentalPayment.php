@@ -19,6 +19,7 @@ class RentalPayment extends Model
         'payment_date',
         'created_at',
         'updated_at',
+        'deleted_at',
     ];
 
     /**

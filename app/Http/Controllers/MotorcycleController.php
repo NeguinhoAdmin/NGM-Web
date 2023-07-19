@@ -34,7 +34,6 @@ class MotorcycleController extends Controller
 
         // Find motocycles due for rental payment next day
         $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
-        // $motorcycle = json_decode($motorcycles);
 
         // Count the number of motorcycles to be processed
         $count = $motorcycles->count();
@@ -52,7 +51,6 @@ class MotorcycleController extends Controller
 
                 // Create following weeks bill
                 $rentalPrice = $motorcycle->rental_price;
-                // $nextPayDate = $motorcycle->next_payment_date;
 
                 $payment = new RentalPayment();
                 $payment->payment_type = 'rental';
@@ -523,10 +521,9 @@ class MotorcycleController extends Controller
         }
 
         $nextPayDate = (new Carbon($motorcycle->next_payment_date))->addDay();
-        // dd($nextPayDate);
+
         $nextPayDateDiffInDays = $today->diffInDays($nextPayDate);
 
-        // dd($nextPayDateDiffInDays);
         // Motorcycle Payment Notes
         $notes = Note::all()
             ->where('motorcycle_id', $motorcycle_id)
@@ -548,7 +545,6 @@ class MotorcycleController extends Controller
         $rentalpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
             ->where('payment_type', '=', 'rental')
-            // ->where('payment_due_date', '<', $dayAfter)
             ->sortByDesc('id');
 
 

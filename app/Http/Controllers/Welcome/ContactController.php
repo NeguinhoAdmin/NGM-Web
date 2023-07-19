@@ -66,7 +66,7 @@ class ContactController extends Controller
         $contact->save();
 
         $mail = new MailController();
-        $mail->sendMail($request->name);
+        $mail->sendMail($request);
 
         // Contact::insert([
         // 'name' => $request->name,

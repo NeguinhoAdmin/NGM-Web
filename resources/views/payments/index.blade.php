@@ -45,26 +45,45 @@
     <!-- This area is used to dispay errors -->
 
     <div class="container">
-        <table class="table table-striped">
+        <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">ID</th>
                     <th scope="col">REGISTRATION</th>
                     <th scope="col">TYPE</th>
                     <th scope="col">AMOUNT</th>
                     <th scope="col">DUE DATE</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-center" style="color: red;"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($rentalpayments as $payment)
                 <tr>
+                    <td scope="row">{{ $payment->id }}</td>
                     <td scope="row">{{ $payment->registration }}</td>
                     <td class="text-capitalize">{{ $payment->payment_type }}</td>
                     <td>{{ $payment->outstanding }}</td>
                     <td>{{ Carbon\Carbon::parse($payment->payment_due_date)->format('d/m/Y') }}</td>
                     <td>
-                        <a class="btn btn-outline-success" href="{{ URL::to('users/' . $payment ->user_id) }}">Client</a>
-                        <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $payment ->motorcycle_id) }}">Motorcycle</a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="btn">
+                                <a class="btn btn-success" href="{{ URL::to('users/' . $payment->user_id) }}">Client</a>
+                            </div>
+                            <div class="btn">
+                                <a class="btn btn-primary" href="{{ URL::to('motorcycles/' . $payment->motorcycle_id) }}">Motorcycle</a>
+                            </div>
+                        </div>
                     </td>
+                    <form action="/void-payment" method="POST" enctype="multipart/form-data">
+                        <td class="text-center">
+                            @csrf
+                            <input hidden name="payment_id" id="payment_id" value="{{ $payment->id }}">
+                            <div class="btn">
+                                <button class="btn btn-outline-danger" type="submit">VOID</button>
+                            </div>
+                        </td>
+                    </form>
                 </tr>
                 @endforeach
             </tbody>

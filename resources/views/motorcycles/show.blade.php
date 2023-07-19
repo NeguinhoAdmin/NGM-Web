@@ -13,14 +13,14 @@
         <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/' . $motorcycle->id . '/edit') }}">Edit</a>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal - Notes -->
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#notes">
         View Notes
     </button>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal Notes -->
+    <div class="modal fade" id="notes" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -34,6 +34,65 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal - Create Payment -->
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newPayment">
+        Create Payment
+    </button> -->
+
+    <!-- Modal -->
+    <!-- <div class="modal fade" id="newPayment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create Payment</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form action="/manual-payment" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+
+                        @csrf -->
+
+    <!-- Hidden Values -->
+    <!-- <div hidden class="mb-3">
+                            <input class="form-control" type="text" placeholder="Motorcycle ID" name="motorcycle_id" id="motorcycle_id" value="{{$motorcycle->id}}">
+                        </div>
+                        <div hidden class="mb-3">
+                            <input class="form-control" type="text" placeholder="User ID" name="user_id" id="payment_type" value="{{ $motorcycle->user_id }}">
+                        </div>
+                        <div hidden class="mb-3">
+                            <input class="form-control" type="text" placeholder="Registration" name="registration" id="registration" value="{{ $motorcycle->registration }}">
+                        </div>
+                        <div hidden class="mb-3">
+                            <input class="form-control" type="text" placeholder="Rental Price" name="rental_price" id="rental_price" value="{{ $motorcycle->rental_price }}">
+                        </div> -->
+    <!-- Hidden Values End -->
+
+    <!-- <div class="mb-3">
+                            <p>Select Payment Type</p>
+                            <select class="form-select text-capitalize" aria-label="Payment Type" name="payment_type" id="payment_type" value="{{old('payment_type')}}">
+                                <option value="rental">Rental</option>
+                                <option value="deposit">Deposit</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">£</span>
+                            <input type="text" class="form-control" placeholder="00.00" aria-label="Change Deposit" name="payment" id="payment" value="{{old('$motorcycle->rental_deposit')}}">
+                        </div> -->
+    <!-- <button type="submit" class="btn btn-outline-primary">SUBMIT</button> -->
+
+    <!-- </div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button type="submit" class="btn btn-primary">Create Payment</button>
+</div>
+</form> -->
+</div>
+</div>
+</div>
 </div>
 <br>
 <!-- This area is used to dispay errors -->

@@ -1,10 +1,11 @@
-@component('mail::message')
-Hi {{ $name }},
+<h2>Hi, my name is {{ $request->name }}</h2>
+<br>
 
-<img href="http://ngm.hi-bike4u.co.uk/img/neguinhomotors3.png">
+<strong>Customer details: </strong><br>
+<strong>Name: </strong>{{ $request->name }} <br>
+<strong>Email: </strong>{{ $request->email }} <br>
+<strong>Phone: </strong>{{ $request->phone }} <br>
+<strong>Subject: </strong>{{ $request->subject }} <br>
+<strong>Message: </strong>{{ $request->message }} <br><br>
 
-@component('mail::button', ['url' => 'neguinhomotors.co.uk/contact'])
-CLICK HERE
-@endcomponent
-
-@endcomponent
+Thank you

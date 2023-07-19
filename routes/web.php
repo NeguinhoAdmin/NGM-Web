@@ -181,16 +181,19 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::post('/store-rental', [RentalPaymentsController::class, 'storeRental'])->name('storeRental');
     Route::get('/payment/{id}', [RentalPaymentsController::class, 'voidPayment'])->name('voidPayment');
     Route::get('/outstanding-deposits', [RentalPaymentsController::class, 'outstandingDeposits'])->name('outstandingDeposits');
+    Route::post('/void-payment', [RentalPaymentsController::class, 'voidPayment'])->name('voidPayment');
+    Route::post('/manual-payment', [RentalPaymentsController::class, 'manualPayment'])->name('manualPayment');
 
     // Notes
     Route::resource('/notes', 'NotesController');
     Route::post('/user-notes/{id}', [NotesController::class, 'UserNote'])->name('user-note');
 
     // MOTORCYCLE
+    Route::resource('motorcycles', 'MotorcycleController');
+    Route::get('added-payment/{id}', [MotorcycleController::class, 'show'])->name('manually.paid');
     Route::get('/stolen', [MotorcycleController::class, 'stolen'])->name('stolen');
     Route::get('/missing', [MotorcycleController::class, 'missing'])->name('missing');
     Route::get('/accident', [MotorcycleController::class, 'accident'])->name('accident');
-    Route::resource('motorcycles', 'MotorcycleController');
     Route::get('/impounded', [MotorcycleController::class, 'impounded'])->name('impounded');
     Route::get('/is-for-rent', [MotorcycleController::class, 'isForRent'])->name('isForRent');
     Route::get('/is-rented', [MotorcycleController::class, 'isRented'])->name('isRented');
