@@ -47,7 +47,6 @@ class everyDay extends Command
 
         // Find motocycles due for rental payment next day
         $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
-        // $motorcycles = json_decode($response);
 
         // if (!empty($motorcycles)) {
         foreach ($motorcycles as $key => $motorcycle) {
