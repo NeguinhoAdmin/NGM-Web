@@ -66,6 +66,7 @@ class everyDay extends Command
             $payment = new RentalPayment();
             $payment->payment_type = 'rental';
             $payment->payment_due_date = $nextPayDate;
+            $payment->payment_date = null;
             $payment->rental_price = $rentalPrice;
             $payment->registration = $motorcycle->registration;
             $payment->received = 0.00;

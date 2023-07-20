@@ -109,28 +109,6 @@ class RentalPaymentsController extends Controller
             ->with('success', 'Deposit has been recorded. Now record first week rental.');
     }
 
-    /**
-     *  Manually add and create payment types
-     *
-     */
-    public function manualPayment(Request $request)
-    {
-        // dd($request);
-        $payment = new RentalPayment();
-        $payment->payment_type = $request->payment_type;
-        $payment->outstanding = $request->payment;
-        $payment->payment_due_date = null;
-        $payment->received = $request->received;
-        $payment->user_id = $request->user_id;
-        $payment->motorcycle_id = $request->motorcycle_id;
-        $payment->registration = $request->registration;
-        $payment->auth_user = auth::user()->first_name . " " . auth::user()->last_name;
-        $payment->save();
-
-        return to_route('manually.paid', [$request->motorcycle_id])
-            ->with('success', 'Payment created');
-    }
-
     public function userPayment(Request $request, $rental_id)
     {
         $user_id = $request->session()->get('user_id');
