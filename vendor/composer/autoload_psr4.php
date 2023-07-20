@@ -147,7 +147,7 @@ return array(
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/event-manager/src'),
     'Dflydev\\DotAccessData\\' => array($vendorDir . '/dflydev/dot-access-data/src'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
-    'Database\\Seeders\\' => array($baseDir . '/database/seeders', $vendorDir . '/laravel/pint/database/seeders', $vendorDir . '/shopper/framework/database/seeders'),
+    'Database\\Seeders\\' => array($baseDir . '/database/seeders', $vendorDir . '/shopper/framework/database/seeders', $vendorDir . '/laravel/pint/database/seeders'),
     'Database\\Factories\\' => array($baseDir . '/database/factories', $vendorDir . '/laravel/pint/database/factories'),
     'DanHarrin\\DateFormatConverter\\' => array($vendorDir . '/danharrin/date-format-converter/src'),
     'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),

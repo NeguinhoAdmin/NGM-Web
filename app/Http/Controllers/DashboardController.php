@@ -71,7 +71,29 @@ class DashboardController extends Controller
             $claimInProgress = Motorcycle::where('availability', 'claim in progress');
             $claimInProgressCount = $claimInProgress->count();
 
+            $impounded = Motorcycle::where('availability', 'impounded');
+            $impoundedCount = $impounded->count();
+
+            $accident = Motorcycle::where('availability', 'accident');
+            $accidentCount = $accident->count();
+
+            $missing = Motorcycle::where('availability', 'missing');
+            $missingCount = $missing->count();
+
+            $stolen = Motorcycle::where('availability', 'stolen');
+            $stolenCount = $stolen->count();
+
+            // Data for rentals charting
+            $labels = ['For Rent', 'Rented', 'For Sale', 'Sold', 'Repairs', 'Cat B', 'CIP', 'Impounded', 'Accident', 'Missing', 'Stolen'];
+            $rentaldata =  [$forRentCount, $rentedCount, $forSaleCount, $soldCount, $repairsCount, $catBCount, $claimInProgressCount, $impoundedCount, $accident, $missing, $stolenCount];
+
             return view('home.dashboard', compact(
+                'labels',
+                'rentaldata',
+                'stolenCount',
+                'missingCount',
+                'accidentCount',
+                'impoundedCount',
                 'claimInProgressCount',
                 'catBCount',
                 'repairsCount',
@@ -85,7 +107,7 @@ class DashboardController extends Controller
                 'dcount',
                 'rpayments',
                 'rrpayments',
-                'ddpayments'
+                'ddpayments',
             ));
         } elseif ($role = 4) {
             $user = Auth::user();

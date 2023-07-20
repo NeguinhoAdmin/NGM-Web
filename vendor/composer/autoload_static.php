@@ -852,8 +852,8 @@ class ComposerStaticInitaefe6f6eded9b98ee8896c64b6d07a52
         'Database\\Seeders\\' => 
         array (
             0 => __DIR__ . '/../..' . '/database/seeders',
-            1 => __DIR__ . '/..' . '/laravel/pint/database/seeders',
-            2 => __DIR__ . '/..' . '/shopper/framework/database/seeders',
+            1 => __DIR__ . '/..' . '/shopper/framework/database/seeders',
+            2 => __DIR__ . '/..' . '/laravel/pint/database/seeders',
         ),
         'Database\\Factories\\' => 
         array (

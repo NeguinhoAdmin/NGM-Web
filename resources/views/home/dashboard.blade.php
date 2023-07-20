@@ -1,6 +1,7 @@
 @extends('layouts.app-master')
 
 @section('content')
+
 <div class="container">
     @auth
 
@@ -27,16 +28,10 @@
             </table>
         </div>
         <div class="col">
-
-        </div>
-        <div class="col">
-
-        </div>
-    </div>
-
-    <div class="row align-items-start mb-3">
-        <div class="col">
             <h4>Fleet Stats</h4>
+            <div>
+                <canvas id="rentals" height="100px"></canvas>
+            </div>
             <table class="table-striped">
                 <td>For Rent: {{ $forRentCount }}</td>
             </table>
@@ -58,12 +53,30 @@
             <table class="table-striped">
                 <td>Claim in Progress: {{ $claimInProgressCount }}</td>
             </table>
+            <table class="table-striped">
+                <td>Impounded: {{ $impoundedCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Accident: {{ $accidentCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Missing: {{ $missingCount }}</td>
+            </table>
+            <table class="table-striped">
+                <td>Stolen: {{ $stolenCount }}</td>
+            </table>
         </div>
+    </div>
+
+    <div class="row align-items-start mb-3">
         <div class="col">
+
 
         </div>
         <div class="col">
-
+            <div>
+                <canvas id="rentals" height="100px"></canvas>
+            </div>
         </div>
     </div>
     @endauth
@@ -73,4 +86,4 @@
     <p class="lead">Your viewing the home page. Please login to view the restricted data.</p>
     @endguest
 </div>
-@endsection
+@stop
