@@ -363,7 +363,9 @@
                                             Day 7 130<br>
                                         </p>
                                         <p>
-                                            Thank you for your continued custom.<br />
+                                            Thank you for your continued custom.
+                                        </p>
+                                        <p>
                                             Kind Regards,<br />
                                             The Neguinho Motors Team
                                         </p>
