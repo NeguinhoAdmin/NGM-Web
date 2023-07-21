@@ -49,6 +49,7 @@ class RentalPaymentsController extends Controller
     {
         $dp = RentalPayment::all()
             ->where('payment_type', '=', 'deposit')
+            ->where('outstanding', '>', 0)
             ->sortBy('payment_next_date');
         $rentalpayments = json_decode($dp);
 

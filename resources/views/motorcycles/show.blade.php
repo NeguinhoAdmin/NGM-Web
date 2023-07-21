@@ -144,6 +144,8 @@
                                 @csrf
                                 <div hidden class="mb-3">
                                     <input class="form-control" type="text" placeholder="Motorcycle ID" name="motorcycle_id" id="motorcycle_id" value="{{$motorcycle->id}}">
+                                    <input class="form-control" type="text" placeholder="User ID" name="user_id" id="user_id" value="{{$motorcycle->user_id}}">
+                                    <input class="form-control" type="text" placeholder="Registration" name="registration" id="registration" value="{{$motorcycle->registration}}">
                                 </div>
                                 <div hidden class="mb-3">
                                     <input class="form-control" type="text" placeholder="Rental Type" name="payment_type" id="payment_type" value="deposit">

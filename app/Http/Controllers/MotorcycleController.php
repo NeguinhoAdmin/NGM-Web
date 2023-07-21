@@ -207,24 +207,22 @@ class MotorcycleController extends Controller
 
         $transaction = RentalPayment::all()
             ->where('motorcycle_id', $request->motorcycle_id)
-            ->where('payment_type', 'deposit');
+            ->where('payment_type', 'deposit')
+            ->first();
 
-        foreach ($transaction as $outstanding) {
-            $outstanding = $outstanding->outstanding - $request->rental_deposit;
-        }
-        $paymentDate = Carbon::now();
+        $outstanding = $transaction->outstanding - $request->rental_deposit;
 
         $authUser = Auth::user();
 
-        $payment = new RentalPayment();
-        $payment->payment_due_date = $motorcycle->rental_start_date;
-        $payment->payment_type = 'deposit';
+        $payment = RentalPayment::find($transaction->id);
+        // $payment->payment_due_date = $motorcycle->rental_start_date;
+        // $payment->payment_type = 'deposit';
         $payment->received = $request->rental_deposit;
-        $payment->payment_date = $paymentDate;
+        $payment->payment_date = Carbon::now();
         $payment->outstanding = $outstanding;
-        $payment->user_id = $motorcycle->user_id;
-        $payment->motorcycle_id = $request->motorcycle_id;
-        $payment->registration = $motorcycle->registration;
+        // $payment->user_id = $motorcycle->user_id;
+        // $payment->motorcycle_id = $request->motorcycle_id;
+        // $payment->registration = $motorcycle->registration;
         $payment->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $payment->save();
 
