@@ -29,31 +29,31 @@
                     <div class="col">
                         <dl class="row">
                             <dt class="col-sm-9">For Rent:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $forRentCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/is-for-rent">{{ $forRentCount }}</a></dd>
                             <dt class="col-sm-9">Rented:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $rentedCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/is-rented">{{ $rentedCount }}</a></dd>
                             <dt class="col-sm-9">For Sale:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $forSaleCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/is-for-sale">{{ $forSaleCount }}</a></dd>
                             <dt class="col-sm-9">Sold:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $soldCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/is-sold">{{ $soldCount }}</a></dd>
                             <dt class="col-sm-9">Repairs:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $repairsCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/is-for-repairs">{{ $repairsCount }}</a></dd>
                             <dt class="col-sm-9">Cat B:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $catBCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/cat-b">{{ $catBCount }}</a></dd>
                         </dl>
                     </div>
                     <div class="col">
                         <dl class="row">
                             <dt class="col-sm-9">Claim in Progress:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $claimInProgressCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/claim-in-progress">{{ $claimInProgressCount }}</a></dd>
                             <dt class="col-sm-9">Impounded:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $impoundedCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/impounded">{{ $impoundedCount }}</a></dd>
                             <dt class="col-sm-9">Accident:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $accidentCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/accident">{{ $accidentCount }}</a></dd>
                             <dt class="col-sm-9">Missing:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $missingCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/missing">{{ $missingCount }}</a></dd>
                             <dt class="col-sm-9">Stolen:</dt>
-                            <dd class="col-sm-3"><a href="">{{ $stolenCount }}</a></dd>
+                            <dd class="col-sm-3"><a href="/stolen">{{ $stolenCount }}</a></dd>
                         </dl>
                     </div>
                 </div>
