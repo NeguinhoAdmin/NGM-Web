@@ -183,6 +183,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/outstanding-deposits', [RentalPaymentsController::class, 'outstandingDeposits'])->name('outstandingDeposits');
     Route::post('/void-payment', [RentalPaymentsController::class, 'voidPayment'])->name('voidPayment');
     Route::post('/manual-payment', [RentalPaymentsController::class, 'manualPayment'])->name('manualPayment');
+    Route::post('/discount-payment', [RentalPaymentsController::class, 'discountPayment'])->name('discountPayment');
 
     // Notes
     Route::resource('/notes', 'NotesController');

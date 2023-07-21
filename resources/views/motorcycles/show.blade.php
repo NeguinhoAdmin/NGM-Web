@@ -25,7 +25,7 @@
             <div class="modal-content">
                 <div class="modal-body">
                     @foreach ($notes as $note)
-                    <p class="text-capitalize"><strong>{{ $note->payment_type }}</strong> {{ $note->created_at   }} {{ $note->note }}</p><br>
+                    <p class="text-capitalize"><strong>{{ $note->payment_type }}</strong><br /> {{ $note->created_at   }}<br /> {{ $note->note }}</p><br>
                     @endforeach
                 </div>
                 <div class="container d-grid gap-2" style="padding-bottom: 10px">

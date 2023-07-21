@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Note;
+use App\Models\User;
+use RuntimeException;
+use App\Models\Rental;
+use Illuminate\View\View;
+use App\Models\Motorcycle;
 use Illuminate\Http\Request;
 use App\Models\RentalPayment;
+use Illuminate\Support\Carbon;
 use App\Models\RentalPaymentVoid;
 use App\Models\PaymentTransaction;
-use Illuminate\Support\Carbon;
-use App\Models\User;
-use App\Models\Motorcycle;
-use App\Models\Rental;
-use Illuminate\Contracts\View\View as ViewView;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use RuntimeException;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Contracts\View\View as ViewView;
+use Illuminate\Contracts\Container\BindingResolutionException;
 
 class RentalPaymentsController extends Controller
 {
@@ -233,6 +235,33 @@ class RentalPaymentsController extends Controller
 
         return redirect('/rentalpayments')
             ->with('success', 'Payment voided.');
+    }
+
+    public function discountPayment(Request $request)
+    {
+        $discounted = RentalPayment::find($request->payment_id);
+
+        $type = $discounted->payment_type;
+
+        if ($type == 'deposit') {
+            $payment = RentalPayment::findOrFail($request->payment_id)->update([
+                'outstanding' => $discounted->outstanding - $request->discountAmount,
+            ]);
+        } else {
+
+            return Redirect::back()->withErrors(['msg' => 'Discounting rental payments is not permitted.']);
+        }
+
+        $note = new Note();
+        $note->payment_id = $request->payment_id;
+        $note->motorcycle_id = $discounted->motorcycle_id;
+        $note->user_id = $discounted->user_id;
+        $note->payment_type = 'deposit';
+        $note->note = "£" . $request->discountAmount . " Customer Discount Applied by " . auth::user()->first_name . " " . auth::user()->last_name;
+        $note->save();
+
+        return to_route('outstandingDeposits')
+            ->with('success', 'Customer Discounted');
     }
 
     /**

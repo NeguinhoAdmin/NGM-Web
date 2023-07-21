@@ -54,6 +54,8 @@
                     <th scope="col">AMOUNT</th>
                     <th scope="col">DUE DATE</th>
                     <th scope="col"></th>
+                    <th scope="col">Discount Amount (£)</th>
+                    <th scope="col"></th>
                     <th scope="col" class="text-center" style="color: red;"></th>
                 </tr>
             </thead>
@@ -75,6 +77,18 @@
                             </div>
                         </div>
                     </td>
+                    <form action="/discount-payment" method="POST" enctype="multipart/form-data">
+                        <td class="text-center">
+                            @csrf
+                            <input hidden name="payment_id" id="payment_id" value="{{ $payment->id }}">
+                            <input name="discountAmount" id="discountAmount">
+                        </td>
+                        <td>
+                            <div class="btn">
+                                <button class="btn btn-outline-success" type="submit">Discount</button>
+                            </div>
+                        </td>
+                    </form>
                     <form action="/void-payment" method="POST" enctype="multipart/form-data">
                         <td class="text-center">
                             @csrf
