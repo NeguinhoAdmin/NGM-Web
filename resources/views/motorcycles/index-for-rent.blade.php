@@ -3,13 +3,21 @@
 @section('content')
 <div class="container">
     @auth
-    <h1>{{ $count }} Motorcycles for Rent</h1>
+    <h1>Motorcycles for Rent</h1>
     <div class="containe">
         <div class=" row align-items-start">
             <div class="col">
                 <div class="container-fluid">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a class="btn btn-outline-primary" href="{{ URL()->previous() }}">Back</a>
+                        <div class="btn">
+                            <a class="btn btn-outline-primary" href="{{ URL()->previous() }}">Back</a>
+                        </div>
+                        <div class="btn">
+                            <form method="GET" class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" name="search" value="{{ request()->get('search') }}" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

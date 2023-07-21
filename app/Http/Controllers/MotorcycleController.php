@@ -83,8 +83,6 @@ class MotorcycleController extends Controller
             $motorcycles = Motorcycle::all()
                 ->where('availability', '!=', 'missing');
         }
-        // $m = Motorcycle::orderBy('id', 'DESC')->get();
-        // $motorcycles = json_decode($m);
 
         $count = $motorcycles->count();
         return view('motorcycles.index', compact('motorcycles', 'count'));
@@ -277,13 +275,19 @@ class MotorcycleController extends Controller
         $user_id = $id;
         $request->session()->put('user_id', $id);
 
-        $m = Motorcycle::all()
-            ->where('availability', '=', 'for rent')
-            ->sortByDesc('id');
-        $motorcycles = json_decode($m);
+        if ($request->filled('search')) {
+            $motorcycles = Motorcycle::search($request->search)->get();
+        } else {
+            // $motorcycles = Motorcycle::get();
+            $m = Motorcycle::all()
+                ->where('availability', '=', 'for rent')
+                ->sortByDesc('id');
+            $motorcycles = json_decode($m);
+        }
+        // dd($motorcycles);
+        // $count = $motorcycles->count();
 
-        $count = $m->count();
-        return view('motorcycles.index-for-rent', compact('motorcycles', 'count', 'user_id'));
+        return view('motorcycles.index-for-rent', compact('motorcycles', 'user_id'));
     }
 
     // Assign motorcycle to client for rental
