@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mb-3">
     @auth
-    <h1 class="mb-3">{{ $count }} Payments Due</h1>
+    <h1 class="mb-3">{{ $count }} {{ $paymentType }} Payments Due</h1>
     <div class="containe">
         <div class=" row align-items-start">
             <div class="col">

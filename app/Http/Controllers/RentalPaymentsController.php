@@ -37,8 +37,9 @@ class RentalPaymentsController extends Controller
         }
 
         $count = $rentalpayments->count();
+        $paymentType = 'Rental';
 
-        return view('payments.index', compact('rentalpayments', 'count'));
+        return view('payments.index', compact('rentalpayments', 'count', 'paymentType'));
     }
 
     // View deposit payment types
@@ -50,7 +51,9 @@ class RentalPaymentsController extends Controller
         $rentalpayments = json_decode($dp);
 
         $count = $dp->count();
-        return view('payments.index', compact('rentalpayments', 'count'));
+        $paymentType = 'Deposit';
+
+        return view('payments.index', compact('rentalpayments', 'count', 'paymentType'));
     }
 
     /**
