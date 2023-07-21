@@ -28,9 +28,6 @@ class DashboardController extends Controller
                 ->where('outstanding', '>', 0);
             $count = $rentalpayments->count();
 
-            // Get the total amount of rental payments owed
-            $rpayments = DB::table('rental_payments')->sum('outstanding');
-
             $rentals = RentalPayment::all()
                 ->where('payment_type', 'rental')
                 ->whereNull('deleted_at')
@@ -53,6 +50,10 @@ class DashboardController extends Controller
                 ->whereNull('deleted_at')
                 ->where('outstanding', '>', 0)
                 ->sum('outstanding');
+
+            // Get the total amount of rental payments owed
+            $totalowed = $rrpayments + $ddpayments;
+            $rpayments = number_format((float)$totalowed, 2, '.', '');
 
             $forRent = Motorcycle::where('availability', 'for rent');
             $forRentCount = $forRent->count();

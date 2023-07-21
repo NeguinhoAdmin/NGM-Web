@@ -62,7 +62,7 @@
             <h4>{{ $count }} Rental Payments</h4>
             <dl class="row">
                 <dt class="col-sm-9">Outstanding:</dt>
-                <dd class="col-sm-3" style="color: red;">£{{ $rpayments }}</dd>
+                <dd class="col-sm-3" style="color: red;"><strong>£{{ $rpayments }}</strong></dd>
                 <dt class="col-sm-9">Rentals:</dt>
                 <dd class="col-sm-3"><a href="/rentalpayments">£{{ $rrpayments }}</a></dd>
                 <dt class="col-sm-9">Deposits:</dt>
