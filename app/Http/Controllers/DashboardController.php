@@ -33,20 +33,24 @@ class DashboardController extends Controller
 
             $rentals = RentalPayment::all()
                 ->where('payment_type', 'rental')
+                ->whereNull('deleted_at')
                 ->where('outstanding', '>', 0);
             $rcount = $rentals->count();
 
             $rrpayments = DB::table('rental_payments')
                 ->where('payment_type', 'rental')
+                ->whereNull('deleted_at')
                 ->sum('outstanding');
 
             $deposits = RentalPayment::all()
                 ->where('payment_type', 'deposit')
+                ->whereNull('deleted_at')
                 ->where('outstanding', '>', 0);
             $dcount = $deposits->count();
 
             $ddpayments = DB::table('rental_payments')
                 ->where('payment_type', 'deposit')
+                ->whereNull('deleted_at')
                 ->where('outstanding', '>', 0)
                 ->sum('outstanding');
 
