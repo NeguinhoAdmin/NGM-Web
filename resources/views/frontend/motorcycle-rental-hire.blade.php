@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="product-info clearfix mb-3">
                                     <div style="font-size: 34px;"><span class="product-title"></span>HONDA FORZA 125CC</div>
-                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>Age 16+</div>
+                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>For this or similar model, prices start from...</div>
 
                                     <div class="price mb-3">
                                         <i class="fa fa-gbp" aria-hidden="true" style="color: #555; font-size: 32px;"></i>
@@ -93,7 +93,7 @@
                                 <div class="product-info clearfix mb-3">
                                     <div style="font-size: 34px;"><span class="product-title"></span>HONDA PCX 125CC
                                     </div>
-                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>Age 16+</div>
+                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>For this or similar model, prices start from...</div>
 
                                     <div class="price mb-3">
                                         <i class="fa fa-gbp" aria-hidden="true" style="color: #555; font-size: 32px;"></i>
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class=" product-info clearfix mb-3">
                                     <div style="font-size: 34px;"><span class="product-title"></span>HONDA SH 125CC</div>
-                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>Age 16+</div>
+                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>For this or similar model, prices start from...</div>
                                     <div class="price mb-3">
                                         <i class="fa fa-gbp" aria-hidden="true" style="color: #555; font-size: 32px;"></i>
                                         <span style="color: #555; font-size: 64px;">85</span>
@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="product-info clearfix mb-3">
                                     <div style="font-size: 34px;"><span class="product-title"></span>HONDA VISION 125CC</div>
-                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>Age 16+</div>
+                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>For this or similar model, prices start from...</div>
                                     <div class="price mb-3">
                                         <i class="fa fa-gbp" aria-hidden="true" style="color: #555; font-size: 32px;"></i>
                                         <span style="color: #555; font-size: 64px;">70</span>
@@ -249,7 +249,7 @@
                                 </div>
                                 <div class=" product-info clearfix mb-3">
                                     <div style="font-size: 34px;"><span class="product-title"></span>YAMAHA NMAX 125CC</div>
-                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>Age 16+</div>
+                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>For this or similar model, prices start from...</div>
                                     <div class="price mb-3">
                                         <i class="fa fa-gbp" aria-hidden="true" style="color: #555; font-size: 32px;"></i>
                                         <span style="color: #555; font-size: 64px;">85</span>
@@ -297,7 +297,7 @@
                                 </div>
                                 <div class="product-info clearfix mb-3">
                                     <div style="font-size: 34px;"><span class="product-title"></span>YAMAHA XMAX 125CC</div>
-                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>Age 16+</div>
+                                    <div style="font-size: 13px;"><span class="product-title mb-3"></span>For this or similar model, prices start from...</div>
                                     <div class="price mb-3">
                                         <i class="fa fa-gbp" aria-hidden="true" style="color: #555; font-size: 32px;"></i>
                                         <span style="color: #555; font-size: 64px;">100</span>
