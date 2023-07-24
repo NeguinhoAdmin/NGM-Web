@@ -66,6 +66,7 @@
                                         <li><i class="fa-li fa fa-check-square" style="color: #c31924;"></i>CBT Certification</li>
                                         <li><i class="fa-li fa fa-check-square" style="color: #c31924;"></i>£300 deposit + 1 Week Rent</li>
                                         <li><i class="fa-li fa fa-check-square" style="color: #c31924;"></i>6 Weeks Minimum Rental Period</li>
+                                        <li><i class="fa-li fa fa-check-square" style="color: #c31924;"></i>Under 25 years old require proof of income & National Insurance Number</li>
                                     </ul>
 
                                     <p class="product-categories margin-top-22 mb-3">

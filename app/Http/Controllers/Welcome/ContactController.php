@@ -45,6 +45,25 @@ class ContactController extends Controller
             'vehicle_type' => 'required',
             'privacy_policy' => 'required'
         ]);
+
+        $mail = new MailController();
+        $mail->AccidentManagement($request);
+
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->phone = $request->phone;
+        $contact->email = $request->email;
+        $contact->subject = "Accident Claim Request";
+        $contact->message = "Vehicle Type: " . $request->vehicle_type . " - " . "Referal: " . $request->referal;
+        $contact->save();
+
+        $notification = array(
+            'message' => 'Your Message Submited Successfully',
+            'alert-type' => 'success'
+        );
+
+        return to_route('road-traffic-accidents')
+            ->with('success', 'Your request has been submitted');
     }
 
     public function StoreMessage(Request $request)
@@ -138,5 +157,10 @@ class ContactController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function ThankYou()
+    {
+        return view('contacts.thank-you');
     }
 }

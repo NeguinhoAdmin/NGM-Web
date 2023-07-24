@@ -22,7 +22,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $role = Auth::User()->is_admin;
+        // $role = Auth::User()->is_admin;
+        $role = Auth::user()->role_id;
 
         if ($role == 1) {
             // Get todays date and time
@@ -119,6 +120,33 @@ class DashboardController extends Controller
                 'rrpayments',
                 'ddpayments',
             ));
+        } elseif ($role = 2) {
+            $user = Auth::user();
+            $u = User::find($user->id);
+            $user = json_decode($u);
+            $authUser = Auth::user();
+
+            $motorcycles = Motorcycle::all()
+                ->where('user_id', $user->id);
+
+            foreach ($motorcycles as $motorcycle) {
+                $motorcycle_id = $motorcycle->id;
+            }
+
+            $now = Carbon::now();
+            $toDate = Carbon::parse("2023-05-29");
+            $fromDate = Carbon::parse("2022-08-20");
+
+            $days = $toDate->diffInDays($now);
+            $months = $toDate->diffInMonths($fromDate);
+            $years = $toDate->diffInYears($fromDate);
+
+            $d = File::all()->where('user_id', $user->id);
+            $documents = json_decode($d);
+            $dlFront = "Driving Licence Front";
+
+            $address = UserAddress::all()->where('user_id', $user->id);
+            return view('home_client.show-user', compact("user", "address", "documents", "dlFront", "motorcycles", "days"));
         } elseif ($role = 4) {
             $user = Auth::user();
             $u = User::find($user->id);
