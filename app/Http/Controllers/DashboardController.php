@@ -22,8 +22,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // $role = Auth::User()->is_admin;
-        $role = Auth::user()->role_id;
+        $role = Auth::User()->is_admin;
+        // $role = Auth::user()->role_id;
 
         if ($role == 1) {
             // Get todays date and time
