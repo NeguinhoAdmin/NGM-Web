@@ -167,9 +167,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     /**
      * Home Routes
      */
-    // Route::get('/', 'HomeController@index')->name('home.index');
+    // Route::get('/', 'HomeController@index')->name('frontend.index');
+
+    // DASHBOARDS
     Route::get('/dashboard', 'HomeController@dashboard')->name('home.dashboard');
-    // Dashboard
     Route::get('/dashboard-index', 'HomeController@index')->name('dashboard.index');
 
     // Rental Resources

@@ -45,7 +45,7 @@
                     <div class="item data-effect-item">
                         <div class="inner">
                             <div class="thumb">
-                                <a href="/motorcycle-rentals">
+                                <a href="/motorcycle-rental-hire">
                                     <img src="{{ url('/img/home/motorcycle-rental.jpg') }}" alt="Image" style="width: 100%">
                                     <div class="text-wrap text-center">
                                         <h2 class="font-size-30 line-height-36 font-weight-600" style="color: white;">RENTALS</h2>

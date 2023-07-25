@@ -348,6 +348,7 @@ class MotorcycleController extends Controller
             'availability' => 'rented',
             'rental_deposit' => $motorcycleDeposit,
             'rental_start_date' => $todayDate,
+            'next_payment_date' => Carbon::now()->addDays(7),
             'make' => $request->make,
             'colour' => $request->colour,
             'year' => $request->yearOfManufacture,
@@ -361,9 +362,8 @@ class MotorcycleController extends Controller
             'marked_for_export' => $request->markedForExport,
             'type_approval' => $request->typeApproval,
             'last_v5_issue_date' => $request->dateOfLastV5CIssued,
-            // 'mot_expiry_date' => $request->motExpiryDate,
+            'mot_expiry_date' => $request->motExpiryDate,
             'month_of_first_registration' => $request->monthOfFirstRegistration,
-            'next_payment_date' => $nextPayDate,
         ]);
 
         return to_route('motorcycles.show', [$motorcycle_id])
@@ -535,6 +535,7 @@ class MotorcycleController extends Controller
         $depositpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
             ->where('payment_type', '=', 'deposit')
+            ->where('outstanding', '>', 0)
             ->sortByDesc('id');
 
         $newpayments = RentalPayment::all()
@@ -546,6 +547,7 @@ class MotorcycleController extends Controller
 
         $rentalpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
+            ->where('outstanding', '>', 0)
             ->where('payment_type', '=', 'rental')
             ->sortByDesc('id');
 
@@ -606,7 +608,7 @@ class MotorcycleController extends Controller
             'marked_for_export' => $request->markedForExport,
             // 'type_approval' => $request->typeApproval,
             'last_v5_issue_date' => $request->dateOfLastV5CIssued,
-            // 'mot_expiry_date' => $request->motExpiryDate, // Not returned if MOT Status = No data held by DVLA
+            'mot_expiry_date' => $request->motExpiryDate, // Not returned if MOT Status = No data held by DVLA
             'month_of_first_registration' => $request->monthOfFirstRegistration,
 
             // Status information
@@ -614,7 +616,6 @@ class MotorcycleController extends Controller
             'updated_at' => Carbon::now(),
             'rental_price' => $rentalPrice,
             'sale_used_price' => $salePrice,
-            // dd($request->sale_used_price),
             'availability' => $availability,
         ]);
 
