@@ -160,7 +160,7 @@ Route::post('/upload-pocbt/{id}', [FileUploadController::class, 'CbtProof'])->na
 Route::get('/remove-upload/{id}', [FileUploadController::class, 'delete']);
 
 //  PDFs
-// Route::get('generate-pdf', [PdfController::class, 'generatePDF'])->name('generatePDF');
+Route::get('generate-pdf', [PdfController::class, 'generatePDF'])->name('generatePDF');
 
 // Home Routes
 Route::group(['namespace' => 'App\Http\Controllers'], function () {

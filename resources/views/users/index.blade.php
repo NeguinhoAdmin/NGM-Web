@@ -44,11 +44,10 @@
 
     <div class="container">
 
-
-
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">Rating</th>
                     <th scope="col">Name</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">Email</th>
