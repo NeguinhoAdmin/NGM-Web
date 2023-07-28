@@ -535,7 +535,7 @@ class MotorcycleController extends Controller
         $depositpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
             ->where('payment_type', '=', 'deposit')
-            // ->where('outstanding', '>', 0)
+            ->where('outstanding', '>', 0)
             ->sortByDesc('id');
 
         $newpayments = RentalPayment::all()
