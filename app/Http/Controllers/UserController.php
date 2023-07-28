@@ -34,14 +34,15 @@ class UserController extends Controller
     public function index(Request $request): View
     {
         if ($request->filled('search')) {
-            $users = User::search($request->search)->get();
+            $users = User::search($request->search)->get()->sortByDesc('id');
         } else {
-            $users = User::get();
+            // $users = User::get();
+            $users = User::all()->sortByDesc('id');
         }
 
         $count = $users->count();
 
-        return view('users.index', compact('users', 'count'));
+        return view('admin.users', compact('users', 'count'));
     }
 
     /**
@@ -51,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('admin.users-create');
     }
 
     /**
@@ -96,6 +97,7 @@ class UserController extends Controller
         $user->post_code = $request->post_code;
         $user->is_client = 1;
         $user->role_id = 4;
+        $user->rating = 'good';
         $user->save();
 
         return redirect('/users')
@@ -135,11 +137,11 @@ class UserController extends Controller
         $documents = json_decode($d);
         $dlFront = "Driving Licence Front";
 
-        $notes = Note::all()->where('user_id', $user_id);
+        $notes = Note::all()->where('user_id', $user_id)->sortByDesc('id');
 
         $address = UserAddress::all()->where('user_id', $user_id);
 
-        return view("users.show", compact("user", "address", "documents", "dlFront", "motorcycles", "days", "notes"));
+        return view("admin.user", compact("user", "address", "documents", "dlFront", "motorcycles", "days", "notes"));
     }
 
     /**
@@ -152,7 +154,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('users.edit', compact('user'));
+        return view('admin.users-edit', compact('user'));
     }
 
     /**
@@ -186,7 +188,7 @@ class UserController extends Controller
             $note->save();
         }
 
-        return to_route('users.show', [$id])
+        return to_route('show.user', [$id])
             ->with('success', 'Client details have been updated.');
     }
 

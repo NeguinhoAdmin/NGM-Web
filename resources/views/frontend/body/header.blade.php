@@ -16,22 +16,28 @@
                     <a style="color: white;" class="navbar-sm-brand text-light text-decoration-none" href="/contact/call-back" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Request Callback</a>
                 </div>
 
-                @auth
                 <div>
-                    <i class="fa fa-user mx-2" style="color:white;"></i>
-                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="/dashboard" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Welcome {{ auth()->user()->first_name }}</a>
-                </div>
-                <div>
-                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('logout.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Logout</a>
-                </div>
-                @endauth
+                    @if (Route::has('login'))
 
-                @guest
-                <div>
-                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('login.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Login </a> /
-                    <a style="color: white;" class="text-light" style="padding-right: 5px;" href="{{ route('register.perform') }}" onmouseover="this.style.color='#f63440'" onMouseOut="this.style.color='#fff'">Register</a>
+                    @auth
+
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="{{ url('/dashboard') }}" style="color:white;">Dashboard</a>
+
+                    @else
+
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="{{ route('login') }}" style="color:white;">Log in </a>/
+
+                    @if (Route::has('register'))
+
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="{{ route('register') }}" style="color:white;">Register</a>
+
+                    @endif
+
+                    @endauth
+
+                    @endif
                 </div>
-                @endguest
+
             </div>
         </div>
     </nav>
@@ -53,7 +59,7 @@
                 </form>
             </li>
             <!-- <li class="box-cart nav-top-cart-wrapper">
-                <a class="icon_cart nav-cart-trigger " href="/cart"><span> {{ Cart::instance('default')->count() }}</span></a>
+                <a class="icon_cart nav-cart-trigger " href="/cart"><span> </span></a>
             </li> -->
         </ul>
         <div class="nav-wrap">

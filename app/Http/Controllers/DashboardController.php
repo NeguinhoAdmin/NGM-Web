@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\File;
 use App\Models\Note;
 use App\Models\User;
 use App\Models\Motorcycle;
 use App\Models\UserAddress;
-use Illuminate\Http\Request;
 use App\Models\RentalPayment;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -22,10 +22,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $role = Auth::User()->is_admin;
-        // $role = Auth::user()->role_id;
+        // $role = Auth::User()->is_admin;
+        $role = Auth::user()->role_id;
 
-        if ($role == 1) {
+        if ($role === 1) {
             // Get todays date and time
             $toDay = Carbon::now();
 
@@ -98,7 +98,7 @@ class DashboardController extends Controller
             $labels = ['For Rent', 'Rented', 'For Sale', 'Sold', 'Repairs', 'Cat B', 'CIP', 'Impounded', 'Accident', 'Missing', 'Stolen'];
             $rentaldata =  [$forRentCount, $rentedCount, $forSaleCount, $soldCount, $repairsCount, $catBCount, $claimInProgressCount, $impoundedCount, $accident, $missing, $stolenCount];
 
-            return view('home.dashboard', compact(
+            return view('admin.dashboard', compact(
                 'labels',
                 'rentaldata',
                 'stolenCount',
@@ -120,7 +120,7 @@ class DashboardController extends Controller
                 'rrpayments',
                 'ddpayments',
             ));
-        } elseif ($role = 4) {
+        } elseif ($role === 4) {
             $user = Auth::user();
             $u = User::find($user->id);
             $user = json_decode($u);
@@ -146,8 +146,141 @@ class DashboardController extends Controller
             $dlFront = "Driving Licence Front";
 
             $address = UserAddress::all()->where('user_id', $user->id);
-            return view('home_client.show-user', compact("user", "address", "documents", "dlFront", "motorcycles", "days"));
+            return view('customer.show-user', compact("user", "address", "documents", "dlFront", "motorcycles", "days"));
         }
+    }
+
+    public function adminDashboard()
+    {
+        // Get todays date and time
+        $toDay = Carbon::now();
+
+        // Get all outstanding rental payments & count
+        $rentalpayments = RentalPayment::all()
+            ->where('outstanding', '>', 0);
+        $count = $rentalpayments->count();
+
+        $rentals = RentalPayment::all()
+            ->where('payment_type', 'rental')
+            ->whereNull('deleted_at')
+            ->where('outstanding', '>', 0);
+        $rcount = $rentals->count();
+
+        $rrpayments = DB::table('rental_payments')
+            ->where('payment_type', 'rental')
+            ->whereNull('deleted_at')
+            ->sum('outstanding');
+
+        $deposits = RentalPayment::all()
+            ->where('payment_type', 'deposit')
+            ->whereNull('deleted_at')
+            ->where('outstanding', '>', 0);
+        $dcount = $deposits->count();
+
+        $ddpayments = DB::table('rental_payments')
+            ->where('payment_type', 'deposit')
+            ->whereNull('deleted_at')
+            ->where('outstanding', '>', 0)
+            ->sum('outstanding');
+
+        // Get the total amount of rental payments owed
+        $totalowed = $rrpayments + $ddpayments;
+        $rpayments = number_format((float)$totalowed, 2, '.', '');
+
+        $forRent = Motorcycle::where('availability', 'for rent');
+        $forRentCount = $forRent->count();
+
+        $rented = Motorcycle::where('availability', 'rented');
+        $rentedCount = $rented->count();
+
+        $forSale = Motorcycle::where('availability', 'for sale');
+        $forSaleCount = $forSale->count();
+
+        $sold = Motorcycle::where('availability', 'sold');
+        $soldCount = $sold->count();
+
+        $repairs = Motorcycle::where('availability', 'repairs');
+        $repairsCount = $repairs->count();
+
+        $catB = Motorcycle::where('availability', 'cat b');
+        $catBCount = $catB->count();
+
+        $claimInProgress = Motorcycle::where('availability', 'claim in progress');
+        $claimInProgressCount = $claimInProgress->count();
+
+        $impounded = Motorcycle::where('availability', 'impounded');
+        $impoundedCount = $impounded->count();
+
+        $accident = Motorcycle::where('availability', 'accident');
+        $accidentCount = $accident->count();
+
+        $missing = Motorcycle::where('availability', 'missing');
+        $missingCount = $missing->count();
+
+        $stolen = Motorcycle::where('availability', 'stolen');
+        $stolenCount = $stolen->count();
+
+        // Data for rentals charting
+        $labels = ['For Rent', 'Rented', 'For Sale', 'Sold', 'Repairs', 'Cat B', 'CIP', 'Impounded', 'Accident', 'Missing', 'Stolen'];
+        $rentaldata =  [$forRentCount, $rentedCount, $forSaleCount, $soldCount, $repairsCount, $catBCount, $claimInProgressCount, $impoundedCount, $accident, $missing, $stolenCount];
+
+        return view('admin.dashboard', compact(
+            'labels',
+            'rentaldata',
+            'stolenCount',
+            'missingCount',
+            'accidentCount',
+            'impoundedCount',
+            'claimInProgressCount',
+            'catBCount',
+            'repairsCount',
+            'soldCount',
+            'forSaleCount',
+            'rentedCount',
+            'forRentCount',
+            'toDay',
+            'count',
+            'rcount',
+            'dcount',
+            'rpayments',
+            'rrpayments',
+            'ddpayments',
+        ));
+    }
+
+    public function staffDashboard()
+    {
+        //
+    }
+
+    public function customerDashboard()
+    {
+        $user = Auth::user();
+        $u = User::find($user->id);
+        $user = json_decode($u);
+        $authUser = Auth::user();
+
+        $motorcycles = Motorcycle::all()
+            ->where('user_id', $user->id);
+
+        foreach ($motorcycles as $motorcycle) {
+            $motorcycle_id = $motorcycle->id;
+        }
+
+        $now = Carbon::now();
+        $toDate = Carbon::parse("2023-05-29");
+        $fromDate = Carbon::parse("2022-08-20");
+
+        $days = $toDate->diffInDays($now);
+        $months = $toDate->diffInMonths($fromDate);
+        $years = $toDate->diffInYears($fromDate);
+
+        $d = File::all()->where('user_id', $user->id);
+        $documents = json_decode($d);
+        $dlFront = "Driving Licence Front";
+
+        $address = UserAddress::all()->where('user_id', $user->id);
+        return view('customer.show-user', compact("user", "address", "documents", "dlFront", "motorcycles", "days"));
     }
 
     /**
@@ -199,14 +332,14 @@ class DashboardController extends Controller
             ->sortByDesc('id');
 
 
-        return view('home_client.show-motorcycle', compact('motorcycle', 'depositpayments', 'rentalpayments', 'newpayments', 'notes'));
+        return view('customer.show-motorcycle', compact('motorcycle', 'depositpayments', 'rentalpayments', 'newpayments', 'notes'));
     }
 
     public function createDlFront($id)
     {
         $user_id = $id;
-        // dd($user_id);
-        return view('home_client.upload-front')->with('user_id', $user_id);
+
+        return view('customer.upload-front')->with('user_id', $user_id);
     }
 
     public function DlFront(Request $req)
@@ -240,7 +373,7 @@ class DashboardController extends Controller
     {
         $user_id = $id;
         // dd($user_id);
-        return view("home_client.upload-back", compact("user_id")); //->with('user_id', $user_id);
+        return view("customer.upload-back", compact("user_id")); //->with('user_id', $user_id);
     }
 
     public function DlBack(Request $req)
@@ -275,7 +408,7 @@ class DashboardController extends Controller
     {
         $user_id = $id;
         // dd($user_id);
-        return view('home_client.upload-poid')->with('user_id', $user_id);
+        return view('customer.upload-poid')->with('user_id', $user_id);
     }
 
     public function IdProof(Request $req, $id)
@@ -314,7 +447,7 @@ class DashboardController extends Controller
     {
         $user_id = $id;
 
-        return view('home_client.upload-poadd')->with('user_id', $user_id);
+        return view('customer.upload-poadd')->with('user_id', $user_id);
     }
 
     public function AddressProof(Request $req)
@@ -356,7 +489,7 @@ class DashboardController extends Controller
         $motorcycles = Motorcycle::all()
             ->where('user_id', $id);
         // dd($motorcycles);
-        return view('home_client.upload-poins', compact('user_id', 'motorcycles')); //->with('user_id', $user_id);
+        return view('customer.upload-poins', compact('user_id', 'motorcycles')); //->with('user_id', $user_id);
     }
 
     public function InsuranceCertificate(Request $req)
@@ -401,7 +534,7 @@ class DashboardController extends Controller
 
         $user_id = $id;
 
-        return view('home_client.upload-pocbt')->with('user_id', $user_id);
+        return view('customer.upload-pocbt')->with('user_id', $user_id);
     }
 
     public function CbtProof(Request $req)

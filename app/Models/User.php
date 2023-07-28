@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-// use Shopper\Framework\Models\User\User as Authenticatable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,27 +15,18 @@ use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, Billable, Searchable;
+    use HasApiTokens, HasFactory, Notifiable, Searchable;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'name',
         'email',
         'password',
     ];
-
-    /**
-     * Always encrypt the password when it is updated.
-     *
-     * @param $value
-     * @return string
-     */
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -55,7 +45,13 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_users');
+    }
 
     // User Active Now
     public function UserOnline()

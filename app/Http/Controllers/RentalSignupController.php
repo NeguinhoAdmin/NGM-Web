@@ -46,6 +46,12 @@ class RentalSignupController extends Controller
             'post_code' => 'required',
         ]);
 
+        // Generating random 9 figure number - used to generate unique UserName
+        $a = 0;
+        for ($i = 0; $i < 6; $i++) {
+            $a .= mt_rand(0, 4);
+        }
+
         $password = "Rental3786";
 
         // Create the new client
@@ -65,6 +71,7 @@ class RentalSignupController extends Controller
         $user->post_code = $request->post_code;
         $user->is_client = 1;
         $user->role_id = 4;
+        $user->rating = 'good';
         $user->save();
 
         $userId = $user->id;
@@ -132,7 +139,7 @@ class RentalSignupController extends Controller
         $base64_image = $request->input('sign'); // your base64 encoded
         @list($type, $file_data) = explode(';', $base64_image);
         @list(, $file_data) = explode(',', $file_data);
-        $fileName = $request->first_name . '-' . $request->last_name . '-' . str_random(10) . '.' . 'jpg';
+        $fileName = $request->first_name . '-' . $request->last_name . '-' . Carbon::now() . '.' . 'jpg';
         Storage::disk('public')->put($fileName, base64_decode($file_data));
 
         $rental = new Rental();
@@ -154,10 +161,8 @@ class RentalSignupController extends Controller
 
         // Call the PDF create and email function
         $this->PdfAgreement($user, $rental);
-        return redirect()->route('login.show')
+        return redirect()->route('dashboard')
             ->with('success', 'To complete this process, please upload your documents with the link we have sent to your email. Thank you.');
-
-        // return view('pdf.rental-agreement', compact('rental', 'user', 'toDay', 'motorcycle'));
     }
 
     // Send the signed PDF document
@@ -190,8 +195,6 @@ class RentalSignupController extends Controller
 
         Mail::to($data["email"])->send(new RentalAgreement($data));
 
-        // return $pdf->stream();
-        // return route('isRented');
         return redirect()->route('isRented');
     }
 }

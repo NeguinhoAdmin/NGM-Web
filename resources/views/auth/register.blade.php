@@ -1,47 +1,52 @@
-@extends('layouts.auth-master')
+<x-guest-layout>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
 
-@section('content')
-<form method="post" action="{{ route('register.perform') }}">
+        <!-- Name -->
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
 
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-    <img class="mb-4" src="{!! url('/img/logo.png') !!}" alt="" width="25%">
+        <!-- Email Address -->
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
 
-    <h1 class="h3 mb-3 fw-normal">Register</h1>
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
 
-    <div class="form-group form-floating mb-3">
-        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="name@example.com" required="required" autofocus>
-        <label for="floatingEmail">Email address</label>
-        @if ($errors->has('email'))
-        <span class="text-danger text-left">{{ $errors->first('email') }}</span>
-        @endif
-    </div>
+            <x-text-input id="password" class="block mt-1 w-full"
+                            type="password"
+                            name="password"
+                            required autocomplete="new-password" />
 
-    <div class="form-group form-floating mb-3">
-        <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
-        <label for="floatingName">Username</label>
-        @if ($errors->has('username'))
-        <span class="text-danger text-left">{{ $errors->first('username') }}</span>
-        @endif
-    </div>
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
 
-    <div class="form-group form-floating mb-3">
-        <input type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Password" required="required">
-        <label for="floatingPassword">Password</label>
-        @if ($errors->has('password'))
-        <span class="text-danger text-left">{{ $errors->first('password') }}</span>
-        @endif
-    </div>
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-    <div class="form-group form-floating mb-3">
-        <input type="password" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}" placeholder="Confirm Password" required="required">
-        <label for="floatingConfirmPassword">Confirm Password</label>
-        @if ($errors->has('password_confirmation'))
-        <span class="text-danger text-left">{{ $errors->first('password_confirmation') }}</span>
-        @endif
-    </div>
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                            type="password"
+                            name="password_confirmation" required autocomplete="new-password" />
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
 
-    @include('auth.partials.copy')
-</form>
-@endsection
+        <div class="flex items-center justify-end mt-4">
+            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                {{ __('Already registered?') }}
+            </a>
+
+            <x-primary-button class="ml-4">
+                {{ __('Register') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

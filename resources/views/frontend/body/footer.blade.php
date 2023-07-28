@@ -4,7 +4,7 @@
             <div class="col-sm-6 col-md-2">
                 <div class="widget widget-link link-login">
                     <h3 class="">Account</h3>
-                    @auth
+
                     <ul>
                         <li><a href="/contact">Contact Us</a></li>
                         <li><a href="/dashboard">My Account</a></li>
@@ -15,18 +15,6 @@
                         <li><a href="#">Returns</a></li>
                         <li><a href="#">Help & FAQs</a></li>
                     </ul>
-                    @endauth
-
-                    @guest
-                    <ul>
-                        <li>
-                            <a href="{{ route('login.perform') }}">Login </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register.perform') }}">Register</a>
-                        </li>
-                    </ul>
-                    @endguest
 
                 </div><!-- /.widget -->
             </div><!-- /.col-md-3 -->

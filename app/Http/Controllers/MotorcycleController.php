@@ -85,7 +85,7 @@ class MotorcycleController extends Controller
         }
 
         $count = $motorcycles->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     /**
@@ -95,7 +95,7 @@ class MotorcycleController extends Controller
      */
     public function create()
     {
-        return view('motorcycles.create');
+        return view('admin.motorcycle-create');
     }
 
     public function createNewMotorcycle()
@@ -226,7 +226,7 @@ class MotorcycleController extends Controller
         $payment->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $payment->save();
 
-        return to_route('motorcycles.show', [$request->motorcycle_id])
+        return to_route('motorcycle.show', [$request->motorcycle_id])
             ->with('success', 'Rental deposit updated.');
     }
 
@@ -263,7 +263,7 @@ class MotorcycleController extends Controller
         $payment->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $payment->save();
 
-        return to_route('motorcycles.show', [$request->motorcycle_id])
+        return to_route('motorcycle.show', [$request->motorcycle_id])
             ->with('success', 'Rental payment updated.');
     }
 
@@ -271,67 +271,63 @@ class MotorcycleController extends Controller
     public function clientForRent(Request $request, $id)
     {
         $user_id = $id;
+
         $request->session()->put('user_id', $id);
 
         if ($request->filled('search')) {
             $motorcycles = Motorcycle::search($request->search)->get();
         } else {
-            // $motorcycles = Motorcycle::get();
             $m = Motorcycle::all()
                 ->where('availability', '=', 'for rent')
                 ->sortByDesc('id');
             $motorcycles = json_decode($m);
         }
-        // dd($motorcycles);
+
         // $count = $motorcycles->count();
 
-        return view('motorcycles.index-for-rent', compact('motorcycles', 'user_id'));
+        return view('admin.motorcycles-rental', compact('motorcycles', 'user_id'));
     }
 
     // Assign motorcycle to client for rental
     public function addToClient(Request $request, $motorcycle_id)
     {
-        $user_id = $request->session()->get('user_id', 'default');
-        // $request->session()->put('motorcycle_id', $motorcycle_id);
-        $authUser = Auth::user();
-
         $motorcycle = Motorcycle::findOrFail($motorcycle_id);
-        $motorcycleDeposit = $motorcycle->rental_price * 2;
         $rentalPrice = $motorcycle->rental_price;
         $registration = $motorcycle->registration;
-        $todayDate = Carbon::now();
-        $nextPayDate = Carbon::now();
-        // $nextPayDate->addDays(7);
+
+        $authUser = Auth::user()->first_name . " " . Auth::user()->last_name;
 
         // Create first rental payment
         $payment = new RentalPayment();
         $payment->payment_type = 'rental';
         $payment->rental_price = $rentalPrice;
         $payment->registration = $motorcycle->registration;
-        $payment->payment_due_date = $todayDate;
-        $payment->payment_next_date = $nextPayDate->addDays(7);
+        $payment->payment_due_date = Carbon::now();
+        $payment->payment_next_date = Carbon::now()->addDays(7);
         $payment->received = null;
         $payment->outstanding = $payment->rental_price;
-        $payment->user_id = $user_id;
+        $payment->user_id = $request->session()->get('user_id');
         $payment->payment_due_count = 7;
-        $payment->created_at = $todayDate;
-        $payment->auth_user = $authUser->first_name . " " . $authUser->last_name;
+        $payment->created_at = Carbon::now();
+        $payment->auth_user = $authUser;
         $payment->motorcycle_id = $motorcycle_id;
         $payment->save();
 
         // Create deposit
-        $payment = new RentalPayment();
-        $payment->payment_type = 'deposit';
-        $payment->rental_deposit = 300;
+        $deposit = new RentalPayment();
+        $deposit->payment_type = 'deposit';
+        $deposit->rental_deposit = 300;
         $payment->registration = $motorcycle->registration;
-        $payment->payment_due_date = $todayDate;
-        $payment->received = 00.00;
-        $payment->outstanding = $payment->rental_deposit;
-        $payment->user_id = $user_id;
-        $payment->created_at = $todayDate;
-        $payment->auth_user = $authUser->first_name . " " . $authUser->last_name;
-        $payment->motorcycle_id = $motorcycle_id;
-        $payment->save();
+        $deposit->payment_due_date = Carbon::now();
+        $deposit->received = 00.00;
+        $deposit->outstanding = $deposit->rental_deposit;
+        $deposit->user_id = $request->session()->get('user_id');
+        $deposit->created_at = Carbon::now();
+        $deposit->auth_user = $authUser;
+        $deposit->motorcycle_id = $motorcycle_id;
+        $deposit->save();
+
+        $user = $request->session()->get('user_id');
 
         $response = Http::withHeaders([
             'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
@@ -343,31 +339,35 @@ class MotorcycleController extends Controller
         $request = json_decode($response->body());
 
         // Update Motorcycle Status
-        Motorcycle::findOrFail($motorcycle_id)->update([
-            'user_id' => $user_id,
-            'availability' => 'rented',
-            'rental_deposit' => $motorcycleDeposit,
-            'rental_start_date' => $todayDate,
-            'next_payment_date' => Carbon::now()->addDays(7),
-            'make' => $request->make,
-            'colour' => $request->colour,
-            'year' => $request->yearOfManufacture,
-            'engine' => $request->engineCapacity,
-            'fuel_type' => $request->fuelType,
-            'wheel_plan' => $request->wheelplan,
-            'tax_status' => $request->taxStatus,
-            'tax_due_date' => $request->taxDueDate,
-            'mot_status' => $request->motStatus,
-            'co2_emissions' => $request->co2Emissions,
-            'marked_for_export' => $request->markedForExport,
-            'type_approval' => $request->typeApproval,
-            'last_v5_issue_date' => $request->dateOfLastV5CIssued,
-            'mot_expiry_date' => $request->motExpiryDate,
-            'month_of_first_registration' => $request->monthOfFirstRegistration,
-        ]);
+        $motorcycle = Motorcycle::find($motorcycle_id);
+        $motorcycle->user_id = $user;
+        $motorcycle->availability = 'rented';
+        $motorcycle->rental_deposit = 300;
+        $motorcycle->rental_start_date = Carbon::now();
+        $motorcycle->next_payment_date = Carbon::now()->addDays(7);
+        $motorcycle->make = $request->make;
+        $motorcycle->colour = $request->colour;
+        $motorcycle->year = $request->yearOfManufacture;
+        $motorcycle->engine = $request->engineCapacity;
+        $motorcycle->fuel_type = $request->fuelType;
+        $motorcycle->wheel_plan = $request->wheelplan;
+        $motorcycle->tax_status = $request->taxStatus;
+        $motorcycle->tax_due_date = $request->taxDueDate;
+        $motorcycle->mot_status = $request->motStatus;
+        $motorcycle->co2_emissions = $request->co2Emissions;
+        $motorcycle->marked_for_export = $request->markedForExport;
+        $motorcycle->type_approval = $request->typeApproval;
+        $motorcycle->last_v5_issue_date = $request->dateOfLastV5CIssued;
+        $motorcycle->mot_expiry_date = $request->motExpiryDate;
+        $motorcycle->month_of_first_registration = $request->monthOfFirstRegistration;
+        $motorcycle->save();
 
-        return to_route('motorcycles.show', [$motorcycle_id])
-            ->with('success', 'Motorcycle assigned to this client.');
+        return redirect()->route('motorcycle.show', [$motorcycle->id])
+            ->with('message', 'Motorcycle assigned to client successfully!');
+
+        // return to_route('admin.motorcycle.rental', [$motorcycle->id])
+        //     // return redirect('rentals/', [$motorcycle_id])
+        //     ->with('success', 'Motorcycle assigned to this client.');
     }
 
     // Remove the rental motorcycle from the client
@@ -381,7 +381,7 @@ class MotorcycleController extends Controller
             'availability' => 'for rent',
         ]);
 
-        return to_route('users.show', [$user_id])
+        return to_route('show.user', [$user_id])
             ->with('success', 'Motorcycle removed from this client.');
     }
 
@@ -394,7 +394,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function missing()
@@ -405,7 +405,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function accident()
@@ -416,7 +416,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function impounded()
@@ -427,7 +427,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function isForRent()
@@ -438,7 +438,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function isRented()
@@ -449,7 +449,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function isForSale()
@@ -459,7 +459,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function inForRepairs()
@@ -469,7 +469,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function catB()
@@ -479,7 +479,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
     public function claimInProgress()
     {
@@ -488,7 +488,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     public function isSold()
@@ -498,7 +498,7 @@ class MotorcycleController extends Controller
         $motorcycles = json_decode($m);
 
         $count = $m->count();
-        return view('motorcycles.index', compact('motorcycles', 'count'));
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
     /**
@@ -507,7 +507,7 @@ class MotorcycleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $motorcycle_id)
+    public function show($motorcycle_id)
     {
         $today = Carbon::now('Europe/London');
         $dayAfter = Carbon::now()->modify('+2 day')->format('Y-m-d');
@@ -547,12 +547,12 @@ class MotorcycleController extends Controller
 
         $rentalpayments = RentalPayment::all()
             ->where('motorcycle_id', $motorcycle_id)
-            ->where('outstanding', '>', 0)
+            // ->where('outstanding', '>', 0)
             ->where('payment_type', '=', 'rental')
             ->sortByDesc('id');
 
 
-        return view('motorcycles.show', compact('motorcycle', 'depositpayments', 'rentalpayments', 'newpayments', 'notes', 'user'));
+        return view('admin.motorcycle', compact('motorcycle', 'depositpayments', 'rentalpayments', 'newpayments', 'notes', 'user'));
     }
 
     /**
@@ -566,7 +566,7 @@ class MotorcycleController extends Controller
         $motorcycle = Motorcycle::find($id);
         // $motorcycle = json_decode($m);
 
-        return view('motorcycles.edit', compact('motorcycle'));
+        return view('admin.motorcycle-edit', compact('motorcycle'));
     }
 
     /**
@@ -578,12 +578,10 @@ class MotorcycleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
         $model = $request->model;
         $availability = $request->availability;
         $rentalPrice = $request->rental_price;
         $salePrice = $request->sale_used_price;
-        // dd($request->sale_used_price);
         $response = Http::withHeaders([
             'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
             'Content-Type' => 'application/json',
@@ -619,7 +617,7 @@ class MotorcycleController extends Controller
             'availability' => $availability,
         ]);
 
-        return to_route('motorcycles.show', [$id])
+        return to_route('motorcycle.show', [$id])
             ->with('success', 'Vehicle details have been updated.');
     }
 
@@ -698,7 +696,7 @@ class MotorcycleController extends Controller
      */
     public function vehicleCheckForm()
     {
-        return view('motorcycles.check-vehicle');
+        return view('admin.check-reg');
     }
 
     public function vehicleCheck(Request $request)
@@ -731,9 +729,7 @@ class MotorcycleController extends Controller
         $motorcycle->wheel_plan = $request->wheelplan;
         $motorcycle->month_of_first_registration = $request->monthOfFirstRegistration;
 
-        // dd($motorcycle);
-
-        return view('motorcycles.show-check', compact('motorcycle'))
+        return view('admin.check-show', compact('motorcycle'))
             ->with('success', 'Vehicle information retrieved successfully.');;
     }
 

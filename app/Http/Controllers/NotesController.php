@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Motorcycle;
+use Svg\Tag\Rect;
 use App\Models\Note;
+use App\Models\Motorcycle;
 use Illuminate\Http\Request;
 use App\Models\RentalPayment;
-use Svg\Tag\Rect;
+use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
 {
@@ -56,24 +57,24 @@ class NotesController extends Controller
         $note->note = $request->note;
         $note->save();
 
-        return to_route('motorcycles.show', [$motorcycle_id])
+        return to_route('motorcycle.show', [$motorcycle_id])
             ->with('success', 'Note logged against payment.');
     }
 
     // Save notes made on customers
     public function UserNote(Request $request)
     {
-        // $user_id = $request->user_id;
         $validated = $request->validate([
             'note' => 'required',
         ]);
 
         $note = new Note();
         $note->user_id = $request->user_id;
-        $note->note = $request->note;
+        $note->motorcycle_id = $request->motorcycle_id;
+        $note->note = $request->note . "</br> Logged By: " . Auth::user()->first_name;
         $note->save();
 
-        return to_route('users.show', [$request->id])
+        return to_route('motorcycle.show', [$request->motorcycle_id])
             ->with('success', 'Note has been saved');
     }
 

@@ -30,18 +30,16 @@ class RentalPaymentsController extends Controller
     {
         if ($request->filled('search')) {
             $rentalpayments = RentalPayment::search($request->search)->get();
-            // ->where('outstanding', '>', 0);
         } else {
             $rentalpayments = RentalPayment::all()
                 ->where('outstanding', '>', 0)
                 ->where('payment_type', '=', 'rental');
-            // ->sortBy('payment_due_date');
         }
 
         $count = $rentalpayments->count();
         $paymentType = 'Rental';
 
-        return view('payments.index', compact('rentalpayments', 'count', 'paymentType'));
+        return view('admin.payments-index', compact('rentalpayments', 'count', 'paymentType'));
     }
 
     // View deposit payment types
@@ -56,7 +54,7 @@ class RentalPaymentsController extends Controller
         $count = $dp->count();
         $paymentType = 'Deposit';
 
-        return view('payments.index', compact('rentalpayments', 'count', 'paymentType'));
+        return view('admin.payments-index', compact('rentalpayments', 'count', 'paymentType'));
     }
 
     /**

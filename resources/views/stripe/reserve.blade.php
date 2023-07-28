@@ -76,7 +76,7 @@
                             </form>
                         </li>
                         <li class="box-cart nav-top-cart-wrapper">
-                            <a class="icon_cart nav-cart-trigger " href="/cart"><span> {{ Cart::instance('default')->count() }}</span></a>
+                            <a class="icon_cart nav-cart-trigger " href="/cart"><span> </span></a>
                         </li>
                     </ul>
                 </div><!-- /.container-fluid -->
