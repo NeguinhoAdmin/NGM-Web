@@ -90,21 +90,21 @@
                     <div class="form-text-wrap clearfix">
                         <div class="your-name clearfix mb-3">
                             <label>Your Name</label>
-                            <input type="text" aria-required="true" size="30" value="" name="name" id="name" value="{{ old('name') }}">
+                            <input type="text" aria-required="true" size="30" value="" name="name" id="name" value="{{ old('name') }}" style="color: #353535;" required>
                         </div>
                         <div class="your-phone-number clearfix mb-3">
                             <label>Your Phone Number</label>
-                            <input type="text" aria-required="true" size="30" value="" name="phone" id="phone" value="{{ old('phone') }}">
+                            <input type="text" aria-required="true" size="30" value="" name="phone" id="phone" value="{{ old('phone') }}" style="color: #353535;" required>
                         </div>
                         <div class="phone-email clearfix mb-3">
                             <label>Your Email</label>
-                            <input type="text" aria-required="true" size="30" value="" name="email" id="email" value="{{ old('email') }}">
+                            <input type="text" aria-required="true" size="30" value="" name="email" id="email" value="{{ old('email') }}" style="color: #353535;" required>
                         </div>
                     </div>
 
                     <div class="mb-3">
-                        <label>Language Preference<span><span>*</span></span></label>
-                        <div><select name='language' id='language' class='' aria-required="true" aria-invalid="false" value="{{ old('language') }}">
+                        <label>Language Preference<span>*</span></label>
+                        <div><select name='language' id='language' class='' aria-required="true" aria-invalid="false" value="{{ old('language') }}" required>
                                 <option value='English'>English</option>
                                 <option value='Arabic'>Arabic</option>
                                 <option value='Bengali'>Bengali</option>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="mb-3"><label>Relevant Vehicle Type<span><span>*</span></span></label>
                         <div>
-                            <select name="vehicle_type" id="vehicle_type" aria-required="true" aria-invalid="false" value="{{ old('vehicle_type') }}">
+                            <select name="vehicle_type" id="vehicle_type" aria-required="true" aria-invalid="false" value="{{ old('vehicle_type') }}" required>
                                 <option value='Van'>Van</option>
                                 <option value='Car'>Car</option>
                                 <option value='Bicycle'>Bicycle</option>
@@ -126,11 +126,11 @@
                         </div>
                     </div>
                     <div class="form-group mb-3"><label>Where did you hear about us?<span><span>*</span></span></label>
-                        <div class='mb-3'><input name='referal' id='referal' type='text' value='' aria-required="true" aria-invalid="false" value="{{ old('referal') }}" /> </div>
+                        <div class='mb-3'><input name='referal' id='referal' type='text' value='' aria-required="true" aria-invalid="false" value="{{ old('referal') }}" style="color: #353535;" /> </div>
                     </div>
                     <div class="mb-3"><label>By submiting the form you agree to our <a href="/cookie-and-privacy-policy">Privacy Policy </a><span><span>*</span></span></label>
                         <div>
-                            <select name="privacy_policy" id="privacy_policy" value="{{ old('privacy_policy') }}">
+                            <select name="privacy_policy" id="privacy_policy" value="{{ old('privacy_policy') }}" required>
                                 <option value=''>Select</option>
                                 <option value='agreed to privacy policy'>I Agree</option>
                             </select>
