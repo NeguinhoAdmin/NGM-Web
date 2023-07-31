@@ -25,7 +25,7 @@ class FileUploadController extends Controller
         $user_id = $id;
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -44,7 +44,7 @@ class FileUploadController extends Controller
     public function createDlFront($id)
     {
         $user_id = $id;
-        // dd($user_id);
+
         return view('home.upload-front')->with('user_id', $user_id);
     }
 
@@ -58,7 +58,7 @@ class FileUploadController extends Controller
         }
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -78,7 +78,7 @@ class FileUploadController extends Controller
     public function createDlBack($id)
     {
         $user_id = $id;
-        // dd($user_id);
+
         return view("home.upload-back", compact("user_id")); //->with('user_id', $user_id);
     }
 
@@ -90,10 +90,9 @@ class FileUploadController extends Controller
         } else {
             //Your URL didn't match.  This may or may not be a bad thing.
         }
-        // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -113,7 +112,7 @@ class FileUploadController extends Controller
     public function createIdProof($id)
     {
         $user_id = $id;
-        // dd($user_id);
+
         return view('home.upload-poid')->with('user_id', $user_id);
     }
 
@@ -125,10 +124,9 @@ class FileUploadController extends Controller
         } else {
             //Your URL didn't match.  This may or may not be a bad thing.
         }
-        // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -142,17 +140,13 @@ class FileUploadController extends Controller
 
             return to_route('users.show', [$user_id])
                 ->with('success', 'Proof of ID has been uploaded.');
-            // return back()
-            //     ->with('success', 'Proof of ID has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
         }
     }
 
     public function createAddProof($id)
     {
         $user_id = $id;
-        // dd($user_id);
+
         return view('home.upload-poadd')->with('user_id', $user_id);
     }
 
@@ -164,10 +158,9 @@ class FileUploadController extends Controller
         } else {
             //Your URL didn't match.  This may or may not be a bad thing.
         }
-        // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -181,10 +174,6 @@ class FileUploadController extends Controller
 
             return to_route('users.show', [$user_id])
                 ->with('success', 'Proof of Address has been uploaded.');
-            // return back()
-            //     ->with('success', 'Proof of address has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
         }
     }
 
@@ -194,7 +183,7 @@ class FileUploadController extends Controller
 
         $motorcycles = Motorcycle::all()
             ->where('user_id', $id);
-        // dd($motorcycles);
+
         return view('home.upload-poins', compact('user_id', 'motorcycles')); //->with('user_id', $user_id);
     }
 
@@ -208,10 +197,9 @@ class FileUploadController extends Controller
         } else {
             //Your URL didn't match.  This may or may not be a bad thing.
         }
-        // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048',
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048',
             'registration' => 'required',
         ]);
         $fileModel = new File;
@@ -227,10 +215,6 @@ class FileUploadController extends Controller
 
             return to_route('users.show', [$user_id])
                 ->with('success', 'Insurance has been uploaded.');
-            // return back()
-            //     ->with('success', 'Insurance certificate has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
         }
     }
 
@@ -253,7 +237,7 @@ class FileUploadController extends Controller
         }
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -267,10 +251,6 @@ class FileUploadController extends Controller
 
             return to_route('users.show', [$user_id])
                 ->with('success', 'CBT has been uploaded.');
-            // return redirect($previousUrl)
-            //     ->with('success', 'CBT has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
         }
     }
 

@@ -16,21 +16,15 @@ class MailController extends Controller
 {
     public function sendMail($name): RedirectResponse
     {
-        // $name = $request->name;
-
         Mail::to('customerservice@neguinhomotors.co.uk')->send(new ContactUs($name));
 
-        // return view('thank-you');
         return redirect('contacts.thank-you');
     }
 
     public function AccidentManagement($request): RedirectResponse
     {
-        // $name = $request->name;
-
         Mail::to('customerservice@neguinhomotors.co.uk')->send(new AccidentManagement($request));
 
-        // return view('thank-you');
         return redirect('contacts.thank-you');
     }
 }

@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 use App\Models\Filerental;
+use DateTime;
+use Illuminate\Support\Composer;
 
 class MotorcycleController extends Controller
 {
@@ -316,7 +318,7 @@ class MotorcycleController extends Controller
         // Create deposit
         $deposit = new RentalPayment();
         $deposit->payment_type = 'deposit';
-        $deposit->rental_deposit = 300;
+        $deposit->rental_deposit = 300.00;
         $payment->registration = $motorcycle->registration;
         $deposit->payment_due_date = Carbon::now();
         $deposit->received = 00.00;
@@ -342,7 +344,7 @@ class MotorcycleController extends Controller
         $motorcycle = Motorcycle::find($motorcycle_id);
         $motorcycle->user_id = $user;
         $motorcycle->availability = 'rented';
-        $motorcycle->rental_deposit = 300;
+        $motorcycle->rental_deposit = 300.00;
         $motorcycle->rental_start_date = Carbon::now();
         $motorcycle->next_payment_date = Carbon::now()->addDays(7);
         $motorcycle->make = $request->make;
@@ -362,12 +364,14 @@ class MotorcycleController extends Controller
         $motorcycle->month_of_first_registration = $request->monthOfFirstRegistration;
         $motorcycle->save();
 
-        return redirect()->route('motorcycle.show', [$motorcycle->id])
-            ->with('message', 'Motorcycle assigned to client successfully!');
+        $user = User::findOrFail($motorcycle->user_id);
+        $toDay = new DateTime();
+        $deposit = $motorcycle->rental_deposit;
 
-        // return to_route('admin.motorcycle.rental', [$motorcycle->id])
-        //     // return redirect('rentals/', [$motorcycle_id])
-        //     ->with('success', 'Motorcycle assigned to this client.');
+        return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
+
+        // return redirect()->route('motorcycle.show', [$motorcycle->id])
+        //     ->with('message', 'Motorcycle assigned to client successfully!');
     }
 
     // Remove the rental motorcycle from the client

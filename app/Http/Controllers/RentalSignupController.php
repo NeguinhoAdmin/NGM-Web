@@ -125,14 +125,6 @@ class RentalSignupController extends Controller
         return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
     }
 
-    // Show rental rental agreement
-    public function showAgreement(Request $request)
-    {
-        dd($request);
-        $toDay = new DateTime();
-        return view('frontend.legals.rental-agreement', compact('toDay'));
-    }
-
     // Process rental agreement - Save new client signature function
     public function signedAgreement(Request $request)
     {
@@ -161,13 +153,14 @@ class RentalSignupController extends Controller
 
         // Call the PDF create and email function
         $this->PdfAgreement($user, $rental);
-        return redirect()->route('dashboard')
+        return redirect()->route('users')
             ->with('success', 'To complete this process, please upload your documents with the link we have sent to your email. Thank you.');
     }
 
-    // Send the signed PDF document
+    // Save and Send the signed PDF document
     public function PdfAgreement($user, $rental)
     {
+        $registration = $rental->registration;
         $toDay = new DateTime();
         $toDay = Carbon::parse($toDay)->format('d/m/Y');
 
@@ -186,7 +179,7 @@ class RentalSignupController extends Controller
             ->save(public_path('rental-agreement-' . time() . rand(1, 99999) . '.pdf'));
 
         // Send email with PDF to client
-        $data["email"] = $u->email;
+        $data["email"] = [$u->email, 'customerservice@neguinhomotors.co.uk'];
         $data["title"] = "Rental Agreement";
         $data["body"] = "Thank you for renting your motorcycle with Neguinho Motors.";
 
