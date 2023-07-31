@@ -213,8 +213,45 @@ class FileUploadController extends Controller
             $fileModel->file_path = '/storage/' . $filePath;
             $fileModel->save();
 
-            return to_route('users.show', [$user_id])
+            return to_route('dashboard', [$user_id])
                 ->with('success', 'Insurance has been uploaded.');
+        }
+    }
+
+    public function createStatementOfFact($id)
+    {
+        $user_id = $id;
+
+        $motorcycles = Motorcycle::all()
+            ->where('user_id', $user_id)->first();
+
+        return view('home.statementoffact', compact('user_id', 'motorcycles'));
+    }
+
+    public function statementOfFact(Request $req)
+    {
+        $previousUrl = URL()->previous();
+        if (preg_match("/\/(\d+)$/", $previousUrl, $matches)) {
+            $user_id = $matches[1];
+        } else {
+            //Your URL didn't match.  This may or may not be a bad thing.
+        }
+
+        $req->validate([
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
+        ]);
+        $fileModel = new File;
+        if ($req->file()) {
+            $fileName = time() . '_' . $req->file->getClientOriginalName();
+            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+            $fileModel->user_id = $user_id;
+            $fileModel->document_type = "Statement of Fact";
+            $fileModel->name = time() . '_' . $req->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->save();
+
+            return to_route('users.show', [$user_id])
+                ->with('success', 'CBT has been uploaded.');
         }
     }
 

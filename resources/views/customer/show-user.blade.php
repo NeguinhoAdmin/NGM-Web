@@ -54,6 +54,8 @@
         <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-poadd/' . $user->id) }}">Proof of Address</a>
 
         <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-poins/' . $user->id) }}">Insurance</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-statementfact/' . $user->id) }}">Statement of Fact</a>
     </div>
 
     <div class="row align-items-start mt-3">

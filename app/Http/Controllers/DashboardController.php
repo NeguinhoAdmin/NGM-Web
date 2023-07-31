@@ -528,6 +528,48 @@ class DashboardController extends Controller
         }
     }
 
+    public function createStatementOfFact($id)
+    {
+        $user_id = $id;
+
+        $motorcycles = Motorcycle::all()
+            ->where('user_id', $id);
+
+        return view('customer.statementoffact', compact('user_id', 'motorcycles')); //->with('user_id', $user_id);
+    }
+
+    public function statementOfFact(Request $req)
+    {
+        $registration = $req->registration;
+
+        $previousUrl = URL()->previous();
+        if (preg_match("/\/(\d+)$/", $previousUrl, $matches)) {
+            $user_id = $matches[1];
+        } else {
+            //Your URL didn't match.  This may or may not be a bad thing.
+        }
+        // dd($user_id);
+
+        $req->validate([
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048',
+            'registration' => 'required',
+        ]);
+        $fileModel = new File;
+        if ($req->file()) {
+            $fileName = time() . '_' . $req->file->getClientOriginalName();
+            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+            $fileModel->user_id = $user_id;
+            $fileModel->document_type = "Statement of Fact";
+            $fileModel->registration = $registration;
+            $fileModel->name = time() . '_' . $req->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->save();
+
+            return to_route('dashboard', [$user_id])
+                ->with('success', 'Statement of Fact has been uploaded.');
+        }
+    }
+
     public function createCbt($id)
     {
         $previousUrl = URL()->previous();

@@ -119,7 +119,7 @@
                             </div>
                         </div>
 
-                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <!-- <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-outline-success" href="{{ URL::to('/file-dl-front/' . $user->id) }}">Licence Front</a>
 
                             <a class="btn btn-outline-success" href="{{ URL::to('/file-dl-back/' . $user->id) }}">Licence Back</a>
@@ -131,7 +131,9 @@
                             <a class="btn btn-outline-success" href="{{ URL::to('/file-poadd/' . $user->id) }}">Proof of Address</a>
 
                             <a class="btn btn-outline-success" href="{{ URL::to('/file-poins/' . $user->id) }}">Insurance</a>
-                        </div>
+
+                            <a class="btn btn-outline-success" href="{{ URL::to('/statementfact/' . $user->id) }}">Statement of Fact</a>
+                        </div> -->
 
                         <div class="row align-items-start mt-3">
                             <div class="panel-body">

@@ -179,7 +179,7 @@ Route::post('/users', [UserController::class, 'store'])->name('store.users');
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('edit.user');
 Route::patch('/users/{id}', [UserController::class, 'update'])->name('update.users');
 
-// CLIENT DASHBOARD RESOURCES
+// Customer Dashboard Resources
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/client-motorcycle/{id}', [DashboardController::class, 'ClientMotorcycle'])->name('client.motorcycles');
 
@@ -197,6 +197,9 @@ Route::get('/client-file-poins/{id}', [DashboardController::class, 'createInsPro
 Route::post('/client-upload-poins/{id}', [DashboardController::class, 'InsuranceCertificate'])->name('client.InsuranceCertificate');
 Route::get('/client-file-pocbt/{id}', [DashboardController::class, 'createCbt'])->name('client.createCbt');
 Route::post('/client-upload-pocbt/{id}', [DashboardController::class, 'CbtProof'])->name('client.CbtProof');
+Route::get('/client-file-statementfact/{id}', [DashboardController::class, 'createStatementOfFact'])->name('createStatementOfFact');
+Route::post('/client-upload-statementoffact/{id}', [DashboardController::class, 'statementOfFact'])->name('statementOfFact');
+
 Route::get('/client-remove-upload/{id}', [DashboardController::class, 'delete']);
 
 // ADMIN DASHBOARD RESOURCES
