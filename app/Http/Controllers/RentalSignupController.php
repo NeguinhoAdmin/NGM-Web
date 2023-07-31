@@ -125,6 +125,66 @@ class RentalSignupController extends Controller
         return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
     }
 
+    public function customerBikeLink($motorcycle_id, $user_id)
+    {
+        $motorcycle = Motorcycle::findOrFail($motorcycle_id);
+        $user = User::findOrFail($user_id);
+        $deposit = 300.00;
+
+        return view('contacts.customer-rental-signup', compact('user', 'motorcycle', 'deposit'));
+    }
+
+    // Current user new motorcycle allocation
+    public function customerAddRental(Request $request)
+    {
+        // dd($request);
+        $user = User::findOrFail($request->user_id);
+
+        $toDay = Carbon::now();
+        $nextPayDate = Carbon::now();
+
+        // Update motorcycle data
+        $motorcycle = Motorcycle::find($request->motorcycle_id);
+        $motorcycle->user_id = $user->id;
+        $motorcycle->availability = 'rented';
+        $motorcycle->rental_start_date = $toDay;
+        $motorcycle->save();
+
+        // Create rental deposit payment data
+        $payment = new RentalPayment();
+        $payment->payment_type = 'deposit';
+        $payment->rental_deposit = $request->deposit;
+        $payment->registration = $request->registration;
+        $payment->payment_due_date = $toDay;
+        $payment->received = 00.00;
+        $payment->outstanding = $payment->rental_deposit;
+        $payment->user_id = $user->id;
+        $payment->created_at = $toDay;
+        $payment->auth_user = $user->first_name . " " . $user->last_name;
+        $payment->motorcycle_id = $motorcycle->id;
+        $payment->save();
+
+        // Create rental first payment data
+        $payment = new RentalPayment();
+        $payment->payment_type = 'rental';
+        $payment->rental_price = $motorcycle->rental_price;
+        $payment->registration = $motorcycle->registration;
+        $payment->payment_due_date = $toDay;
+        $payment->payment_next_date = $nextPayDate->addDays(7);
+        $payment->received = null;
+        $payment->outstanding = $payment->rental_price;
+        $payment->user_id = $user->id;
+        $payment->payment_due_count = 7;
+        $payment->created_at = $toDay;
+        $payment->auth_user = $user->first_name . " " . $user->last_name;
+        $payment->motorcycle_id = $motorcycle->id;
+        $payment->save();
+
+        $deposit = $request->deposit;
+
+        return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
+    }
+
     // Process rental agreement - Save new client signature function
     public function signedAgreement(Request $request)
     {
@@ -134,8 +194,10 @@ class RentalSignupController extends Controller
         $fileName = $request->first_name . '-' . $request->last_name . '-' . Carbon::now() . '.' . 'jpg';
         Storage::disk('public')->put($fileName, base64_decode($file_data));
 
+        $user = User::findOrFail($request->user_id);
+
         $rental = new Rental();
-        $rental->user_id = $request->user_id;
+        $rental->user_id = $user->id;
         $rental->signature = $fileName;
         $rental->motorcycle_id = $request->motorcycle_id;
         $rental->registration = $request->registration;
@@ -146,14 +208,13 @@ class RentalSignupController extends Controller
         $rental->colour = $request->colour;
         $rental->deposit = $request->deposit;
         $rental->price = $request->rental_price;
-        // $rental->auth_user = $authUser->first_name . " " . $authUser->last_name;
+        $rental->auth_user = $user->first_name . " " . $user->last_name;
         $rental->save();
-
-        $user = User::where('id', $rental->user_id)->first();
 
         // Call the PDF create and email function
         $this->PdfAgreement($user, $rental);
-        return redirect()->route('users')
+
+        return redirect()->route('customer.dashboard')
             ->with('success', 'To complete this process, please upload your documents with the link we have sent to your email. Thank you.');
     }
 

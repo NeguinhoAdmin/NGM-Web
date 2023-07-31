@@ -18,7 +18,7 @@
                 </div>
                 <div class="col">
                     <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-                        {{ __('Motorcycles on ') }}{{ Carbon\Carbon::now()->format('d/m/Y') }}
+                        {{ __('Motorcycles For Rent') }}
                     </h1>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                                     <td>{{$motorcycle->year}}</td>
                                     <td>{{$motorcycle->colour}}</td>
                                     <td>
-                                        <a class="btn btn-outline-primary" href="{{ URL::to('admin-motorcycle/' . $motorcycle->id) }}">Add</a>
+                                        <a class="btn btn-outline-primary" href="{{ URL::to('rental-motorcycle/' . $motorcycle->id . '/' . $user_id) }}">Add</a>
                                     </td>
                                 </tr>
                                 @endforeach

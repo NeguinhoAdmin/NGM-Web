@@ -274,8 +274,6 @@ class MotorcycleController extends Controller
     {
         $user_id = $id;
 
-        $request->session()->put('user_id', $id);
-
         if ($request->filled('search')) {
             $motorcycles = Motorcycle::search($request->search)->get();
         } else {
@@ -284,8 +282,6 @@ class MotorcycleController extends Controller
                 ->sortByDesc('id');
             $motorcycles = json_decode($m);
         }
-
-        // $count = $motorcycles->count();
 
         return view('admin.motorcycles-rental', compact('motorcycles', 'user_id'));
     }
@@ -311,7 +307,7 @@ class MotorcycleController extends Controller
         $payment->user_id = $request->session()->get('user_id');
         $payment->payment_due_count = 7;
         $payment->created_at = Carbon::now();
-        $payment->auth_user = $authUser;
+        $payment->auth_user = "Customer Authorised"; //$authUser;
         $payment->motorcycle_id = $motorcycle_id;
         $payment->save();
 
@@ -325,7 +321,7 @@ class MotorcycleController extends Controller
         $deposit->outstanding = $deposit->rental_deposit;
         $deposit->user_id = $request->session()->get('user_id');
         $deposit->created_at = Carbon::now();
-        $deposit->auth_user = $authUser;
+        $deposit->auth_user = "Customer Authorised"; //$authUser;
         $deposit->motorcycle_id = $motorcycle_id;
         $deposit->save();
 

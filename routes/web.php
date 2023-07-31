@@ -122,13 +122,16 @@ Route::controller(StripePaymentController::class)->group(function () {
 // Subscriber Route
 Route::post('/subscribe', [SubscriberController::class, 'subscribe']);
 
+// Motorcycle Rental SignUp
 Route::controller(RentalSignupController::class)->group(function () {
     Route::get('/rental-signup/{id}', 'rentalSignUp');
     Route::post('/rentalsignup', 'storeSignUp')->name('store.signup');
+    Route::post('/customerrentalsignup', 'customerAddRental')->name('customer.add.rental');
     Route::get('/rental-agreement', 'showAgreement');
     Route::post('/signature-post', 'signedAgreement')->name('sign.agreement');
     Route::get('/pdf-agreement', 'PdfAgreement')->name('pdf.agreement');
 });
+Route::get('/rental-motorcycle/{motorcycle_id}/{user_id}', [RentalSignupController::class, 'customerBikeLink'])->name('rental.motorcycle.rental');
 
 require __DIR__ . '/auth.php';
 
@@ -205,7 +208,7 @@ Route::get('/motorcycles/{id}/edit', [MotorcycleController::class, 'edit'])->nam
 Route::patch('/motorcycles/{id}', [MotorcycleController::class, 'update'])->name('update.motorcycles');
 
 Route::get('/motorcycles-for-rent/{id}', [MotorcycleController::class, 'clientForRent'])->name('admin.motorcycles');
-Route::get('/admin-motorcycle/{motorcycle_id}', [MotorcycleController::class, 'addToClient'])->name('admin.motorcycle.rental');
+// Route::get('/admin-motorcycle/{motorcycle_id}', [MotorcycleController::class, 'addToClient'])->name('admin.motorcycle.rental');
 
 Route::get('added-payment/{id}', [MotorcycleController::class, 'show'])->name('manually.paid');
 

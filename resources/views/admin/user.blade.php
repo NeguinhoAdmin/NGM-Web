@@ -167,10 +167,9 @@
 
                         <h2 class="mb-3"><strong>MOTORCYCLES</strong></h2>
                         <div class="row">
-                            <div class="btn-group" role="group" aria-label="Basic example">
+                            <div class="btn-group mb-3" role="group" aria-label="Basic example">
                                 <a class="btn btn-outline-success" href="{{ URL::to('/motorcycles-for-rent/' . $user->id) }}">Add Motorcycle</a>
                             </div>
-                            <br>
 
                             <!-- List of vehicles rented should go here with link to each vehicles details -->
                             <table class="table table-striped mt-3">
