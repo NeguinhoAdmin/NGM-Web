@@ -91,38 +91,54 @@
                     </div>
                 </div>
 
+                <div class="container">
+                    <div class="row align-items-start">
+                        <h3><strong>TAX & MOT Due Soon</strong></h3>
+                        <div class="col">
+                            <h4>TAX</h4>
+
+                        </div>
+                        <div class="col">
+                            <h4>MOT</h4>
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+                </div>
+
                 @endauth
             </div>
+        </div>
+        <!-- Include Chart.js from a CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-            <!-- Include Chart.js from a CDN -->
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            var rentaldata = JSON.parse("{{ json_encode($rentaldata) }}");
 
-            <script>
-                var rentaldata = JSON.parse("{{ json_encode($rentaldata) }}");
+            const ctx = document.getElementById('rentals');
 
-                const ctx = document.getElementById('rentals');
-
-                // Create a chart that acquires the myChart canvas element and instantiates new Chart
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['For Rent', 'Rented', 'For Sale', 'Sold', 'Repairs', 'Cat B', 'CIP', 'Impounded', 'Accident', 'Missing', 'Stolen'],
-                        datasets: [{
-                            label: 'NGM Motorcycle Fleet Stats',
-                            data: rentaldata, // [33, 12, 24, 1, 0, 0, 0, 0, 0, 0, 0],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
+            // Create a chart that acquires the myChart canvas element and instantiates new Chart
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['For Rent', 'Rented', 'For Sale', 'Sold', 'Repairs', 'Cat B', 'CIP', 'Impounded', 'Accident', 'Missing', 'Stolen'],
+                    datasets: [{
+                        label: 'NGM Motorcycle Fleet Stats',
+                        data: rentaldata, // [33, 12, 24, 1, 0, 0, 0, 0, 0, 0, 0],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
                         }
                     }
-                });
-            </script>
+                }
+            });
+        </script>
 
-        </div>
+
     </div>
 </x-app-layout>

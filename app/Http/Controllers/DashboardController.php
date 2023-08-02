@@ -224,6 +224,10 @@ class DashboardController extends Controller
         $labels = ['For Rent', 'Rented', 'For Sale', 'Sold', 'Repairs', 'Cat B', 'CIP', 'Impounded', 'Accident', 'Missing', 'Stolen'];
         $rentaldata =  [$forRentCount, $rentedCount, $forSaleCount, $soldCount, $repairsCount, $catBCount, $claimInProgressCount, $impoundedCount, $accident, $missing, $stolenCount];
 
+        // Search for bikes with MOT & TAX due in the next 10 days
+        $taxDue = Motorcycle::where('tax_due_date', '<', Carbon::now()->addDays(10));
+        $motDue = Motorcycle::where('mot_expiry_date', '<', Carbon::now()->addDays(10));
+
         return view('admin.dashboard', compact(
             'labels',
             'rentaldata',
@@ -245,6 +249,8 @@ class DashboardController extends Controller
             'rpayments',
             'rrpayments',
             'ddpayments',
+            'taxDue',
+            'motDue',
         ));
     }
 
