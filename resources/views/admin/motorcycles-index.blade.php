@@ -38,29 +38,29 @@
                 <div class="container">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <div class="btn">
-                            <a class="btn btn-primary" href="{{ URL::to('motorcycles/') }}">All</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('motorcycles/') }}">All</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('is-for-rent/') }}">For Rent</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('is-for-rent/') }}">For Rent</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('is-rented/') }}">Rented</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('is-rented/') }}">Rented</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('is-for-sale/') }}">For Sale</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('is-for-sale/') }}">For Sale</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('is-sold/') }}">Sold</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('is-sold/') }}">Sold</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('in-for-repairs/') }}">Repairs</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('in-for-repairs/') }}">Repairs</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('cat-b/') }}">Cat B</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('cat-b/') }}">Cat B</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('claim-in-progress/') }}">Claim In Progress</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('claim-in-progress/') }}">Claim In Progress</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('impounded/') }}">Impounded</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('impounded/') }}">Impounded</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('accident/') }}">Accident</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('accident/') }}">Accident</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('missing/') }}">Missing</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('missing/') }}">Missing</a>
 
-                            <a class="btn btn-primary" href="{{ URL::to('stolen/') }}">Stolen</a>
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('stolen/') }}">Stolen</a>
                         </div>
                     </div>
                 </div>
