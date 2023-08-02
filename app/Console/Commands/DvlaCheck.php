@@ -28,11 +28,10 @@ class DvlaCheck extends Command
      */
     public function handle()
     {
-        // $motorcycles = Motorcycle::where('availability', '=', 'for rent');
-
         $motorcycles = Motorcycle::whereNull('mot_expiry_date');
 
         foreach ($motorcycles as $motorcycle) {
+            $id = $motorcycle->id;
             $response = Http::withHeaders([
                 'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
                 'Content-Type' => 'application/json',
@@ -42,12 +41,38 @@ class DvlaCheck extends Command
 
             $request = json_decode($response->body());
 
-            Motorcycle::findOrFail($motorcycle->id)->update([
-                'tax_status' => $request->taxStatus,
-                'tax_due_date' => $request->taxDueDate,
-                'mot_status' => $request->motStatus,
-                'mot_expiry_date' => $request->motExpiryDate,
-            ]);
+            if (isset($request->taxStatus)) {
+                $motorcycle = Motorcycle::query()
+                    ->where('id', $id)
+                    ->update([
+                        'tax_status' => $request->taxStatus,
+                        'tax_due_date' => $request->taxDueDate,
+                    ]);
+            } else {
+                $motorcycle = Motorcycle::query()
+                    ->where('id', $id)
+                    ->update(['tax_status' => 'No details held by DVLA']);
+            }
+
+            if (isset($request->motStatus)) {
+                $motorcycle = Motorcycle::query()
+                    ->where('id', $id)
+                    ->update([
+                        'mot_status' => $request->motStatus,
+                        'mot_expiry_date' => $request->motExpiryDate,
+                    ]);
+            } else {
+                $motorcycle = Motorcycle::query()
+                    ->where('id', $id)
+                    ->update(['mot_status' => 'No details held by DVLA']);
+            }
+
+            $motorcycle = Motorcycle::query()
+                ->where('id', $id)
+                ->update([
+                    'mot_status' => $request->motStatus,
+                    'mot_expiry_date' => $request->motExpiryDate,
+                ]);
         }
     }
 }

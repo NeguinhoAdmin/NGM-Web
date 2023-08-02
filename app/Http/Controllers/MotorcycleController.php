@@ -614,7 +614,7 @@ class MotorcycleController extends Controller
             'mot_status' => $request->motStatus,
             'co2_emissions' => $request->co2Emissions,
             'marked_for_export' => $request->markedForExport,
-            'type_approval' => $request->typeApproval,
+            // 'type_approval' => $request->typeApproval,
             'last_v5_issue_date' => $request->dateOfLastV5CIssued,
             'mot_expiry_date' => $request->motExpiryDate,
             'month_of_first_registration' => $request->monthOfFirstRegistration,
@@ -626,6 +626,16 @@ class MotorcycleController extends Controller
             'sale_used_price' => $salePrice,
             'availability' => $availability,
         ]);
+
+        if (isset($request->typeApproval)) {
+            $motorcycle = Motorcycle::query()
+                ->where('id', $id)
+                ->update(['type_approval' => $request->typeApproval]);
+        } else {
+            $motorcycle = Motorcycle::query()
+                ->where('id', $id)
+                ->update(['type_approval' => 'No DVLA Data']);
+        }
 
         return to_route('motorcycle.show', [$id])
             ->with('success', 'Vehicle details have been updated.');
