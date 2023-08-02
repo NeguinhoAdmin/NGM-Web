@@ -352,7 +352,7 @@ class DashboardController extends Controller
         }
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -387,7 +387,7 @@ class DashboardController extends Controller
         // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -422,7 +422,7 @@ class DashboardController extends Controller
         // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -461,7 +461,7 @@ class DashboardController extends Controller
         // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -475,10 +475,6 @@ class DashboardController extends Controller
 
             return to_route('dashboard', [$user_id])
                 ->with('success', 'Proof of Address has been uploaded.');
-            // return back()
-            //     ->with('success', 'Proof of address has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
         }
     }
 
@@ -488,7 +484,7 @@ class DashboardController extends Controller
 
         $motorcycles = Motorcycle::all()
             ->where('user_id', $id);
-        // dd($motorcycles);
+
         return view('customer.upload-poins', compact('user_id', 'motorcycles')); //->with('user_id', $user_id);
     }
 
@@ -502,10 +498,9 @@ class DashboardController extends Controller
         } else {
             //Your URL didn't match.  This may or may not be a bad thing.
         }
-        // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048',
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048',
             'registration' => 'required',
         ]);
         $fileModel = new File;
@@ -521,10 +516,6 @@ class DashboardController extends Controller
 
             return to_route('dashboard', [$user_id])
                 ->with('success', 'Insurance has been uploaded.');
-            // return back()
-            //     ->with('success', 'Insurance certificate has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
         }
     }
 
@@ -548,10 +539,9 @@ class DashboardController extends Controller
         } else {
             //Your URL didn't match.  This may or may not be a bad thing.
         }
-        // dd($user_id);
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048',
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048',
             'registration' => 'required',
         ]);
         $fileModel = new File;
@@ -589,7 +579,7 @@ class DashboardController extends Controller
         }
 
         $req->validate([
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf,jpg,png|max:2048'
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
         ]);
         $fileModel = new File;
         if ($req->file()) {
@@ -603,10 +593,40 @@ class DashboardController extends Controller
 
             return to_route('dashboard', [$user_id])
                 ->with('success', 'CBT has been uploaded.');
-            // return redirect($previousUrl)
-            //     ->with('success', 'CBT has been uploaded.')
-            //     ->with('file', $fileName)
-            //     ->with('user_id', $user_id);
+        }
+    }
+
+    public function createNationalInsurance($id)
+    {
+        $user_id = $id;
+
+        return view('customer.upload-ni')->with('user_id', $user_id);
+    }
+
+    public function nationalInsurance(Request $req)
+    {
+        $previousUrl = URL()->previous();
+        if (preg_match("/\/(\d+)$/", $previousUrl, $matches)) {
+            $user_id = $matches[1];
+        } else {
+            //Your URL didn't match.  This may or may not be a bad thing.
+        }
+
+        $req->validate([
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048'
+        ]);
+        $fileModel = new File;
+        if ($req->file()) {
+            $fileName = time() . '_' . $req->file->getClientOriginalName();
+            $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+            $fileModel->user_id = $user_id;
+            $fileModel->document_type = "National Insurance";
+            $fileModel->name = time() . '_' . $req->file->getClientOriginalName();
+            $fileModel->file_path = '/storage/' . $filePath;
+            $fileModel->save();
+
+            return to_route('dashboard', [$user_id])
+                ->with('success', 'The front of the driving licence has been uploaded.');
         }
     }
 

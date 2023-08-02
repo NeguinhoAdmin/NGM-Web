@@ -23,6 +23,7 @@ return array(
     'AlgoliaSearch\\PlacesIndex' => $vendorDir . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/PlacesIndex.php',
     'AlgoliaSearch\\SynonymType' => $vendorDir . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/SynonymType.php',
     'AlgoliaSearch\\Version' => $vendorDir . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Version.php',
+    'App\\Console\\Commands\\DvlaCheck' => $baseDir . '/app/Console/Commands/DvlaCheck.php',
     'App\\Console\\Commands\\newBill' => $baseDir . '/app/Console/Commands/newBill.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',

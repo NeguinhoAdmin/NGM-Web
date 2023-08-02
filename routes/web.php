@@ -199,6 +199,8 @@ Route::get('/client-file-pocbt/{id}', [DashboardController::class, 'createCbt'])
 Route::post('/client-upload-pocbt/{id}', [DashboardController::class, 'CbtProof'])->name('client.CbtProof');
 Route::get('/client-file-statementfact/{id}', [DashboardController::class, 'createStatementOfFact'])->name('createStatementOfFact');
 Route::post('/client-upload-statementoffact/{id}', [DashboardController::class, 'statementOfFact'])->name('statementOfFact');
+Route::get('/client-file-ni/{id}', [DashboardController::class, 'createNationalInsurance'])->name('createStatementOfFact');
+Route::post('/client-upload-ni/{id}', [DashboardController::class, 'nationalInsurance'])->name('statementOfFact');
 
 Route::get('/client-remove-upload/{id}', [DashboardController::class, 'delete']);
 

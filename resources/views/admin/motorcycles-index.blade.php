@@ -16,10 +16,6 @@
                                 <button class="btn btn-outline-primary" type="submit" id="button-addon2">Search</button>
                             </form>
                         </div>
-
-                        <!-- <div class="btn">
-                            <a class="btn btn-outline-primary" href="{{ URL::to('/create-new-motorcycle') }}">Add New Motorcycle</a>
-                        </div> -->
                     </div>
                 </div>
                 <div class="col col-lg-4">
@@ -28,6 +24,16 @@
                     </h1>
                 </div>
             </div>
+            <!-- <div class="row">
+                <form>
+                    <select class="form-select" aria-label="Availability" id="availability_dd">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </form>
+            </div> -->
             <div class="row">
                 <div class="container">
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -134,4 +140,11 @@
             </div>
         </div>
     </div>
+
+    <!-- <script>
+        var select = document.getElementById('availability_dd');
+        select.addEventListener('change', function() {
+            this.form.submit();
+        }, false);
+    </script> -->
 </x-app-layout>

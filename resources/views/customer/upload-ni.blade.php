@@ -15,8 +15,9 @@
         <div class="container">
             <div class="row align-items-start">
                 <div class="col">
-                    <form action="/client-upload-poid/' . $user_id" method="post" enctype="multipart/form-data">
-                        <h3 class="text-center mb-5">Upload Proof of ID</h3>
+                    <form action="/client-upload-ni/' . $user_id" method="post" enctype="multipart/form-data">
+                        <h3 class="text-center mb-5">Upload Your National Insurance</h3>
+
                         @csrf
                         @if ($message = Session::get('success'))
                         <div class="alert alert-success">
@@ -32,6 +33,7 @@
                             </ul>
                         </div>
                         @endif
+
                         <div class="custom-file">
                             <input type="file" name="file" class="input" id="chooseFile">
                             <!-- <label class="custom-file-label" for="chooseFile">Select file</label> -->

@@ -56,6 +56,8 @@
         <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-poins/' . $user->id) }}">Insurance</a>
 
         <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-statementfact/' . $user->id) }}">Statement of Fact</a>
+
+        <a type="button" class="btn btn-outline-success" href="{{ URL::to('/client-file-ni/' . $user->id) }}">National Insurance</a>
     </div>
 
     <div class="row align-items-start mt-3">

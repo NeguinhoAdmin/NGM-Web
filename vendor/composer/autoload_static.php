@@ -597,6 +597,7 @@ class ComposerStaticInitc0d80a388162cc3ec62fa0cada1f9017
         'AlgoliaSearch\\PlacesIndex' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/PlacesIndex.php',
         'AlgoliaSearch\\SynonymType' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/SynonymType.php',
         'AlgoliaSearch\\Version' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/AlgoliaSearch/Version.php',
+        'App\\Console\\Commands\\DvlaCheck' => __DIR__ . '/../..' . '/app/Console/Commands/DvlaCheck.php',
         'App\\Console\\Commands\\newBill' => __DIR__ . '/../..' . '/app/Console/Commands/newBill.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',

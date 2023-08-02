@@ -223,12 +223,6 @@ class RentalPaymentsController extends Controller
 
     public function voidPayment(Request $request)
     {
-        // $payment = RentalPayment::find($request->payment_id);
-
-        // $payment = RentalPayment::findOrFail($request->playment_id)->update([
-        //     'deleted_by' => auth::user()->first_name . " " . auth::user()->last_name,
-        // ]);
-
         $payment = RentalPayment::find($request->payment_id);
         $payment->delete($payment);
 

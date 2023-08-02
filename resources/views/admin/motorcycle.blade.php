@@ -39,7 +39,7 @@
                 </div>
                 <div class="col">
                     <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-                        {{ __('Motorcycles on ') }}{{ Carbon\Carbon::now()->format('d/m/Y') }}
+                        {{ __('Motorcycle Reg: ') }} <strong>{{ $motorcycle->registration }}</strong>
                     </h1>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         <div class="card-body pd-remove-small pt-0">
                             <table class="table">
                                 <tbody>
-                                    <tr class="text-right">
+                                    <tr>
                                         <td>Make </td>
                                         <td class="text-end text-capitalize">{{ $motorcycle->make}}</td>
                                     </tr>
@@ -109,22 +109,28 @@
                                         <td>Tax Due Date </td>
                                         <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->tax_due_date)->format('d/m/Y') }}</td>
                                     </tr>
+                                    @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
                                     <tr>
                                         <td>MOT Status </td>
                                         <td class="text-end">{{$motorcycle->mot_status}}</td>
                                     </tr>
-
                                     <tr>
                                         <td>MOT Expiry Date </td>
                                         <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</td>
                                     </tr>
+                                    @else
+                                    <tr>
+                                        <td>MOT Status </td>
+                                        <td class="text-end">{{$motorcycle->mot_status}}</td>
+                                    </tr>
+                                    @endif
                                     <tr>
                                         <td>C02 Emmissions </td>
                                         <td class="text-end">{{$motorcycle->co2_emissions}}</td>
                                     </tr>
                                     <tr>
                                         <td>Marked for Export </td>
-                                        <td class="text-end">{{$motorcycle->marked_for_export}}</td>
+                                        <td class="text-end">{{$motorcycle->marked_for_export ? 'TRUE' : 'FALSE'}}</td>
                                     </tr>
                                     <tr>
                                         <td>Type Approval </td>

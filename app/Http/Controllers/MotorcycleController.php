@@ -184,7 +184,7 @@ class MotorcycleController extends Controller
         $motorcycle->type_approval = $request->typeApproval;
         $motorcycle->last_v5_issue_date = $motorcycleGov->dateOfLastV5CIssued;
         $motorcycle->month_of_first_registration = $motorcycleGov->monthOfFirstRegistration;
-        // $motorcycle->euro_status = $motorcycleGov->euroStatus;
+        $motorcycle->euro_status = $motorcycleGov->euroStatus;
         $motorcycle->availability = $request->availability;
 
         if ($request->file()) {
@@ -217,14 +217,9 @@ class MotorcycleController extends Controller
         $authUser = Auth::user();
 
         $payment = RentalPayment::find($transaction->id);
-        // $payment->payment_due_date = $motorcycle->rental_start_date;
-        // $payment->payment_type = 'deposit';
         $payment->received = $request->rental_deposit;
         $payment->payment_date = Carbon::now();
         $payment->outstanding = $outstanding;
-        // $payment->user_id = $motorcycle->user_id;
-        // $payment->motorcycle_id = $request->motorcycle_id;
-        // $payment->registration = $motorcycle->registration;
         $payment->auth_user = $authUser->first_name . " " . $authUser->last_name;
         $payment->save();
 
@@ -307,7 +302,7 @@ class MotorcycleController extends Controller
         $payment->user_id = $request->session()->get('user_id');
         $payment->payment_due_count = 7;
         $payment->created_at = Carbon::now();
-        $payment->auth_user = "Customer Authorised"; //$authUser;
+        $payment->auth_user = "Customer Authorised";
         $payment->motorcycle_id = $motorcycle_id;
         $payment->save();
 
@@ -321,7 +316,7 @@ class MotorcycleController extends Controller
         $deposit->outstanding = $deposit->rental_deposit;
         $deposit->user_id = $request->session()->get('user_id');
         $deposit->created_at = Carbon::now();
-        $deposit->auth_user = "Customer Authorised"; //$authUser;
+        $deposit->auth_user = "Customer Authorised";
         $deposit->motorcycle_id = $motorcycle_id;
         $deposit->save();
 
@@ -365,9 +360,6 @@ class MotorcycleController extends Controller
         $deposit = $motorcycle->rental_deposit;
 
         return view('frontend.legals.rental-agreement', compact('toDay', 'user', 'motorcycle', 'deposit'));
-
-        // return redirect()->route('motorcycle.show', [$motorcycle->id])
-        //     ->with('message', 'Motorcycle assigned to client successfully!');
     }
 
     // Remove the rental motorcycle from the client
@@ -516,6 +508,24 @@ class MotorcycleController extends Controller
         $m = Motorcycle::findOrFail($motorcycle_id);
         $motorcycle = json_decode($m);
 
+        // Run DVLA checks - BEGIN
+        $response = Http::withHeaders([
+            'x-api-key' => '5i0qXnN6SY3blfoFeWvlu9sTQCSdrf548nMS8vVO',
+            'Content-Type' => 'application/json',
+        ])->post('https://driver-vehicle-licensing.api.gov.uk/vehicle-enquiry/v1/vehicles', [
+            'registrationNumber' => $motorcycle->registration,
+        ]);
+
+        $request = json_decode($response->body());
+
+        Motorcycle::findOrFail($motorcycle_id)->update([
+            'tax_status' => $request->taxStatus,
+            'tax_due_date' => $request->taxDueDate,
+            'mot_status' => $request->motStatus,
+            'mot_expiry_date' => $request->motExpiryDate,
+        ]);
+        // Run DVLA checks - END
+
         if (User::where('id', '=', $motorcycle->user_id)->exists()) {
             $user = User::where('id', $motorcycle->user_id)->first();
         } else {
@@ -600,13 +610,13 @@ class MotorcycleController extends Controller
             'fuel_type' => $request->fuelType,
             'wheel_plan' => $request->wheelplan,
             'tax_status' => $request->taxStatus,
-            // 'tax_due_date' => $request->taxDueDate,
+            'tax_due_date' => $request->taxDueDate,
             'mot_status' => $request->motStatus,
             'co2_emissions' => $request->co2Emissions,
             'marked_for_export' => $request->markedForExport,
-            // 'type_approval' => $request->typeApproval,
+            'type_approval' => $request->typeApproval,
             'last_v5_issue_date' => $request->dateOfLastV5CIssued,
-            'mot_expiry_date' => $request->motExpiryDate, // Not returned if MOT Status = No data held by DVLA
+            'mot_expiry_date' => $request->motExpiryDate,
             'month_of_first_registration' => $request->monthOfFirstRegistration,
 
             // Status information
@@ -708,39 +718,9 @@ class MotorcycleController extends Controller
             'registrationNumber' => $request->registrationNumber,
         ]);
 
-        $request = json_decode($response->body());
-
-        $motorcycle = new Motorcycle();
-        $motorcycle->registration = $request->registrationNumber;
-        $motorcycle->make = $request->make;
-        $motorcycle->tax_status = $request->taxStatus;
-        $motorcycle->tax_due_date = $request->taxDueDate;
-        $motorcycle->mot_status = $request->motStatus;
-        $motorcycle->year = $request->yearOfManufacture;
-        $motorcycle->engine = $request->engineCapacity;
-        $motorcycle->co2_emissions = $request->co2Emissions;
-        $motorcycle->fuel_type = $request->fuelType;
-        $motorcycle->marked_for_export = $request->markedForExport;
-        $motorcycle->colour = $request->colour;
-        // $motorcycle->type_approval = $request->typeApproval;
-        $motorcycle->last_v5_issue_date = $request->dateOfLastV5CIssued;
-        // if(isset($request->motExpiryDate))
-        // $motorcycle->mot_expiry_date = $request->motExpiryDate;
-        $motorcycle->wheel_plan = $request->wheelplan;
-        $motorcycle->month_of_first_registration = $request->monthOfFirstRegistration;
+        $motorcycle = json_decode($response->body());
 
         return view('admin.check-show', compact('motorcycle'))
             ->with('success', 'Vehicle information retrieved successfully.');;
-    }
-
-    //// PAYMENTS SECTION /////
-
-
-    // create payment transactions
-    public function clientPartPayment($motorcycle_id)
-    {
-        $rental = RentalPayment::all()
-            ->where('motorcycle_id', $motorcycle_id);
-        dd($rental);
     }
 }

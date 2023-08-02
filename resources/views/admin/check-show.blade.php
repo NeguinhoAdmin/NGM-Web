@@ -11,7 +11,7 @@
 
                 <div class="col">
                     <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-                        {{ __('Create Customer Profile') }}
+                        {{ $motorcycle->registrationNumber }} {{ __('REGISTRATION CHECK') }}
                     </h1>
                 </div>
             </div>
@@ -58,39 +58,50 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Tax Status </td>
-                                                    <td class="text-end">{{$motorcycle->tax_status}}</td>
+                                                    <td class="text-end">{{$motorcycle->taxStatus}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tax Due Date </td>
-                                                    <td class="text-end">{{$motorcycle->tax_due_date}}</td>
+                                                    <td class="text-end">{{$motorcycle->taxDueDate}}</td>
                                                 </tr>
+                                                @if ($motorcycle->motStatus == 'Valid' || $motorcycle->motStatus == 'Not valid')
                                                 <tr>
                                                     <td>MOT Status </td>
-                                                    <td class="text-end">{{$motorcycle->mot_status}}</td>
+                                                    <td class="text-end">{{$motorcycle->motStatus}}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td>MOT Expiry Date </td>
+                                                    <td class="text-end">{{$motorcycle->mot_expiry_date}}</td>
+                                                </tr>
+                                                @else
+                                                <tr>
+                                                    <td>MOT Status </td>
+                                                    <td class="text-end">{{$motorcycle->motStatus}}</td>
+                                                </tr>
+                                                @endif
+                                                <tr>
                                                     <td>Year </td>
-                                                    <td class="text-end">{{$motorcycle->year}}</td>
+                                                    <td class="text-end">{{$motorcycle->yearOfManufacture}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Engine </td>
-                                                    <td class="text-end">{{$motorcycle->engine}}</td>
+                                                    <td class="text-end">{{$motorcycle->engineCapacity}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>C02 Emmissions </td>
-                                                    <td class="text-end">{{$motorcycle->co2_emissions}}</td>
+                                                    <td class="text-end">{{$motorcycle->co2Emissions}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Tax Status </td>
-                                                    <td class="text-end">{{$motorcycle->tax_status}}</td>
+                                                    <td class="text-end">{{$motorcycle->taxStatus}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Fuel Type </td>
-                                                    <td class="text-end">{{$motorcycle->fuel_type}}</td>
+                                                    <td class="text-end">{{$motorcycle->fuelType}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Marked for Export </td>
-                                                    <td class="text-end">{{$motorcycle->marked_for_export}}</td>
+                                                    <td class="text-end">{{$motorcycle->markedForExport ? 'TRUE' : 'FALSE'}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Colour </td>
@@ -98,23 +109,19 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Type Approval </td>
-                                                    <td class="text-end">{{$motorcycle->type_approval}}</td>
+                                                    <td class="text-end">{{$motorcycle->typeApproval}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Last V5 Issue Date </td>
-                                                    <td class="text-end">{{$motorcycle->last_v5_issue_date}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>MOT Expiry Date </td>
-                                                    <td class="text-end">{{$motorcycle->mot_expiry_date}}</td>
+                                                    <td class="text-end">{{$motorcycle->dateOfLastV5CIssued}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Wheel Plan </td>
-                                                    <td class="text-end">{{$motorcycle->wheel_plan}}</td>
+                                                    <td class="text-end">{{$motorcycle->wheelplan}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Month of First Registration </td>
-                                                    <td class="text-end">{{$motorcycle->month_of_first_registration}}</td>
+                                                    <td class="text-end">{{$motorcycle->monthOfFirstRegistration}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -126,7 +133,7 @@
                             <div class="card shadow">
                                 <div class="card-header">
                                     <div class="card-body">
-                                        <h5>Mileage Details</h5>
+                                        <!-- <h5>Mileage Details</h5>
                                         <table class="table">
                                             <tbody>
                                                 <tr class="text-right">
@@ -134,7 +141,7 @@
                                                     <td class="text-end"></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
+                                        </table> -->
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +149,7 @@
                             <div class="card shadow">
                                 <div class="card-header">
                                     <div class="card-body">
-                                        <h5>Insurance Information</h5>
+                                        <!-- <h5>Insurance Information</h5>
                                         <table class="table">
                                             <tbody>
                                                 <tr class="text-right">
@@ -150,7 +157,7 @@
                                                     <td class="text-end"></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
+                                        </table> -->
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +165,7 @@
                             <div class="card shadow">
                                 <div class="card-header">
                                     <div class="card-body">
-                                        <h5>Additional Information</h5>
+                                        <!-- <h5>Additional Information</h5>
                                         <table class="table">
                                             <tbody>
                                                 <tr class="text-right">
@@ -166,7 +173,7 @@
                                                     <td class="text-end"></td>
                                                 </tr>
                                             </tbody>
-                                        </table>
+                                        </table> -->
                                     </div>
                                 </div>
                             </div>
