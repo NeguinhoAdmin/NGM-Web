@@ -228,6 +228,8 @@ Route::get('/in-for-repairs', [MotorcycleController::class, 'inForRepairs'])->na
 Route::get('/cat-b', [MotorcycleController::class, 'catB'])->name('catB');
 Route::get('/claim-in-progress', [MotorcycleController::class, 'claimInProgress'])->name('claimInProgress');
 Route::get('/is-sold', [MotorcycleController::class, 'isSold'])->name('isSold');
+Route::get('/mot-due', [MotorcycleController::class, 'motDue'])->name('motDue');
+Route::get('/tax-due', [MotorcycleController::class, 'taxDue'])->name('taxDue');
 
 Route::get('/find-motorcycle', [MotorcycleController::class, 'findMotorcycle'])->name('findMotorcycle');
 Route::post('/registration-number', [MotorcycleController::class, 'registrationNumber'])->name('registrationNumber');

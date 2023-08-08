@@ -493,6 +493,26 @@ class MotorcycleController extends Controller
         return view('admin.motorcycles-index', compact('motorcycles', 'count'));
     }
 
+    public function motDue()
+    {
+        $m = Motorcycle::all()
+            ->where('mot_expiry_date', '<', Carbon::now()->addDays(10));
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
+    }
+
+    public function taxDue()
+    {
+        $m = Motorcycle::all()
+            ->where('tax_due_date', '<', Carbon::now()->addDays(10));
+        $motorcycles = json_decode($m);
+
+        $count = $m->count();
+        return view('admin.motorcycles-index', compact('motorcycles', 'count'));
+    }
+
     /**
      * Motorcycle details & transactional data
      *

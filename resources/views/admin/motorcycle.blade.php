@@ -279,6 +279,9 @@
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
+                                @if(empty($user->id))
+                                <p><strong></strong></p>
+                                @else
                                 <tbody>
                                     @foreach ($rentalpayments as $payment)
                                     <tr>
@@ -304,6 +307,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
+                                @endif
                             </table>
                         </div>
                     </div>
@@ -324,6 +328,9 @@
                                         <th scope="col"></th>
                                     </tr>
                                 </thead>
+                                @if(empty($user->id))
+                                <p><strong></strong></p>
+                                @else
                                 <tbody>
                                     @foreach ($depositpayments as $payment)
                                     <tr>
@@ -348,6 +355,7 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
+                                @endif
                             </table>
                         </div>
                     </div>

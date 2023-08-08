@@ -43,7 +43,7 @@ class everyDay extends Command
         // Date calculations
         $today = Carbon::now('Europe/London');
         $tomorrow = $today->addDay();
-        $nextPayDate = Carbon::now()->addDays(8);
+        $nextPayDate = Carbon::now()->addDays(7);
 
         // Find motocycles due for rental payment next day
         $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();

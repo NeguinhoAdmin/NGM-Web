@@ -61,6 +61,10 @@
                             <a class="btn btn-primary mt-4" href="{{ URL::to('missing/') }}">Missing</a>
 
                             <a class="btn btn-primary mt-4" href="{{ URL::to('stolen/') }}">Stolen</a>
+
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('mot-due/') }}">MOT Due</a>
+
+                            <a class="btn btn-primary mt-4" href="{{ URL::to('tax-due/') }}">TAX Due</a>
                         </div>
                     </div>
                 </div>

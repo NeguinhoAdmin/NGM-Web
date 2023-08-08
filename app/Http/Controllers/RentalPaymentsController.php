@@ -226,8 +226,9 @@ class RentalPaymentsController extends Controller
         $payment = RentalPayment::find($request->payment_id);
         $payment->delete($payment);
 
-        return redirect('/rentalpayments')
-            ->with('success', 'Payment voided.');
+        return back();
+        // return redirect('/rentalpayments')
+        //     ->with('success', 'Payment voided.');
     }
 
     public function discountPayment(Request $request)
