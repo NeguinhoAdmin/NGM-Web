@@ -75,7 +75,15 @@ class everyDay extends Command
             $payment->created_at = $today;
             $payment->motorcycle_id = $motorcycle->id;
             $payment->save();
+
+            // Apply late payment fees if applicaable
+            // Day 1 £10
+            // Day 2 £30
+            // Day 3 £50
+            // Day 4 £70
+            // Day 5 £90
+            // Day 6 £110
+            // Day 7 130
         }
-        // }
     }
 }
