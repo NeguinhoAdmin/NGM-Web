@@ -80,9 +80,8 @@
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <div class="btn">
                                             <a class="btn btn-success" href="{{ URL::to('users/' . $payment->user_id) }}">Client</a>
-                                        </div>
-                                        <div class="btn">
-                                            <a class="btn btn-primary" href="{{ URL::to('motorcycles/' . $payment->motorcycle_id) }}">Motorcycle</a>
+
+                                            <a class="btn btn-primary" href="{{ URL::to('motorcycle-show/' . $payment->motorcycle_id) }}">Motorcycle</a>
                                         </div>
                                     </div>
                                 </td>
