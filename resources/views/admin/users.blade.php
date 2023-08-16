@@ -80,7 +80,7 @@
                                         <i class="fa fa-motorcycle" style="color:red;"></i>
                                         @endif
                                     </td>
-                                    <td>{{$user->first_name}} {{$user->last_name}}</th>
+                                    <td class="text-capitalize">{{$user->first_name}} {{$user->last_name}}</th>
                                     <td>{{$user->phone_number}}</td>
                                     <td>{{$user->email}}</td>
                                     <td></td>
