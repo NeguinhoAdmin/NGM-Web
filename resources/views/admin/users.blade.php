@@ -6,7 +6,7 @@
                 <div class="col">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <div class="btn">
-                            <a class="btn btn-outline-success" href="{{ URL::to('/users-create') }}">Create New User</a>
+                            <a class="btn btn-outline-success" href="{{ URL::to('/users-create') }}">New User</a>
                         </div>
                         <div class="btn">
                             <form method="GET" class="d-flex" role="search">
