@@ -37,7 +37,9 @@ class UserController extends Controller
             $users = User::search($request->search)->get()->sortByDesc('id');
         } else {
             // $users = User::get();
-            $users = User::all()->sortByDesc('id');
+            $users = User::all()
+                ->where('is_client', '=', 1)
+                ->sortByDesc('id');
         }
 
         $count = $users->count();
