@@ -102,7 +102,7 @@
                                         @csrf
                                         <input hidden name="payment_id" id="payment_id" value="{{ $payment->id }}">
                                         <div class="btn">
-                                            <button class="btn btn-outline-danger" type="submit">VOIiD</button>
+                                            <button class="btn btn-outline-danger" type="submit">VOID</button>
                                         </div>
                                     </td>
                                 </form>

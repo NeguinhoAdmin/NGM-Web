@@ -144,11 +144,4 @@
             </div>
         </div>
     </div>
-
-    <!-- <script>
-        var select = document.getElementById('availability_dd');
-        select.addEventListener('change', function() {
-            this.form.submit();
-        }, false);
-    </script> -->
 </x-app-layout>

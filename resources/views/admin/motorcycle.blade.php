@@ -1,7 +1,7 @@
 <x-app-layout>
+    @auth
     <x-slot name="header">
         <div class="container text-center">
-            @auth
             <div class="row align-items-start">
                 <div class="col">
                     <div class="btn-group" role="group" aria-label="Basic example">
@@ -101,7 +101,7 @@
                                     <dt class="col-sm-3">Expiry Date: </dt>
                                     <dd class="col-sm-9">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</dd>
                                 </dl>
-                                <a href="https://neguinhomotorslimited.simplybook.it/v2/#book/service/6">Book MOT or Service</a>
+                                <!-- <a href="https://neguinhomotorslimited.simplybook.it/v2/#book/service/6">Book MOT or Service</a> -->
                             </div>
                         </div>
                     </div>
@@ -141,22 +141,7 @@
                                         <td>Year </td>
                                         <td class="text-end">{{$motorcycle->year}}</td>
                                     </tr>
-                                    <tr>
-                                        @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
-                                    <tr>
-                                        <td>MOT Status </td>
-                                        <td class="text-end">{{$motorcycle->mot_status}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>MOT Expiry Date </td>
-                                        <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</td>
-                                    </tr>
-                                    @else
-                                    <tr>
-                                        <td>MOT Status </td>
-                                        <td class="text-end">{{$motorcycle->mot_status}}</td>
-                                    </tr>
-                                    @endif
+
                                     <tr>
                                         <td>C02 Emissions </td>
                                         <td class="text-end">{{$motorcycle->co2_emissions}}</td>
@@ -191,7 +176,7 @@
                 <div class="card shadow mb-3">
                     <div class="card-header">
                         <div class="card-body">
-                            <h5 class="font-weight-bold mb-3"><strong>Deposit Payment</strong></h5>
+                            <h5 class="font-weight-bold mb-3"><strong>Last MOT Results</strong></h5>
                             <div class="container">
 
                             </div>
@@ -202,7 +187,7 @@
                 <div class="card shadow mb-3">
                     <div class="card-header">
                         <div class="card-body">
-                            <h5 class="font-weight-bold mb-3"><strong>Rental Payment</strong></h5>
+                            <h5 class="font-weight-bold mb-3"><strong></strong></h5>
                             <div class="container">
 
                             </div>
