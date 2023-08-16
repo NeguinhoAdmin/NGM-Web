@@ -82,7 +82,7 @@
                                     </td>
                                     <td class="text-capitalize">{{$user->first_name}} {{$user->last_name}}</th>
                                     <td>{{$user->phone_number}}</td>
-                                    <td>{{$user->email}}</td>
+                                    <td class="text-lowercase">{{$user->email}}</td>
                                     <td></td>
                                     <td>
                                         <a class="btn btn-outline-success" href="{{ URL::to('users/' . $user->id) }}">Details</a>
