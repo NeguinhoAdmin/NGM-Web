@@ -6,7 +6,7 @@
                 <div class="col col-lg-8">
                     <div class="btn-group">
                         <div class="btn">
-                            <a class="btn btn-outline-primary" href="{{ URL::to('/motorcycles-create') }}">Add Motorcycle</a>
+                            <a class="btn btn-outline-primary" href="{{ URL::to('/motorcycles-new-rental') }}">Add Motorcycle</a>
 
                             <a class="btn btn-outline-primary" href="{{ URL::to('check-vehicle-reg/') }}">Check Reg</a>
                         </div>

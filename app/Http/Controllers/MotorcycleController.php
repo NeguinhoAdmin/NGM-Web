@@ -643,7 +643,7 @@ class MotorcycleController extends Controller
      */
     public function findMotorcycle()
     {
-        return view('motorcycles.find-bike');
+        return view('admin.find-bike');
     }
 
     /**

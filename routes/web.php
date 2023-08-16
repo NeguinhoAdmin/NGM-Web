@@ -208,6 +208,7 @@ Route::get('/client-remove-upload/{id}', [DashboardController::class, 'delete'])
 Route::get('/motorcycles', [MotorcycleController::class, 'index'])->name('motorcycles');
 Route::get('/motorcycle-show/{id}', [MotorcycleController::class, 'show'])->name('motorcycle.show');
 Route::get('/motorcycles-create', [MotorcycleController::class, 'create'])->name('create.motorcycle');
+Route::get('/motorcycles-new-rental', [MotorcycleController::class, 'findMotorcycle'])->name('new-rental.motorcycle');
 Route::post('/motorcycles', [MotorcycleController::class, 'store'])->name('store.motorcycles');
 Route::get('/motorcycles/{id}/edit', [MotorcycleController::class, 'edit'])->name('edit.motorcycle');
 Route::patch('/motorcycles/{id}', [MotorcycleController::class, 'update'])->name('update.motorcycles');
