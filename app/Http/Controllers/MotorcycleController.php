@@ -39,6 +39,7 @@ class MotorcycleController extends Controller
         } else {
             // $motorcycles = Motorcycle::get();
             $motorcycles = Motorcycle::all()
+                ->where('availability', '!=', 'for sale')
                 ->where('availability', '!=', 'missing');
         }
 
@@ -494,28 +495,20 @@ class MotorcycleController extends Controller
 
         $request = json_decode($response->body());
         // dd($request);
-        // if (isset($request->motExpiryDate)) {
-        //     $motorcycle = Motorcycle::find($motorcycle_id);
-        //     $motorcycle->tax_status = $request->taxStatus;
-        //     $motorcycle->tax_due_date = $request->taxDueDate;
-        //     $motorcycle->mot_status = $request->motStatus;
-        //     $motorcycle->mot_expiry_date = $request->motExpiryDate;
-        //     $motorcycle->save();
-        // } else {
-        //     $motorcycle = Motorcycle::find($motorcycle_id);
-        //     $motorcycle->tax_status = $request->taxStatus;
-        //     $motorcycle->tax_due_date = $request->taxDueDate;
-        //     $motorcycle->mot_status = $request->motStatus;
-        //     // $motorcycle->mot_expiry_date = 'No Date Available';
-        //     $motorcycle->save();
-        // }
-
-        Motorcycle::findOrFail($motorcycle_id)->update([
-            'tax_status' => $request->taxStatus,
-            'tax_due_date' => $request->taxDueDate,
-            'mot_status' => $request->motStatus,
-            'mot_expiry_date' => $request->motExpiryDate,
-        ]);
+        if (isset($request->motExpiryDate)) {
+            $motorcycle = Motorcycle::find($motorcycle_id);
+            $motorcycle->tax_status = $request->taxStatus;
+            $motorcycle->tax_due_date = $request->taxDueDate;
+            $motorcycle->mot_status = $request->motStatus;
+            $motorcycle->mot_expiry_date = $request->motExpiryDate;
+            $motorcycle->save();
+        } else {
+            $motorcycle = Motorcycle::find($motorcycle_id);
+            $motorcycle->tax_status = $request->taxStatus;
+            $motorcycle->tax_due_date = $request->taxDueDate;
+            $motorcycle->mot_status = $request->motStatus;
+            $motorcycle->save();
+        }
         // Run DVLA checks - END
 
         if (User::where('id', '=', $motorcycle->user_id)->exists()) {

@@ -94,6 +94,7 @@
                         <div class="card-body">
                             <h5 class="font-weight-bold mb-3"><strong>MOT</strong></h5>
                             <div class="container">
+                                @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
                                 <dl class="row">
                                     <dt class="col-sm-3">MOT Status: </dt>
                                     <dd class="col-sm-9">{{$motorcycle->mot_status}}</dd>
@@ -101,7 +102,12 @@
                                     <dt class="col-sm-3">Expiry Date: </dt>
                                     <dd class="col-sm-9">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</dd>
                                 </dl>
-                                <!-- <a href="https://neguinhomotorslimited.simplybook.it/v2/#book/service/6">Book MOT or Service</a> -->
+                                @else
+                                <dl class="row">
+                                    <dt class="col-sm-3">MOT Status: </dt>
+                                    <dd class="col-sm-9">{{$motorcycle->mot_status}}</dd>
+                                </dl>
+                                @endif
                             </div>
                         </div>
                     </div>
