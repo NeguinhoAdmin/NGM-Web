@@ -28,48 +28,48 @@ use Illuminate\Support\Composer;
 class MotorcycleController extends Controller
 {
     // Calculate next payment days
-    public function nextRentalPayment()
-    {
-        // Date calculations
-        $today = Carbon::now('Europe/London');
-        $tomorrow = $today->addDay();
+    // public function nextRentalPayment()
+    // {
+    //     // Date calculations
+    //     $today = Carbon::now('Europe/London');
+    //     $tomorrow = $today->addDay();
 
-        // Find motocycles due for rental payment next day
-        $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
+    //     // Find motocycles due for rental payment next day
+    //     $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
 
-        // Count the number of motorcycles to be processed
-        $count = $motorcycles->count();
+    //     // Count the number of motorcycles to be processed
+    //     $count = $motorcycles->count();
 
-        while ($count > 0) {
-            foreach ($motorcycles as $motorcycle) {
-                // Set next payment date
-                $motorcycle = Motorcycle::find($motorcycle->id);
-                $motorcycle->next_payment_date = Carbon::now()->addDays(8);
-                $motorcycle->save();
+    //     while ($count > 0) {
+    //         foreach ($motorcycles as $motorcycle) {
+    //             // Set next payment date
+    //             $motorcycle = Motorcycle::find($motorcycle->id);
+    //             $motorcycle->next_payment_date = Carbon::now()->addDays(8);
+    //             $motorcycle->save();
 
-                // Send renter email reminder for next day payment
-                $user = User::where('id', $motorcycle->user_id)->first();
-                Mail::to($user->email)->send(new RentalDue($user));
+    //             // Send renter email reminder for next day payment
+    //             $user = User::where('id', $motorcycle->user_id)->first();
+    //             Mail::to($user->email)->send(new RentalDue($user));
 
-                // Create following weeks bill
-                $rentalPrice = $motorcycle->rental_price;
+    //             // Create following weeks bill
+    //             $rentalPrice = $motorcycle->rental_price;
 
-                $payment = new RentalPayment();
-                $payment->payment_type = 'rental';
-                $payment->payment_due_date = $motorcycle->next_payment_date;
-                $payment->rental_price = $rentalPrice;
-                $payment->registration = $motorcycle->registration;
-                $payment->received = 0.00;
-                $payment->outstanding = $rentalPrice;
-                $payment->user_id = $motorcycle->user_id;
-                $payment->created_at = $today;
-                $payment->motorcycle_id = $motorcycle->id;
-                $payment->save();
+    //             $payment = new RentalPayment();
+    //             $payment->payment_type = 'rental';
+    //             $payment->payment_due_date = $motorcycle->next_payment_date;
+    //             $payment->rental_price = $rentalPrice;
+    //             $payment->registration = $motorcycle->registration;
+    //             $payment->received = 0.00;
+    //             $payment->outstanding = $rentalPrice;
+    //             $payment->user_id = $motorcycle->user_id;
+    //             $payment->created_at = $today;
+    //             $payment->motorcycle_id = $motorcycle->id;
+    //             $payment->save();
 
-                $count--;
-            }
-        }
-    }
+    //             $count--;
+    //         }
+    //     }
+    // }
 
     /**
      * Display a listing of the resource.

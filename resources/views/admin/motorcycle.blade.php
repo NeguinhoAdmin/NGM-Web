@@ -70,6 +70,46 @@
     <div class="container-fluid mt-3 mx-1500">
         <div class="row">
             <div class="col">
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <div class="card-body">
+                            <h5 class="font-weight-bold mb-3"><strong>TAX</strong></h5>
+                            <div class="container">
+                                <dl class="row">
+                                    <dt class="col-sm-3">Tax Status: </dt>
+                                    <dd class="col-sm-9">{{$motorcycle->tax_status}}</dd>
+
+                                    <dt class="col-sm-3">Expiry Date: </dt>
+                                    <dd class="col-sm-9">{{ Carbon\Carbon::parse($motorcycle->tax_due_date)->format('d/m/Y') }}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <div class="card-body">
+                            <h5 class="font-weight-bold mb-3"><strong>MOT</strong></h5>
+                            <div class="container">
+                                <dl class="row">
+                                    <dt class="col-sm-3">MOT Status: </dt>
+                                    <dd class="col-sm-9">{{$motorcycle->mot_status}}</dd>
+
+                                    <dt class="col-sm-3">Expiry Date: </dt>
+                                    <dd class="col-sm-9">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</dd>
+                                </dl>
+                                <a href="https://neguinhomotorslimited.simplybook.it/v2/#book/service/6">Book MOT or Service</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h5 class="font-weight-bold mb-3"><strong>Vehicle Details</strong></h5>
@@ -102,14 +142,7 @@
                                         <td class="text-end">{{$motorcycle->year}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Tax Status </td>
-                                        <td class="text-end">{{$motorcycle->tax_status}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax Due Date </td>
-                                        <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->tax_due_date)->format('d/m/Y') }}</td>
-                                    </tr>
-                                    @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
+                                        @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
                                     <tr>
                                         <td>MOT Status </td>
                                         <td class="text-end">{{$motorcycle->mot_status}}</td>
@@ -125,7 +158,7 @@
                                     </tr>
                                     @endif
                                     <tr>
-                                        <td>C02 Emmissions </td>
+                                        <td>C02 Emissions </td>
                                         <td class="text-end">{{$motorcycle->co2_emissions}}</td>
                                     </tr>
                                     <tr>
@@ -155,7 +188,72 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card shadow">
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <div class="card-body">
+                            <h5 class="font-weight-bold mb-3"><strong>Deposit Payment</strong></h5>
+                            <div class="container">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <div class="card-body">
+                            <h5 class="font-weight-bold mb-3"><strong>Rental Payment</strong></h5>
+                            <div class="container">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mb-3">
+
+    <div class="container-fluid mt-3 mx-1500">
+        <h2 class="font-weight-bold mb-3"><strong>FINANCIALS</strong></h2>
+        <div class="row align-items-start">
+            <div class="col">
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <div class="card-body">
+
+                            @if(empty($user->id))
+                            <p><strong>No rider for this motorcycle</strong></p>
+                            @else
+                            <a href="{{ url('/users/'.$user->id.'' ?? '') }}">&#9650; Click here to view client information</a>
+                            @endif
+
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Rental Start Date</td>
+                                        <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->rental_start_date)->format('d/m/Y') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Next Payment Date</td>
+                                        <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->next_payment_date)->format('d/m/Y') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Weekly Rental Price</td>
+                                        <td class="text-end" id="rental_price"><span class="input-group-text" id="rental_price">£{{ $motorcycle->rental_price }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Default Deposit </td>
+                                        <td class="text-end"><span class="input-group-text" id="rental_deposit2">£{{ $motorcycle->rental_deposit }}</span></td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow mb-3">
                     <div class="card-header">
                         <div class="card-body">
                             <h5 class="font-weight-bold mb-3"><strong>Deposit Payment</strong></h5>
@@ -180,50 +278,8 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="card shadow">
-                    <div class="card-header">
-                        <div class="card-body">
 
-                            @if(empty($user->id))
-                            <p><strong>No rider for this motorcycle</strong></p>
-                            @else
-                            <a href="{{ url('/users/'.$user->id.'' ?? '') }}">&#9650; Click here to view client information</a>
-                            @endif
-
-
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td>Rental Start Date</td>
-                                        <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->rental_start_date)->format('d/m/Y') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Next Payment Date</td>
-                                        <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->next_payment_date)->format('d/m/Y') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Weekly Rental Price</td>
-                                        <td class="text-end" id="rental_price"><span class="input-group-text" id="rental_price">£{{ $motorcycle->rental_price }}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Default Deposit </td>
-                                        <td class="text-end"><span class="input-group-text" id="rental_deposit2">£{{ $motorcycle->rental_deposit }}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tax Status </td>
-                                        <td class="text-end">{{$motorcycle->tax_status}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>MOT Status </td>
-                                        <td class="text-end">{{$motorcycle->mot_status}}</td>
-                                    </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="card shadow">
+                <div class="card shadow mb-3">
                     <div class="card-header">
                         <div class="card-body">
                             <h5 class="font-weight-bold mb-3"><strong>Rental Payment</strong></h5>
@@ -255,11 +311,10 @@
             </div>
         </div>
     </div>
-    <br>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="card shadow">
+                <div class="card shadow mb-3">
                     <div class="card-header">
                         <div class="card-body">
                             <h5 class="font-weight-bold mb-3"><strong>Payment History</strong></h5>
@@ -312,8 +367,8 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="card shadow">
+
+                <div class="card shadow mb-3">
                     <div class="card-header">
                         <div class="card-body">
                             <h5 class="font-weight-bold mb-3"><strong>Deposit Payments</strong></h5>

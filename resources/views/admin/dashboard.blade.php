@@ -4,14 +4,11 @@
             {{ Carbon\Carbon::parse($toDay)->format('d/m/Y') }} - {{ Auth::user()->first_name }}, {{ __('Welcome to the NGM Administration Dashboard') }}
         </h2>
     </x-slot>
-
+    @auth
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-
-                    @auth
-
                     <div class="row">
                         <div class="pull-left">
                             <h1><strong>{{ $count }} Rental Payments</strong></h1>
@@ -91,25 +88,32 @@
                     </div>
                 </div>
 
-                <div class="container">
-                    <div class="row align-items-start">
-                        <h3><strong>TAX & MOT Due Soon</strong></h3>
-                        <div class="col">
-                            <h4>TAX</h4>
+            </div>
+        </div>
 
-                        </div>
-                        <div class="col">
-                            <h4>MOT</h4>
-                        </div>
-                        <div class="col">
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900">
+                        <div class="row align-items-start">
+                            <h3><strong>TAX & MOT Due Soon</strong></h3>
+                            <div class="col">
+                                <h4>TAX</h4>
 
+                            </div>
+                            <div class="col">
+                                <h4>MOT</h4>
+                            </div>
+                            <div class="col">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                @endauth
             </div>
         </div>
+
+        @endauth
         <!-- Include Chart.js from a CDN -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
