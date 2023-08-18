@@ -12,7 +12,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\Shopper\CartrentalController;
-use App\Http\Controllers\Shopper\OxfordController;
+use App\Http\Controllers\OxfordController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MotorcycleController;
@@ -71,6 +71,10 @@ Route::controller(WelcomeController::class)->group(function () {
     // Soon Come...lol
     Route::get('/coming-soon', 'SoonCome');
 });
+
+// Oxford Product Routes
+Route::get('/category/{id}', [OxfordController::class, 'getProductCategory']);
+Route::get('/product/{id}', [OxfordController::class, 'getOxfordProduct']);
 
 // Motorcycle Sales & Rental
 Route::controller(SalesController::class)->group(function () {

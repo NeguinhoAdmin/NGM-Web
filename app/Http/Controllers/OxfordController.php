@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Shopper;
+namespace App\Http\Controllers;
 
 use View;
 use App\Models\Oxford;
 use Illuminate\Http\Request;
 use App\Models\OxfordCategory;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,10 +15,16 @@ class OxfordController extends Controller
 {
     public function getProductCategory($category_id)
     {
+        // $superProductNames = Oxford::distinct()->where('category_id', $category_id)->whereNotNull('super_product_name')->get(['super_product_name']);
+        // $superProductName = json_decode($superProductNames);
+
+        // dd($superProductName);
+
         $products = Oxford::select('id', 'ean', 'image_url', 'description', 'sku', 'price', 'colour', 'brand', 'category')
             ->where('category_id', $category_id)
+            // ->where('super_product_name', 'like', $product)
             ->where('stock', '=>', 1)
-            ->paginate(24);
+            ->simplePaginate(24);
 
         $cat = Oxford::select('category')
             ->where('category_id', $category_id)

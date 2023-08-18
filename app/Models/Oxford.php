@@ -6,7 +6,7 @@ namespace App\Models;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\Model;
 
-class Oxford extends Model implements Buyable
+class Oxford extends Model
 {
     protected $fillable = [
         'sku',
