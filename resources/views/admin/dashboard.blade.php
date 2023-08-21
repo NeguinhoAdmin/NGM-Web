@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-capitalize">
             {{ Carbon\Carbon::parse($toDay)->format('d/m/Y') }} - {{ Auth::user()->first_name }}, {{ __('Welcome to the NGM Administration Dashboard') }}
         </h2>
     </x-slot>
