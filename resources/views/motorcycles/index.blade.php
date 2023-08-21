@@ -16,9 +16,11 @@
                     </div>
                     <div class="btn">
                         <a class="btn btn-outline-primary" href="{{ URL::to('/motorcycles/create') }}">Add Used Motorcycle</a>
-
+                        <!-- </div>
+                    <div class="btn"> -->
                         <a class="btn btn-primary" href="{{ URL::to('check-vehicle-reg/') }}">Check Reg</a>
-
+                        <!-- </div>
+                    <div class="btn"> -->
                         <a class="btn btn-outline-primary" href="{{ URL::to('/create-new-motorcycle') }}">Add New Motorcycle</a>
                     </div>
                 </div>
@@ -30,19 +32,27 @@
             <div class="btn-group" role="group" aria-label="Basic example">
                 <div class="btn">
                     <a class="btn btn-outline-primary" href="{{ URL::to('motorcycles/') }}">All</a>
-
+                    <!-- </div>
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('is-for-rent/') }}">For Rent</a>
-
+                    <!-- </div>
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('is-rented/') }}">Rented</a>
-
+                    <!-- </div>
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('is-for-sale/') }}">For Sale</a>
+                    <!-- </div>
 
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('is-sold/') }}">Sold</a>
-
+                    <!-- </div>
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('in-for-repairs/') }}">Repairs</a>
-
+                    <!-- </div>
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('cat-b/') }}">Cat B</a>
-
+                    <!-- </div>
+                <div class="btn"> -->
                     <a class="btn btn-outline-primary" href="{{ URL::to('claim-in-progress/') }}">Claim In Progress</a>
 
                     <a class="btn btn-outline-primary" href="{{ URL::to('impounded/') }}">Impounded</a>

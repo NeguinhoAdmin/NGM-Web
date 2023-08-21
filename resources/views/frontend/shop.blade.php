@@ -157,7 +157,7 @@
                     <div class="col-md-9">
                         <div class="filter-shop clearfix">
                             <p class="showing-product float-right">
-                                NEED TO FIND SOMETHING FAST? <strong>CALL 0208 314 1498</strong>
+                                Need to find something fast? Call: 0208 314 1498
                             </p>
                         </div><!-- /.filte-shop -->
 

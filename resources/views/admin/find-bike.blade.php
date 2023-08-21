@@ -16,6 +16,11 @@
                 </div>
             </div>
         </div>
+        <div>
+            <!-- resources/views/tasks.blade.php -->
+
+
+        </div>
     </x-slot>
 
     <!-- This area is used to dispay errors -->

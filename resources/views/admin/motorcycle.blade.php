@@ -94,20 +94,31 @@
                         <div class="card-body">
                             <h5 class="font-weight-bold mb-3"><strong>MOT</strong></h5>
                             <div class="container">
-                                @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
+                                <tr>
+                                    @if ($motorcycle->mot_status == 'Valid' || $motorcycle->mot_status == 'Not valid')
+                                <tr>
+                                    <td>MOT Status </td>
+                                    <td class="text-end">{{$motorcycle->mot_status}}</td>
+                                </tr>
+                                <tr>
+                                    <td>MOT Expiry Date </td>
+                                    <td class="text-end">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</td>
+                                </tr>
+                                @else
+                                <tr>
+                                    <td>MOT Status </td>
+                                    <td class="text-end">{{$motorcycle->mot_status}}</td>
+                                </tr>
+                                @endif
+                                <!-- <hr>
                                 <dl class="row">
                                     <dt class="col-sm-3">MOT Status: </dt>
                                     <dd class="col-sm-9">{{$motorcycle->mot_status}}</dd>
 
                                     <dt class="col-sm-3">Expiry Date: </dt>
                                     <dd class="col-sm-9">{{ Carbon\Carbon::parse($motorcycle->mot_expiry_date)->format('d/m/Y') }}</dd>
-                                </dl>
-                                @else
-                                <dl class="row">
-                                    <dt class="col-sm-3">MOT Status: </dt>
-                                    <dd class="col-sm-9">{{$motorcycle->mot_status}}</dd>
-                                </dl>
-                                @endif
+                                </dl> -->
+                                <!-- <a href="https://neguinhomotorslimited.simplybook.it/v2/#book/service/6">Book MOT or Service</a> -->
                             </div>
                         </div>
                     </div>

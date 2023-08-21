@@ -98,7 +98,6 @@
                             </div>
                         </td>
                     </form>
-                    <td>grhtr</td>
                 </tr>
                 @endforeach
             </tbody>
