@@ -43,11 +43,10 @@ class everyDay extends Command
         // Date calculations
         $today = Carbon::now('Europe/London');
         $tomorrow = $today->addDay();
-        $nextPayDate = Carbon::now()->addDays(8);
+        $nextPayDate = Carbon::now()->addDays(7);
 
         // Find motocycles due for rental payment next day
         $motorcycles = Motorcycle::where('next_payment_date', '=', $tomorrow->toDateString())->get();
-        // $motorcycles = json_decode($response);
 
         // if (!empty($motorcycles)) {
         foreach ($motorcycles as $key => $motorcycle) {
@@ -67,6 +66,7 @@ class everyDay extends Command
             $payment = new RentalPayment();
             $payment->payment_type = 'rental';
             $payment->payment_due_date = $nextPayDate;
+            $payment->payment_date = null;
             $payment->rental_price = $rentalPrice;
             $payment->registration = $motorcycle->registration;
             $payment->received = 0.00;
@@ -75,7 +75,15 @@ class everyDay extends Command
             $payment->created_at = $today;
             $payment->motorcycle_id = $motorcycle->id;
             $payment->save();
+
+            // Apply late payment fees if applicaable
+            // Day 1 £10
+            // Day 2 £30
+            // Day 3 £50
+            // Day 4 £70
+            // Day 5 £90
+            // Day 6 £110
+            // Day 7 130
         }
-        // }
     }
 }

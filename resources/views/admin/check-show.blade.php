@@ -71,7 +71,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>MOT Expiry Date </td>
-                                                    <td class="text-end">{{$motorcycle->mot_expiry_date}}</td>
+                                                    <td class="text-end">{{$motorcycle->motExpiryDate}}</td>
                                                 </tr>
                                                 @else
                                                 <tr>
