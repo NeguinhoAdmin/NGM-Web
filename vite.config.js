@@ -9,7 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: true,
-            valetTls: 'ngm.test',
+            valetTls: 'ngm-web.test',
         }),
     ],
 });

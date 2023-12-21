@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/colors/color1.css">
 
     <!-- Favicon and touch icons  -->
-    <link href="{{url('/img/logo-4.png')}}" rel="shortcut icon">
+    <link href="{{ url('/img/favicon.ico') }}" rel="shortcut icon">
 
     <!--[if lt IE 9]>
         <script src="javascript/html5shiv.js"></script>

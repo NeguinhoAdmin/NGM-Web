@@ -57,7 +57,8 @@ Route::controller(WelcomeController::class)->group(function () {
     Route::get('/service-motorcycle', 'ServiceBike')->name('service-motorcycle');
     Route::get('/service-mot', 'ServiceMot')->name('service-mot');
     Route::get('/accident-management-services', 'AccidentClaim')->name('road-traffic-accidents');
-    // Route::get('/shop', 'GetProducts')->name('get-products');
+    Route::get('/shop-motorcycle', 'MotorcycleShop')->name('shop-motorcycle');
+    Route::get('/shop-accessories', 'MotorcycleAccessories')->name('shop-accessories');
     Route::get('/gps-tracker', 'GpsTracker')->name('gps-tracker');
     Route::get('/spare-parts', 'SpareParts')->name('spare-parts');
     Route::get('/about', 'AboutMethod')->name('about.page');
@@ -75,6 +76,8 @@ Route::controller(WelcomeController::class)->group(function () {
 // Oxford Product Routes
 Route::get('/category/{id}', [OxfordController::class, 'getProductCategory']);
 Route::get('/product/{id}', [OxfordController::class, 'getOxfordProduct']);
+Route::get('/helmets', [OxfordController::class, 'helmets'])->name('helmets');
+Route::get('/mt-helmets', [OxfordController::class, 'MtHelmets'])->name('mt-helmets');
 
 // Motorcycle Sales & Rental
 Route::controller(SalesController::class)->group(function () {
@@ -112,6 +115,7 @@ Route::get('/cart', [CartController::class, 'index'])->name('product.cart');
 Route::get('/add-product', [CartController::class, 'add'])->name('addproduct.cart');
 Route::post('/cart/{id}', [CartController::class, 'store'])->name('store.cart');
 Route::post('/cart-rental/{id}', [CartrentalController::class, 'storeRental'])->name('storeRental.cart');
+Route::get('/cart-remove/{id}', [CartController::class, 'delete']);
 
 // StripeController
 Route::controller(StripePaymentController::class)->group(function () {

@@ -46,6 +46,16 @@ class WelcomeController extends Controller
         return view('frontend.service-mot');
     }
 
+    public function MotorcycleShop()
+    {
+        return view('frontend.shop-motorcycle');
+    }
+
+    public function MotorcycleAccessories()
+    {
+        return view('frontend.shop-accessories');
+    }
+
     public function AccidentClaim()
     {
         return view('frontend.accidents');

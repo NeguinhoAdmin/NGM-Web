@@ -28,10 +28,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Row ID</th>
-                                <th scope="col">Product ID</th>
-                                <th scope="col">Name</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Product</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">VAT</th>
                                 <th class="text-center" scope="col">Quantity</th>
                                 <th scope="col"></th>
                             </tr>
@@ -39,13 +39,13 @@
                         <tbody>
                             @foreach (Cart::content() as $item)
                             <tr>
-                                <td>{{ $item->rowID }}</td>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>£{{ $item->total }}</td>
+                                <td>£{{ $item->tax }}</td>
                                 <td class="text-center">{{ $item->qty }}</td>
                                 <td>
-                                    <a href="/oxford/remove/{{$item->id}}" type="button" class="btn btn-outline-danger">Remove</a>
+                                    <a href="/cart-remove/{{$item->rowId}}" type="button" class="btn btn-outline-danger">Remove</a>
                                 </td>
                             </tr>
                             @endforeach
